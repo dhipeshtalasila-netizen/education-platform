@@ -256,7 +256,9 @@
 
         function completeLesson() {
 
-            document.getElementById("message").style.display = "block";
+             localStorage.setItem("mathLesson1Completed", "true");
+
+        document.getElementById("message").style.display = "block";
 
         }
 
