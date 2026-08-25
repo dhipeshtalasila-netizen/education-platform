@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>EduLearn - Lesson 2</title>
 
     <style>
-
         * {
             margin: 0;
             padding: 0;
@@ -50,12 +48,7 @@
         }
 
         .lesson-header {
-            background: linear-gradient(
-                135deg,
-                #eaf2ff,
-                #ffffff
-            );
-
+            background: linear-gradient(135deg, #eaf2ff, #ffffff);
             padding: 35px;
             border-radius: 15px;
             margin-bottom: 25px;
@@ -79,7 +72,7 @@
         }
 
         .content h2 {
-            margin-top: 25px;
+            margin-top: 30px;
             margin-bottom: 12px;
             color: #2563eb;
         }
@@ -100,34 +93,47 @@
             border-left: 4px solid #2563eb;
             border-radius: 5px;
             margin: 20px 0;
+            line-height: 1.7;
         }
 
         .example strong {
             display: block;
             margin-bottom: 10px;
+            color: #222;
+        }
+
+        .formula {
+            background: #eef4ff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 15px 0;
         }
 
         /* QUIZ */
 
         .quiz {
-            margin-top: 30px;
+            margin-top: 35px;
             padding: 25px;
             background: #f8fafc;
             border-radius: 12px;
         }
 
         .question {
-            margin-bottom: 25px;
+            margin-bottom: 28px;
         }
 
         .question h3 {
             margin-bottom: 12px;
+            line-height: 1.5;
         }
 
         .question label {
             display: block;
-            padding: 10px;
-            margin: 6px 0;
+            padding: 12px;
+            margin: 7px 0;
             background: white;
             border: 1px solid #ddd;
             border-radius: 6px;
@@ -193,7 +199,6 @@
         }
 
         @media (max-width: 600px) {
-
             .lesson-header h1 {
                 font-size: 28px;
             }
@@ -202,11 +207,8 @@
             .lesson-header {
                 padding: 25px;
             }
-
         }
-
     </style>
-
 </head>
 
 <body>
@@ -226,16 +228,16 @@
 
     <main class="lesson-container">
 
-
         <section class="lesson-header">
 
             <h1>
-                Lesson 2: Numbers and Operations
+                Lesson 2: Functions, Equations and Graphs
             </h1>
 
             <p>
-                Learn about numbers and the four basic
-                mathematical operations.
+                Understand functions, domain and range,
+                equations, and graphical representations
+                used in college-level mathematics.
             </p>
 
         </section>
@@ -243,100 +245,165 @@
 
         <section class="content">
 
-
-            <h2>What are Numbers?</h2>
-
-            <p>
-                Numbers are mathematical symbols used to
-                represent quantities. We use numbers every
-                day to count, measure, compare and calculate.
-            </p>
-
-
-            <h2>Types of Numbers</h2>
+            <h2>1. What is a Function?</h2>
 
             <p>
-                Some common types of numbers include
-                natural numbers, whole numbers, integers,
-                fractions and decimals.
-            </p>
-
-
-            <div class="example">
-
-                <strong>Examples</strong>
-
-                Natural numbers:
-                1, 2, 3, 4, 5
-
-                <br><br>
-
-                Whole numbers:
-                0, 1, 2, 3, 4, 5
-
-            </div>
-
-
-            <h2>Addition</h2>
-
-            <p>
-                Addition means combining two or more numbers
-                to find their total.
+                A function is a mathematical relationship in
+                which every input is associated with exactly
+                one output.
             </p>
 
             <div class="example">
 
                 <strong>Example</strong>
 
-                7 + 5 = 12
+                Consider the function:
+
+                <div class="formula">
+                    f(x) = 2x + 3
+                </div>
+
+                If x = 4:
+
+                <div class="formula">
+                    f(4) = 2(4) + 3 = 11
+                </div>
 
             </div>
 
 
-            <h2>Subtraction</h2>
+            <h2>2. Domain and Range</h2>
 
             <p>
-                Subtraction means taking one number away
-                from another number.
+                The <strong>domain</strong> of a function is the
+                set of possible input values.
+            </p>
+
+            <p>
+                The <strong>range</strong> is the set of possible
+                output values produced by the function.
             </p>
 
             <div class="example">
 
                 <strong>Example</strong>
 
-                15 - 6 = 9
+                For:
+
+                <div class="formula">
+                    f(x) = x²
+                </div>
+
+                If the domain is all real numbers,
+                the range is:
+
+                <div class="formula">
+                    f(x) ≥ 0
+                </div>
 
             </div>
 
 
-            <h2>Multiplication</h2>
+            <h2>3. Linear Functions</h2>
 
             <p>
-                Multiplication is a repeated addition of
-                the same number.
+                A linear function generally has the form:
+            </p>
+
+            <div class="formula">
+                y = mx + c
+            </div>
+
+            <p>
+                Here, <strong>m</strong> represents the slope
+                and <strong>c</strong> represents the
+                y-intercept.
             </p>
 
             <div class="example">
 
                 <strong>Example</strong>
 
-                4 × 5 = 20
+                Consider:
+
+                <div class="formula">
+                    y = 3x + 2
+                </div>
+
+                The slope is 3 and the y-intercept is 2.
 
             </div>
 
 
-            <h2>Division</h2>
+            <h2>4. Quadratic Functions</h2>
 
             <p>
-                Division means splitting a number into
-                equal groups.
+                A quadratic function is generally written as:
+            </p>
+
+            <div class="formula">
+                f(x) = ax² + bx + c
+            </div>
+
+            <p>
+                Its graph is a parabola. Quadratic functions
+                are widely used in physics, economics,
+                engineering and other applied fields.
+            </p>
+
+
+            <h2>5. Equations</h2>
+
+            <p>
+                An equation states that two mathematical
+                expressions are equal. Solving an equation
+                means finding the value of the unknown variable
+                that satisfies the equation.
             </p>
 
             <div class="example">
 
                 <strong>Example</strong>
 
-                20 ÷ 5 = 4
+                Solve:
+
+                <div class="formula">
+                    2x + 5 = 15
+                </div>
+
+                Subtract 5:
+
+                <div class="formula">
+                    2x = 10
+                </div>
+
+                Divide by 2:
+
+                <div class="formula">
+                    x = 5
+                </div>
+
+            </div>
+
+
+            <h2>6. Understanding Graphs</h2>
+
+            <p>
+                Graphs provide a visual representation of
+                mathematical relationships. They allow us
+                to identify trends, compare values and
+                understand how one variable changes with
+                respect to another.
+            </p>
+
+            <div class="example">
+
+                <strong>Real-World Application</strong>
+
+                Suppose a company's revenue depends on the
+                number of products sold. A graph can help
+                management understand how changes in sales
+                affect revenue.
 
             </div>
 
@@ -344,17 +411,19 @@
             <h2>Quick Summary</h2>
 
             <p>
-                Numbers help us represent quantities.
-                The four basic operations are addition,
-                subtraction, multiplication and division.
-                These operations are important for solving
-                mathematical problems in everyday life.
+                Functions establish relationships between
+                inputs and outputs. Domain and range describe
+                the possible inputs and outputs. Linear and
+                quadratic functions are important mathematical
+                models, while equations help us determine
+                unknown quantities. Graphs provide a visual
+                way to analyze these relationships.
             </p>
 
 
             <!-- QUIZ -->
 
-            <h2>Quick Quiz</h2>
+            <h2>College-Level Quiz</h2>
 
             <div class="quiz">
 
@@ -362,7 +431,7 @@
                 <div class="question">
 
                     <h3>
-                        1. What is 7 + 5?
+                        1. If f(x) = 2x + 3, what is f(5)?
                     </h3>
 
                     <label>
@@ -377,16 +446,24 @@
                         <input
                             type="radio"
                             name="q1"
-                            value="12">
-                        12
+                            value="13">
+                        13
                     </label>
 
                     <label>
                         <input
                             type="radio"
                             name="q1"
-                            value="14">
-                        14
+                            value="15">
+                        15
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="8">
+                        8
                     </label>
 
                 </div>
@@ -395,8 +472,17 @@
                 <div class="question">
 
                     <h3>
-                        2. What is 15 - 6?
+                        2. In the equation y = 4x + 7,
+                        what is the slope?
                     </h3>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="4">
+                        4
+                    </label>
 
                     <label>
                         <input
@@ -410,16 +496,16 @@
                         <input
                             type="radio"
                             name="q2"
-                            value="9">
-                        9
+                            value="11">
+                        11
                     </label>
 
                     <label>
                         <input
                             type="radio"
                             name="q2"
-                            value="11">
-                        11
+                            value="1">
+                        1
                     </label>
 
                 </div>
@@ -428,31 +514,40 @@
                 <div class="question">
 
                     <h3>
-                        3. What is 4 × 5?
+                        3. What is the range of f(x) = x²
+                        when the domain is all real numbers?
                     </h3>
 
                     <label>
                         <input
                             type="radio"
                             name="q3"
-                            value="15">
-                        15
+                            value="all">
+                        All real numbers
                     </label>
 
                     <label>
                         <input
                             type="radio"
                             name="q3"
-                            value="20">
-                        20
+                            value="positive">
+                        y ≥ 0
                     </label>
 
                     <label>
                         <input
                             type="radio"
                             name="q3"
-                            value="25">
-                        25
+                            value="negative">
+                        y ≤ 0
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q3"
+                            value="zero">
+                        y = 0 only
                     </label>
 
                 </div>
@@ -461,65 +556,82 @@
                 <div class="question">
 
                     <h3>
-                        4. What is 20 ÷ 5?
+                        4. Which equation represents a
+                        quadratic function?
                     </h3>
 
                     <label>
                         <input
                             type="radio"
                             name="q4"
+                            value="linear">
+                        y = 3x + 2
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="quadratic">
+                        y = x² + 4x + 1
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="constant">
+                        y = 5
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="inverse">
+                        y = 1/x
+                    </label>
+
+                </div>
+
+
+                <div class="question">
+
+                    <h3>
+                        5. What is the solution of
+                        2x + 5 = 15?
+                    </h3>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q5"
                             value="3">
-                        3
+                        x = 3
                     </label>
 
                     <label>
                         <input
                             type="radio"
-                            name="q4"
-                            value="4">
-                        4
-                    </label>
-
-                    <label>
-                        <input
-                            type="radio"
-                            name="q4"
+                            name="q5"
                             value="5">
-                        5
-                    </label>
-
-                </div>
-
-
-                <div class="question">
-
-                    <h3>
-                        5. Which operation combines numbers
-                        to find a total?
-                    </h3>
-
-                    <label>
-                        <input
-                            type="radio"
-                            name="q5"
-                            value="addition">
-                        Addition
+                        x = 5
                     </label>
 
                     <label>
                         <input
                             type="radio"
                             name="q5"
-                            value="subtraction">
-                        Subtraction
+                            value="10">
+                        x = 10
                     </label>
 
                     <label>
                         <input
                             type="radio"
                             name="q5"
-                            value="division">
-                        Division
+                            value="7">
+                        x = 7
                     </label>
 
                 </div>
@@ -566,11 +678,9 @@
 
     <script>
 
-
         function checkQuiz() {
 
             let score = 0;
-
 
             let answer1 =
                 document.querySelector(
@@ -611,27 +721,26 @@
                 );
 
                 return;
-
             }
 
 
-            if (answer1.value === "12") {
+            if (answer1.value === "13") {
                 score++;
             }
 
-            if (answer2.value === "9") {
+            if (answer2.value === "4") {
                 score++;
             }
 
-            if (answer3.value === "20") {
+            if (answer3.value === "positive") {
                 score++;
             }
 
-            if (answer4.value === "4") {
+            if (answer4.value === "quadratic") {
                 score++;
             }
 
-            if (answer5.value === "addition") {
+            if (answer5.value === "5") {
                 score++;
             }
 
@@ -640,7 +749,6 @@
                 document.getElementById(
                     "quizResult"
                 );
-
 
             result.style.display = "block";
 
@@ -688,7 +796,6 @@
                 );
 
                 return;
-
             }
 
 
