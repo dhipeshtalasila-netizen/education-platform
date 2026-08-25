@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduLearn - Lesson 1</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        nav {
+            background: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            color: #2563eb;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .back {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .lesson-container {
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .lesson-header {
+            background: linear-gradient(135deg, #eaf2ff, #ffffff);
+            padding: 35px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .lesson-header h1 {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .lesson-header p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .content {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .content h2 {
+            margin-top: 25px;
+            margin-bottom: 12px;
+            color: #2563eb;
+        }
+
+        .content h2:first-child {
+            margin-top: 0;
+        }
+
+        .content p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .example {
+            background: #f5f7fb;
+            padding: 20px;
+            border-left: 4px solid #2563eb;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+
+        .example strong {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .complete-btn {
+            display: block;
+            width: 100%;
+            margin-top: 30px;
+            padding: 15px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .complete-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .message {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .lesson-header h1 {
+                font-size: 28px;
+            }
+
+            .content,
+            .lesson-header {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+
+        <a href="index.html" class="logo">
+            🎓 EduLearn
+        </a>
+
+        <a href="math.html" class="back">
+            ← Back to Course
+        </a>
+
+    </nav>
+
+
+    <main class="lesson-container">
+
+        <section class="lesson-header">
+
+            <h1>
+                Lesson 1: Introduction to Mathematics
+            </h1>
+
+            <p>
+                Learn the basic concepts and importance
+                of mathematics.
+            </p>
+
+        </section>
+
+
+        <section class="content">
+
+            <h2>What is Mathematics?</h2>
+
+            <p>
+                Mathematics is the study of numbers,
+                quantities, shapes, patterns and relationships.
+                It helps us understand and solve problems
+                in everyday life.
+            </p>
+
+
+            <h2>Why is Mathematics Important?</h2>
+
+            <p>
+                Mathematics is used in science, technology,
+                business, engineering and many other fields.
+                We also use mathematics in everyday activities
+                such as shopping, measuring and managing money.
+            </p>
+
+
+            <h2>Basic Mathematical Operations</h2>
+
+            <p>
+                The four basic operations are:
+            </p>
+
+            <div class="example">
+
+                <strong>1. Addition</strong>
+                5 + 3 = 8
+
+            </div>
+
+            <div class="example">
+
+                <strong>2. Subtraction</strong>
+                9 - 4 = 5
+
+            </div>
+
+            <div class="example">
+
+                <strong>3. Multiplication</strong>
+                6 × 3 = 18
+
+            </div>
+
+            <div class="example">
+
+                <strong>4. Division</strong>
+                12 ÷ 4 = 3
+
+            </div>
+
+
+            <h2>Quick Summary</h2>
+
+            <p>
+                Mathematics helps us understand numbers,
+                patterns and relationships. Learning the
+                basic operations gives us a strong foundation
+                for more advanced mathematical concepts.
+            </p>
+
+
+            <button
+                class="complete-btn"
+                onclick="completeLesson()">
+                ✓ Mark Lesson as Complete
+            </button>
+
+            <div class="message" id="message">
+                🎉 Lesson completed! Great job!
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        function completeLesson() {
+
+            document.getElementById("message").style.display = "block";
+
+        }
+
+    </script>
+
+</body>
+</html>
