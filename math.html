@@ -19,8 +19,6 @@
             color: #222;
         }
 
-        /* NAVBAR */
-
         nav {
             background: white;
             padding: 18px 8%;
@@ -50,8 +48,6 @@
             border-radius: 7px;
         }
 
-        /* COURSE HEADER */
-
         .course-header {
             background: linear-gradient(135deg, #eaf2ff, #ffffff);
             padding: 60px 8%;
@@ -69,8 +65,6 @@
             line-height: 1.6;
         }
 
-        /* MAIN */
-
         .container {
             padding: 50px 8%;
         }
@@ -79,8 +73,6 @@
             font-size: 30px;
             margin-bottom: 25px;
         }
-
-        /* PROGRESS */
 
         .progress-box {
             background: white;
@@ -105,12 +97,11 @@
         }
 
         .progress-bar {
-            width: 20%;
+            width: 0%;
             height: 100%;
             background: #2563eb;
+            transition: width 0.5s ease;
         }
-
-        /* LESSONS */
 
         .lessons {
             display: flex;
@@ -164,7 +155,13 @@
             font-weight: bold;
         }
 
-        /* QUIZ */
+        .completed {
+            background: #16a34a;
+        }
+
+        .completed:hover {
+            background: #15803d;
+        }
 
         .quiz {
             margin-top: 45px;
@@ -192,8 +189,6 @@
             text-decoration: none;
             font-weight: bold;
         }
-
-        /* MOBILE */
 
         @media (max-width: 768px) {
 
@@ -225,8 +220,6 @@
 
 <body>
 
-    <!-- NAVIGATION -->
-
     <nav>
 
         <a href="index.html" class="logo">
@@ -239,8 +232,6 @@
 
     </nav>
 
-
-    <!-- COURSE HEADER -->
 
     <section class="course-header">
 
@@ -257,12 +248,8 @@
     </section>
 
 
-    <!-- MAIN CONTENT -->
-
     <main class="container">
 
-
-        <!-- PROGRESS -->
 
         <div class="progress-box">
 
@@ -272,29 +259,33 @@
                     Course Progress
                 </span>
 
-                <span>
-                    20%
+                <span id="progressText">
+                    0%
                 </span>
 
             </div>
 
             <div class="progress">
 
-                <div class="progress-bar"></div>
+                <div
+                    class="progress-bar"
+                    id="progressBar">
+                </div>
 
             </div>
 
         </div>
 
 
-        <!-- LESSONS -->
-
         <h2 class="section-title">
             Course Lessons
         </h2>
 
+
         <div class="lessons">
 
+
+            <!-- LESSON 1 -->
 
             <div class="lesson">
 
@@ -319,12 +310,17 @@
 
                 </div>
 
-               <a href="lesson1.html" class="start-lesson">
+                <a
+                    href="lesson1.html"
+                    class="start-lesson"
+                    id="lesson1Button">
                     Start Lesson
                 </a>
 
             </div>
 
+
+            <!-- LESSON 2 -->
 
             <div class="lesson">
 
@@ -349,12 +345,16 @@
 
                 </div>
 
-                <a href="#" class="start-lesson">
+                <a
+                    href="#"
+                    class="start-lesson">
                     Start Lesson
                 </a>
 
             </div>
 
+
+            <!-- LESSON 3 -->
 
             <div class="lesson">
 
@@ -379,12 +379,16 @@
 
                 </div>
 
-                <a href="#" class="start-lesson">
+                <a
+                    href="#"
+                    class="start-lesson">
                     Start Lesson
                 </a>
 
             </div>
 
+
+            <!-- LESSON 4 -->
 
             <div class="lesson">
 
@@ -409,12 +413,16 @@
 
                 </div>
 
-                <a href="#" class="start-lesson">
+                <a
+                    href="#"
+                    class="start-lesson">
                     Start Lesson
                 </a>
 
             </div>
 
+
+            <!-- LESSON 5 -->
 
             <div class="lesson">
 
@@ -439,7 +447,9 @@
 
                 </div>
 
-                <a href="#" class="start-lesson">
+                <a
+                    href="#"
+                    class="start-lesson">
                     Start Lesson
                 </a>
 
@@ -447,8 +457,6 @@
 
         </div>
 
-
-        <!-- QUIZ -->
 
         <div class="quiz">
 
@@ -461,13 +469,70 @@
                 to test what you have learned.
             </p>
 
-            <a href="quiz.html" class="quiz-btn">
+            <a
+                href="quiz.html"
+                class="quiz-btn">
                 Take Quiz →
             </a>
 
         </div>
 
     </main>
+
+
+    <script>
+
+        function updateProgress() {
+
+            let completedLessons = 0;
+
+            let lesson1Completed =
+                localStorage.getItem(
+                    "mathLesson1Completed"
+                );
+
+
+            if (lesson1Completed === "true") {
+
+                completedLessons++;
+
+                let button =
+                    document.getElementById(
+                        "lesson1Button"
+                    );
+
+                button.innerHTML =
+                    "✓ Completed";
+
+                button.classList.add(
+                    "completed"
+                );
+
+            }
+
+
+            let totalLessons = 5;
+
+            let progress =
+                (completedLessons / totalLessons) * 100;
+
+
+            document.getElementById(
+                "progressBar"
+            ).style.width = progress + "%";
+
+
+            document.getElementById(
+                "progressText"
+            ).innerHTML =
+                progress + "%";
+
+        }
+
+
+        updateProgress();
+
+    </script>
 
 </body>
 </html>
