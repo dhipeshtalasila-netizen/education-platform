@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduLearn - Lesson 5</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        nav {
+            background: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            color: #2563eb;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .back {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .lesson-container {
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .lesson-header {
+            background: linear-gradient(135deg, #eaf2ff, #ffffff);
+            padding: 35px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .lesson-header h1 {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .lesson-header p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .content {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .content h2 {
+            margin-top: 30px;
+            margin-bottom: 12px;
+            color: #2563eb;
+        }
+
+        .content h2:first-child {
+            margin-top: 0;
+        }
+
+        .content p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .matrix {
+            background: #f8fafc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 1.8;
+        }
+
+        .formula {
+            background: #eef4ff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .example {
+            background: #f5f7fb;
+            padding: 20px;
+            border-left: 4px solid #2563eb;
+            border-radius: 6px;
+            margin: 20px 0;
+            line-height: 1.7;
+        }
+
+        .example strong {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* QUIZ */
+
+        .quiz {
+            margin-top: 35px;
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: 12px;
+        }
+
+        .question {
+            margin-bottom: 28px;
+        }
+
+        .question h3 {
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .question label {
+            display: block;
+            padding: 12px;
+            margin: 7px 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .question label:hover {
+            background: #eef4ff;
+        }
+
+        .question input {
+            margin-right: 8px;
+        }
+
+        .quiz-btn {
+            width: 100%;
+            padding: 14px;
+            background: #16a34a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .quiz-btn:hover {
+            background: #15803d;
+        }
+
+        .quiz-result {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .complete-btn {
+            display: block;
+            width: 100%;
+            margin-top: 30px;
+            padding: 15px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .complete-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .message {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+
+            .lesson-header h1 {
+                font-size: 28px;
+            }
+
+            .content,
+            .lesson-header {
+                padding: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <nav>
+
+        <a href="index.html" class="logo">
+            🎓 EduLearn
+        </a>
+
+        <a href="math.html" class="back">
+            ← Back to Course
+        </a>
+
+    </nav>
+
+
+    <main class="lesson-container">
+
+
+        <section class="lesson-header">
+
+            <h1>
+                Lesson 5: Matrices and Linear Algebra
+            </h1>
+
+            <p>
+                Learn the fundamentals of matrices,
+                determinants, matrix operations and
+                their applications in college-level mathematics.
+            </p>
+
+        </section>
+
+
+        <section class="content">
+
+
+            <h2>1. What is a Matrix?</h2>
+
+            <p>
+                A matrix is a rectangular arrangement of
+                numbers, symbols or expressions organized
+                into rows and columns.
+            </p>
+
+            <div class="matrix">
+
+                [ 1 &nbsp; 2 &nbsp; 3 ]<br>
+                [ 4 &nbsp; 5 &nbsp; 6 ]
+
+            </div>
+
+            <p>
+                The matrix above has 2 rows and 3 columns.
+                Therefore, its order is 2 × 3.
+            </p>
+
+
+            <h2>2. Order of a Matrix</h2>
+
+            <p>
+                The order of a matrix is written as:
+            </p>
+
+            <div class="formula">
+                Number of Rows × Number of Columns
+            </div>
+
+            <div class="example">
+
+                <strong>Example</strong>
+
+                A matrix containing 3 rows and 2 columns
+                has order:
+
+                <div class="formula">
+                    3 × 2
+                </div>
+
+            </div>
+
+
+            <h2>3. Types of Matrices</h2>
+
+            <p>
+                Some commonly used types of matrices include
+                row matrices, column matrices, square matrices,
+                zero matrices and identity matrices.
+            </p>
+
+
+            <div class="example">
+
+                <strong>Identity Matrix</strong>
+
+                A 2 × 2 identity matrix is:
+
+                <div class="matrix">
+
+                    [ 1 &nbsp; 0 ]<br>
+                    [ 0 &nbsp; 1 ]
+
+                </div>
+
+                The identity matrix is commonly represented
+                by the symbol I.
+
+            </div>
+
+
+            <h2>4. Matrix Addition</h2>
+
+            <p>
+                Two matrices can be added when they have
+                the same order.
+            </p>
+
+            <div class="example">
+
+                <strong>Example</strong>
+
+                <div class="matrix">
+
+                    [ 1 &nbsp; 2 ] &nbsp;&nbsp; [ 3 &nbsp; 4 ]<br>
+                    [ 5 &nbsp; 6 ] &nbsp;&nbsp; [ 7 &nbsp; 8 ]
+
+                </div>
+
+                Add corresponding elements:
+
+                <div class="matrix">
+
+                    [ 4 &nbsp; 6 ]<br>
+                    [ 12 &nbsp; 14 ]
+
+                </div>
+
+            </div>
+
+
+            <h2>5. Matrix Multiplication</h2>
+
+            <p>
+                Matrix multiplication is possible when the
+                number of columns of the first matrix equals
+                the number of rows of the second matrix.
+            </p>
+
+            <div class="formula">
+                (m × n)(n × p) = m × p
+            </div>
+
+            <p>
+                This condition is important when determining
+                whether two matrices can be multiplied.
+            </p>
+
+
+            <h2>6. Determinant</h2>
+
+            <p>
+                The determinant is a numerical value associated
+                with a square matrix.
+            </p>
+
+            <p>
+                For a 2 × 2 matrix:
+            </p>
+
+            <div class="formula">
+                | a &nbsp; b |<br>
+                | c &nbsp; d |
+                &nbsp;&nbsp; = &nbsp;&nbsp;
+                ad - bc
+            </div>
+
+
+            <div class="example">
+
+                <strong>Example</strong>
+
+                Find the determinant of:
+
+                <div class="matrix">
+
+                    | 2 &nbsp; 3 |<br>
+                    | 1 &nbsp; 4 |
+
+                </div>
+
+                Using:
+
+                <div class="formula">
+                    ad - bc
+                </div>
+
+                We get:
+
+                <div class="formula">
+                    (2 × 4) - (3 × 1) = 5
+                </div>
+
+                Therefore, the determinant is:
+
+                <div class="formula">
+                    5
+                </div>
+
+            </div>
+
+
+            <h2>7. Applications of Matrices</h2>
+
+            <p>
+                Matrices are widely used in computer science,
+                engineering, economics, statistics, physics,
+                data science and many other fields.
+            </p>
+
+            <p>
+                They can be used to represent systems of
+                equations, transform data and perform
+                calculations involving large sets of numbers.
+            </p>
+
+
+            <h2>8. Linear Algebra</h2>
+
+            <p>
+                Linear algebra is the branch of mathematics
+                that studies vectors, matrices, linear equations
+                and linear transformations.
+            </p>
+
+            <p>
+                It forms an important mathematical foundation
+                for areas such as machine learning, computer
+                graphics, engineering and data analysis.
+            </p>
+
+
+            <h2>Quick Summary</h2>
+
+            <p>
+                Matrices organize numbers into rows and columns.
+                Important concepts include matrix order,
+                matrix operations, determinants and identity
+                matrices. Linear algebra extends these ideas
+                to vectors, systems of equations and
+                transformations.
+            </p>
+
+
+            <!-- QUIZ -->
+
+            <h2>College-Level Quiz</h2>
+
+            <div class="quiz">
+
+
+                <div class="question">
+
+                    <h3>
+                        1. What is the order of a matrix
+                        with 3 rows and 4 columns?
+                    </h3>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="3x4">
+                        3 × 4
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="4x3">
+                        4 × 3
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="7x1">
+                        7 × 1
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="12x1">
+                        12 × 1
+                    </label>
+
+                </div>
+
+
+                <div class="question">
+
+                    <h3>
+                        2. When can two matrices be added?
+                    </h3>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="same">
+                        When they have the same order
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="different">
+                        When they have different orders
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="square">
+                        Only when both are square
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="zero">
+                        Only when both contain zero
+                    </label>
+
+                </div>
+
+
+                <div class="question">
+
+                    <h3>
+                        3. What is the determinant of
+                        [2 3; 1 4]?
+                    </h3>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q3"
+                            value="5">
+                        5
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q3"
+                            value="8">
+                        8
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q3"
+                            value="11">
+                        11
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q3"
+                            value="2">
+                        2
+                    </label>
+
+                </div>
+
+
+                <div class="question">
+
+                    <h3>
+                        4. Which matrix has 1s on its main
+                        diagonal and 0s elsewhere?
+                    </h3>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="identity">
+                        Identity matrix
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="zero">
+                        Zero matrix
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="row">
+                        Row matrix
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="column">
+                        Column matrix
+                    </label>
+
+                </div>
+
+
+                <div class="question">
+
+                    <h3>
+                        5. Which field commonly uses
+                        linear algebra?
+                    </h3>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q5"
+                            value="machine">
+                        Machine learning
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q5"
+                            value="none">
+                        None of these
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q5"
+                            value="only">
+                        Only handwriting
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q5"
+                            value="never">
+                        It has no applications
+                    </label>
+
+                </div>
+
+
+                <button
+                    class="quiz-btn"
+                    onclick="checkQuiz()">
+
+                    Check Quiz
+
+                </button>
+
+
+                <div
+                    class="quiz-result"
+                    id="quizResult">
+                </div>
+
+            </div>
+
+
+            <button
+                class="complete-btn"
+                onclick="completeLesson()">
+
+                ✓ Mark Lesson as Complete
+
+            </button>
+
+
+            <div
+                class="message"
+                id="message">
+
+                🎉 Lesson completed! Course lessons finished!
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        function checkQuiz() {
+
+            let score = 0;
+
+
+            let answer1 =
+                document.querySelector(
+                    'input[name="q1"]:checked'
+                );
+
+            let answer2 =
+                document.querySelector(
+                    'input[name="q2"]:checked'
+                );
+
+            let answer3 =
+                document.querySelector(
+                    'input[name="q3"]:checked'
+                );
+
+            let answer4 =
+                document.querySelector(
+                    'input[name="q4"]:checked'
+                );
+
+            let answer5 =
+                document.querySelector(
+                    'input[name="q5"]:checked'
+                );
+
+
+            if (
+                !answer1 ||
+                !answer2 ||
+                !answer3 ||
+                !answer4 ||
+                !answer5
+            ) {
+
+                alert(
+                    "Please answer all 5 questions."
+                );
+
+                return;
+            }
+
+
+            if (answer1.value === "3x4") {
+                score++;
+            }
+
+            if (answer2.value === "same") {
+                score++;
+            }
+
+            if (answer3.value === "5") {
+                score++;
+            }
+
+            if (answer4.value === "identity") {
+                score++;
+            }
+
+            if (answer5.value === "machine") {
+                score++;
+            }
+
+
+            let result =
+                document.getElementById(
+                    "quizResult"
+                );
+
+
+            result.style.display = "block";
+
+
+            if (score >= 4) {
+
+                result.style.color = "#16a34a";
+
+                result.innerHTML =
+                    "🎉 Excellent! You scored " +
+                    score +
+                    "/5. You passed the quiz!";
+
+                localStorage.setItem(
+                    "mathLesson5QuizPassed",
+                    "true"
+                );
+
+            } else {
+
+                result.style.color = "#dc2626";
+
+                result.innerHTML =
+                    "You scored " +
+                    score +
+                    "/5. You need at least 4/5. Try again!";
+
+            }
+
+        }
+
+
+        function completeLesson() {
+
+            let quizPassed =
+                localStorage.getItem(
+                    "mathLesson5QuizPassed"
+                );
+
+
+            if (quizPassed !== "true") {
+
+                alert(
+                    "Please pass the quiz before completing the lesson."
+                );
+
+                return;
+            }
+
+
+            localStorage.setItem(
+                "mathLesson5Completed",
+                "true"
+            );
+
+
+            document.getElementById(
+                "message"
+            ).style.display = "block";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
