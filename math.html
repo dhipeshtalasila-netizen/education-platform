@@ -168,7 +168,7 @@
             background: #16a34a;
         }
 
-        /* QUIZ */
+        /* FINAL ASSESSMENT */
 
         .quiz {
             margin-top: 45px;
@@ -197,6 +197,8 @@
             text-decoration: none;
             font-weight: bold;
         }
+
+        /* MOBILE */
 
         @media (max-width: 768px) {
 
@@ -258,12 +260,14 @@
 
         <p>
             Develop college-level mathematical knowledge
-            through concepts, problem-solving techniques,
-            calculus, algebra and analytical methods.
+            through mathematical foundations, functions,
+            calculus, integration and linear algebra.
         </p>
 
     </section>
 
+
+    <!-- MAIN -->
 
     <main class="container">
 
@@ -447,10 +451,11 @@
                 </div>
 
                 <a
-                    href="#"
-                    class="start-lesson">
+                    href="lesson4.html"
+                    class="start-lesson"
+                    id="lesson4Button">
 
-                    Coming Soon
+                    Start Lesson
 
                 </a>
 
@@ -484,41 +489,44 @@
                 </div>
 
                 <a
-                    href="#"
-                    class="start-lesson">
+                    href="lesson5.html"
+                    class="start-lesson"
+                    id="lesson5Button">
 
-                    Coming Soon
+                    Start Lesson
 
                 </a>
 
             </div>
 
+
         </div>
 
 
-        <!-- ASSESSMENT -->
+        <!-- FINAL ASSESSMENT -->
 
         <div class="quiz">
 
             <h2>
-                📝 Course Assessment
+                📝 Final Course Assessment
             </h2>
 
             <p>
-                Complete the course lessons and take
-                the final assessment to test your
-                mathematical understanding.
+                Complete all five lessons and take the
+                final assessment to test your
+                college-level mathematical knowledge.
             </p>
 
             <a
                 href="quiz.html"
                 class="quiz-btn">
 
-                Take Assessment →
+                Take Final Assessment →
 
             </a>
 
         </div>
+
 
     </main>
 
@@ -540,17 +548,7 @@
 
                 completedLessons++;
 
-                let button =
-                    document.getElementById(
-                        "lesson1Button"
-                    );
-
-                button.innerHTML =
-                    "✓ Completed";
-
-                button.classList.add(
-                    "completed"
-                );
+                markCompleted("lesson1Button");
 
             }
 
@@ -565,17 +563,7 @@
 
                 completedLessons++;
 
-                let button =
-                    document.getElementById(
-                        "lesson2Button"
-                    );
-
-                button.innerHTML =
-                    "✓ Completed";
-
-                button.classList.add(
-                    "completed"
-                );
+                markCompleted("lesson2Button");
 
             }
 
@@ -590,28 +578,45 @@
 
                 completedLessons++;
 
-                let button =
-                    document.getElementById(
-                        "lesson3Button"
-                    );
-
-                button.innerHTML =
-                    "✓ Completed";
-
-                button.classList.add(
-                    "completed"
-                );
+                markCompleted("lesson3Button");
 
             }
 
 
-            /* CALCULATE */
+            /* LESSON 4 */
 
-            let totalLessons = 5;
+            if (
+                localStorage.getItem(
+                    "mathLesson4Completed"
+                ) === "true"
+            ) {
+
+                completedLessons++;
+
+                markCompleted("lesson4Button");
+
+            }
+
+
+            /* LESSON 5 */
+
+            if (
+                localStorage.getItem(
+                    "mathLesson5Completed"
+                ) === "true"
+            ) {
+
+                completedLessons++;
+
+                markCompleted("lesson5Button");
+
+            }
+
+
+            /* CALCULATE PROGRESS */
 
             let progress =
-                (completedLessons /
-                totalLessons) * 100;
+                (completedLessons / 5) * 100;
 
 
             document.getElementById(
@@ -625,6 +630,33 @@
             ).innerHTML =
                 progress + "%";
 
+
+            /* COURSE COMPLETE */
+
+            if (completedLessons === 5) {
+
+                document.getElementById(
+                    "progressText"
+                ).innerHTML =
+                    "100% - Course Lessons Completed 🎉";
+
+            }
+
+        }
+
+
+        function markCompleted(buttonId) {
+
+            let button =
+                document.getElementById(buttonId);
+
+            button.innerHTML =
+                "✓ Completed";
+
+            button.classList.add(
+                "completed"
+            );
+
         }
 
 
@@ -634,4 +666,5 @@
 
 
 </body>
+
 </html>
