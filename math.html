@@ -51,12 +51,7 @@
         }
 
         .course-header {
-            background: linear-gradient(
-                135deg,
-                #eaf2ff,
-                #ffffff
-            );
-
+            background: linear-gradient(135deg, #eaf2ff, #ffffff);
             padding: 60px 8%;
         }
 
@@ -66,7 +61,7 @@
         }
 
         .course-header p {
-            max-width: 650px;
+            max-width: 700px;
             color: #555;
             font-size: 18px;
             line-height: 1.6;
@@ -146,6 +141,7 @@
             justify-content: center;
             align-items: center;
             font-weight: bold;
+            flex-shrink: 0;
         }
 
         .lesson h3 {
@@ -155,6 +151,7 @@
         .lesson p {
             color: #666;
             font-size: 14px;
+            line-height: 1.5;
         }
 
         .start-lesson {
@@ -164,14 +161,11 @@
             border-radius: 7px;
             text-decoration: none;
             font-weight: bold;
+            white-space: nowrap;
         }
 
         .completed {
             background: #16a34a;
-        }
-
-        .completed:hover {
-            background: #15803d;
         }
 
         /* QUIZ */
@@ -191,6 +185,7 @@
         .quiz p {
             color: #d1d5db;
             margin-bottom: 20px;
+            line-height: 1.6;
         }
 
         .quiz-btn {
@@ -202,8 +197,6 @@
             text-decoration: none;
             font-weight: bold;
         }
-
-        /* MOBILE */
 
         @media (max-width: 768px) {
 
@@ -244,21 +237,12 @@
 
     <nav>
 
-        <a
-            href="index.html"
-            class="logo">
-
+        <a href="index.html" class="logo">
             🎓 EduLearn
-
         </a>
 
-
-        <a
-            href="dashboard.html"
-            class="dashboard-link">
-
+        <a href="dashboard.html" class="dashboard-link">
             Dashboard
-
         </a>
 
     </nav>
@@ -273,17 +257,13 @@
         </h1>
 
         <p>
-            Develop strong mathematical foundations
-            and apply analytical concepts to
-            college-level problems, academics,
-            science, technology and real-world
-            situations.
+            Develop college-level mathematical knowledge
+            through concepts, problem-solving techniques,
+            calculus, algebra and analytical methods.
         </p>
 
     </section>
 
-
-    <!-- MAIN -->
 
     <main class="container">
 
@@ -303,7 +283,6 @@
                 </span>
 
             </div>
-
 
             <div class="progress">
 
@@ -353,7 +332,6 @@
 
                 </div>
 
-
                 <a
                     href="lesson1.html"
                     class="start-lesson"
@@ -383,15 +361,14 @@
                         </h3>
 
                         <p>
-                            Study functions, domain,
-                            range, equations and
-                            graphical representations.
+                            Study functions, domain, range,
+                            equations and graphical
+                            representations.
                         </p>
 
                     </div>
 
                 </div>
-
 
                 <a
                     href="lesson2.html"
@@ -431,12 +408,12 @@
 
                 </div>
 
-
                 <a
-                    href="#"
-                    class="start-lesson">
+                    href="lesson3.html"
+                    class="start-lesson"
+                    id="lesson3Button">
 
-                    Coming Soon
+                    Start Lesson
 
                 </a>
 
@@ -468,7 +445,6 @@
                     </div>
 
                 </div>
-
 
                 <a
                     href="#"
@@ -507,7 +483,6 @@
 
                 </div>
 
-
                 <a
                     href="#"
                     class="start-lesson">
@@ -521,7 +496,7 @@
         </div>
 
 
-        <!-- COURSE QUIZ -->
+        <!-- ASSESSMENT -->
 
         <div class="quiz">
 
@@ -530,11 +505,10 @@
             </h2>
 
             <p>
-                Complete the lessons and take the
-                final assessment to test your
-                understanding of the course.
+                Complete the course lessons and take
+                the final assessment to test your
+                mathematical understanding.
             </p>
-
 
             <a
                 href="quiz.html"
@@ -551,7 +525,6 @@
 
     <script>
 
-
         function updateProgress() {
 
             let completedLessons = 0;
@@ -559,28 +532,21 @@
 
             /* LESSON 1 */
 
-            let lesson1Completed =
+            if (
                 localStorage.getItem(
                     "mathLesson1Completed"
-                );
-
-
-            if (
-                lesson1Completed === "true"
+                ) === "true"
             ) {
 
                 completedLessons++;
-
 
                 let button =
                     document.getElementById(
                         "lesson1Button"
                     );
 
-
                 button.innerHTML =
                     "✓ Completed";
-
 
                 button.classList.add(
                     "completed"
@@ -591,28 +557,21 @@
 
             /* LESSON 2 */
 
-            let lesson2Completed =
+            if (
                 localStorage.getItem(
                     "mathLesson2Completed"
-                );
-
-
-            if (
-                lesson2Completed === "true"
+                ) === "true"
             ) {
 
                 completedLessons++;
-
 
                 let button =
                     document.getElementById(
                         "lesson2Button"
                     );
 
-
                 button.innerHTML =
                     "✓ Completed";
-
 
                 button.classList.add(
                     "completed"
@@ -621,10 +580,34 @@
             }
 
 
-            /* CALCULATE PROGRESS */
+            /* LESSON 3 */
+
+            if (
+                localStorage.getItem(
+                    "mathLesson3Completed"
+                ) === "true"
+            ) {
+
+                completedLessons++;
+
+                let button =
+                    document.getElementById(
+                        "lesson3Button"
+                    );
+
+                button.innerHTML =
+                    "✓ Completed";
+
+                button.classList.add(
+                    "completed"
+                );
+
+            }
+
+
+            /* CALCULATE */
 
             let totalLessons = 5;
-
 
             let progress =
                 (completedLessons /
