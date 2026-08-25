@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduLearn - Lesson 3</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        nav {
+            background: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            color: #2563eb;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .back {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .lesson-container {
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .lesson-header {
+            background: linear-gradient(
+                135deg,
+                #eaf2ff,
+                #ffffff
+            );
+
+            padding: 35px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .lesson-header h1 {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .lesson-header p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .content {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .content h2 {
+            margin-top: 30px;
+            margin-bottom: 12px;
+            color: #2563eb;
+        }
+
+        .content h2:first-child {
+            margin-top: 0;
+        }
+
+        .content p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .example {
+            background: #f5f7fb;
+            padding: 20px;
+            border-left: 4px solid #2563eb;
+            border-radius: 5px;
+            margin: 20px 0;
+            line-height: 1.7;
+        }
+
+        .example strong {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .formula {
+            background: #eef4ff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        /* QUIZ */
+
+        .quiz {
+            margin-top: 35px;
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: 12px;
+        }
+
+        .question {
+            margin-bottom: 28px;
+        }
+
+        .question h3 {
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .question label {
+            display: block;
+            padding: 12px;
+            margin: 7px 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .question label:hover {
+            background: #eef4ff;
+        }
+
+        .question input {
+            margin-right: 8px;
+        }
+
+        .quiz-btn {
+            width: 100%;
+            padding: 14px;
+            background: #16a34a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .quiz-btn:hover {
+            background: #15803d;
+        }
+
+        .quiz-result {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .complete-btn {
+            display: block;
+            width: 100%;
+            margin-top: 30px;
+            padding: 15px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .complete-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .message {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+
+            .lesson-header h1 {
+                font-size: 28px;
+            }
+
+            .content,
+            .lesson-header {
+                padding: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <nav>
+
+        <a
+            href="index.html"
+            class="logo">
+
+            🎓 EduLearn
+
+        </a>
+
+
+        <a
+            href="math.html"
+            class="back">
+
+            ← Back to Course
+
+        </a>
+
+    </nav>
+
+
+    <main class="lesson-container">
+
+
+        <section class="lesson-header">
+
+            <h1>
+                Lesson 3: Differentiation and Applications
+            </h1>
+
+            <p>
+                Understand derivatives, differentiation
+                rules and how derivatives are used to
+                analyze change and solve real-world problems.
+            </p>
+
+        </section>
+
+
+        <section class="content">
+
+
+            <h2>1. Introduction to Differentiation</h2>
+
+            <p>
+                Differentiation is a fundamental concept
+                in calculus used to measure the rate at
+                which one quantity changes with respect
+                to another.
+            </p>
+
+            <p>
+                If a function represents a changing quantity,
+                its derivative tells us how rapidly that
+                quantity is changing.
+            </p>
+
+
+            <div class="example">
+
+                <strong>Example</strong>
+
+                Consider:
+
+                <div class="formula">
+                    f(x) = x²
+                </div>
+
+                Its derivative is:
+
+                <div class="formula">
+                    f'(x) = 2x
+                </div>
+
+            </div>
+
+
+            <h2>2. Derivative of a Constant</h2>
+
+            <p>
+                The derivative of a constant is zero because
+                a constant does not change as the variable
+                changes.
+            </p>
+
+            <div class="formula">
+                d/dx(c) = 0
+            </div>
+
+            <div class="example">
+
+                <strong>Example</strong>
+
+                If:
+
+                <div class="formula">
+                    f(x) = 8
+                </div>
+
+                Then:
+
+                <div class="formula">
+                    f'(x) = 0
+                </div>
+
+            </div>
+
+
+            <h2>3. Power Rule</h2>
+
+            <p>
+                One of the most important differentiation
+                rules is the power rule.
+            </p>
+
+            <div class="formula">
+                d/dx(xⁿ) = nxⁿ⁻¹
+            </div>
+
+            <div class="example">
+
+                <strong>Example</strong>
+
+                For:
+
+                <div class="formula">
+                    f(x) = x⁵
+                </div>
+
+                Using the power rule:
+
+                <div class="formula">
+                    f'(x) = 5x⁴
+                </div>
+
+            </div>
+
+
+            <h2>4. Derivative of a Polynomial</h2>
+
+            <p>
+                A polynomial can be differentiated term by
+                term.
+            </p>
+
+            <div class="example">
+
+                <strong>Example</strong>
+
+                Consider:
+
+                <div class="formula">
+                    f(x) = 3x³ + 2x² - 5x + 7
+                </div>
+
+                Differentiating each term:
+
+                <div class="formula">
+                    f'(x) = 9x² + 4x - 5
+                </div>
+
+            </div>
+
+
+            <h2>5. Geometric Meaning of a Derivative</h2>
+
+            <p>
+                Geometrically, the derivative at a point
+                represents the slope of the tangent line
+                to the curve at that point.
+            </p>
+
+            <p>
+                A positive derivative indicates that the
+                function is increasing, while a negative
+                derivative indicates that the function
+                is decreasing.
+            </p>
+
+
+            <h2>6. Applications of Differentiation</h2>
+
+            <p>
+                Differentiation has applications in many
+                fields, including physics, engineering,
+                economics, finance and computer science.
+            </p>
+
+            <div class="example">
+
+                <strong>Example: Motion</strong>
+
+                If the position of an object is:
+
+                <div class="formula">
+                    s(t) = t² + 3t
+                </div>
+
+                Its velocity is the derivative:
+
+                <div class="formula">
+                    v(t) = s'(t) = 2t + 3
+                </div>
+
+            </div>
+
+
+            <h2>7. Optimization</h2>
+
+            <p>
+                Derivatives can be used to find maximum
+                and minimum values of functions. This is
+                known as optimization.
+            </p>
+
+            <p>
+                Optimization is commonly used in business
+                and engineering to minimize costs, maximize
+                profit, improve efficiency and determine
+                the best possible solution.
+            </p>
+
+
+            <h2>Quick Summary</h2>
+
+            <p>
+                Differentiation measures the rate of change
+                of a function. Important rules include the
+                constant rule and power rule. Derivatives
+                also provide the slope of a curve and are
+                widely used in motion, optimization,
+                economics, engineering and other fields.
+            </p>
+
+
+            <!-- QUIZ -->
+
+            <h2>College-Level Quiz</h2>
+
+            <div class="quiz">
+
+
+                <div class="question">
+
+                    <h3>
+                        1. What is the derivative of x²?
+                    </h3>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="x">
+                        x
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="2x">
+                        2x
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="x2">
+                        x²
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="2">
+                        2
+                    </label>
+
+                </div>
+
+
+                <div class="question">
+
+                    <h3>
+                        2. What is the derivative of a constant?
+                    </h3>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="zero">
+                        0
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="one">
+                        1
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="constant">
+                        The same constant
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="negative">
+                        -1
+                    </label>
+
+                </div>
+
+
+                <div class="question">
+
+                    <h3>
+                        3. Using the power rule, what is
+                        the derivative of x⁵?
+                    </h3>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q3"
+                            value="5x4">
+                        5x⁴
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q3"
+                            value="x4">
+                        x⁴
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q3"
+                            value="4x5">
+                        4x⁵
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q3"
+                            value="5x5">
+                        5x⁵
+                    </label>
+
+                </div>
+
+
+                <div class="question">
+
+                    <h3>
+                        4. If f(x) = 3x³ + 2x² - 5x + 7,
+                        what is f'(x)?
+                    </h3>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="9x2+4x-5">
+                        9x² + 4x - 5
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="3x2+2x-5">
+                        3x² + 2x - 5
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="9x3+4x2">
+                        9x³ + 4x²
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="6x2+4x">
+                        6x² + 4x
+                    </label>
+
+                </div>
+
+
+                <div class="question">
+
+                    <h3>
+                        5. What does the derivative represent
+                        geometrically?
+                    </h3>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q5"
+                            value="area">
+                        Area under the curve
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q5"
+                            value="slope">
+                        Slope of the tangent
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q5"
+                            value="intercept">
+                        Y-intercept
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q5"
+                            value="domain">
+                        Domain of the function
+                    </label>
+
+                </div>
+
+
+                <button
+                    class="quiz-btn"
+                    onclick="checkQuiz()">
+
+                    Check Quiz
+
+                </button>
+
+
+                <div
+                    class="quiz-result"
+                    id="quizResult">
+                </div>
+
+            </div>
+
+
+            <button
+                class="complete-btn"
+                onclick="completeLesson()">
+
+                ✓ Mark Lesson as Complete
+
+            </button>
+
+
+            <div
+                class="message"
+                id="message">
+
+                🎉 Lesson completed! Great job!
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        function checkQuiz() {
+
+            let score = 0;
+
+
+            let answer1 =
+                document.querySelector(
+                    'input[name="q1"]:checked'
+                );
+
+            let answer2 =
+                document.querySelector(
+                    'input[name="q2"]:checked'
+                );
+
+            let answer3 =
+                document.querySelector(
+                    'input[name="q3"]:checked'
+                );
+
+            let answer4 =
+                document.querySelector(
+                    'input[name="q4"]:checked'
+                );
+
+            let answer5 =
+                document.querySelector(
+                    'input[name="q5"]:checked'
+                );
+
+
+            if (
+                !answer1 ||
+                !answer2 ||
+                !answer3 ||
+                !answer4 ||
+                !answer5
+            ) {
+
+                alert(
+                    "Please answer all 5 questions."
+                );
+
+                return;
+
+            }
+
+
+            if (answer1.value === "2x") {
+                score++;
+            }
+
+            if (answer2.value === "zero") {
+                score++;
+            }
+
+            if (answer3.value === "5x4") {
+                score++;
+            }
+
+            if (answer4.value === "9x2+4x-5") {
+                score++;
+            }
+
+            if (answer5.value === "slope") {
+                score++;
+            }
+
+
+            let result =
+                document.getElementById(
+                    "quizResult"
+                );
+
+
+            result.style.display = "block";
+
+
+            if (score >= 4) {
+
+                result.style.color = "#16a34a";
+
+                result.innerHTML =
+                    "🎉 Excellent! You scored " +
+                    score +
+                    "/5. You passed the quiz!";
+
+                localStorage.setItem(
+                    "mathLesson3QuizPassed",
+                    "true"
+                );
+
+            } else {
+
+                result.style.color = "#dc2626";
+
+                result.innerHTML =
+                    "You scored " +
+                    score +
+                    "/5. You need at least 4/5. Try again!";
+
+            }
+
+        }
+
+
+        function completeLesson() {
+
+            let quizPassed =
+                localStorage.getItem(
+                    "mathLesson3QuizPassed"
+                );
+
+
+            if (quizPassed !== "true") {
+
+                alert(
+                    "Please pass the quiz before completing the lesson."
+                );
+
+                return;
+
+            }
+
+
+            localStorage.setItem(
+                "mathLesson3Completed",
+                "true"
+            );
+
+
+            document.getElementById(
+                "message"
+            ).style.display = "block";
+
+        }
+
+    </script>
+
+
+</body>
+</html>
