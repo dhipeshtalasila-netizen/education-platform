@@ -19,7 +19,7 @@
             color: #222;
         }
 
-        /* Navigation */
+        /* NAVBAR */
         nav {
             background: white;
             padding: 18px 8%;
@@ -39,6 +39,7 @@
             list-style: none;
             display: flex;
             gap: 30px;
+            align-items: center;
         }
 
         nav a {
@@ -54,9 +55,9 @@
             border-radius: 7px;
         }
 
-        /* Hero Section */
+        /* HERO */
         .hero {
-            min-height: 500px;
+            min-height: 520px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -96,20 +97,21 @@
         }
 
         .hero-box {
-            width: 350px;
-            height: 300px;
+            width: 360px;
+            height: 310px;
             background: #2563eb;
             border-radius: 25px;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
-            font-size: 80px;
+            font-size: 90px;
+            box-shadow: 0 15px 35px rgba(37,99,235,0.25);
         }
 
-        /* Courses */
+        /* COURSES */
         .courses {
-            padding: 60px 8%;
+            padding: 70px 8%;
             text-align: center;
         }
 
@@ -120,7 +122,7 @@
 
         .courses > p {
             color: #666;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
         }
 
         .course-container {
@@ -134,9 +136,19 @@
             background: white;
             width: 280px;
             padding: 30px;
-            border-radius: 12px;
+            border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             text-align: left;
+            transition: 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .course-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
         }
 
         .course-card h3 {
@@ -146,19 +158,65 @@
         .course-card p {
             color: #666;
             line-height: 1.5;
+            margin-bottom: 20px;
         }
 
-        /* Footer */
+        .course-btn {
+            display: inline-block;
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* WHY EDULEARN */
+        .why {
+            padding: 70px 8%;
+            background: white;
+            text-align: center;
+        }
+
+        .why h2 {
+            font-size: 35px;
+            margin-bottom: 40px;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            width: 250px;
+            padding: 25px;
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* FOOTER */
         footer {
             background: #111827;
             color: white;
             text-align: center;
             padding: 25px;
-            margin-top: 30px;
         }
 
-        /* Mobile */
+        /* MOBILE */
         @media (max-width: 768px) {
+
             nav ul {
                 display: none;
             }
@@ -166,7 +224,7 @@
             .hero {
                 flex-direction: column;
                 text-align: center;
-                gap: 40px;
+                gap: 45px;
             }
 
             .hero h1 {
@@ -183,20 +241,26 @@
 
 <body>
 
-    <!-- Navigation -->
+    <!-- NAVIGATION -->
+
     <nav>
-        <div class="logo">🎓 EduLearn</div>
+
+        <div class="logo">
+            🎓 EduLearn
+        </div>
 
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#courses">Courses</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#" class="login">Login</a></li>
         </ul>
+
     </nav>
 
 
-    <!-- Hero Section -->
+    <!-- HERO -->
+
     <section class="hero">
 
         <div class="hero-text">
@@ -207,13 +271,13 @@
             </h1>
 
             <p>
-                EduLearn is a simple online learning platform
-                designed to help students learn new skills,
-                improve their knowledge and achieve their goals.
+                Learn new skills, improve your knowledge,
+                track your progress and achieve your goals
+                with EduLearn.
             </p>
 
             <a href="#courses" class="start-btn">
-                Start Learning
+                Start Learning →
             </a>
 
         </div>
@@ -225,37 +289,69 @@
     </section>
 
 
-    <!-- Courses Section -->
+    <!-- COURSES -->
+
     <section class="courses" id="courses">
 
         <h2>Popular Courses</h2>
 
-        <p>Start learning something new today.</p>
+        <p>
+            Choose a subject and start learning today.
+        </p>
 
         <div class="course-container">
 
             <div class="course-card">
-                <h3>📚 Mathematics</h3>
+
+                <div class="course-icon">📚</div>
+
+                <h3>Mathematics</h3>
+
                 <p>
                     Learn mathematics from basic concepts
                     to advanced topics.
                 </p>
+
+                <a href="#" class="course-btn">
+                    Explore Course →
+                </a>
+
             </div>
 
+
             <div class="course-card">
-                <h3>💻 Computer Science</h3>
+
+                <div class="course-icon">💻</div>
+
+                <h3>Computer Science</h3>
+
                 <p>
                     Learn programming, websites and
                     modern computer technologies.
                 </p>
+
+                <a href="#" class="course-btn">
+                    Explore Course →
+                </a>
+
             </div>
 
+
             <div class="course-card">
-                <h3>📖 General Knowledge</h3>
+
+                <div class="course-icon">🌎</div>
+
+                <h3>General Knowledge</h3>
+
                 <p>
-                    Improve your general knowledge and
-                    prepare for competitive examinations.
+                    Improve your knowledge and prepare
+                    for competitive examinations.
                 </p>
+
+                <a href="#" class="course-btn">
+                    Explore Course →
+                </a>
+
             </div>
 
         </div>
@@ -263,9 +359,68 @@
     </section>
 
 
-    <!-- Footer -->
+    <!-- WHY EDULEARN -->
+
+    <section class="why" id="about">
+
+        <h2>Why Choose EduLearn?</h2>
+
+        <div class="features">
+
+            <div class="feature">
+
+                <div class="feature-icon">🎯</div>
+
+                <h3>Learn at Your Pace</h3>
+
+                <p>
+                    Study whenever you want and
+                    learn at your own speed.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">📊</div>
+
+                <h3>Track Progress</h3>
+
+                <p>
+                    Keep track of your learning
+                    progress and achievements.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">🤖</div>
+
+                <h3>AI Learning Assistant</h3>
+
+                <p>
+                    Get help understanding difficult
+                    topics with an AI assistant.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
     <footer>
-        <p>© 2026 EduLearn. All rights reserved.</p>
+
+        <p>
+            © 2026 EduLearn. All rights reserved.
+        </p>
+
     </footer>
 
 </body>
