@@ -115,6 +115,7 @@
             border-radius: 12px;
             margin-top: 25px;
             text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
         }
 
         .result h2 {
@@ -138,6 +139,7 @@
         }
 
         @media (max-width: 600px) {
+
             .quiz-container {
                 margin: 30px auto;
             }
@@ -151,6 +153,8 @@
 
 <body>
 
+    <!-- NAVIGATION -->
+
     <nav>
 
         <a href="index.html" class="logo">
@@ -163,6 +167,8 @@
 
     </nav>
 
+
+    <!-- QUIZ -->
 
     <main class="quiz-container">
 
@@ -337,8 +343,13 @@
             </div>
 
 
-            <button type="button" class="submit-btn" onclick="checkQuiz()">
+            <button
+                type="button"
+                class="submit-btn"
+                onclick="checkQuiz()">
+
                 Submit Quiz
+
             </button>
 
         </form>
@@ -365,50 +376,116 @@
     </main>
 
 
+    <!-- JAVASCRIPT -->
+
     <script>
 
         function checkQuiz() {
 
             let score = 0;
 
-            if (document.querySelector('input[name="q1"]:checked')?.value === "8") {
+
+            // Question 1
+
+            if (
+                document.querySelector(
+                    'input[name="q1"]:checked'
+                )?.value === "8"
+            ) {
                 score++;
             }
 
-            if (document.querySelector('input[name="q2"]:checked')?.value === "5") {
+
+            // Question 2
+
+            if (
+                document.querySelector(
+                    'input[name="q2"]:checked'
+                )?.value === "5"
+            ) {
                 score++;
             }
 
-            if (document.querySelector('input[name="q3"]:checked')?.value === "18") {
+
+            // Question 3
+
+            if (
+                document.querySelector(
+                    'input[name="q3"]:checked'
+                )?.value === "18"
+            ) {
                 score++;
             }
 
-            if (document.querySelector('input[name="q4"]:checked')?.value === "3") {
+
+            // Question 4
+
+            if (
+                document.querySelector(
+                    'input[name="q4"]:checked'
+                )?.value === "3"
+            ) {
                 score++;
             }
 
-            if (document.querySelector('input[name="q5"]:checked')?.value === "addition") {
+
+            // Question 5
+
+            if (
+                document.querySelector(
+                    'input[name="q5"]:checked'
+                )?.value === "addition"
+            ) {
                 score++;
             }
 
-            document.getElementById("result").style.display = "block";
 
-            document.getElementById("score").innerText =
+            // SAVE SCORE
+
+            localStorage.setItem(
+                "mathQuizScore",
+                score
+            );
+
+
+            // SHOW RESULT
+
+            document.getElementById(
+                "result"
+            ).style.display = "block";
+
+
+            document.getElementById(
+                "score"
+            ).innerText =
                 "Your Score: " + score + " / 5";
+
+
+            // MESSAGE
 
             if (score === 5) {
 
-                document.getElementById("message").innerText =
+                document.getElementById(
+                    "message"
+                ).innerText =
                     "🎉 Excellent! You got every question correct!";
 
-            } else if (score >= 3) {
+            }
 
-                document.getElementById("message").innerText =
+            else if (score >= 3) {
+
+                document.getElementById(
+                    "message"
+                ).innerText =
                     "👍 Good job! Review the lesson and keep practicing.";
 
-            } else {
+            }
 
-                document.getElementById("message").innerText =
+            else {
+
+                document.getElementById(
+                    "message"
+                ).innerText =
                     "📚 Keep learning! Review Lesson 1 and try again.";
 
             }
