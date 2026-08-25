@@ -1,538 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
 
-    <title>EduLearn - Mathematics</title>
+    function updateProgress() {
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+        let completedLessons = 0;
 
-        body {
-            background: #f5f7fb;
-            color: #222;
-        }
+        let lesson1Completed =
+            localStorage.getItem(
+                "mathLesson1Completed"
+            );
 
-        nav {
-            background: white;
-            padding: 18px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
+        let lesson2Completed =
+            localStorage.getItem(
+                "mathLesson2Completed"
+            );
 
-        .logo {
-            font-size: 25px;
-            font-weight: bold;
-            color: #2563eb;
-            text-decoration: none;
-        }
 
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-        }
+        if (lesson1Completed === "true") {
 
-        .dashboard-link {
-            background: #2563eb;
-            color: white;
-            padding: 10px 18px;
-            border-radius: 7px;
-        }
+            completedLessons++;
 
-        .course-header {
-            background: linear-gradient(135deg, #eaf2ff, #ffffff);
-            padding: 60px 8%;
-        }
-
-        .course-header h1 {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
-
-        .course-header p {
-            max-width: 650px;
-            color: #555;
-            font-size: 18px;
-            line-height: 1.6;
-        }
-
-        .container {
-            padding: 50px 8%;
-        }
-
-        .section-title {
-            font-size: 30px;
-            margin-bottom: 25px;
-        }
-
-        .progress-box {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-        }
-
-        .progress-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        .progress {
-            height: 10px;
-            background: #e5e7eb;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background: #2563eb;
-            transition: width 0.5s ease;
-        }
-
-        .lessons {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .lesson {
-            background: white;
-            padding: 22px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-        }
-
-        .lesson-info {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-        }
-
-        .lesson-number {
-            width: 45px;
-            height: 45px;
-            background: #eaf2ff;
-            color: #2563eb;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-        }
-
-        .lesson h3 {
-            margin-bottom: 5px;
-        }
-
-        .lesson p {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .start-lesson {
-            background: #2563eb;
-            color: white;
-            padding: 10px 17px;
-            border-radius: 7px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .completed {
-            background: #16a34a;
-        }
-
-        .completed:hover {
-            background: #15803d;
-        }
-
-        .quiz {
-            margin-top: 45px;
-            background: #111827;
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-        }
-
-        .quiz h2 {
-            margin-bottom: 10px;
-        }
-
-        .quiz p {
-            color: #d1d5db;
-            margin-bottom: 20px;
-        }
-
-        .quiz-btn {
-            display: inline-block;
-            background: white;
-            color: #111827;
-            padding: 12px 20px;
-            border-radius: 7px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-
-            .course-header h1 {
-                font-size: 35px;
-            }
-
-            .lesson {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 18px;
-            }
-
-            .start-lesson {
-                width: 100%;
-                text-align: center;
-            }
-
-            nav {
-                padding: 15px 5%;
-            }
-
-            .container {
-                padding: 40px 5%;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <nav>
-
-        <a href="index.html" class="logo">
-            🎓 EduLearn
-        </a>
-
-        <a href="dashboard.html" class="dashboard-link">
-            Dashboard
-        </a>
-
-    </nav>
-
-
-    <section class="course-header">
-
-        <h1>
-            📚 Mathematics
-        </h1>
-
-        <p>
-            Learn mathematics from the fundamentals
-            and gradually build your problem-solving
-            and analytical skills.
-        </p>
-
-    </section>
-
-
-    <main class="container">
-
-
-        <div class="progress-box">
-
-            <div class="progress-info">
-
-                <span>
-                    Course Progress
-                </span>
-
-                <span id="progressText">
-                    0%
-                </span>
-
-            </div>
-
-            <div class="progress">
-
-                <div
-                    class="progress-bar"
-                    id="progressBar">
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <h2 class="section-title">
-            Course Lessons
-        </h2>
-
-
-        <div class="lessons">
-
-
-            <!-- LESSON 1 -->
-
-            <div class="lesson">
-
-                <div class="lesson-info">
-
-                    <div class="lesson-number">
-                        1
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Introduction to Mathematics
-                        </h3>
-
-                        <p>
-                            Learn the basic concepts and
-                            importance of mathematics.
-                        </p>
-
-                    </div>
-
-                </div>
-
-                <a
-                    href="lesson1.html"
-                    class="start-lesson"
-                    id="lesson1Button">
-                    Start Lesson
-                </a>
-
-            </div>
-
-
-            <!-- LESSON 2 -->
-
-            <div class="lesson">
-
-                <div class="lesson-info">
-
-                    <div class="lesson-number">
-                        2
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Numbers and Operations
-                        </h3>
-
-                        <p>
-                            Understand numbers, addition,
-                            subtraction and multiplication.
-                        </p>
-
-                    </div>
-
-                </div>
-
-                <a
-                    href="#"
-                    class="start-lesson">
-                    Start Lesson
-                </a>
-
-            </div>
-
-
-            <!-- LESSON 3 -->
-
-            <div class="lesson">
-
-                <div class="lesson-info">
-
-                    <div class="lesson-number">
-                        3
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Fractions and Decimals
-                        </h3>
-
-                        <p>
-                            Learn fractions, decimals and
-                            their practical applications.
-                        </p>
-
-                    </div>
-
-                </div>
-
-                <a
-                    href="#"
-                    class="start-lesson">
-                    Start Lesson
-                </a>
-
-            </div>
-
-
-            <!-- LESSON 4 -->
-
-            <div class="lesson">
-
-                <div class="lesson-info">
-
-                    <div class="lesson-number">
-                        4
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Algebra Basics
-                        </h3>
-
-                        <p>
-                            Understand variables, expressions
-                            and simple equations.
-                        </p>
-
-                    </div>
-
-                </div>
-
-                <a
-                    href="#"
-                    class="start-lesson">
-                    Start Lesson
-                </a>
-
-            </div>
-
-
-            <!-- LESSON 5 -->
-
-            <div class="lesson">
-
-                <div class="lesson-info">
-
-                    <div class="lesson-number">
-                        5
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Geometry Basics
-                        </h3>
-
-                        <p>
-                            Learn shapes, angles, lines
-                            and basic geometry.
-                        </p>
-
-                    </div>
-
-                </div>
-
-                <a
-                    href="#"
-                    class="start-lesson">
-                    Start Lesson
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="quiz">
-
-            <h2>
-                📝 Test Your Knowledge
-            </h2>
-
-            <p>
-                Complete the lessons and take a quiz
-                to test what you have learned.
-            </p>
-
-            <a
-                href="quiz.html"
-                class="quiz-btn">
-                Take Quiz →
-            </a>
-
-        </div>
-
-    </main>
-
-
-    <script>
-
-        function updateProgress() {
-
-            let completedLessons = 0;
-
-            let lesson1Completed =
-                localStorage.getItem(
-                    "mathLesson1Completed"
+            let button =
+                document.getElementById(
+                    "lesson1Button"
                 );
 
+            button.innerHTML =
+                "✓ Completed";
 
-            if (lesson1Completed === "true") {
-
-                completedLessons++;
-
-                let button =
-                    document.getElementById(
-                        "lesson1Button"
-                    );
-
-                button.innerHTML =
-                    "✓ Completed";
-
-                button.classList.add(
-                    "completed"
-                );
-
-            }
-
-
-            let totalLessons = 5;
-
-            let progress =
-                (completedLessons / totalLessons) * 100;
-
-
-            document.getElementById(
-                "progressBar"
-            ).style.width = progress + "%";
-
-
-            document.getElementById(
-                "progressText"
-            ).innerHTML =
-                progress + "%";
-
+            button.classList.add(
+                "completed"
+            );
         }
 
 
-        updateProgress();
+        if (lesson2Completed === "true") {
 
-    </script>
+            completedLessons++;
 
-</body>
-</html>
+            let buttons =
+                document.querySelectorAll(
+                    ".start-lesson"
+                );
+
+            buttons[1].innerHTML =
+                "✓ Completed";
+
+            buttons[1].classList.add(
+                "completed"
+            );
+
+            buttons[1].href =
+                "lesson2.html";
+        }
+
+
+        let totalLessons = 5;
+
+        let progress =
+            (completedLessons / totalLessons) * 100;
+
+
+        document.getElementById(
+            "progressBar"
+        ).style.width =
+            progress + "%";
+
+
+        document.getElementById(
+            "progressText"
+        ).innerHTML =
+            progress + "%";
+
+    }
+
+
+    updateProgress();
+
+</script>
