@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduLearn - Lesson 4</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        nav {
+            background: white;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            color: #2563eb;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .back {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .lesson-container {
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .lesson-header {
+            background: linear-gradient(
+                135deg,
+                #eaf2ff,
+                #ffffff
+            );
+
+            padding: 35px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .lesson-header h1 {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .lesson-header p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .content {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .content h2 {
+            margin-top: 30px;
+            margin-bottom: 12px;
+            color: #2563eb;
+        }
+
+        .content h2:first-child {
+            margin-top: 0;
+        }
+
+        .content p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .formula {
+            background: #eef4ff;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .example {
+            background: #f5f7fb;
+            padding: 20px;
+            border-left: 4px solid #2563eb;
+            border-radius: 6px;
+            margin: 20px 0;
+            line-height: 1.7;
+        }
+
+        .example strong {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* QUIZ */
+
+        .quiz {
+            margin-top: 35px;
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: 12px;
+        }
+
+        .question {
+            margin-bottom: 28px;
+        }
+
+        .question h3 {
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .question label {
+            display: block;
+            padding: 12px;
+            margin: 7px 0;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .question label:hover {
+            background: #eef4ff;
+        }
+
+        .question input {
+            margin-right: 8px;
+        }
+
+        .quiz-btn {
+            width: 100%;
+            padding: 14px;
+            background: #16a34a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .quiz-btn:hover {
+            background: #15803d;
+        }
+
+        .quiz-result {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .complete-btn {
+            display: block;
+            width: 100%;
+            margin-top: 30px;
+            padding: 15px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .complete-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .message {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+
+            .lesson-header h1 {
+                font-size: 28px;
+            }
+
+            .content,
+            .lesson-header {
+                padding: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <nav>
+
+        <a href="index.html" class="logo">
+            🎓 EduLearn
+        </a>
+
+        <a href="math.html" class="back">
+            ← Back to Course
+        </a>
+
+    </nav>
+
+
+    <main class="lesson-container">
+
+
+        <section class="lesson-header">
+
+            <h1>
+                Lesson 4: Integration and Applications
+            </h1>
+
+            <p>
+                Learn the fundamental concepts of integration,
+                basic integration rules and important
+                applications of definite and indefinite integrals.
+            </p>
+
+        </section>
+
+
+        <section class="content">
+
+
+            <h2>1. Introduction to Integration</h2>
+
+            <p>
+                Integration is an important concept in calculus.
+                It can be understood as the reverse process
+                of differentiation.
+            </p>
+
+            <p>
+                Integration is also used to calculate quantities
+                such as area, displacement, accumulated change
+                and total values.
+            </p>
+
+
+            <div class="example">
+
+                <strong>Basic Idea</strong>
+
+                If:
+
+                <div class="formula">
+                    d/dx (x²) = 2x
+                </div>
+
+                then:
+
+                <div class="formula">
+                    ∫ 2x dx = x² + C
+                </div>
+
+                Here, <b>C</b> represents the constant of integration.
+
+            </div>
+
+
+            <h2>2. Indefinite Integral</h2>
+
+            <p>
+                An indefinite integral represents a family
+                of functions whose derivative is the given
+                function.
+            </p>
+
+            <div class="formula">
+                ∫ f(x) dx = F(x) + C
+            </div>
+
+            <p>
+                The constant C is included because the derivative
+                of any constant is zero.
+            </p>
+
+
+            <h2>3. Power Rule of Integration</h2>
+
+            <p>
+                For most powers of x, the power rule can be
+                used to find the integral.
+            </p>
+
+            <div class="formula">
+                ∫ xⁿ dx = xⁿ⁺¹ / (n + 1) + C
+            </div>
+
+            <p>
+                This rule applies when n ≠ -1.
+            </p>
+
+
+            <div class="example">
+
+                <strong>Example</strong>
+
+                Find:
+
+                <div class="formula">
+                    ∫ x² dx
+                </div>
+
+                Increase the power by 1:
+
+                <div class="formula">
+                    x³
+                </div>
+
+                Divide by the new power:
+
+                <div class="formula">
+                    ∫ x² dx = x³/3 + C
+                </div>
+
+            </div>
+
+
+            <h2>4. Integration of a Constant</h2>
+
+            <p>
+                When integrating a constant, multiply the
+                constant by x.
+            </p>
+
+            <div class="formula">
+                ∫ a dx = ax + C
+            </div>
+
+
+            <div class="example">
+
+                <strong>Example</strong>
+
+                <div class="formula">
+                    ∫ 5 dx = 5x + C
+                </div>
+
+            </div>
+
+
+            <h2>5. Definite Integral</h2>
+
+            <p>
+                A definite integral has upper and lower limits.
+                Unlike an indefinite integral, its result is
+                generally a numerical value.
+            </p>
+
+            <div class="formula">
+                ∫ₐᵇ f(x) dx
+            </div>
+
+            <p>
+                The limits indicate the interval over which
+                the function is integrated.
+            </p>
+
+
+            <h2>6. Area Under a Curve</h2>
+
+            <p>
+                One of the most important applications of
+                definite integration is finding the area
+                under a curve.
+            </p>
+
+            <div class="example">
+
+                <strong>Example</strong>
+
+                The area under a function f(x) between
+                x = a and x = b can be represented as:
+
+                <div class="formula">
+                    Area = ∫ₐᵇ f(x) dx
+                </div>
+
+            </div>
+
+
+            <h2>7. Integration and Motion</h2>
+
+            <p>
+                Integration can also be used in physics
+                to determine displacement from velocity.
+            </p>
+
+            <div class="example">
+
+                <strong>Example</strong>
+
+                If velocity is:
+
+                <div class="formula">
+                    v(t) = 2t
+                </div>
+
+                then displacement is obtained by integrating:
+
+                <div class="formula">
+                    s(t) = ∫ 2t dt
+                </div>
+
+                Therefore:
+
+                <div class="formula">
+                    s(t) = t² + C
+                </div>
+
+            </div>
+
+
+            <h2>8. Applications in Economics</h2>
+
+            <p>
+                Integration is also useful in economics and
+                business mathematics.
+            </p>
+
+            <p>
+                It can be used to determine total cost,
+                total revenue, accumulated production and
+                other quantities when their rates of change
+                are known.
+            </p>
+
+
+            <h2>Quick Summary</h2>
+
+            <p>
+                Integration is the reverse process of
+                differentiation. It can be used to find
+                antiderivatives, areas, displacement and
+                accumulated quantities. Both indefinite and
+                definite integrals are important concepts
+                in college-level mathematics.
+            </p>
+
+
+            <!-- QUIZ -->
+
+            <h2>College-Level Quiz</h2>
+
+            <div class="quiz">
+
+
+                <div class="question">
+
+                    <h3>
+                        1. What is the integral of 2x?
+                    </h3>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="x2">
+                        x² + C
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="2x2">
+                        2x² + C
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="x">
+                        x + C
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="2">
+                        2 + C
+                    </label>
+
+                </div>
+
+
+                <div class="question">
+
+                    <h3>
+                        2. What does C represent in an
+                        indefinite integral?
+                    </h3>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="constant">
+                        Constant of integration
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="coefficient">
+                        Coefficient
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="curve">
+                        Curve
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="variable">
+                        Variable
+                    </label>
+
+                </div>
+
+
+                <div class="question">
+
+                    <h3>
+                        3. What is ∫x² dx?
+                    </h3>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q3"
+                            value="x3by3">
+                        x³/3 + C
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q3"
+                            value="x2">
+                        x² + C
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q3"
+                            value="2x">
+                        2x + C
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q3"
+                            value="x4">
+                        x⁴ + C
+                    </label>
+
+                </div>
+
+
+                <div class="question">
+
+                    <h3>
+                        4. What can a definite integral
+                        be used to calculate?
+                    </h3>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="area">
+                        Area under a curve
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="slope">
+                        Slope only
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="domain">
+                        Domain only
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="constant">
+                        Constant only
+                    </label>
+
+                </div>
+
+
+                <div class="question">
+
+                    <h3>
+                        5. Integration can be used in physics
+                        to find displacement from:
+                    </h3>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q5"
+                            value="velocity">
+                        Velocity
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q5"
+                            value="mass">
+                        Mass only
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q5"
+                            value="temperature">
+                        Temperature only
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="q5"
+                            value="density">
+                        Density only
+                    </label>
+
+                </div>
+
+
+                <button
+                    class="quiz-btn"
+                    onclick="checkQuiz()">
+
+                    Check Quiz
+
+                </button>
+
+
+                <div
+                    class="quiz-result"
+                    id="quizResult">
+                </div>
+
+            </div>
+
+
+            <button
+                class="complete-btn"
+                onclick="completeLesson()">
+
+                ✓ Mark Lesson as Complete
+
+            </button>
+
+
+            <div
+                class="message"
+                id="message">
+
+                🎉 Lesson completed! Great job!
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        function checkQuiz() {
+
+            let score = 0;
+
+
+            let answer1 =
+                document.querySelector(
+                    'input[name="q1"]:checked'
+                );
+
+            let answer2 =
+                document.querySelector(
+                    'input[name="q2"]:checked'
+                );
+
+            let answer3 =
+                document.querySelector(
+                    'input[name="q3"]:checked'
+                );
+
+            let answer4 =
+                document.querySelector(
+                    'input[name="q4"]:checked'
+                );
+
+            let answer5 =
+                document.querySelector(
+                    'input[name="q5"]:checked'
+                );
+
+
+            if (
+                !answer1 ||
+                !answer2 ||
+                !answer3 ||
+                !answer4 ||
+                !answer5
+            ) {
+
+                alert(
+                    "Please answer all 5 questions."
+                );
+
+                return;
+            }
+
+
+            if (answer1.value === "x2") {
+                score++;
+            }
+
+            if (answer2.value === "constant") {
+                score++;
+            }
+
+            if (answer3.value === "x3by3") {
+                score++;
+            }
+
+            if (answer4.value === "area") {
+                score++;
+            }
+
+            if (answer5.value === "velocity") {
+                score++;
+            }
+
+
+            let result =
+                document.getElementById(
+                    "quizResult"
+                );
+
+
+            result.style.display = "block";
+
+
+            if (score >= 4) {
+
+                result.style.color = "#16a34a";
+
+                result.innerHTML =
+                    "🎉 Excellent! You scored " +
+                    score +
+                    "/5. You passed the quiz!";
+
+                localStorage.setItem(
+                    "mathLesson4QuizPassed",
+                    "true"
+                );
+
+            } else {
+
+                result.style.color = "#dc2626";
+
+                result.innerHTML =
+                    "You scored " +
+                    score +
+                    "/5. You need at least 4/5. Try again!";
+
+            }
+
+        }
+
+
+        function completeLesson() {
+
+            let quizPassed =
+                localStorage.getItem(
+                    "mathLesson4QuizPassed"
+                );
+
+
+            if (quizPassed !== "true") {
+
+                alert(
+                    "Please pass the quiz before completing the lesson."
+                );
+
+                return;
+            }
+
+
+            localStorage.setItem(
+                "mathLesson4Completed",
+                "true"
+            );
+
+
+            document.getElementById(
+                "message"
+            ).style.display = "block";
+
+        }
+
+    </script>
+
+</body>
+
+</html>
