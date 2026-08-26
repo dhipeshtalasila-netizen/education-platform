@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduLearn - Courses</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            color: #222;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            background: #1e3a8a;
+            color: white;
+            padding: 18px 40px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* MAIN */
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+
+        /* PAGE HEADER */
+
+        .page-header {
+            background: white;
+            padding: 35px;
+
+            border-radius: 12px;
+
+            margin-bottom: 30px;
+
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .page-header h1 {
+            color: #1e3a8a;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+
+        /* COURSE GRID */
+
+        .course-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 25px;
+        }
+
+
+        /* COURSE CARD */
+
+        .course-card {
+
+            background: white;
+
+            border-radius: 12px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 3px 10px rgba(0,0,0,0.08);
+
+            transition: transform 0.2s;
+        }
+
+        .course-card:hover {
+
+            transform: translateY(-4px);
+
+        }
+
+
+        .course-icon {
+
+            width: 60px;
+            height: 60px;
+
+            background: #e8eefc;
+
+            border-radius: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 30px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .course-card h2 {
+
+            color: #1e3a8a;
+
+            margin-bottom: 10px;
+        }
+
+
+        .course-card p {
+
+            color: #666;
+
+            line-height: 1.6;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* COURSE DETAILS */
+
+        .course-details {
+
+            display: flex;
+
+            gap: 25px;
+
+            margin-bottom: 20px;
+
+            color: #555;
+
+            font-size: 14px;
+        }
+
+
+        /* PROGRESS */
+
+        .progress-info {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 7px;
+
+            font-size: 14px;
+        }
+
+
+        .progress-bar {
+
+            width: 100%;
+
+            height: 10px;
+
+            background: #e5e7eb;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            margin-bottom: 20px;
+        }
+
+
+        .progress {
+
+            height: 100%;
+
+            background: #1e3a8a;
+
+            width: 0%;
+        }
+
+
+        /* BUTTON */
+
+        .course-button {
+
+            display: inline-block;
+
+            padding: 11px 20px;
+
+            background: #1e3a8a;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 6px;
+
+            font-size: 14px;
+        }
+
+
+        .course-button:hover {
+
+            background: #162d6b;
+
+        }
+
+
+        /* COMING SOON */
+
+        .coming-soon {
+
+            opacity: 0.75;
+        }
+
+
+        .coming-soon .course-icon {
+
+            background: #eeeeee;
+        }
+
+
+        .coming-soon-button {
+
+            background: #777;
+
+            cursor: default;
+        }
+
+
+        .coming-soon-button:hover {
+
+            background: #777;
+
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 800px) {
+
+            .course-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .navbar {
+
+                padding: 15px 20px;
+
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .nav-links {
+
+                display: none;
+
+            }
+
+            .container {
+
+                width: 94%;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            EduLearn
+
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="courses.html">
+                Courses
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="container">
+
+
+        <!-- HEADER -->
+
+        <section class="page-header">
+
+            <h1>
+                College Courses
+            </h1>
+
+            <p>
+                Explore college-level courses designed to help you
+                build strong academic knowledge and practical skills.
+            </p>
+
+        </section>
+
+
+
+        <!-- COURSES -->
+
+        <section class="course-grid">
+
+
+            <!-- MATHEMATICS -->
+
+            <div class="course-card">
+
+                <div class="course-icon">
+                    📐
+                </div>
+
+
+                <h2>
+                    Mathematics
+                </h2>
+
+
+                <p>
+                    Develop a strong understanding of mathematical
+                    foundations, functions, calculus and linear algebra.
+                </p>
+
+
+                <div class="course-details">
+
+                    <span>
+                        📚 5 Lessons
+                    </span>
+
+                    <span>
+                        🎓 College Level
+                    </span>
+
+                </div>
+
+
+                <div class="progress-info">
+
+                    <span>
+                        Your Progress
+                    </span>
+
+                    <span id="mathPercentage">
+                        0%
+                    </span>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress"
+                        id="mathProgress">
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="math.html"
+                    class="course-button">
+
+                    Continue Course
+
+                </a>
+
+            </div>
+
+
+
+            <!-- COMPUTER SCIENCE -->
+
+            <div class="course-card coming-soon">
+
+                <div class="course-icon">
+                    💻
+                </div>
+
+
+                <h2>
+                    Computer Science
+                </h2>
+
+
+                <p>
+                    Learn programming fundamentals, algorithms,
+                    data structures and computational thinking.
+                </p>
+
+
+                <div class="course-details">
+
+                    <span>
+                        📚 Coming Soon
+                    </span>
+
+                    <span>
+                        🎓 College Level
+                    </span>
+
+                </div>
+
+
+                <div class="progress-info">
+
+                    <span>
+                        Status
+                    </span>
+
+                    <span>
+                        Coming Soon
+                    </span>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress"
+                        style="width: 0%;">
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="#"
+                    class="course-button coming-soon-button">
+
+                    Coming Soon
+
+                </a>
+
+            </div>
+
+
+
+            <!-- ECONOMICS -->
+
+            <div class="course-card coming-soon">
+
+                <div class="course-icon">
+                    📊
+                </div>
+
+
+                <h2>
+                    Economics
+                </h2>
+
+
+                <p>
+                    Understand economic principles, markets,
+                    consumer behaviour and important economic concepts.
+                </p>
+
+
+                <div class="course-details">
+
+                    <span>
+                        📚 Coming Soon
+                    </span>
+
+                    <span>
+                        🎓 College Level
+                    </span>
+
+                </div>
+
+
+                <div class="progress-info">
+
+                    <span>
+                        Status
+                    </span>
+
+                    <span>
+                        Coming Soon
+                    </span>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress"
+                        style="width: 0%;">
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="#"
+                    class="course-button coming-soon-button">
+
+                    Coming Soon
+
+                </a>
+
+            </div>
+
+
+
+            <!-- BUSINESS -->
+
+            <div class="course-card coming-soon">
+
+                <div class="course-icon">
+                    💼
+                </div>
+
+
+                <h2>
+                    Business Studies
+                </h2>
+
+
+                <p>
+                    Explore management, business fundamentals,
+                    decision-making and organizational concepts.
+                </p>
+
+
+                <div class="course-details">
+
+                    <span>
+                        📚 Coming Soon
+                    </span>
+
+                    <span>
+                        🎓 College Level
+                    </span>
+
+                </div>
+
+
+                <div class="progress-info">
+
+                    <span>
+                        Status
+                    </span>
+
+                    <span>
+                        Coming Soon
+                    </span>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress"
+                        style="width: 0%;">
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="#"
+                    class="course-button coming-soon-button">
+
+                    Coming Soon
+
+                </a>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        const totalLessons = 5;
+
+        let completedLessons = 0;
+
+
+        for (
+            let i = 1;
+            i <= totalLessons;
+            i++
+        ) {
+
+            if (
+                localStorage.getItem(
+                    "lesson" + i + "Completed"
+                ) === "true"
+            ) {
+
+                completedLessons++;
+
+            }
+
+        }
+
+
+        const progress = Math.round(
+            (completedLessons / totalLessons) * 100
+        );
+
+
+        document.getElementById(
+            "mathPercentage"
+        ).textContent =
+            progress + "%";
+
+
+        document.getElementById(
+            "mathProgress"
+        ).style.width =
+            progress + "%";
+
+    </script>
+
+
+</body>
+
+</html>
