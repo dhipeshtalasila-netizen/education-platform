@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduLearn - Settings</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            color: #222;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            background: #1e3a8a;
+            color: white;
+
+            padding: 18px 40px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* MAIN */
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+
+            margin: 40px auto;
+        }
+
+
+        /* HEADER */
+
+        .page-header {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .page-header h1 {
+            color: #1e3a8a;
+
+            margin-bottom: 8px;
+        }
+
+        .page-header p {
+            color: #666;
+        }
+
+
+        /* SETTINGS CARD */
+
+        .settings-card {
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 3px 10px rgba(0,0,0,0.08);
+        }
+
+
+        .settings-card h2 {
+
+            color: #1e3a8a;
+
+            margin-bottom: 20px;
+
+            font-size: 20px;
+        }
+
+
+        /* SETTING ROW */
+
+        .setting-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 18px 0;
+
+            border-bottom: 1px solid #eee;
+        }
+
+
+        .setting-row:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .setting-info h3 {
+
+            font-size: 16px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .setting-info p {
+
+            color: #777;
+
+            font-size: 14px;
+        }
+
+
+        /* SELECT */
+
+        select {
+
+            padding: 9px 12px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 6px;
+
+            background: white;
+
+            cursor: pointer;
+        }
+
+
+        /* TOGGLE */
+
+        .toggle {
+
+            position: relative;
+
+            width: 48px;
+
+            height: 25px;
+        }
+
+
+        .toggle input {
+
+            display: none;
+        }
+
+
+        .slider {
+
+            position: absolute;
+
+            cursor: pointer;
+
+            inset: 0;
+
+            background: #ccc;
+
+            border-radius: 20px;
+
+            transition: 0.3s;
+        }
+
+
+        .slider:before {
+
+            content: "";
+
+            position: absolute;
+
+            height: 19px;
+
+            width: 19px;
+
+            left: 3px;
+
+            top: 3px;
+
+            background: white;
+
+            border-radius: 50%;
+
+            transition: 0.3s;
+        }
+
+
+        input:checked + .slider {
+
+            background: #1e3a8a;
+        }
+
+
+        input:checked + .slider:before {
+
+            transform: translateX(23px);
+        }
+
+
+        /* BUTTONS */
+
+        .button-group {
+
+            display: flex;
+
+            gap: 12px;
+
+            margin-top: 20px;
+        }
+
+
+        .button {
+
+            border: none;
+
+            padding: 11px 20px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+        }
+
+
+        .save-button {
+
+            background: #1e3a8a;
+
+            color: white;
+        }
+
+
+        .save-button:hover {
+
+            background: #162d6b;
+
+        }
+
+
+        .reset-button {
+
+            background: #e5e7eb;
+
+            color: #333;
+        }
+
+
+        .reset-button:hover {
+
+            background: #d5d7da;
+
+        }
+
+
+        /* DANGER AREA */
+
+        .danger {
+
+            border: 1px solid #ddd;
+        }
+
+
+        .danger h2 {
+
+            color: #b91c1c;
+        }
+
+
+        .logout-button {
+
+            background: #b91c1c;
+
+            color: white;
+
+            padding: 11px 20px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+        }
+
+
+        .logout-button:hover {
+
+            background: #991b1b;
+
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+
+                padding: 15px 20px;
+
+            }
+
+            .setting-row {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 15px;
+
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .nav-links {
+
+                display: none;
+
+            }
+
+            .container {
+
+                width: 94%;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            EduLearn
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="courses.html">
+                Courses
+            </a>
+
+            <a href="profile.html">
+                Profile
+            </a>
+
+            <a href="settings.html">
+                Settings
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+
+        <!-- HEADER -->
+
+        <section class="page-header">
+
+            <h1>
+                Settings
+            </h1>
+
+            <p>
+                Manage your EduLearn learning preferences.
+            </p>
+
+        </section>
+
+
+
+        <!-- LEARNING SETTINGS -->
+
+        <section class="settings-card">
+
+            <h2>
+                Learning Preferences
+            </h2>
+
+
+            <div class="setting-row">
+
+                <div class="setting-info">
+
+                    <h3>
+                        Study Reminders
+                    </h3>
+
+                    <p>
+                        Receive reminders to continue your learning.
+                    </p>
+
+                </div>
+
+
+                <label class="toggle">
+
+                    <input
+                        type="checkbox"
+                        id="reminders">
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div class="setting-info">
+
+                    <h3>
+                        Show Progress
+                    </h3>
+
+                    <p>
+                        Display your course progress on the dashboard.
+                    </p>
+
+                </div>
+
+
+                <label class="toggle">
+
+                    <input
+                        type="checkbox"
+                        id="showProgress"
+                        checked>
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div class="setting-info">
+
+                    <h3>
+                        Language
+                    </h3>
+
+                    <p>
+                        Choose your preferred interface language.
+                    </p>
+
+                </div>
+
+
+                <select id="language">
+
+                    <option value="english">
+                        English
+                    </option>
+
+                    <option value="telugu">
+                        Telugu
+                    </option>
+
+                    <option value="hindi">
+                        Hindi
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="button-group">
+
+                <button
+                    class="button save-button"
+                    onclick="saveSettings()">
+
+                    Save Settings
+
+                </button>
+
+
+                <button
+                    class="button reset-button"
+                    onclick="resetSettings()">
+
+                    Reset
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ACCOUNT SETTINGS -->
+
+        <section class="settings-card">
+
+            <h2>
+                Account
+            </h2>
+
+
+            <div class="setting-row">
+
+                <div class="setting-info">
+
+                    <h3>
+                        Student Profile
+                    </h3>
+
+                    <p>
+                        View and manage your student information.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="profile.html"
+                    class="button save-button">
+
+                    View Profile
+
+                </a>
+
+            </div>
+
+
+            <div class="setting-row">
+
+                <div class="setting-info">
+
+                    <h3>
+                        Dashboard
+                    </h3>
+
+                    <p>
+                        Return to your learning dashboard.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="dashboard.html"
+                    class="button save-button">
+
+                    Dashboard
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ACCOUNT ACTIONS -->
+
+        <section class="settings-card danger">
+
+            <h2>
+                Account Actions
+            </h2>
+
+
+            <div class="setting-row">
+
+                <div class="setting-info">
+
+                    <h3>
+                        Reset Learning Progress
+                    </h3>
+
+                    <p>
+                        Remove all saved lesson completion data.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="logout-button"
+                    onclick="resetProgress()">
+
+                    Reset Progress
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        /* SAVE SETTINGS */
+
+        function saveSettings() {
+
+            const reminders =
+                document.getElementById(
+                    "reminders"
+                ).checked;
+
+
+            const showProgress =
+                document.getElementById(
+                    "showProgress"
+                ).checked;
+
+
+            const language =
+                document.getElementById(
+                    "language"
+                ).value;
+
+
+            localStorage.setItem(
+                "studyReminders",
+                reminders
+            );
+
+
+            localStorage.setItem(
+                "showProgress",
+                showProgress
+            );
+
+
+            localStorage.setItem(
+                "language",
+                language
+            );
+
+
+            alert(
+                "Settings saved successfully!"
+            );
+
+        }
+
+
+
+        /* LOAD SETTINGS */
+
+        function loadSettings() {
+
+            const reminders =
+                localStorage.getItem(
+                    "studyReminders"
+                );
+
+
+            const showProgress =
+                localStorage.getItem(
+                    "showProgress"
+                );
+
+
+            const language =
+                localStorage.getItem(
+                    "language"
+                );
+
+
+            if (reminders !== null) {
+
+                document.getElementById(
+                    "reminders"
+                ).checked =
+                    reminders === "true";
+
+            }
+
+
+            if (showProgress !== null) {
+
+                document.getElementById(
+                    "showProgress"
+                ).checked =
+                    showProgress === "true";
+
+            }
+
+
+            if (language !== null) {
+
+                document.getElementById(
+                    "language"
+                ).value =
+                    language;
+
+            }
+
+        }
+
+
+
+        /* RESET SETTINGS */
+
+        function resetSettings() {
+
+            localStorage.removeItem(
+                "studyReminders"
+            );
+
+            localStorage.removeItem(
+                "showProgress"
+            );
+
+            localStorage.removeItem(
+                "language"
+            );
+
+
+            document.getElementById(
+                "reminders"
+            ).checked = false;
+
+
+            document.getElementById(
+                "showProgress"
+            ).checked = true;
+
+
+            document.getElementById(
+                "language"
+            ).value = "english";
+
+
+            alert(
+                "Settings have been reset."
+            );
+
+        }
+
+
+
+        /* RESET COURSE PROGRESS */
+
+        function resetProgress() {
+
+            const confirmReset =
+                confirm(
+                    "Are you sure you want to reset all learning progress?"
+                );
+
+
+            if (!confirmReset) {
+                return;
+            }
+
+
+            for (
+                let i = 1;
+                i <= 5;
+                i++
+            ) {
+
+                localStorage.removeItem(
+                    "lesson" + i + "Completed"
+                );
+
+            }
+
+
+            localStorage.removeItem(
+                "finalAssessmentCompleted"
+            );
+
+
+            alert(
+                "Learning progress has been reset."
+            );
+
+
+            window.location.href =
+                "dashboard.html";
+
+        }
+
+
+
+        /* LOAD SAVED SETTINGS */
+
+        loadSettings();
+
+    </script>
+
+
+</body>
+
+</html>
