@@ -61,7 +61,7 @@
                 #ffffff
             );
 
-            padding: 55px 8%;
+            padding: 50px 8%;
         }
 
         .dashboard-header h1 {
@@ -85,7 +85,49 @@
             margin-bottom: 25px;
         }
 
-        /* STAT CARDS */
+        /* PROFILE */
+
+        .profile-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+
+            display: flex;
+            align-items: center;
+            gap: 25px;
+
+            margin-bottom: 40px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .profile-icon {
+            width: 75px;
+            height: 75px;
+
+            border-radius: 50%;
+
+            background: #eaf2ff;
+            color: #2563eb;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 35px;
+        }
+
+        .profile-info h2 {
+            margin-bottom: 7px;
+        }
+
+        .profile-info p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        /* STATS */
 
         .stats {
             display: grid;
@@ -253,12 +295,52 @@
             font-weight: bold;
         }
 
+        /* ACHIEVEMENT */
+
+        .achievement {
+            background: white;
+            padding: 30px;
+
+            border-radius: 15px;
+
+            margin-top: 25px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .achievement h2 {
+            margin-bottom: 10px;
+        }
+
+        .achievement p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .achievement-status {
+            margin-top: 15px;
+
+            padding: 12px;
+
+            background: #f5f7fb;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+        }
+
         /* MOBILE */
 
         @media (max-width: 768px) {
 
             .stats {
                 grid-template-columns: 1fr;
+            }
+
+            .profile-card {
+                flex-direction: column;
+                align-items: flex-start;
             }
 
             .course-top {
@@ -327,8 +409,8 @@
         </h1>
 
         <p>
-            Track your learning progress and
-            continue your college courses.
+            Track your learning progress,
+            courses and academic achievements.
         </p>
 
     </section>
@@ -339,12 +421,47 @@
     <main class="container">
 
 
+        <!-- STUDENT PROFILE -->
+
+        <h2 class="section-title">
+            Student Profile
+        </h2>
+
+
+        <div class="profile-card">
+
+
+            <div class="profile-icon">
+                👤
+            </div>
+
+
+            <div class="profile-info">
+
+                <h2>
+                    College Student
+                </h2>
+
+                <p>
+                    🎓 Undergraduate Student
+                </p>
+
+                <p>
+                    📚 EduLearn Learner
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- OVERVIEW -->
+
         <h2 class="section-title">
             Your Learning Overview
         </h2>
 
-
-        <!-- STATS -->
 
         <div class="stats">
 
@@ -403,7 +520,7 @@
         </div>
 
 
-        <!-- COURSE -->
+        <!-- COURSES -->
 
         <h2 class="section-title">
             My Courses
@@ -477,7 +594,7 @@
         </div>
 
 
-        <!-- ASSESSMENT -->
+        <!-- FINAL ASSESSMENT -->
 
         <div class="assessment">
 
@@ -508,6 +625,31 @@
                 Go to Final Assessment →
 
             </a>
+
+        </div>
+
+
+        <!-- ACHIEVEMENT -->
+
+        <div class="achievement">
+
+            <h2>
+                🏆 Achievements
+            </h2>
+
+            <p>
+                Complete courses and assessments
+                to unlock your academic achievements.
+            </p>
+
+
+            <div
+                class="achievement-status"
+                id="achievementStatus">
+
+                🔒 No achievement unlocked yet.
+
+            </div>
 
         </div>
 
@@ -545,7 +687,7 @@
             }
 
 
-            /* CALCULATE */
+            /* CALCULATE PROGRESS */
 
             let progress =
                 (completed / 5) * 100;
@@ -559,13 +701,15 @@
                 completed + "/5";
 
 
-            /* PROGRESS */
+            /* OVERALL PROGRESS */
 
             document.getElementById(
                 "overallProgress"
             ).innerHTML =
                 progress + "%";
 
+
+            /* COURSE PROGRESS */
 
             document.getElementById(
                 "courseProgressText"
@@ -595,6 +739,27 @@
                     "assessmentStatus"
                 ).innerHTML =
                     "🎉 Final Assessment Passed!";
+
+
+                document.getElementById(
+                    "achievementStatus"
+                ).innerHTML =
+                    "🏆 Mathematics Assessment Completed!";
+
+            }
+
+
+            /* COURSE COMPLETION */
+
+            if (
+                completed === 5 &&
+                finalQuiz === "true"
+            ) {
+
+                document.getElementById(
+                    "achievementStatus"
+                ).innerHTML =
+                    "🏆 Mathematics Course Completed!";
 
             }
 
