@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,6 +22,8 @@
             color: #222;
         }
 
+        /* NAVBAR */
+
         nav {
             background: white;
             padding: 18px 8%;
@@ -28,6 +31,9 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .logo {
@@ -37,18 +43,34 @@
             text-decoration: none;
         }
 
-        nav a {
+        .nav-links {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+        }
+
+        .nav-links a {
             text-decoration: none;
             color: #333;
             font-weight: 500;
         }
 
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
         .dashboard-link {
             background: #2563eb;
-            color: white;
+            color: white !important;
             padding: 10px 18px;
             border-radius: 7px;
         }
+
+        .dashboard-link:hover {
+            background: #1d4ed8;
+        }
+
+        /* COURSE HEADER */
 
         .course-header {
             background: linear-gradient(135deg, #eaf2ff, #ffffff);
@@ -67,8 +89,12 @@
             line-height: 1.6;
         }
 
+        /* MAIN */
+
         .container {
             padding: 50px 8%;
+            max-width: 1300px;
+            margin: auto;
         }
 
         .section-title {
@@ -164,8 +190,16 @@
             white-space: nowrap;
         }
 
+        .start-lesson:hover {
+            background: #1d4ed8;
+        }
+
         .completed {
             background: #16a34a;
+        }
+
+        .completed:hover {
+            background: #15803d;
         }
 
         /* FINAL ASSESSMENT */
@@ -198,12 +232,45 @@
             font-weight: bold;
         }
 
+        .quiz-btn:hover {
+            background: #e5e7eb;
+        }
+
         /* MOBILE */
 
-        @media (max-width: 768px) {
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
 
             .course-header h1 {
                 font-size: 35px;
+            }
+
+            .container {
+                padding: 40px 5%;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
             }
 
             .lesson {
@@ -217,12 +284,12 @@
                 text-align: center;
             }
 
-            nav {
-                padding: 15px 5%;
+            .course-header {
+                padding: 45px 5%;
             }
 
-            .container {
-                padding: 40px 5%;
+            .course-header h1 {
+                font-size: 32px;
             }
 
         }
@@ -243,9 +310,25 @@
             🎓 EduLearn
         </a>
 
-        <a href="dashboard.html" class="dashboard-link">
-            Dashboard
-        </a>
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="courses.html">
+                Courses
+            </a>
+
+            <a href="quiz.html" class="dashboard-link">
+                Assessment
+            </a>
+
+        </div>
 
     </nav>
 
@@ -533,125 +616,87 @@
 
     <script>
 
-        function updateProgress() {
+        /*
+        ==========================================
+        LESSON TRACKING
+        ==========================================
+        */
 
-            let completedLessons = 0;
+        const totalLessons = 5;
+
+        let completedLessons = 0;
 
 
-            /* LESSON 1 */
+        for (let i = 1; i <= totalLessons; i++) {
 
-            if (
+            const completed =
                 localStorage.getItem(
-                    "mathLesson1Completed"
-                ) === "true"
-            ) {
+                    "lesson" + i + "Completed"
+                ) === "true";
+
+
+            if (completed) {
 
                 completedLessons++;
 
-                markCompleted("lesson1Button");
-
-            }
-
-
-            /* LESSON 2 */
-
-            if (
-                localStorage.getItem(
-                    "mathLesson2Completed"
-                ) === "true"
-            ) {
-
-                completedLessons++;
-
-                markCompleted("lesson2Button");
-
-            }
-
-
-            /* LESSON 3 */
-
-            if (
-                localStorage.getItem(
-                    "mathLesson3Completed"
-                ) === "true"
-            ) {
-
-                completedLessons++;
-
-                markCompleted("lesson3Button");
-
-            }
-
-
-            /* LESSON 4 */
-
-            if (
-                localStorage.getItem(
-                    "mathLesson4Completed"
-                ) === "true"
-            ) {
-
-                completedLessons++;
-
-                markCompleted("lesson4Button");
-
-            }
-
-
-            /* LESSON 5 */
-
-            if (
-                localStorage.getItem(
-                    "mathLesson5Completed"
-                ) === "true"
-            ) {
-
-                completedLessons++;
-
-                markCompleted("lesson5Button");
-
-            }
-
-
-            /* CALCULATE PROGRESS */
-
-            let progress =
-                (completedLessons / 5) * 100;
-
-
-            document.getElementById(
-                "progressBar"
-            ).style.width =
-                progress + "%";
-
-
-            document.getElementById(
-                "progressText"
-            ).innerHTML =
-                progress + "%";
-
-
-            /* COURSE COMPLETE */
-
-            if (completedLessons === 5) {
-
-                document.getElementById(
-                    "progressText"
-                ).innerHTML =
-                    "100% - Course Lessons Completed 🎉";
+                markCompleted(
+                    "lesson" + i + "Button"
+                );
 
             }
 
         }
 
 
+        /*
+        ==========================================
+        COURSE PROGRESS
+        ==========================================
+        */
+
+        const progress =
+            Math.round(
+                (completedLessons / totalLessons) * 100
+            );
+
+
+        document.getElementById(
+            "progressBar"
+        ).style.width =
+            progress + "%";
+
+
+        document.getElementById(
+            "progressText"
+        ).textContent =
+            progress + "%";
+
+
+        if (completedLessons === totalLessons) {
+
+            document.getElementById(
+                "progressText"
+            ).textContent =
+                "100% - Course Lessons Completed 🎉";
+
+        }
+
+
+        /*
+        ==========================================
+        COMPLETED LESSON BUTTON
+        ==========================================
+        */
+
         function markCompleted(buttonId) {
 
-            let button =
+            const button =
                 document.getElementById(buttonId);
 
-            button.innerHTML =
+
+            button.textContent =
                 "✓ Completed";
+
 
             button.classList.add(
                 "completed"
@@ -659,12 +704,10 @@
 
         }
 
-
-        updateProgress();
-
     </script>
 
 
 </body>
 
 </html>
+```
