@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +11,10 @@
 
     <style>
 
+        /* ==============================
+           GLOBAL
+        ============================== */
+
         * {
             margin: 0;
             padding: 0;
@@ -17,12 +22,22 @@
             font-family: Arial, sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background: #f4f6f9;
             color: #222;
+            transition:
+                background 0.3s ease,
+                color 0.3s ease;
         }
 
-        /* NAVBAR */
+
+        /* ==============================
+           NAVBAR
+        ============================== */
 
         .navbar {
             background: #1e3a8a;
@@ -33,6 +48,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+
+            box-shadow:
+                0 2px 8px rgba(0, 0, 0, 0.15);
         }
 
         .logo {
@@ -49,24 +67,29 @@
             color: white;
             text-decoration: none;
             font-size: 15px;
+            transition: 0.2s;
         }
 
         .nav-links a:hover {
             text-decoration: underline;
+            opacity: 0.85;
         }
 
 
-        /* MAIN */
+        /* ==============================
+           MAIN CONTAINER
+        ============================== */
 
         .container {
             width: 90%;
             max-width: 1000px;
-
             margin: 40px auto;
         }
 
 
-        /* HEADER */
+        /* ==============================
+           PAGE HEADER
+        ============================== */
 
         .page-header {
             background: white;
@@ -78,12 +101,15 @@
             margin-bottom: 25px;
 
             box-shadow:
-                0 3px 10px rgba(0,0,0,0.08);
+                0 3px 10px rgba(0, 0, 0, 0.08);
+
+            transition:
+                background 0.3s ease,
+                color 0.3s ease;
         }
 
         .page-header h1 {
             color: #1e3a8a;
-
             margin-bottom: 8px;
         }
 
@@ -92,10 +118,11 @@
         }
 
 
-        /* SETTINGS CARD */
+        /* ==============================
+           SETTINGS CARD
+        ============================== */
 
         .settings-card {
-
             background: white;
 
             padding: 30px;
@@ -105,12 +132,15 @@
             margin-bottom: 25px;
 
             box-shadow:
-                0 3px 10px rgba(0,0,0,0.08);
+                0 3px 10px rgba(0, 0, 0, 0.08);
+
+            transition:
+                background 0.3s ease,
+                color 0.3s ease,
+                box-shadow 0.3s ease;
         }
 
-
         .settings-card h2 {
-
             color: #1e3a8a;
 
             margin-bottom: 20px;
@@ -119,10 +149,11 @@
         }
 
 
-        /* SETTING ROW */
+        /* ==============================
+           SETTING ROW
+        ============================== */
 
         .setting-row {
-
             display: flex;
 
             justify-content: space-between;
@@ -134,34 +165,31 @@
             border-bottom: 1px solid #eee;
         }
 
-
         .setting-row:last-child {
-
             border-bottom: none;
-
         }
 
+        .setting-info {
+            max-width: 75%;
+        }
 
         .setting-info h3 {
-
             font-size: 16px;
-
             margin-bottom: 5px;
         }
 
-
         .setting-info p {
-
             color: #777;
-
             font-size: 14px;
+            line-height: 1.5;
         }
 
 
-        /* SELECT */
+        /* ==============================
+           SELECT
+        ============================== */
 
         select {
-
             padding: 9px 12px;
 
             border: 1px solid #ccc;
@@ -170,30 +198,42 @@
 
             background: white;
 
+            color: #222;
+
             cursor: pointer;
+
+            outline: none;
+
+            transition: 0.2s;
+        }
+
+        select:focus {
+            border-color: #1e3a8a;
+
+            box-shadow:
+                0 0 0 2px rgba(30, 58, 138, 0.12);
         }
 
 
-        /* TOGGLE */
+        /* ==============================
+           TOGGLE SWITCH
+        ============================== */
 
         .toggle {
-
             position: relative;
 
             width: 48px;
 
             height: 25px;
+
+            flex-shrink: 0;
         }
 
-
         .toggle input {
-
             display: none;
         }
 
-
         .slider {
-
             position: absolute;
 
             cursor: pointer;
@@ -207,9 +247,7 @@
             transition: 0.3s;
         }
 
-
         .slider:before {
-
             content: "";
 
             position: absolute;
@@ -227,35 +265,35 @@
             border-radius: 50%;
 
             transition: 0.3s;
+
+            box-shadow:
+                0 1px 3px rgba(0, 0, 0, 0.2);
         }
 
-
         input:checked + .slider {
-
             background: #1e3a8a;
         }
 
-
         input:checked + .slider:before {
-
             transform: translateX(23px);
         }
 
 
-        /* BUTTONS */
+        /* ==============================
+           BUTTONS
+        ============================== */
 
         .button-group {
-
             display: flex;
 
             gap: 12px;
 
             margin-top: 20px;
+
+            flex-wrap: wrap;
         }
 
-
         .button {
-
             border: none;
 
             padding: 11px 20px;
@@ -265,55 +303,52 @@
             cursor: pointer;
 
             font-size: 14px;
+
+            text-decoration: none;
+
+            display: inline-block;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
         }
 
+        .button:hover {
+            transform: translateY(-1px);
+        }
 
         .save-button {
-
             background: #1e3a8a;
-
             color: white;
         }
 
-
         .save-button:hover {
-
             background: #162d6b;
-
         }
 
-
         .reset-button {
-
             background: #e5e7eb;
-
             color: #333;
         }
 
-
         .reset-button:hover {
-
             background: #d5d7da;
-
         }
 
 
-        /* DANGER AREA */
+        /* ==============================
+           DANGER AREA
+        ============================== */
 
         .danger {
-
             border: 1px solid #ddd;
         }
 
-
         .danger h2 {
-
             color: #b91c1c;
         }
 
-
         .logout-button {
-
             background: #b91c1c;
 
             color: white;
@@ -325,34 +360,162 @@
             border-radius: 6px;
 
             cursor: pointer;
-        }
 
+            transition: 0.2s;
+        }
 
         .logout-button:hover {
-
             background: #991b1b;
 
+            transform: translateY(-1px);
         }
 
 
-        /* RESPONSIVE */
+        /* ==============================
+           DARK MODE
+        ============================== */
+
+        body.dark-mode {
+            background: #111827;
+            color: #f3f4f6;
+        }
+
+        body.dark-mode .navbar {
+            background: #111827;
+
+            border-bottom:
+                1px solid #374151;
+        }
+
+        body.dark-mode .page-header,
+        body.dark-mode .settings-card {
+            background: #1f2937;
+
+            color: #f3f4f6;
+
+            box-shadow:
+                0 3px 12px rgba(0, 0, 0, 0.35);
+        }
+
+        body.dark-mode .page-header h1,
+        body.dark-mode .settings-card h2 {
+            color: #60a5fa;
+        }
+
+        body.dark-mode .page-header p {
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .setting-info p {
+            color: #9ca3af;
+        }
+
+        body.dark-mode .setting-row {
+            border-bottom-color: #374151;
+        }
+
+        body.dark-mode select {
+            background: #111827;
+
+            color: #f3f4f6;
+
+            border-color: #4b5563;
+        }
+
+        body.dark-mode select option {
+            background: #111827;
+            color: #f3f4f6;
+        }
+
+        body.dark-mode .reset-button {
+            background: #374151;
+            color: #f3f4f6;
+        }
+
+        body.dark-mode .reset-button:hover {
+            background: #4b5563;
+        }
+
+        body.dark-mode .danger {
+            border-color: #4b5563;
+        }
+
+        body.dark-mode .slider {
+            background: #4b5563;
+        }
+
+        body.dark-mode .slider:before {
+            background: #e5e7eb;
+        }
+
+        body.dark-mode input:checked + .slider {
+            background: #2563eb;
+        }
+
+
+        /* ==============================
+           THEME ICON
+        ============================== */
+
+        .theme-icon {
+            font-size: 22px;
+            margin-right: 8px;
+        }
+
+
+        /* ==============================
+           SUCCESS MESSAGE
+        ============================== */
+
+        .message {
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 12px 15px;
+
+            border-radius: 6px;
+
+            background: #dcfce7;
+
+            color: #166534;
+
+            font-size: 14px;
+        }
+
+        body.dark-mode .message {
+            background: #14532d;
+            color: #bbf7d0;
+        }
+
+
+        /* ==============================
+           RESPONSIVE
+        ============================== */
 
         @media (max-width: 700px) {
 
             .navbar {
-
                 padding: 15px 20px;
-
             }
 
             .setting-row {
-
                 flex-direction: column;
 
                 align-items: flex-start;
 
                 gap: 15px;
+            }
 
+            .setting-info {
+                max-width: 100%;
+            }
+
+            .setting-row select,
+            .setting-row .toggle,
+            .setting-row .button,
+            .setting-row .logout-button {
+                align-self: flex-start;
             }
 
         }
@@ -361,15 +524,34 @@
         @media (max-width: 500px) {
 
             .nav-links {
-
                 display: none;
-
             }
 
             .container {
-
                 width: 94%;
+                margin: 25px auto;
+            }
 
+            .page-header,
+            .settings-card {
+                padding: 22px;
+            }
+
+            .page-header h1 {
+                font-size: 25px;
+            }
+
+            .settings-card h2 {
+                font-size: 18px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .button-group .button {
+                width: 100%;
+                text-align: center;
             }
 
         }
@@ -382,14 +564,15 @@
 <body>
 
 
-    <!-- NAVIGATION -->
+    <!-- ==============================
+         NAVIGATION
+    ============================== -->
 
     <nav class="navbar">
 
         <div class="logo">
             EduLearn
         </div>
-
 
         <div class="nav-links">
 
@@ -419,12 +602,14 @@
 
 
 
-    <!-- MAIN -->
+    <!-- ==============================
+         MAIN
+    ============================== -->
 
     <main class="container">
 
 
-        <!-- HEADER -->
+        <!-- PAGE HEADER -->
 
         <section class="page-header">
 
@@ -433,14 +618,16 @@
             </h1>
 
             <p>
-                Manage your EduLearn learning preferences.
+                Manage your EduLearn learning preferences and account settings.
             </p>
 
         </section>
 
 
 
-        <!-- LEARNING SETTINGS -->
+        <!-- ==============================
+             LEARNING SETTINGS
+        ============================== -->
 
         <section class="settings-card">
 
@@ -448,6 +635,8 @@
                 Learning Preferences
             </h2>
 
+
+            <!-- STUDY REMINDERS -->
 
             <div class="setting-row">
 
@@ -463,7 +652,6 @@
 
                 </div>
 
-
                 <label class="toggle">
 
                     <input
@@ -476,6 +664,9 @@
 
             </div>
 
+
+
+            <!-- SHOW PROGRESS -->
 
             <div class="setting-row">
 
@@ -491,7 +682,6 @@
 
                 </div>
 
-
                 <label class="toggle">
 
                     <input
@@ -506,6 +696,9 @@
             </div>
 
 
+
+            <!-- LANGUAGE -->
+
             <div class="setting-row">
 
                 <div class="setting-info">
@@ -519,7 +712,6 @@
                     </p>
 
                 </div>
-
 
                 <select id="language">
 
@@ -539,6 +731,46 @@
 
             </div>
 
+
+
+            <!-- THEME -->
+
+            <div class="setting-row">
+
+                <div class="setting-info">
+
+                    <h3>
+                        <span class="theme-icon">🌙</span>
+                        Appearance
+                    </h3>
+
+                    <p>
+                        Choose between light mode, dark mode, or your device's theme.
+                    </p>
+
+                </div>
+
+                <select id="theme">
+
+                    <option value="light">
+                        ☀️ Light Mode
+                    </option>
+
+                    <option value="dark">
+                        🌙 Dark Mode
+                    </option>
+
+                    <option value="system">
+                        💻 System Default
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- BUTTONS -->
 
             <div class="button-group">
 
@@ -561,11 +793,24 @@
 
             </div>
 
+
+            <!-- SUCCESS MESSAGE -->
+
+            <div
+                class="message"
+                id="successMessage">
+
+                Settings saved successfully!
+
+            </div>
+
         </section>
 
 
 
-        <!-- ACCOUNT SETTINGS -->
+        <!-- ==============================
+             ACCOUNT SETTINGS
+        ============================== -->
 
         <section class="settings-card">
 
@@ -573,6 +818,8 @@
                 Account
             </h2>
 
+
+            <!-- PROFILE -->
 
             <div class="setting-row">
 
@@ -588,7 +835,6 @@
 
                 </div>
 
-
                 <a
                     href="profile.html"
                     class="button save-button">
@@ -599,6 +845,9 @@
 
             </div>
 
+
+
+            <!-- DASHBOARD -->
 
             <div class="setting-row">
 
@@ -614,7 +863,6 @@
 
                 </div>
 
-
                 <a
                     href="dashboard.html"
                     class="button save-button">
@@ -629,7 +877,9 @@
 
 
 
-        <!-- ACCOUNT ACTIONS -->
+        <!-- ==============================
+             ACCOUNT ACTIONS
+        ============================== -->
 
         <section class="settings-card danger">
 
@@ -637,6 +887,8 @@
                 Account Actions
             </h2>
 
+
+            <!-- RESET PROGRESS -->
 
             <div class="setting-row">
 
@@ -651,7 +903,6 @@
                     </p>
 
                 </div>
-
 
                 <button
                     class="logout-button"
@@ -670,11 +921,59 @@
 
 
 
-    <!-- JAVASCRIPT -->
+    <!-- ==============================
+         JAVASCRIPT
+    ============================== -->
 
     <script>
 
-        /* SAVE SETTINGS */
+
+        /* =========================================
+           APPLY THEME
+        ========================================= */
+
+        function applyTheme(theme) {
+
+            if (theme === "dark") {
+
+                document.body.classList.add("dark-mode");
+
+            }
+
+            else if (theme === "light") {
+
+                document.body.classList.remove("dark-mode");
+
+            }
+
+            else if (theme === "system") {
+
+                const systemDark =
+                    window.matchMedia(
+                        "(prefers-color-scheme: dark)"
+                    ).matches;
+
+                if (systemDark) {
+
+                    document.body.classList.add("dark-mode");
+
+                }
+
+                else {
+
+                    document.body.classList.remove("dark-mode");
+
+                }
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           SAVE SETTINGS
+        ========================================= */
 
         function saveSettings() {
 
@@ -696,6 +995,15 @@
                 ).value;
 
 
+            const theme =
+                document.getElementById(
+                    "theme"
+                ).value;
+
+
+
+            /* SAVE TO LOCAL STORAGE */
+
             localStorage.setItem(
                 "studyReminders",
                 reminders
@@ -714,17 +1022,45 @@
             );
 
 
-            alert(
-                "Settings saved successfully!"
+            localStorage.setItem(
+                "theme",
+                theme
             );
+
+
+
+            /* APPLY THEME */
+
+            applyTheme(theme);
+
+
+
+            /* SHOW MESSAGE */
+
+            const message =
+                document.getElementById(
+                    "successMessage"
+                );
+
+            message.style.display = "block";
+
+
+            setTimeout(function () {
+
+                message.style.display = "none";
+
+            }, 2500);
 
         }
 
 
 
-        /* LOAD SETTINGS */
+        /* =========================================
+           LOAD SETTINGS
+        ========================================= */
 
         function loadSettings() {
+
 
             const reminders =
                 localStorage.getItem(
@@ -744,6 +1080,15 @@
                 );
 
 
+            const theme =
+                localStorage.getItem(
+                    "theme"
+                );
+
+
+
+            /* REMINDERS */
+
             if (reminders !== null) {
 
                 document.getElementById(
@@ -753,6 +1098,9 @@
 
             }
 
+
+
+            /* SHOW PROGRESS */
 
             if (showProgress !== null) {
 
@@ -764,6 +1112,9 @@
             }
 
 
+
+            /* LANGUAGE */
+
             if (language !== null) {
 
                 document.getElementById(
@@ -773,26 +1124,83 @@
 
             }
 
+
+
+            /* THEME */
+
+            if (theme !== null) {
+
+                document.getElementById(
+                    "theme"
+                ).value =
+                    theme;
+
+                applyTheme(theme);
+
+            }
+
+            else {
+
+                /* DEFAULT THEME */
+
+                document.getElementById(
+                    "theme"
+                ).value =
+                    "light";
+
+                applyTheme("light");
+
+            }
+
         }
 
 
 
-        /* RESET SETTINGS */
+        /* =========================================
+           RESET SETTINGS
+        ========================================= */
 
         function resetSettings() {
+
+
+            const confirmReset =
+                confirm(
+                    "Are you sure you want to reset your settings?"
+                );
+
+
+            if (!confirmReset) {
+
+                return;
+
+            }
+
+
+
+            /* REMOVE SAVED SETTINGS */
 
             localStorage.removeItem(
                 "studyReminders"
             );
 
+
             localStorage.removeItem(
                 "showProgress"
             );
+
 
             localStorage.removeItem(
                 "language"
             );
 
+
+            localStorage.removeItem(
+                "theme"
+            );
+
+
+
+            /* RESTORE DEFAULT VALUES */
 
             document.getElementById(
                 "reminders"
@@ -809,6 +1217,18 @@
             ).value = "english";
 
 
+            document.getElementById(
+                "theme"
+            ).value = "light";
+
+
+
+            /* APPLY LIGHT MODE */
+
+            applyTheme("light");
+
+
+
             alert(
                 "Settings have been reset."
             );
@@ -817,9 +1237,12 @@
 
 
 
-        /* RESET COURSE PROGRESS */
+        /* =========================================
+           RESET COURSE PROGRESS
+        ========================================= */
 
         function resetProgress() {
+
 
             const confirmReset =
                 confirm(
@@ -828,9 +1251,14 @@
 
 
             if (!confirmReset) {
+
                 return;
+
             }
 
+
+
+            /* RESET LESSONS */
 
             for (
                 let i = 1;
@@ -845,14 +1273,19 @@
             }
 
 
+
+            /* RESET FINAL ASSESSMENT */
+
             localStorage.removeItem(
                 "finalAssessmentCompleted"
             );
 
 
+
             alert(
                 "Learning progress has been reset."
             );
+
 
 
             window.location.href =
@@ -862,9 +1295,42 @@
 
 
 
-        /* LOAD SAVED SETTINGS */
+        /* =========================================
+           SYSTEM THEME CHANGE DETECTION
+        ========================================= */
+
+        const systemTheme =
+            window.matchMedia(
+                "(prefers-color-scheme: dark)"
+            );
+
+
+        systemTheme.addEventListener(
+            "change",
+            function () {
+
+                const currentTheme =
+                    localStorage.getItem(
+                        "theme"
+                    );
+
+                if (currentTheme === "system") {
+
+                    applyTheme("system");
+
+                }
+
+            }
+        );
+
+
+
+        /* =========================================
+           LOAD SAVED SETTINGS WHEN PAGE OPENS
+        ========================================= */
 
         loadSettings();
+
 
     </script>
 
@@ -872,3 +1338,4 @@
 </body>
 
 </html>
+```
