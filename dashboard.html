@@ -1,13 +1,16 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>EduLearn - Dashboard</title>
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -16,310 +19,418 @@
         }
 
         body {
-            background: #f4f6f9;
-            color: #222;
+            background: #f4f7fb;
+            color: #1f2937;
         }
 
-        /* NAVBAR */
+        /* ================= NAVBAR ================= */
 
         .navbar {
-            background: #1e3a8a;
-            color: white;
-            padding: 18px 40px;
+            background: white;
+            height: 70px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
+            color: #2563eb;
+            text-decoration: none;
         }
 
         .nav-links {
             display: flex;
-            gap: 25px;
             align-items: center;
+            gap: 25px;
         }
 
         .nav-links a {
-            color: white;
             text-decoration: none;
+            color: #374151;
             font-size: 15px;
+            font-weight: 500;
         }
 
         .nav-links a:hover {
-            text-decoration: underline;
+            color: #2563eb;
         }
 
-        /* MAIN */
+        /* ================= CONTAINER ================= */
 
         .container {
-            width: 90%;
+            width: 86%;
             max-width: 1200px;
-            margin: 35px auto;
+            margin: 40px auto;
         }
 
+        /* ================= WELCOME ================= */
+
         .welcome {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            color: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 30px;
         }
 
         .welcome h1 {
-            margin-bottom: 8px;
-            color: #1e3a8a;
+            font-size: 34px;
+            margin-bottom: 10px;
         }
 
         .welcome p {
-            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+            opacity: 0.95;
         }
 
-        /* PROFILE */
+        /* ================= PROFILE ================= */
 
-        .profile {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-
-        .profile h2 {
-            color: #1e3a8a;
-            margin-bottom: 15px;
-        }
-
-        .profile-info {
+        .profile-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr 2fr;
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .profile-card,
+        .overview-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+        }
+
+        .profile-card {
+            text-align: center;
+        }
+
+        .profile-icon {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: #eff6ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+
+        .profile-card h2 {
+            margin-bottom: 8px;
+        }
+
+        .profile-card p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .overview-card h2 {
+            margin-bottom: 25px;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 15px;
         }
 
-        .profile-box {
-            background: #f4f6f9;
-            padding: 15px;
-            border-radius: 8px;
-        }
-
-        .profile-box strong {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        /* OVERVIEW */
-
-        .section-title {
-            margin: 30px 0 15px;
-            color: #1e3a8a;
-        }
-
-        .overview {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .overview-card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
+        .stat {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
             text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
 
-        .overview-card h3 {
-            font-size: 30px;
-            color: #1e3a8a;
-            margin-bottom: 8px;
+        .stat-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 6px;
         }
 
-        .overview-card p {
-            color: #666;
+        .stat-label {
+            color: #6b7280;
+            font-size: 13px;
         }
 
-        /* COURSES */
+        /* ================= SECTION ================= */
 
-        .courses {
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 28px;
+            margin-bottom: 7px;
+        }
+
+        .section-header p {
+            color: #6b7280;
+        }
+
+        /* ================= LEARNING CARDS ================= */
+
+        .learning-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 22px;
         }
 
-        .course-card {
+        .learning-card {
             background: white;
             padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border-radius: 14px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.05);
         }
 
-        .course-card h3 {
-            color: #1e3a8a;
-            margin-bottom: 8px;
+        .learning-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
         }
 
-        .course-card p {
-            color: #666;
-            margin-bottom: 15px;
+        .learning-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: #eff6ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
         }
 
-        .course-info {
+        .learning-top h3 {
+            margin-bottom: 4px;
+        }
+
+        .learning-top p {
+            color: #6b7280;
+            font-size: 13px;
+        }
+
+        .progress-info {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 14px;
+            margin-bottom: 7px;
+            font-size: 13px;
         }
 
         .progress-bar {
-            width: 100%;
-            height: 10px;
+            height: 9px;
             background: #e5e7eb;
             border-radius: 10px;
             overflow: hidden;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
-        .progress {
+        .progress-fill {
             height: 100%;
-            background: #1e3a8a;
-            width: 0%;
+            background: #2563eb;
+            border-radius: 10px;
+            transition: width 0.3s;
         }
 
-        .course-button {
+        .dashboard-btn {
             display: inline-block;
-            padding: 10px 18px;
-            background: #1e3a8a;
-            color: white;
             text-decoration: none;
-            border-radius: 6px;
-            font-size: 14px;
+            background: #2563eb;
+            color: white;
+            padding: 9px 16px;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: bold;
         }
 
-        .course-button:hover {
-            background: #162d6b;
+        .dashboard-btn:hover {
+            background: #1d4ed8;
         }
 
-        /* ASSESSMENT */
+        /* ================= QUICK ACTIONS ================= */
 
-        .assessment {
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .quick-card {
             background: white;
-            padding: 25px;
+            padding: 22px;
             border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border: 1px solid #e5e7eb;
+            text-align: center;
+            text-decoration: none;
+            color: #1f2937;
+            transition: 0.3s;
         }
 
-        .assessment h3 {
-            color: #1e3a8a;
+        .quick-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .quick-icon {
+            font-size: 30px;
             margin-bottom: 10px;
         }
 
-        .assessment p {
-            margin-bottom: 15px;
-            color: #666;
+        .quick-card h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
         }
 
-        .assessment-status {
-            font-weight: bold;
-            margin-bottom: 15px;
+        .quick-card p {
+            color: #6b7280;
+            font-size: 12px;
         }
 
-        /* ACHIEVEMENTS */
+        /* ================= ACHIEVEMENTS ================= */
 
-        .achievements {
+        .achievement-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
         }
 
         .achievement {
             background: white;
             padding: 25px;
             border-radius: 12px;
+            border: 1px solid #e5e7eb;
             text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
 
         .achievement-icon {
-            font-size: 35px;
-            margin-bottom: 10px;
+            font-size: 38px;
+            margin-bottom: 12px;
+            filter: grayscale(1);
+            opacity: 0.45;
+        }
+
+        .achievement.unlocked .achievement-icon {
+            filter: none;
+            opacity: 1;
         }
 
         .achievement h3 {
-            color: #1e3a8a;
-            margin-bottom: 8px;
+            font-size: 15px;
+            margin-bottom: 6px;
         }
 
         .achievement p {
-            color: #666;
+            color: #6b7280;
+            font-size: 12px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 30px 7%;
+            margin-top: 60px;
+        }
+
+        footer p {
+            color: #9ca3af;
             font-size: 14px;
         }
 
-        /* RESPONSIVE */
+        /* ================= RESPONSIVE ================= */
 
-        @media (max-width: 800px) {
+        @media (max-width: 900px) {
 
-            .profile-info {
+            .profile-grid {
                 grid-template-columns: 1fr;
             }
 
-            .overview {
+            .overview-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .courses {
+            .learning-grid {
                 grid-template-columns: 1fr;
             }
 
-            .achievements {
-                grid-template-columns: 1fr;
+            .quick-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .navbar {
-                padding: 15px 20px;
+            .achievement-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .nav-links {
-                gap: 12px;
-            }
         }
 
-        @media (max-width: 500px) {
+        @media (max-width: 600px) {
 
             .navbar {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-            }
-
-            .overview {
-                grid-template-columns: 1fr;
+                padding: 0 5%;
             }
 
             .nav-links {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
+                gap: 12px;
+            }
+
+            .nav-links a:not(:last-child) {
+                display: none;
             }
 
             .container {
-                width: 94%;
+                width: 92%;
             }
+
+            .welcome {
+                padding: 30px 25px;
+            }
+
+            .welcome h1 {
+                font-size: 28px;
+            }
+
+            .overview-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .quick-grid,
+            .achievement-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
         }
+
     </style>
+
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
+
+    <!-- ================= NAVBAR ================= -->
 
     <nav class="navbar">
 
-        <div class="logo">
+        <a href="index.html" class="logo">
             EduLearn
-        </div>
+        </a>
 
         <div class="nav-links">
 
@@ -331,12 +442,8 @@
                 Dashboard
             </a>
 
-            <a href="courses.html">
-                Courses
-            </a>
-
-            <a href="quiz.html">
-                Assessment
+            <a href="settings.html">
+                Settings
             </a>
 
         </div>
@@ -344,42 +451,113 @@
     </nav>
 
 
+    <!-- ================= MAIN ================= -->
+
     <main class="container">
+
 
         <!-- WELCOME -->
 
         <section class="welcome">
 
-            <h1>Welcome Back, Student!</h1>
+            <h1>
+                Welcome back, Student! 👋
+            </h1>
 
             <p>
-                Continue your learning journey and keep building your knowledge.
+                Continue your learning journey with EduLearn.
+                Choose a subject, learn new concepts, practice
+                your skills and track your progress.
             </p>
 
         </section>
 
 
-        <!-- STUDENT PROFILE -->
+        <!-- PROFILE + OVERVIEW -->
 
-        <section class="profile">
+        <section class="profile-grid">
 
-            <h2>Student Profile</h2>
 
-            <div class="profile-info">
+            <!-- PROFILE -->
 
-                <div class="profile-box">
-                    <strong>Name</strong>
+            <div class="profile-card">
+
+                <div class="profile-icon">
+                    👨‍🎓
+                </div>
+
+                <h2>
                     Student
-                </div>
+                </h2>
 
-                <div class="profile-box">
-                    <strong>Program</strong>
-                    College Student
-                </div>
+                <p>
+                    EduLearn Learner
+                </p>
 
-                <div class="profile-box">
-                    <strong>Learning Level</strong>
-                    Undergraduate
+            </div>
+
+
+            <!-- OVERVIEW -->
+
+            <div class="overview-card">
+
+                <h2>
+                    Learning Overview
+                </h2>
+
+                <div class="overview-grid">
+
+                    <div class="stat">
+
+                        <div class="stat-number" id="completedLessons">
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            Lessons Completed
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <div class="stat-number" id="courseProgress">
+                            0%
+                        </div>
+
+                        <div class="stat-label">
+                            Overall Progress
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <div class="stat-number" id="quizStatus">
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            Assessments
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <div class="stat-number" id="achievementCount">
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            Achievements
+                        </div>
+
+                    </div>
+
                 </div>
 
             </div>
@@ -387,406 +565,594 @@
         </section>
 
 
-        <!-- LEARNING OVERVIEW -->
+        <!-- ================= LEARNING AREAS ================= -->
 
-        <h2 class="section-title">
-            Learning Overview
-        </h2>
+        <section class="section">
 
-        <section class="overview">
+            <div class="section-header">
 
-            <div class="overview-card">
-
-                <h3 id="completedLessons">
-                    0
-                </h3>
+                <h2>
+                    My Learning
+                </h2>
 
                 <p>
-                    Lessons Completed
+                    Explore your four main learning areas.
                 </p>
 
             </div>
 
 
-            <div class="overview-card">
+            <div class="learning-grid">
 
-                <h3 id="courseProgress">
-                    0%
-                </h3>
+
+                <!-- CODING -->
+
+                <div class="learning-card">
+
+                    <div class="learning-top">
+
+                        <div class="learning-icon">
+                            💻
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Coding
+                            </h3>
+
+                            <p>
+                                Programming & Technology
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="progress-info">
+
+                        <span>
+                            Progress
+                        </span>
+
+                        <span>
+                            0%
+                        </span>
+
+                    </div>
+
+                    <div class="progress-bar">
+
+                        <div
+                            class="progress-fill"
+                            style="width: 0%;">
+                        </div>
+
+                    </div>
+
+                    <a href="coding.html" class="dashboard-btn">
+                        Explore Coding
+                    </a>
+
+                </div>
+
+
+                <!-- B.TECH -->
+
+                <div class="learning-card">
+
+                    <div class="learning-top">
+
+                        <div class="learning-icon">
+                            ⚙️
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                B.Tech
+                            </h3>
+
+                            <p>
+                                Engineering & Technology
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="progress-info">
+
+                        <span>
+                            Progress
+                        </span>
+
+                        <span id="mathProgressText">
+                            0%
+                        </span>
+
+                    </div>
+
+                    <div class="progress-bar">
+
+                        <div
+                            class="progress-fill"
+                            id="mathProgressBar"
+                            style="width: 0%;">
+                        </div>
+
+                    </div>
+
+                    <a href="btech.html" class="dashboard-btn">
+                        Explore B.Tech
+                    </a>
+
+                </div>
+
+
+                <!-- BBA -->
+
+                <div class="learning-card">
+
+                    <div class="learning-top">
+
+                        <div class="learning-icon">
+                            📊
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                BBA
+                            </h3>
+
+                            <p>
+                                Business & Management
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="progress-info">
+
+                        <span>
+                            Progress
+                        </span>
+
+                        <span>
+                            0%
+                        </span>
+
+                    </div>
+
+                    <div class="progress-bar">
+
+                        <div
+                            class="progress-fill"
+                            style="width: 0%;">
+                        </div>
+
+                    </div>
+
+                    <a href="bba.html" class="dashboard-btn">
+                        Explore BBA
+                    </a>
+
+                </div>
+
+
+                <!-- B.COM -->
+
+                <div class="learning-card">
+
+                    <div class="learning-top">
+
+                        <div class="learning-icon">
+                            💼
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                B.Com
+                            </h3>
+
+                            <p>
+                                Commerce & Finance
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="progress-info">
+
+                        <span>
+                            Progress
+                        </span>
+
+                        <span>
+                            0%
+                        </span>
+
+                    </div>
+
+                    <div class="progress-bar">
+
+                        <div
+                            class="progress-fill"
+                            style="width: 0%;">
+                        </div>
+
+                    </div>
+
+                    <a href="bcom.html" class="dashboard-btn">
+                        Explore B.Com
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <section class="section">
+
+            <div class="section-header">
+
+                <h2>
+                    Quick Access
+                </h2>
 
                 <p>
-                    Course Progress
+                    Jump directly into your learning areas.
                 </p>
 
             </div>
 
 
-            <div class="overview-card">
+            <div class="quick-grid">
 
-                <h3 id="assessmentStatus">
-                    —
-                </h3>
 
-                <p>
-                    Final Assessment
-                </p>
+                <a href="coding.html" class="quick-card">
+
+                    <div class="quick-icon">
+                        💻
+                    </div>
+
+                    <h3>
+                        Coding
+                    </h3>
+
+                    <p>
+                        Start programming
+                    </p>
+
+                </a>
+
+
+                <a href="btech.html" class="quick-card">
+
+                    <div class="quick-icon">
+                        ⚙️
+                    </div>
+
+                    <h3>
+                        B.Tech
+                    </h3>
+
+                    <p>
+                        Study engineering
+                    </p>
+
+                </a>
+
+
+                <a href="bba.html" class="quick-card">
+
+                    <div class="quick-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        BBA
+                    </h3>
+
+                    <p>
+                        Learn management
+                    </p>
+
+                </a>
+
+
+                <a href="bcom.html" class="quick-card">
+
+                    <div class="quick-icon">
+                        💼
+                    </div>
+
+                    <h3>
+                        B.Com
+                    </h3>
+
+                    <p>
+                        Learn commerce
+                    </p>
+
+                </a>
+
 
             </div>
 
+        </section>
 
-            <div class="overview-card">
 
-                <h3 id="achievementCount">
-                    0
-                </h3>
+        <!-- ================= ACHIEVEMENTS ================= -->
 
-                <p>
+        <section class="section">
+
+            <div class="section-header">
+
+                <h2>
                     Achievements
+                </h2>
+
+                <p>
+                    Complete learning activities to unlock achievements.
                 </p>
 
             </div>
 
-        </section>
+
+            <div class="achievement-grid">
 
 
-        <!-- MY COURSES -->
+                <div class="achievement" id="achievementFirstLesson">
 
-        <h2 class="section-title">
-            My Courses
-        </h2>
+                    <div class="achievement-icon">
+                        📖
+                    </div>
 
-        <section class="courses">
+                    <h3>
+                        First Lesson
+                    </h3>
 
-            <!-- MATHEMATICS -->
+                    <p>
+                        Complete your first lesson
+                    </p>
 
-            <div class="course-card">
+                </div>
 
-                <h3>
-                    Mathematics
-                </h3>
 
-                <p>
-                    Build strong mathematical foundations and learn
-                    functions, calculus and linear algebra.
-                </p>
+                <div class="achievement" id="achievementFiveLessons">
 
-                <div class="course-info">
+                    <div class="achievement-icon">
+                        🔥
+                    </div>
 
-                    <span>
+                    <h3>
                         5 Lessons
-                    </span>
+                    </h3>
 
-                    <span id="mathPercentage">
-                        0%
-                    </span>
+                    <p>
+                        Complete five lessons
+                    </p>
 
                 </div>
 
-                <div class="progress-bar">
 
-                    <div
-                        class="progress"
-                        id="mathProgress">
+                <div class="achievement" id="achievementFirstQuiz">
+
+                    <div class="achievement-icon">
+                        🧠
                     </div>
 
-                </div>
+                    <h3>
+                        First Assessment
+                    </h3>
 
-                <a
-                    href="math.html"
-                    class="course-button">
-
-                    Continue Course
-
-                </a>
-
-            </div>
-
-
-            <!-- FUTURE COURSE -->
-
-            <div class="course-card">
-
-                <h3>
-                    Coming Soon
-                </h3>
-
-                <p>
-                    More college-level courses will be added
-                    to EduLearn in future.
-                </p>
-
-                <div class="course-info">
-
-                    <span>
-                        New Course
-                    </span>
-
-                    <span>
-                        —
-                    </span>
+                    <p>
+                        Complete your first assessment
+                    </p>
 
                 </div>
 
-                <div class="progress-bar">
 
-                    <div
-                        class="progress"
-                        style="width: 0%;">
+                <div class="achievement" id="achievementCourse">
+
+                    <div class="achievement-icon">
+                        🏆
                     </div>
 
+                    <h3>
+                        Course Complete
+                    </h3>
+
+                    <p>
+                        Complete an entire course
+                    </p>
+
                 </div>
 
-                <a
-                    href="#"
-                    class="course-button">
-
-                    Coming Soon
-
-                </a>
 
             </div>
 
         </section>
 
-
-        <!-- FINAL ASSESSMENT -->
-
-        <h2 class="section-title">
-            Final Assessment
-        </h2>
-
-        <section class="assessment">
-
-            <h3>
-                Mathematics Final Assessment
-            </h3>
-
-            <p>
-                Test your understanding of all five Mathematics lessons.
-            </p>
-
-            <div
-                class="assessment-status"
-                id="finalAssessmentText">
-
-                Not Completed
-
-            </div>
-
-            <a
-                href="quiz.html"
-                class="course-button">
-
-                Open Assessment
-
-            </a>
-
-        </section>
-
-
-        <!-- ACHIEVEMENTS -->
-
-        <h2 class="section-title">
-            Achievements
-        </h2>
-
-        <section class="achievements">
-
-            <div class="achievement">
-
-                <div class="achievement-icon">
-                    📚
-                </div>
-
-                <h3>
-                    First Lesson
-                </h3>
-
-                <p id="firstLessonAchievement">
-                    Complete your first lesson.
-                </p>
-
-            </div>
-
-
-            <div class="achievement">
-
-                <div class="achievement-icon">
-                    🎯
-                </div>
-
-                <h3>
-                    Halfway There
-                </h3>
-
-                <p id="halfwayAchievement">
-                    Complete at least 3 lessons.
-                </p>
-
-            </div>
-
-
-            <div class="achievement">
-
-                <div class="achievement-icon">
-                    🏆
-                </div>
-
-                <h3>
-                    Mathematics Master
-                </h3>
-
-                <p id="masterAchievement">
-                    Complete all 5 lessons and the final assessment.
-                </p>
-
-            </div>
-
-        </section>
 
     </main>
 
 
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 EduLearn. Learn. Build. Grow.
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
     <script>
 
         /*
-        ==========================================
-        LESSON TRACKING
-        ==========================================
+            Existing Mathematics progress system
+
+            The dashboard checks the localStorage values
+            created by the lesson pages.
         */
 
-        const totalLessons = 5;
+        function getMathProgress() {
 
-        let completedLessons = 0;
+            let completed = 0;
 
+            for (let i = 1; i <= 5; i++) {
 
-        for (let i = 1; i <= totalLessons; i++) {
+                if (localStorage.getItem("lesson" + i + "Completed") === "true") {
 
-            if (
-                localStorage.getItem("lesson" + i + "Completed") === "true"
-            ) {
+                    completed++;
 
-                completedLessons++;
+                }
 
             }
 
+            return completed;
+
+        }
+
+
+        function updateDashboard() {
+
+            let mathCompleted = getMathProgress();
+
+            let mathProgress = Math.round(
+                (mathCompleted / 5) * 100
+            );
+
+
+            /*
+                Engineering Mathematics progress
+            */
+
+            document.getElementById("mathProgressText").textContent =
+                mathProgress + "%";
+
+            document.getElementById("mathProgressBar").style.width =
+                mathProgress + "%";
+
+
+            /*
+                Total completed lessons
+
+                Currently the existing lesson system
+                contains five Mathematics lessons.
+            */
+
+            document.getElementById("completedLessons").textContent =
+                mathCompleted;
+
+
+            /*
+                Overall progress
+
+                At this stage, Mathematics is the only
+                course with active lessons.
+            */
+
+            document.getElementById("courseProgress").textContent =
+                mathProgress + "%";
+
+
+            /*
+                Assessment status
+
+                The final Mathematics quiz is considered
+                completed when quizCompleted is true.
+            */
+
+            let quizCompleted =
+                localStorage.getItem("quizCompleted") === "true";
+
+
+            document.getElementById("quizStatus").textContent =
+                quizCompleted ? "1" : "0";
+
+
+            /*
+                Achievements
+            */
+
+            let achievements = 0;
+
+
+            if (mathCompleted >= 1) {
+
+                document
+                    .getElementById("achievementFirstLesson")
+                    .classList.add("unlocked");
+
+                achievements++;
+
+            }
+
+
+            if (mathCompleted >= 5) {
+
+                document
+                    .getElementById("achievementFiveLessons")
+                    .classList.add("unlocked");
+
+                achievements++;
+
+            }
+
+
+            if (quizCompleted) {
+
+                document
+                    .getElementById("achievementFirstQuiz")
+                    .classList.add("unlocked");
+
+                achievements++;
+
+            }
+
+
+            if (mathProgress === 100 && quizCompleted) {
+
+                document
+                    .getElementById("achievementCourse")
+                    .classList.add("unlocked");
+
+                achievements++;
+
+            }
+
+
+            document.getElementById("achievementCount").textContent =
+                achievements;
+
         }
 
 
         /*
-        ==========================================
-        COURSE PROGRESS
-        ==========================================
+            Run dashboard update when page loads.
         */
 
-        const progress =
-            Math.round((completedLessons / totalLessons) * 100);
-
-
-        document.getElementById("completedLessons").textContent =
-            completedLessons;
-
-
-        document.getElementById("courseProgress").textContent =
-            progress + "%";
-
-
-        document.getElementById("mathPercentage").textContent =
-            progress + "%";
-
-
-        document.getElementById("mathProgress").style.width =
-            progress + "%";
-
-
-        /*
-        ==========================================
-        FINAL ASSESSMENT
-        ==========================================
-        */
-
-        const finalCompleted =
-            localStorage.getItem("finalAssessmentCompleted") === "true";
-
-
-        const assessmentStatus =
-            document.getElementById("assessmentStatus");
-
-        const finalAssessmentText =
-            document.getElementById("finalAssessmentText");
-
-
-        if (finalCompleted) {
-
-            assessmentStatus.textContent = "✓";
-
-            finalAssessmentText.textContent =
-                "Completed";
-
-        } else {
-
-            assessmentStatus.textContent = "—";
-
-            finalAssessmentText.textContent =
-                "Not Completed";
-
-        }
-
-
-        /*
-        ==========================================
-        ACHIEVEMENTS
-        ==========================================
-        */
-
-        let achievements = 0;
-
-
-        if (completedLessons >= 1) {
-
-            achievements++;
-
-            document.getElementById(
-                "firstLessonAchievement"
-            ).textContent =
-                "✓ Achievement unlocked!";
-
-        }
-
-
-        if (completedLessons >= 3) {
-
-            achievements++;
-
-            document.getElementById(
-                "halfwayAchievement"
-            ).textContent =
-                "✓ Achievement unlocked!";
-
-        }
-
-
-        if (
-            completedLessons === 5 &&
-            finalCompleted
-        ) {
-
-            achievements++;
-
-            document.getElementById(
-                "masterAchievement"
-            ).textContent =
-                "✓ Achievement unlocked!";
-
-        }
-
-
-        document.getElementById(
-            "achievementCount"
-        ).textContent = achievements;
+        updateDashboard();
 
     </script>
 
+
 </body>
+
 </html>
 ```
