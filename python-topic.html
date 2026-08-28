@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EduLearn - Python Topic</title>
+<title>EduLearn - Python Programs</title>
 
 <style>
 
@@ -26,7 +26,7 @@ body {
 /* NAVBAR */
 
 .navbar {
-    background: white;
+    background: #ffffff;
     padding: 16px 7%;
     display: flex;
     justify-content: space-between;
@@ -63,112 +63,140 @@ body {
 .hero {
     background: linear-gradient(135deg, #1e3a8a, #2563eb);
     color: white;
-    padding: 50px 7%;
+    padding: 55px 7%;
 }
 
 .hero h1 {
-    font-size: 38px;
-    margin-bottom: 10px;
+    font-size: 40px;
+    margin-bottom: 12px;
 }
 
 .hero p {
+    max-width: 800px;
+    line-height: 1.7;
     font-size: 17px;
-    line-height: 1.6;
 }
 
 /* CONTAINER */
 
 .container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: auto;
     padding: 40px 20px;
 }
 
-/* CARD */
+/* SEARCH */
 
-.card {
+.search-box {
     background: white;
     padding: 25px;
-    margin-bottom: 25px;
     border-radius: 14px;
+    margin-bottom: 35px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
-.card h2 {
+.search-box h2 {
     color: #1e3a8a;
     margin-bottom: 15px;
 }
 
-.card p {
-    line-height: 1.7;
-    color: #555;
-    margin-bottom: 12px;
+#searchInput {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #d1d5db;
+    border-radius: 9px;
+    font-size: 16px;
+    outline: none;
 }
 
-/* CODE */
+#searchInput:focus {
+    border-color: #2563eb;
+}
 
-pre {
-    background: #111827;
-    color: #e5e7eb;
-    padding: 20px;
-    border-radius: 10px;
-    overflow-x: auto;
-    line-height: 1.6;
+#searchResults {
     margin-top: 15px;
 }
 
-/* OUTPUT */
-
-.output {
+.result {
     background: #eff6ff;
-    border-left: 5px solid #2563eb;
-    padding: 15px;
-    margin-top: 15px;
-    border-radius: 7px;
+    padding: 14px;
+    border-radius: 8px;
+    margin-top: 8px;
 }
 
-.output strong {
+.result a {
+    text-decoration: none;
     color: #1e3a8a;
+    font-weight: bold;
 }
 
-/* BUTTONS */
+/* SECTION */
 
-.buttons {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
+.section-title {
+    color: #1e3a8a;
+    margin: 35px 0 20px;
+    font-size: 28px;
+}
+
+/* PROGRAM GRID */
+
+.programs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.program-card {
+    background: white;
+    padding: 24px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: 0.2s;
+}
+
+.program-card:hover {
+    transform: translateY(-4px);
+}
+
+.program-number {
+    color: #2563eb;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.program-card h3 {
+    color: #1e3a8a;
+    margin-bottom: 10px;
+}
+
+.program-card p {
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.level {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    padding: 5px 9px;
+    border-radius: 5px;
+    background: #eff6ff;
+    color: #2563eb;
 }
 
 .btn {
     display: inline-block;
     background: #2563eb;
     color: white;
-    padding: 11px 18px;
+    padding: 10px 16px;
     border-radius: 7px;
     text-decoration: none;
-    border: none;
-    cursor: pointer;
-    font-size: 15px;
 }
 
 .btn:hover {
     background: #1d4ed8;
-}
-
-.complete {
-    background: #16a34a;
-}
-
-.complete:hover {
-    background: #15803d;
-}
-
-/* STATUS */
-
-.status {
-    margin-top: 15px;
-    font-weight: bold;
-    color: #16a34a;
 }
 
 /* DARK MODE */
@@ -179,7 +207,8 @@ body.dark {
 }
 
 body.dark .navbar,
-body.dark .card {
+body.dark .search-box,
+body.dark .program-card {
     background: #1f2937;
     color: #e5e7eb;
 }
@@ -192,20 +221,32 @@ body.dark .nav-links a:hover {
     color: #60a5fa;
 }
 
-body.dark .card h2 {
+body.dark .section-title,
+body.dark .search-box h2,
+body.dark .program-card h3 {
     color: #60a5fa;
 }
 
-body.dark .card p {
+body.dark .program-card p {
     color: #d1d5db;
 }
 
-body.dark .output {
+body.dark #searchInput {
     background: #374151;
-    color: #e5e7eb;
+    color: white;
+    border-color: #4b5563;
 }
 
-body.dark .output strong {
+body.dark .result {
+    background: #374151;
+}
+
+body.dark .result a {
+    color: #93c5fd;
+}
+
+body.dark .level {
+    background: #374151;
     color: #93c5fd;
 }
 
@@ -216,7 +257,7 @@ footer {
     color: white;
     text-align: center;
     padding: 25px;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 /* MOBILE */
@@ -274,10 +315,12 @@ footer {
 
 <section class="hero">
 
-    <h1 id="topicTitle">Python Programming</h1>
+    <h1>Python Programming</h1>
 
-    <p id="topicDescription">
-        Learn Python through practical programming examples.
+    <p>
+        Learn Python programming through 47 carefully
+        arranged practical programs from beginner
+        fundamentals to advanced applications.
     </p>
 
 </section>
@@ -285,64 +328,1049 @@ footer {
 
 <div class="container">
 
-    <!-- TOPIC INFORMATION -->
 
-    <div class="card">
+<!-- SEARCH -->
 
-        <h2 id="lessonHeading">
-            Python Topic
-        </h2>
+<div class="search-box">
 
-        <p id="lessonText">
-            Loading topic...
-        </p>
+    <h2>🔎 Search Python Programs</h2>
 
-    </div>
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search any Python program..."
+        onkeyup="searchPrograms()"
+    >
 
+    <div id="searchResults"></div>
 
-    <!-- PRACTICE PROGRAM -->
-
-    <div class="card">
-
-        <h2>💻 Practice Program</h2>
-
-        <pre><code id="programCode"></code></pre>
-
-        <div class="output">
-
-            <strong>Expected Output</strong>
-
-            <p id="programOutput">
-                Run the program in a Python environment to see the result.
-            </p>
-
-        </div>
-
-    </div>
+</div>
 
 
-    <!-- ACTIONS -->
+<!-- BEGINNER -->
 
-    <div class="card">
+<h2 class="section-title">
+    🟢 Beginner Python Programs
+</h2>
 
-        <div class="buttons">
+<div class="programs">
 
-            <a href="python.html" class="btn">
-                ← Back to Python Programs
-            </a>
 
-            <button
-                class="btn complete"
-                onclick="markComplete()"
-                id="completeButton">
-                ✓ Mark Topic Complete
-            </button>
+<!-- 01 -->
 
-        </div>
+<div class="program-card">
 
-        <div id="status" class="status"></div>
+    <div class="program-number">01</div>
 
-    </div>
+    <span class="level">Beginner</span>
+
+    <h3>Hello World</h3>
+
+    <p>
+        Write your first Python program and display
+        a message on the screen.
+    </p>
+
+    <a href="python-topic.html?topic=hello-world" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 02 -->
+
+<div class="program-card">
+
+    <div class="program-number">02</div>
+
+    <span class="level">Beginner</span>
+
+    <h3>Add Two Numbers</h3>
+
+    <p>
+        Read two numbers from the user and calculate
+        their sum.
+    </p>
+
+    <a href="python-topic.html?topic=add-two-numbers" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 03 -->
+
+<div class="program-card">
+
+    <div class="program-number">03</div>
+
+    <span class="level">Beginner</span>
+
+    <h3>Calculate Simple Interest</h3>
+
+    <p>
+        Calculate simple interest using principal,
+        rate and time.
+    </p>
+
+    <a href="python-topic.html?topic=simple-interest" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 04 -->
+
+<div class="program-card">
+
+    <div class="program-number">04</div>
+
+    <span class="level">Beginner</span>
+
+    <h3>Area of a Circle</h3>
+
+    <p>
+        Calculate the area of a circle using its radius.
+    </p>
+
+    <a href="python-topic.html?topic=area-circle" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 05 -->
+
+<div class="program-card">
+
+    <div class="program-number">05</div>
+
+    <span class="level">Beginner</span>
+
+    <h3>Check Even or Odd</h3>
+
+    <p>
+        Determine whether a given number is even or odd.
+    </p>
+
+    <a href="python-topic.html?topic=even-odd" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 06 -->
+
+<div class="program-card">
+
+    <div class="program-number">06</div>
+
+    <span class="level">Beginner</span>
+
+    <h3>Find Largest of Two Numbers</h3>
+
+    <p>
+        Compare two numbers and determine the larger value.
+    </p>
+
+    <a href="python-topic.html?topic=largest-two" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 07 -->
+
+<div class="program-card">
+
+    <div class="program-number">07</div>
+
+    <span class="level">Beginner</span>
+
+    <h3>Find Largest of Three Numbers</h3>
+
+    <p>
+        Compare three numbers and find the largest number.
+    </p>
+
+    <a href="python-topic.html?topic=largest-three" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 08 -->
+
+<div class="program-card">
+
+    <div class="program-number">08</div>
+
+    <span class="level">Beginner</span>
+
+    <h3>Multiplication Table</h3>
+
+    <p>
+        Generate a multiplication table using a loop.
+    </p>
+
+    <a href="python-topic.html?topic=multiplication-table" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 09 -->
+
+<div class="program-card">
+
+    <div class="program-number">09</div>
+
+    <span class="level">Beginner</span>
+
+    <h3>Factorial of a Number</h3>
+
+    <p>
+        Calculate the factorial of a number using iteration.
+    </p>
+
+    <a href="python-topic.html?topic=factorial" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 10 -->
+
+<div class="program-card">
+
+    <div class="program-number">10</div>
+
+    <span class="level">Beginner</span>
+
+    <h3>Check Positive or Negative</h3>
+
+    <p>
+        Determine whether a number is positive, negative
+        or zero.
+    </p>
+
+    <a href="python-topic.html?topic=positive-negative" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 11 -->
+
+<div class="program-card">
+
+    <div class="program-number">11</div>
+
+    <span class="level">Beginner</span>
+
+    <h3>Convert Celsius to Fahrenheit</h3>
+
+    <p>
+        Convert temperature from Celsius to Fahrenheit.
+    </p>
+
+    <a href="python-topic.html?topic=celsius-fahrenheit" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 12 -->
+
+<div class="program-card">
+
+    <div class="program-number">12</div>
+
+    <span class="level">Beginner</span>
+
+    <h3>Swap Two Numbers</h3>
+
+    <p>
+        Exchange the values of two variables in Python.
+    </p>
+
+    <a href="python-topic.html?topic=swap-numbers" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 13 -->
+
+<div class="program-card">
+
+    <div class="program-number">13</div>
+
+    <span class="level">Beginner</span>
+
+    <h3>Count Digits</h3>
+
+    <p>
+        Count how many digits are present in a number.
+    </p>
+
+    <a href="python-topic.html?topic=count-digits" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 14 -->
+
+<div class="program-card">
+
+    <div class="program-number">14</div>
+
+    <span class="level">Beginner</span>
+
+    <h3>Reverse a Number</h3>
+
+    <p>
+        Reverse the digits of an integer using Python.
+    </p>
+
+    <a href="python-topic.html?topic=reverse-number" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 15 -->
+
+<div class="program-card">
+
+    <div class="program-number">15</div>
+
+    <span class="level">Beginner</span>
+
+    <h3>Sum of Natural Numbers</h3>
+
+    <p>
+        Calculate the sum of natural numbers using a loop.
+    </p>
+
+    <a href="python-topic.html?topic=sum-natural" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+</div>
+
+
+<!-- INTERMEDIATE -->
+
+<h2 class="section-title">
+    🟡 Intermediate Python Programs
+</h2>
+
+<div class="programs">
+
+
+<!-- 16 -->
+
+<div class="program-card">
+
+    <div class="program-number">16</div>
+
+    <span class="level">Intermediate</span>
+
+    <h3>Prime Number Check</h3>
+
+    <p>
+        Check whether a given number is prime.
+    </p>
+
+    <a href="python-topic.html?topic=prime-number" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 17 -->
+
+<div class="program-card">
+
+    <div class="program-number">17</div>
+
+    <span class="level">Intermediate</span>
+
+    <h3>Fibonacci Series</h3>
+
+    <p>
+        Generate a Fibonacci sequence using Python.
+    </p>
+
+    <a href="python-topic.html?topic=fibonacci" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 18 -->
+
+<div class="program-card">
+
+    <div class="program-number">18</div>
+
+    <span class="level">Intermediate</span>
+
+    <h3>Reverse a String</h3>
+
+    <p>
+        Reverse a string using Python string operations.
+    </p>
+
+    <a href="python-topic.html?topic=reverse-string" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 19 -->
+
+<div class="program-card">
+
+    <div class="program-number">19</div>
+
+    <span class="level">Intermediate</span>
+
+    <h3>Count Vowels</h3>
+
+    <p>
+        Count the number of vowels in a given string.
+    </p>
+
+    <a href="python-topic.html?topic=count-vowels" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 20 -->
+
+<div class="program-card">
+
+    <div class="program-number">20</div>
+
+    <span class="level">Intermediate</span>
+
+    <h3>Palindrome Check</h3>
+
+    <p>
+        Check whether a word or number is a palindrome.
+    </p>
+
+    <a href="python-topic.html?topic=palindrome" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 21 -->
+
+<div class="program-card">
+
+    <div class="program-number">21</div>
+
+    <span class="level">Intermediate</span>
+
+    <h3>Armstrong Number</h3>
+
+    <p>
+        Determine whether a number is an Armstrong number.
+    </p>
+
+    <a href="python-topic.html?topic=armstrong" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 22 -->
+
+<div class="program-card">
+
+    <div class="program-number">22</div>
+
+    <span class="level">Intermediate</span>
+
+    <h3>Perfect Number</h3>
+
+    <p>
+        Check whether a number is a perfect number.
+    </p>
+
+    <a href="python-topic.html?topic=perfect-number" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 23 -->
+
+<div class="program-card">
+
+    <div class="program-number">23</div>
+
+    <span class="level">Intermediate</span>
+
+    <h3>GCD of Two Numbers</h3>
+
+    <p>
+        Find the greatest common divisor of two numbers.
+    </p>
+
+    <a href="python-topic.html?topic=gcd" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 24 -->
+
+<div class="program-card">
+
+    <div class="program-number">24</div>
+
+    <span class="level">Intermediate</span>
+
+    <h3>LCM of Two Numbers</h3>
+
+    <p>
+        Calculate the least common multiple of two numbers.
+    </p>
+
+    <a href="python-topic.html?topic=lcm" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 25 -->
+
+<div class="program-card">
+
+    <div class="program-number">25</div>
+
+    <span class="level">Intermediate</span>
+
+    <h3>List Operations</h3>
+
+    <p>
+        Add, remove, access and modify elements in lists.
+    </p>
+
+    <a href="python-topic.html?topic=list-operations" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 26 -->
+
+<div class="program-card">
+
+    <div class="program-number">26</div>
+
+    <span class="level">Intermediate</span>
+
+    <h3>Tuple Operations</h3>
+
+    <p>
+        Work with ordered and immutable tuple collections.
+    </p>
+
+    <a href="python-topic.html?topic=tuple-operations" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 27 -->
+
+<div class="program-card">
+
+    <div class="program-number">27</div>
+
+    <span class="level">Intermediate</span>
+
+    <h3>Dictionary Operations</h3>
+
+    <p>
+        Store and access data using Python dictionaries.
+    </p>
+
+    <a href="python-topic.html?topic=dictionary-operations" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 28 -->
+
+<div class="program-card">
+
+    <div class="program-number">28</div>
+
+    <span class="level">Intermediate</span>
+
+    <h3>Set Operations</h3>
+
+    <p>
+        Perform union, intersection and difference operations.
+    </p>
+
+    <a href="python-topic.html?topic=set-operations" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 29 -->
+
+<div class="program-card">
+
+    <div class="program-number">29</div>
+
+    <span class="level">Intermediate</span>
+
+    <h3>Word Frequency Counter</h3>
+
+    <p>
+        Count how frequently each word appears in text.
+    </p>
+
+    <a href="python-topic.html?topic=word-frequency" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 30 -->
+
+<div class="program-card">
+
+    <div class="program-number">30</div>
+
+    <span class="level">Intermediate</span>
+
+    <h3>Function Calculator</h3>
+
+    <p>
+        Build a calculator using reusable Python functions.
+    </p>
+
+    <a href="python-topic.html?topic=function-calculator" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 31 -->
+
+<div class="program-card">
+
+    <div class="program-number">31</div>
+
+    <span class="level">Intermediate</span>
+
+    <h3>Student Grade Calculator</h3>
+
+    <p>
+        Calculate total, average and grade for a student.
+    </p>
+
+    <a href="python-topic.html?topic=student-grade" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 32 -->
+
+<div class="program-card">
+
+    <div class="program-number">32</div>
+
+    <span class="level">Intermediate</span>
+
+    <h3>Number Guessing Game</h3>
+
+    <p>
+        Create an interactive number guessing game.
+    </p>
+
+    <a href="python-topic.html?topic=guessing-game" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+</div>
+
+
+<!-- ADVANCED -->
+
+<h2 class="section-title">
+    🔴 Advanced Python Programs
+</h2>
+
+<div class="programs">
+
+
+<!-- 33 -->
+
+<div class="program-card">
+
+    <div class="program-number">33</div>
+
+    <span class="level">Advanced</span>
+
+    <h3>Student Management System</h3>
+
+    <p>
+        Store and manage student information using Python.
+    </p>
+
+    <a href="python-topic.html?topic=student-management" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 34 -->
+
+<div class="program-card">
+
+    <div class="program-number">34</div>
+
+    <span class="level">Advanced</span>
+
+    <h3>Bank Account System</h3>
+
+    <p>
+        Create a simple banking system using classes and objects.
+    </p>
+
+    <a href="python-topic.html?topic=bank-account" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 35 -->
+
+<div class="program-card">
+
+    <div class="program-number">35</div>
+
+    <span class="level">Advanced</span>
+
+    <h3>Employee Management System</h3>
+
+    <p>
+        Manage employee records using Python programming.
+    </p>
+
+    <a href="python-topic.html?topic=employee-management" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 36 -->
+
+<div class="program-card">
+
+    <div class="program-number">36</div>
+
+    <span class="level">Advanced</span>
+
+    <h3>Library Management System</h3>
+
+    <p>
+        Create a program to manage books and library records.
+    </p>
+
+    <a href="python-topic.html?topic=library-management" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 37 -->
+
+<div class="program-card">
+
+    <div class="program-number">37</div>
+
+    <span class="level">Advanced</span>
+
+    <h3>File Management Program</h3>
+
+    <p>
+        Read, write and manage information stored in files.
+    </p>
+
+    <a href="python-topic.html?topic=file-management" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 38 -->
+
+<div class="program-card">
+
+    <div class="program-number">38</div>
+
+    <span class="level">Advanced</span>
+
+    <h3>CSV File Processor</h3>
+
+    <p>
+        Read and process structured data stored in CSV files.
+    </p>
+
+    <a href="python-topic.html?topic=csv-processor" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 39 -->
+
+<div class="program-card">
+
+    <div class="program-number">39</div>
+
+    <span class="level">Advanced</span>
+
+    <h3>JSON Data Processor</h3>
+
+    <p>
+        Read and process JSON data using Python.
+    </p>
+
+    <a href="python-topic.html?topic=json-processor" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 40 -->
+
+<div class="program-card">
+
+    <div class="program-number">40</div>
+
+    <span class="level">Advanced</span>
+
+    <h3>Database Application</h3>
+
+    <p>
+        Build a basic Python application connected to a database.
+    </p>
+
+    <a href="python-topic.html?topic=database-application" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 41 -->
+
+<div class="program-card">
+
+    <div class="program-number">41</div>
+
+    <span class="level">Advanced</span>
+
+    <h3>API Data Fetcher</h3>
+
+    <p>
+        Retrieve and process information from an external API.
+    </p>
+
+    <a href="python-topic.html?topic=api-fetcher" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 42 -->
+
+<div class="program-card">
+
+    <div class="program-number">42</div>
+
+    <span class="level">Advanced</span>
+
+    <h3>Web Scraping Program</h3>
+
+    <p>
+        Learn the basic concept of collecting information
+        from web pages using Python.
+    </p>
+
+    <a href="python-topic.html?topic=web-scraping" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 43 -->
+
+<div class="program-card">
+
+    <div class="program-number">43</div>
+
+    <span class="level">Advanced</span>
+
+    <h3>Object-Oriented Programming</h3>
+
+    <p>
+        Build programs using classes, objects and methods.
+    </p>
+
+    <a href="python-topic.html?topic=oop" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 44 -->
+
+<div class="program-card">
+
+    <div class="program-number">44</div>
+
+    <span class="level">Advanced</span>
+
+    <h3>Inheritance Example</h3>
+
+    <p>
+        Demonstrate inheritance between Python classes.
+    </p>
+
+    <a href="python-topic.html?topic=inheritance" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 45 -->
+
+<div class="program-card">
+
+    <div class="program-number">45</div>
+
+    <span class="level">Advanced</span>
+
+    <h3>Exception Handling Program</h3>
+
+    <p>
+        Handle runtime errors using try and except.
+    </p>
+
+    <a href="python-topic.html?topic=exception-handling" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 46 -->
+
+<div class="program-card">
+
+    <div class="program-number">46</div>
+
+    <span class="level">Advanced</span>
+
+    <h3>Automation Script</h3>
+
+    <p>
+        Automate a repetitive computer task using Python.
+    </p>
+
+    <a href="python-topic.html?topic=automation" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+
+<!-- 47 -->
+
+<div class="program-card">
+
+    <div class="program-number">47</div>
+
+    <span class="level">Advanced</span>
+
+    <h3>Mini Python Project</h3>
+
+    <p>
+        Combine Python concepts to create a practical
+        mini project.
+    </p>
+
+    <a href="python-topic.html?topic=mini-project" class="btn">
+        Open Program
+    </a>
+
+</div>
+
+</div>
 
 </div>
 
@@ -369,276 +1397,114 @@ if (localStorage.getItem("darkMode") === "true") {
 }
 
 
-/* PYTHON TOPICS */
-
-const topics = {
-
-    introduction: {
-
-        title: "Python Introduction",
-
-        description:
-        "Learn the basic structure of Python programs and how Python displays information.",
-
-        lesson:
-        "Python is a high-level programming language known for its simple and readable syntax. A Python program can contain statements, variables, functions and other programming structures. The print() function is commonly used to display information on the screen.",
-
-        code:
-`print("Hello, World!")`,
-
-        output:
-        "Hello, World!"
-
-    },
-
-
-    operators: {
-
-        title: "Python Operators",
-
-        description:
-        "Learn how Python operators are used to perform calculations and comparisons.",
-
-        lesson:
-        "Operators are symbols or keywords used to perform operations on values. Arithmetic operators include +, -, *, /, %, // and **. The modulus operator (%) is especially useful for checking whether a number is even or odd.",
-
-        code:
-`a = 10
-b = 5
-
-print("Addition:", a + b)
-print("Subtraction:", a - b)
-print("Multiplication:", a * b)
-print("Division:", a / b)`,
-
-        output:
-`Addition: 15
-Subtraction: 5
-Multiplication: 50
-Division: 2.0`
-
-    },
-
-
-    loops: {
-
-        title: "Python Loops",
-
-        description:
-        "Learn how loops repeat a block of code multiple times.",
-
-        lesson:
-        "Loops are used when we need to execute the same instructions repeatedly. Python mainly provides for loops and while loops. A for loop is useful when the number of repetitions is known.",
-
-        code:
-`for i in range(1, 6):
-    print(i)`,
-
-        output:
-`1
-2
-3
-4
-5`
-
-    },
-
-
-    datatypes: {
-
-        title: "Python Data Types",
-
-        description:
-        "Learn how Python stores different kinds of values.",
-
-        lesson:
-        "Python provides several built-in data types. Common types include int for integers, float for decimal numbers, str for text, bool for true or false values, list for collections of values and tuple for ordered immutable collections.",
-
-        code:
-`name = "EduLearn"
-age = 20
-marks = 85.5
-student = True
-
-print(name)
-print(age)
-print(marks)
-print(student)`,
-
-        output:
-`EduLearn
-20
-85.5
-True`
-
-    },
-
-
-    functions: {
-
-        title: "Python Functions",
-
-        description:
-        "Learn how to create reusable blocks of Python code.",
-
-        lesson:
-        "A function is a reusable block of code designed to perform a particular task. Functions are created using the def keyword. They can accept parameters and can return values.",
-
-        code:
-`def add(a, b):
-    return a + b
-
-result = add(10, 20)
-
-print("Result:", result)`,
-
-        output:
-        "Result: 30"
-
-    },
-
-
-    inheritance: {
-
-        title: "Python Object-Oriented Programming",
-
-        description:
-        "Learn the basic idea of classes, objects and inheritance in Python.",
-
-        lesson:
-        "Object-oriented programming organizes programs using classes and objects. Inheritance allows one class to reuse properties and methods from another class. It is useful when creating larger programs such as student management systems and banking applications.",
-
-        code:
-`class Student:
-
-    def show(self):
-        print("Student information")
-
-
-class CollegeStudent(Student):
-
-    def course(self):
-        print("B.Tech")
-
-
-student = CollegeStudent()
-
-student.show()
-student.course()`,
-
-        output:
-`Student information
-B.Tech`
-
-    }
-
-};
-
-
-/* GET TOPIC FROM URL */
-
-const params = new URLSearchParams(window.location.search);
-
-const topicName = params.get("topic");
-
-
-/* FIND TOPIC */
-
-const topic = topics[topicName];
-
-
-/* DISPLAY TOPIC */
-
-if (topic) {
-
-    document.getElementById("topicTitle").textContent =
-        topic.title;
-
-    document.getElementById("topicDescription").textContent =
-        topic.description;
-
-    document.getElementById("lessonHeading").textContent =
-        "📘 " + topic.title;
-
-    document.getElementById("lessonText").textContent =
-        topic.lesson;
-
-    document.getElementById("programCode").textContent =
-        topic.code;
-
-    document.getElementById("programOutput").textContent =
-        topic.output;
-
-    checkCompletion();
-
-}
-
-
-/* TOPIC NOT FOUND */
-
-else {
-
-    document.getElementById("topicTitle").textContent =
-        "Topic Not Found";
-
-    document.getElementById("topicDescription").textContent =
-        "The requested Python topic could not be found.";
-
-    document.getElementById("lessonHeading").textContent =
-        "Topic Not Found";
-
-    document.getElementById("lessonText").textContent =
-        "Please return to the Python Programs page and select a valid program.";
-
-    document.getElementById("programCode").textContent =
-        "# Python program not available";
-
-    document.getElementById("programOutput").textContent =
-        "No program is available for this topic.";
-
-}
-
-
-/* MARK COMPLETE */
-
-function markComplete() {
-
-    if (!topicName) {
+/* PROGRAM DATA */
+
+const programs = [
+
+    { name: "Hello World", topic: "hello-world" },
+    { name: "Add Two Numbers", topic: "add-two-numbers" },
+    { name: "Calculate Simple Interest", topic: "simple-interest" },
+    { name: "Area of a Circle", topic: "area-circle" },
+    { name: "Check Even or Odd", topic: "even-odd" },
+    { name: "Find Largest of Two Numbers", topic: "largest-two" },
+    { name: "Find Largest of Three Numbers", topic: "largest-three" },
+    { name: "Multiplication Table", topic: "multiplication-table" },
+    { name: "Factorial of a Number", topic: "factorial" },
+    { name: "Check Positive or Negative", topic: "positive-negative" },
+    { name: "Convert Celsius to Fahrenheit", topic: "celsius-fahrenheit" },
+    { name: "Swap Two Numbers", topic: "swap-numbers" },
+    { name: "Count Digits", topic: "count-digits" },
+    { name: "Reverse a Number", topic: "reverse-number" },
+    { name: "Sum of Natural Numbers", topic: "sum-natural" },
+
+    { name: "Prime Number Check", topic: "prime-number" },
+    { name: "Fibonacci Series", topic: "fibonacci" },
+    { name: "Reverse a String", topic: "reverse-string" },
+    { name: "Count Vowels", topic: "count-vowels" },
+    { name: "Palindrome Check", topic: "palindrome" },
+    { name: "Armstrong Number", topic: "armstrong" },
+    { name: "Perfect Number", topic: "perfect-number" },
+    { name: "GCD of Two Numbers", topic: "gcd" },
+    { name: "LCM of Two Numbers", topic: "lcm" },
+    { name: "List Operations", topic: "list-operations" },
+    { name: "Tuple Operations", topic: "tuple-operations" },
+    { name: "Dictionary Operations", topic: "dictionary-operations" },
+    { name: "Set Operations", topic: "set-operations" },
+    { name: "Word Frequency Counter", topic: "word-frequency" },
+    { name: "Function Calculator", topic: "function-calculator" },
+    { name: "Student Grade Calculator", topic: "student-grade" },
+    { name: "Number Guessing Game", topic: "guessing-game" },
+
+    { name: "Student Management System", topic: "student-management" },
+    { name: "Bank Account System", topic: "bank-account" },
+    { name: "Employee Management System", topic: "employee-management" },
+    { name: "Library Management System", topic: "library-management" },
+    { name: "File Management Program", topic: "file-management" },
+    { name: "CSV File Processor", topic: "csv-processor" },
+    { name: "JSON Data Processor", topic: "json-processor" },
+    { name: "Database Application", topic: "database-application" },
+    { name: "API Data Fetcher", topic: "api-fetcher" },
+    { name: "Web Scraping Program", topic: "web-scraping" },
+    { name: "Object-Oriented Programming", topic: "oop" },
+    { name: "Inheritance Example", topic: "inheritance" },
+    { name: "Exception Handling Program", topic: "exception-handling" },
+    { name: "Automation Script", topic: "automation" },
+    { name: "Mini Python Project", topic: "mini-project" }
+
+];
+
+
+/* SEARCH */
+
+function searchPrograms() {
+
+    const search =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const results =
+        document.getElementById("searchResults");
+
+    results.innerHTML = "";
+
+    if (search === "") {
         return;
     }
 
-    localStorage.setItem(
-        "pythonTopic_" + topicName,
-        "completed"
-    );
-
-    document.getElementById("status").textContent =
-        "✓ Topic completed successfully!";
-
-    document.getElementById("completeButton").textContent =
-        "✓ Completed";
-
-}
-
-
-/* CHECK COMPLETION */
-
-function checkCompletion() {
-
-    const completed =
-        localStorage.getItem(
-            "pythonTopic_" + topicName
+    const matched =
+        programs.filter(program =>
+            program.name.toLowerCase().includes(search)
         );
 
-    if (completed === "completed") {
+    if (matched.length === 0) {
 
-        document.getElementById("status").textContent =
-            "✓ You have already completed this topic.";
+        results.innerHTML =
+            "<div class='result'>No Python program found.</div>";
 
-        document.getElementById("completeButton").textContent =
-            "✓ Completed";
+        return;
 
     }
+
+    matched.forEach(program => {
+
+        const item =
+            document.createElement("div");
+
+        item.className = "result";
+
+        item.innerHTML =
+            "<a href='python-topic.html?topic=" +
+            program.topic +
+            "'>" +
+            program.name +
+            "</a><br>" +
+            "<small>Open this Python program</small>";
+
+        results.appendChild(item);
+
+    });
 
 }
 
