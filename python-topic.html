@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,6 +75,16 @@ body {
 .topic-header p {
     font-size: 17px;
     line-height: 1.7;
+    max-width: 850px;
+}
+
+.category-badge {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 14px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    font-size: 14px;
 }
 
 /* MAIN */
@@ -102,12 +113,14 @@ body {
     margin-bottom: 12px;
 }
 
-.card ul {
+.card ul,
+.card ol {
     padding-left: 25px;
 }
 
 .card li {
     line-height: 1.8;
+    margin-bottom: 5px;
 }
 
 /* CODE */
@@ -120,6 +133,18 @@ pre {
     overflow-x: auto;
     margin-top: 15px;
     line-height: 1.6;
+}
+
+/* KEYWORD */
+
+.keyword {
+    display: inline-block;
+    background: #eff6ff;
+    color: #1d4ed8;
+    padding: 5px 9px;
+    border-radius: 5px;
+    margin: 3px;
+    font-size: 14px;
 }
 
 /* BUTTONS */
@@ -154,9 +179,35 @@ button:hover,
 
 .practice-question {
     background: #f8fafc;
-    padding: 18px;
+    padding: 20px;
     border-radius: 10px;
     margin-top: 15px;
+}
+
+.answer {
+    display: none;
+    background: #ecfdf5;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #16a34a;
+}
+
+/* PROGRESS */
+
+.progress-container {
+    background: #e5e7eb;
+    height: 14px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #2563eb;
+    transition: 0.3s;
 }
 
 /* NAVIGATION */
@@ -168,11 +219,28 @@ button:hover,
     margin-top: 25px;
 }
 
+.topic-navigation a {
+    flex: 1;
+    text-align: center;
+}
+
 /* STATUS */
 
 #completionStatus {
     margin-top: 15px;
     font-weight: bold;
+}
+
+/* ERROR */
+
+.not-found {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.not-found h2 {
+    color: #dc2626;
+    margin-bottom: 15px;
 }
 
 /* DARK MODE */
@@ -201,6 +269,19 @@ body.dark .card h2 {
 }
 
 body.dark .practice-question {
+    background: #374151;
+}
+
+body.dark .answer {
+    background: #064e3b;
+}
+
+body.dark .keyword {
+    background: #374151;
+    color: #93c5fd;
+}
+
+body.dark .progress-container {
     background: #374151;
 }
 
@@ -261,7 +342,7 @@ body.dark .practice-question {
 </nav>
 
 
-<!-- TOPIC HEADER -->
+<!-- HEADER -->
 
 <section class="topic-header">
 
@@ -270,14 +351,17 @@ body.dark .practice-question {
     </h1>
 
     <p id="topicDescription">
-        Learn Python concepts with explanations,
-        examples and practice.
+        Loading topic...
     </p>
+
+    <div class="category-badge" id="topicCategory">
+        Python
+    </div>
 
 </section>
 
 
-<div class="container">
+<div class="container" id="mainContent">
 
 
 <!-- INTRODUCTION -->
@@ -287,7 +371,7 @@ body.dark .practice-question {
     <h2>📖 Introduction</h2>
 
     <p id="topicIntroduction">
-        Loading topic...
+        Loading...
     </p>
 
 </div>
@@ -312,9 +396,7 @@ body.dark .practice-question {
 
     <h2>💻 Syntax & Example</h2>
 
-    <pre id="topicCode">
-Loading...
-    </pre>
+    <pre id="topicCode">Loading...</pre>
 
 </div>
 
@@ -325,8 +407,18 @@ Loading...
 
     <h2>⭐ Important Points</h2>
 
-    <ul id="importantPoints">
-    </ul>
+    <ul id="importantPoints"></ul>
+
+</div>
+
+
+<!-- KEYWORDS -->
+
+<div class="card">
+
+    <h2>🔑 Important Keywords</h2>
+
+    <div id="topicKeywords"></div>
 
 </div>
 
@@ -347,9 +439,10 @@ Loading...
             Show Answer
         </button>
 
-        <p id="practiceAnswer"
-           style="display:none;margin-top:15px;">
-        </p>
+        <div
+            id="practiceAnswer"
+            class="answer">
+        </div>
 
     </div>
 
@@ -391,7 +484,6 @@ Loading...
 
     </a>
 
-
     <a
         href="python.html"
         class="btn">
@@ -406,9 +498,28 @@ Loading...
 </div>
 
 
+<!-- FOOTER -->
+
+<footer style="
+background:#1e3a8a;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:50px;
+">
+
+    <p>
+        © 2026 EduLearn — Learn. Grow. Succeed.
+    </p>
+
+</footer>
+
+
 <script>
 
-/* DARK MODE */
+/* =====================================================
+   DARK MODE
+===================================================== */
 
 if (localStorage.getItem("darkMode") === "true") {
 
@@ -417,73 +528,216 @@ if (localStorage.getItem("darkMode") === "true") {
 }
 
 
-/* PYTHON TOPIC DATA */
+/* =====================================================
+   COMPLETE PYTHON SUBJECT DATABASE
+===================================================== */
 
 const pythonTopics = {
 
-    introduction: {
 
-        title: "Introduction to Python",
+/* =====================================================
+   1. FUNDAMENTALS
+===================================================== */
 
-        description:
-        "Understand Python, its history, features and applications.",
+introduction: {
 
-        introduction:
-        "Python is a high-level, general-purpose programming language known for its readable syntax and wide range of applications.",
+    title: "Introduction to Python",
 
-        concepts: `
-            <p><strong>Python</strong> can be used for software development,
-            automation, data analysis, artificial intelligence,
-            web development and many other areas.</p>
+    category: "Python Fundamentals",
 
-            <p>Python uses a simple syntax that allows programmers
-            to focus more on solving problems rather than dealing
-            with complicated language syntax.</p>
-        `,
+    description:
+    "Understand Python, its history, features, advantages and applications.",
 
-        code: `print("Hello, World!")`,
+    introduction:
+    "Python is a high-level, general-purpose programming language designed with an emphasis on readability and simplicity. It is widely used in software development, automation, data analysis, artificial intelligence, scientific computing and web development.",
 
-        points: [
+    concepts: `
+        <p>
+        Python was created by Guido van Rossum and was first released
+        in 1991. It has become one of the most widely used programming
+        languages in the world.
+        </p>
 
-            "Python is a high-level programming language.",
+        <p>
+        Python uses readable syntax and provides a large collection
+        of built-in functionality and external libraries.
+        </p>
+    `,
 
-            "Python is interpreted.",
+    code:
+`print("Hello, World!")
 
-            "Python supports object-oriented programming.",
+name = "EduLearn"
 
-            "Python is widely used in industry and education.",
+print("Welcome to", name)`,
 
-            "Python has a large ecosystem of libraries."
+    points: [
+        "Python is a high-level programming language.",
+        "Python is dynamically typed.",
+        "Python supports object-oriented programming.",
+        "Python supports multiple programming paradigms.",
+        "Python has a large ecosystem of libraries."
+    ],
 
-        ],
+    keywords: [
+        "Python",
+        "Interpreter",
+        "Programming Language",
+        "Library",
+        "Module"
+    ],
 
-        question:
-        "Write a Python program that displays your name.",
+    question:
+    "Write a Python program that displays your name.",
 
-        answer:
-        'Example: print("Your Name")'
+    answer:
+    `print("Your Name")`
 
-    },
+},
 
 
-    variables: {
+installation: {
 
-        title: "Variables",
+    title: "Python Installation & Setup",
 
-        description:
-        "Learn how Python stores and manages information.",
+    category: "Python Fundamentals",
 
-        introduction:
-        "A variable is a name that refers to a value stored in a program.",
+    description:
+    "Learn how to install Python and prepare your programming environment.",
 
-        concepts: `
-            <p>Python variables are created when a value is assigned.</p>
+    introduction:
+    "Before writing Python programs, Python needs to be installed or accessed through a suitable programming environment.",
 
-            <p>Python does not require you to explicitly declare
-            the variable type before using it.</p>
-        `,
+    concepts: `
+        <p>
+        Python programs can be written using an IDE, code editor,
+        terminal or browser-based environment.
+        </p>
 
-        code:
+        <p>
+        After installation, the Python version can be checked
+        from the terminal.
+        </p>
+    `,
+
+    code:
+`python --version
+
+# Or
+
+python3 --version`,
+
+    points: [
+        "Install a current Python version.",
+        "Check the Python version after installation.",
+        "Use a suitable code editor or IDE.",
+        "Virtual environments can isolate project dependencies."
+    ],
+
+    keywords: [
+        "Python",
+        "IDE",
+        "Interpreter",
+        "Terminal",
+        "Environment"
+    ],
+
+    question:
+    "How can you check the installed Python version?",
+
+    answer:
+    `Use:
+
+python --version
+
+or
+
+python3 --version`
+
+},
+
+
+syntax: {
+
+    title: "Python Syntax",
+
+    category: "Python Fundamentals",
+
+    description:
+    "Understand Python statements, indentation, comments and syntax rules.",
+
+    introduction:
+    "Python syntax defines how Python programs must be written. One of Python's most important features is its use of indentation to define blocks of code.",
+
+    concepts: `
+        <p>
+        Python uses indentation instead of braces to identify
+        blocks of code.
+        </p>
+
+        <p>
+        Comments begin with the <strong>#</strong> symbol.
+        </p>
+    `,
+
+    code:
+`# This is a comment
+
+age = 20
+
+if age >= 18:
+    print("Adult")`,
+
+    points: [
+        "Indentation is important in Python.",
+        "Comments can document code.",
+        "Python statements are generally easy to read.",
+        "Incorrect indentation can cause errors."
+    ],
+
+    keywords: [
+        "Indentation",
+        "Statement",
+        "Comment",
+        "Syntax",
+        "Block"
+    ],
+
+    question:
+    "Write an if statement that prints 'Adult' when age is 18 or more.",
+
+    answer:
+    `if age >= 18:
+    print("Adult")`
+
+},
+
+
+variables: {
+
+    title: "Variables",
+
+    category: "Python Fundamentals",
+
+    description:
+    "Learn how Python stores and manages information using variables.",
+
+    introduction:
+    "A variable is a name that refers to a value. Python creates a variable when a value is assigned to a name.",
+
+    concepts: `
+        <p>
+        Python does not require explicit variable declarations.
+        The type of a variable is associated with the value assigned
+        to it.
+        </p>
+
+        <p>
+        Variables can be reassigned during program execution.
+        </p>
+    `,
+
+    code:
 `name = "Alex"
 age = 20
 marks = 85.5
@@ -492,51 +746,55 @@ print(name)
 print(age)
 print(marks)`,
 
-        points: [
+    points: [
+        "Variables store values.",
+        "Python uses dynamic typing.",
+        "Variable names should be meaningful.",
+        "Variables can be reassigned."
+    ],
 
-            "Variables store values.",
+    keywords: [
+        "Variable",
+        "Assignment",
+        "Value",
+        "Dynamic Typing"
+    ],
 
-            "Python uses dynamic typing.",
+    question:
+    "Create a variable called age and store your age in it.",
 
-            "Variable names should be meaningful.",
+    answer:
+    `age = 20`
 
-            "Variables can be reassigned."
-
-        ],
-
-        question:
-        "Create a variable called age and store your age in it.",
-
-        answer:
-        "Example: age = 20"
-
-    },
+},
 
 
-    datatypes: {
+datatypes: {
 
-        title: "Data Types",
+    title: "Data Types",
 
-        description:
-        "Understand the basic data types available in Python.",
+    category: "Python Fundamentals",
 
-        introduction:
-        "Python provides different data types for representing different kinds of information.",
+    description:
+    "Understand the different built-in data types in Python.",
 
-        concepts: `
-            <ul>
-                <li>int — whole numbers</li>
-                <li>float — decimal numbers</li>
-                <li>str — text</li>
-                <li>bool — True or False</li>
-                <li>list — collection of values</li>
-                <li>tuple — ordered immutable collection</li>
-                <li>set — collection of unique values</li>
-                <li>dict — key-value collection</li>
-            </ul>
-        `,
+    introduction:
+    "Python provides different data types for representing numbers, text, Boolean values and collections.",
 
-        code:
+    concepts: `
+        <ul>
+            <li><strong>int</strong> — whole numbers</li>
+            <li><strong>float</strong> — decimal numbers</li>
+            <li><strong>str</strong> — text</li>
+            <li><strong>bool</strong> — True or False</li>
+            <li><strong>list</strong> — mutable collection</li>
+            <li><strong>tuple</strong> — immutable collection</li>
+            <li><strong>set</strong> — unique values</li>
+            <li><strong>dict</strong> — key-value pairs</li>
+        </ul>
+    `,
+
+    code:
 `age = 20
 price = 99.50
 name = "Python"
@@ -547,47 +805,115 @@ print(type(price))
 print(type(name))
 print(type(passed))`,
 
-        points: [
+    points: [
+        "Every Python value has a type.",
+        "The type() function can identify a value's type.",
+        "Python provides many built-in data types.",
+        "Collections are important for storing multiple values."
+    ],
 
-            "Every value has a data type.",
+    keywords: [
+        "int",
+        "float",
+        "str",
+        "bool",
+        "list",
+        "tuple",
+        "set",
+        "dict"
+    ],
 
-            "Python supports built-in and user-defined types.",
+    question:
+    "Create an integer, string and float variable.",
 
-            "The type() function can identify a value's type."
+    answer:
+    `age = 20
+name = "Alex"
+price = 50.5`
 
-        ],
-
-        question:
-        "Create an integer, string and float variable.",
-
-        answer:
-        'Example: age = 20, name = "Alex", price = 50.5'
-
-    },
+},
 
 
-    operators: {
+"input-output": {
 
-        title: "Operators",
+    title: "Input & Output",
 
-        description:
-        "Learn how Python performs calculations and comparisons.",
+    category: "Python Fundamentals",
 
-        introduction:
-        "Operators are symbols or keywords used to perform operations on values.",
+    description:
+    "Learn how Python programs receive input and display output.",
 
-        concepts: `
-            <ul>
-                <li>Arithmetic operators</li>
-                <li>Comparison operators</li>
-                <li>Logical operators</li>
-                <li>Assignment operators</li>
-                <li>Membership operators</li>
-                <li>Identity operators</li>
-            </ul>
-        `,
+    introduction:
+    "Python provides input() for receiving information from a user and print() for displaying information.",
 
-        code:
+    concepts: `
+        <p>
+        The <strong>input()</strong> function normally returns user input
+        as a string.
+        </p>
+
+        <p>
+        The <strong>print()</strong> function displays information.
+        </p>
+    `,
+
+    code:
+`name = input("Enter your name: ")
+
+print("Hello", name)`,
+
+    points: [
+        "input() receives user input.",
+        "print() displays output.",
+        "Input can be converted to another type.",
+        "User input is normally returned as a string."
+    ],
+
+    keywords: [
+        "input",
+        "print",
+        "String",
+        "User Input"
+    ],
+
+    question:
+    "Write a program that asks the user for their name and prints it.",
+
+    answer:
+    `name = input("Enter your name: ")
+print(name)`
+
+},
+
+
+/* =====================================================
+   2. CONTROL FLOW
+===================================================== */
+
+operators: {
+
+    title: "Operators",
+
+    category: "Control Flow",
+
+    description:
+    "Learn arithmetic, comparison, logical and other Python operators.",
+
+    introduction:
+    "Operators are symbols or keywords used to perform operations on values and variables.",
+
+    concepts: `
+        <ul>
+            <li>Arithmetic operators</li>
+            <li>Comparison operators</li>
+            <li>Logical operators</li>
+            <li>Assignment operators</li>
+            <li>Membership operators</li>
+            <li>Identity operators</li>
+        </ul>
+    `,
+
+    code:
 `a = 10
 b = 3
 
@@ -598,45 +924,581 @@ print(a / b)
 print(a % b)
 print(a ** b)`,
 
-        points: [
+    points: [
+        "Arithmetic operators perform calculations.",
+        "Comparison operators produce Boolean results.",
+        "Logical operators combine conditions.",
+        "Assignment operators assign or update values."
+    ],
 
-            "Arithmetic operators perform calculations.",
+    keywords: [
+        "+",
+        "-",
+        "*",
+        "/",
+        "%",
+        "**",
+        "==",
+        "and",
+        "or",
+        "not"
+    ],
 
-            "Comparison operators return Boolean values.",
+    question:
+    "Calculate the remainder when 17 is divided by 5.",
 
-            "Logical operators combine conditions.",
+    answer:
+    `17 % 5`
 
-            "Assignment operators modify variables."
-
-        ],
-
-        question:
-        "Calculate the remainder when 17 is divided by 5.",
-
-        answer:
-        "Example: 17 % 5"
-
-    },
+},
 
 
-    functions: {
+"conditional-statements": {
 
-        title: "Functions",
+    title: "Conditional Statements",
 
-        description:
-        "Learn how to create reusable blocks of Python code.",
+    category: "Control Flow",
 
-        introduction:
-        "A function is a reusable block of code designed to perform a particular task.",
+    description:
+    "Learn how Python makes decisions using if, elif and else.",
 
-        concepts: `
-            <p>Functions are created using the
-            <strong>def</strong> keyword.</p>
+    introduction:
+    "Conditional statements allow a program to execute different blocks of code depending on whether conditions are true or false.",
 
-            <p>Functions can receive parameters and can return values.</p>
-        `,
+    concepts: `
+        <p>
+        Python provides <strong>if</strong>, <strong>elif</strong>
+        and <strong>else</strong> for decision making.
+        </p>
+    `,
 
-        code:
+    code:
+`marks = 75
+
+if marks >= 90:
+    print("Excellent")
+elif marks >= 60:
+    print("Good")
+else:
+    print("Needs improvement")`,
+
+    points: [
+        "if tests a condition.",
+        "elif provides additional conditions.",
+        "else handles the remaining case.",
+        "Indentation defines the code block."
+    ],
+
+    keywords: [
+        "if",
+        "elif",
+        "else",
+        "Condition",
+        "Boolean"
+    ],
+
+    question:
+    "Write a program that checks whether a number is positive.",
+
+    answer:
+    `if number > 0:
+    print("Positive")`
+
+},
+
+
+"for-loops": {
+
+    title: "For Loops",
+
+    category: "Control Flow",
+
+    description:
+    "Learn how to repeat operations using for loops.",
+
+    introduction:
+    "A for loop is used to iterate over items in a sequence or other iterable object.",
+
+    concepts: `
+        <p>
+        The range() function is commonly used when a specific
+        sequence of numbers is required.
+        </p>
+    `,
+
+    code:
+`for i in range(1, 6):
+    print(i)`,
+
+    points: [
+        "for loops iterate over iterable objects.",
+        "range() can generate number sequences.",
+        "Loops reduce repetitive code.",
+        "break can stop a loop."
+    ],
+
+    keywords: [
+        "for",
+        "in",
+        "range",
+        "Iteration"
+    ],
+
+    question:
+    "Print numbers from 1 to 5 using a for loop.",
+
+    answer:
+    `for i in range(1, 6):
+    print(i)`
+
+},
+
+
+"while-loops": {
+
+    title: "While Loops",
+
+    category: "Control Flow",
+
+    description:
+    "Learn condition-controlled repetition using while loops.",
+
+    introduction:
+    "A while loop repeatedly executes a block of code while its condition remains true.",
+
+    concepts: `
+        <p>
+        A while loop is useful when the number of repetitions
+        is not known in advance.
+        </p>
+    `,
+
+    code:
+`count = 1
+
+while count <= 5:
+    print(count)
+    count += 1`,
+
+    points: [
+        "while loops depend on a condition.",
+        "The condition is checked before each iteration.",
+        "The loop variable should normally be updated.",
+        "An incorrect condition can create an infinite loop."
+    ],
+
+    keywords: [
+        "while",
+        "Condition",
+        "Iteration",
+        "Infinite Loop"
+    ],
+
+    question:
+    "Write a while loop that prints numbers from 1 to 5.",
+
+    answer:
+    `count = 1
+
+while count <= 5:
+    print(count)
+    count += 1`
+
+},
+
+
+"break-continue": {
+
+    title: "Break & Continue",
+
+    category: "Control Flow",
+
+    description:
+    "Control the execution of loops using break and continue.",
+
+    introduction:
+    "break and continue are control statements used to change normal loop execution.",
+
+    concepts: `
+        <p>
+        <strong>break</strong> immediately exits the loop.
+        </p>
+
+        <p>
+        <strong>continue</strong> skips the current iteration
+        and moves to the next iteration.
+        </p>
+    `,
+
+    code:
+`for i in range(1, 6):
+
+    if i == 3:
+        continue
+
+    print(i)`,
+
+    points: [
+        "break exits a loop.",
+        "continue skips the current iteration.",
+        "Both are commonly used inside loops."
+    ],
+
+    keywords: [
+        "break",
+        "continue",
+        "Loop",
+        "Iteration"
+    ],
+
+    question:
+    "Print numbers from 1 to 5 but skip number 3.",
+
+    answer:
+    `for i in range(1, 6):
+    if i == 3:
+        continue
+    print(i)`
+
+},
+
+
+/* =====================================================
+   3. DATA STRUCTURES
+===================================================== */
+
+strings: {
+
+    title: "Strings",
+
+    category: "Data Structures",
+
+    description:
+    "Learn how Python works with text and strings.",
+
+    introduction:
+    "A string is a sequence of characters enclosed in single, double or triple quotes.",
+
+    concepts: `
+        <p>
+        Strings support indexing, slicing and many useful methods.
+        </p>
+    `,
+
+    code:
+`text = "Python"
+
+print(text[0])
+print(text[0:3])
+print(text.upper())
+print(text.lower())`,
+
+    points: [
+        "Strings are sequences of characters.",
+        "Strings support indexing and slicing.",
+        "Strings are immutable.",
+        "Python provides many string methods."
+    ],
+
+    keywords: [
+        "str",
+        "String",
+        "Indexing",
+        "Slicing",
+        "upper",
+        "lower"
+    ],
+
+    question:
+    "Create a string and print it in uppercase.",
+
+    answer:
+    `text = "python"
+print(text.upper())`
+
+},
+
+
+lists: {
+
+    title: "Lists",
+
+    category: "Data Structures",
+
+    description:
+    "Learn how to store and manipulate collections using lists.",
+
+    introduction:
+    "A list is an ordered, mutable collection that can contain multiple values.",
+
+    concepts: `
+        <p>
+        Lists can contain values of different data types and can
+        be modified after creation.
+        </p>
+    `,
+
+    code:
+`numbers = [10, 20, 30]
+
+numbers.append(40)
+
+print(numbers)
+print(numbers[0])`,
+
+    points: [
+        "Lists are ordered.",
+        "Lists are mutable.",
+        "Lists support indexing.",
+        "Lists can contain duplicate values."
+    ],
+
+    keywords: [
+        "list",
+        "append",
+        "remove",
+        "index",
+        "slice"
+    ],
+
+    question:
+    "Create a list containing three numbers and add a fourth number.",
+
+    answer:
+    `numbers = [10, 20, 30]
+numbers.append(40)`
+
+},
+
+
+tuples: {
+
+    title: "Tuples",
+
+    category: "Data Structures",
+
+    description:
+    "Understand immutable ordered collections using tuples.",
+
+    introduction:
+    "A tuple is an ordered collection that cannot normally be changed after it is created.",
+
+    concepts: `
+        <p>
+        Tuples are useful when a fixed collection of values
+        should be represented.
+        </p>
+    `,
+
+    code:
+`student = ("Alex", 20, 85)
+
+print(student)
+print(student[0])`,
+
+    points: [
+        "Tuples are ordered.",
+        "Tuples are immutable.",
+        "Tuples support indexing.",
+        "Tuples can contain different data types."
+    ],
+
+    keywords: [
+        "tuple",
+        "Immutable",
+        "Indexing",
+        "Sequence"
+    ],
+
+    question:
+    "Create a tuple containing three values.",
+
+    answer:
+    `data = ("Alex", 20, 85)`
+
+},
+
+
+sets: {
+
+    title: "Sets",
+
+    category: "Data Structures",
+
+    description:
+    "Learn collections of unique values using sets.",
+
+    introduction:
+    "A set is an unordered collection of unique elements.",
+
+    concepts: `
+        <p>
+        Sets are useful for removing duplicates and performing
+        mathematical set operations.
+        </p>
+    `,
+
+    code:
+`numbers = {1, 2, 3, 3, 4}
+
+print(numbers)
+
+numbers.add(5)
+
+print(numbers)`,
+
+    points: [
+        "Sets contain unique elements.",
+        "Sets are useful for membership testing.",
+        "Sets support union and intersection.",
+        "Sets do not provide normal sequence indexing."
+    ],
+
+    keywords: [
+        "set",
+        "unique",
+        "union",
+        "intersection"
+    ],
+
+    question:
+    "Create a set containing 1, 2, 2 and 3.",
+
+    answer:
+    `numbers = {1, 2, 2, 3}`
+
+},
+
+
+dictionaries: {
+
+    title: "Dictionaries",
+
+    category: "Data Structures",
+
+    description:
+    "Store information using key-value pairs.",
+
+    introduction:
+    "A dictionary stores data using keys associated with values.",
+
+    concepts: `
+        <p>
+        Dictionaries are useful for representing structured information
+        such as student records, product information and configuration data.
+        </p>
+    `,
+
+    code:
+`student = {
+    "name": "Alex",
+    "age": 20,
+    "marks": 85
+}
+
+print(student["name"])
+print(student["marks"])`,
+
+    points: [
+        "Dictionaries store key-value pairs.",
+        "Keys are used to access values.",
+        "Dictionaries are mutable.",
+        "Dictionary keys must be hashable."
+    ],
+
+    keywords: [
+        "dict",
+        "key",
+        "value",
+        "items",
+        "get"
+    ],
+
+    question:
+    "Create a dictionary containing a student's name and age.",
+
+    answer:
+    `student = {
+    "name": "Alex",
+    "age": 20
+}`
+
+},
+
+
+"list-comprehensions": {
+
+    title: "List Comprehensions",
+
+    category: "Data Structures",
+
+    description:
+    "Create lists using concise expressions.",
+
+    introduction:
+    "List comprehensions provide a compact way to create lists from iterable objects.",
+
+    concepts: `
+        <p>
+        A list comprehension can include an expression and,
+        optionally, a condition.
+        </p>
+    `,
+
+    code:
+`numbers = [1, 2, 3, 4, 5]
+
+squares = [x * x for x in numbers]
+
+print(squares)`,
+
+    points: [
+        "List comprehensions create lists concisely.",
+        "They can include conditions.",
+        "They can replace some simple loops.",
+        "Readability should remain a priority."
+    ],
+
+    keywords: [
+        "List Comprehension",
+        "for",
+        "if",
+        "Iterable"
+    ],
+
+    question:
+    "Create a list containing squares of numbers from 1 to 5.",
+
+    answer:
+    `squares = [x * x for x in range(1, 6)]`
+
+},
+
+
+/* =====================================================
+   4. FUNCTIONS
+===================================================== */
+
+functions: {
+
+    title: "Functions",
+
+    category: "Functions & Programming",
+
+    description:
+    "Learn how to create reusable blocks of Python code.",
+
+    introduction:
+    "A function is a reusable block of code designed to perform a specific task.",
+
+    concepts: `
+        <p>
+        Functions are defined using the <strong>def</strong> keyword.
+        They can accept parameters and return values.
+        </p>
+    `,
+
+    code:
 `def add(a, b):
     return a + b
 
@@ -644,89 +1506,370 @@ result = add(10, 20)
 
 print(result)`,
 
-        points: [
+    points: [
+        "Functions reduce code repetition.",
+        "Functions improve program organization.",
+        "Functions can accept parameters.",
+        "Functions can return values."
+    ],
 
-            "Functions reduce code repetition.",
+    keywords: [
+        "def",
+        "return",
+        "function",
+        "parameter",
+        "argument"
+    ],
 
-            "Functions improve program organization.",
+    question:
+    "Create a function that adds two numbers.",
 
-            "Functions can accept parameters.",
+    answer:
+    `def add(a, b):
+    return a + b`
 
-            "Functions can return values."
-
-        ],
-
-        question:
-        "Create a function that multiplies two numbers.",
-
-        answer:
-        `def multiply(a, b):
-    return a * b`
-
-    },
-
-
-    loops: {
-
-        title: "Loops",
-
-        description:
-        "Learn how to repeat code using Python loops.",
-
-        introduction:
-        "Loops allow a program to execute a block of code repeatedly.",
-
-        concepts: `
-            <p>Python mainly provides
-            <strong>for</strong> and
-            <strong>while</strong> loops.</p>
-        `,
-
-        code:
-`for i in range(1, 6):
-    print(i)`,
-
-        points: [
-
-            "for loops iterate over sequences.",
-
-            "while loops continue while a condition is true.",
-
-            "break can stop a loop.",
-
-            "continue can skip an iteration."
-
-        ],
-
-        question:
-        "Write a loop that prints numbers from 1 to 5.",
-
-        answer:
-        `for i in range(1, 6):
-    print(i)`
-
-    },
+},
 
 
-    inheritance: {
+"arguments-parameters": {
 
-        title: "Inheritance",
+    title: "Arguments & Parameters",
 
-        description:
-        "Learn how classes can inherit features from other classes.",
+    category: "Functions & Programming",
 
-        introduction:
-        "Inheritance allows one class to acquire properties and methods from another class.",
+    description:
+    "Understand how information is passed into functions.",
 
-        concepts: `
-            <p>The class being inherited from is commonly
-            called the parent or base class.</p>
+    introduction:
+    "Parameters are names defined in a function definition, while arguments are values supplied when the function is called.",
 
-            <p>The class that inherits is commonly called
-            the child or derived class.</p>
-        `,
+    concepts: `
+        <p>
+        Python functions support different argument styles,
+        including positional and keyword arguments.
+        </p>
+    `,
 
-        code:
+    code:
+`def greet(name, age):
+    print("Name:", name)
+    print("Age:", age)
+
+greet("Alex", 20)`,
+
+    points: [
+        "Parameters appear in function definitions.",
+        "Arguments are supplied during function calls.",
+        "Python supports positional arguments.",
+        "Python supports keyword arguments."
+    ],
+
+    keywords: [
+        "parameter",
+        "argument",
+        "positional",
+        "keyword"
+    ],
+
+    question:
+    "Create a function that accepts name and age.",
+
+    answer:
+    `def student(name, age):
+    print(name, age)`
+
+},
+
+
+recursion: {
+
+    title: "Recursion",
+
+    category: "Functions & Programming",
+
+    description:
+    "Understand functions that call themselves.",
+
+    introduction:
+    "Recursion occurs when a function calls itself to solve a smaller version of a problem.",
+
+    concepts: `
+        <p>
+        A recursive function normally requires a base case
+        to stop the recursion.
+        </p>
+    `,
+
+    code:
+`def factorial(n):
+
+    if n == 0:
+        return 1
+
+    return n * factorial(n - 1)
+
+print(factorial(5))`,
+
+    points: [
+        "Recursive functions call themselves.",
+        "A base case prevents endless recursion.",
+        "Recursion can simplify certain problems.",
+        "Recursive solutions may use additional stack space."
+    ],
+
+    keywords: [
+        "Recursion",
+        "Base Case",
+        "Recursive Call"
+    ],
+
+    question:
+    "What is the purpose of a base case?",
+
+    answer:
+    "The base case provides a condition that stops further recursive calls."
+
+},
+
+
+lambda: {
+
+    title: "Lambda Functions",
+
+    category: "Functions & Programming",
+
+    description:
+    "Learn small anonymous functions using lambda expressions.",
+
+    introduction:
+    "A lambda expression creates a small anonymous function, usually for a short operation.",
+
+    concepts: `
+        <p>
+        Lambda expressions can accept arguments and return the
+        result of an expression.
+        </p>
+    `,
+
+    code:
+`square = lambda x: x * x
+
+print(square(5))`,
+
+    points: [
+        "Lambda functions are anonymous.",
+        "They are useful for short expressions.",
+        "They can accept multiple arguments.",
+        "They are commonly used with functional tools."
+    ],
+
+    keywords: [
+        "lambda",
+        "anonymous",
+        "expression"
+    ],
+
+    question:
+    "Create a lambda function that doubles a number.",
+
+    answer:
+    `double = lambda x: x * 2`
+
+},
+
+
+"map-filter-reduce": {
+
+    title: "Map, Filter & Reduce",
+
+    category: "Functions & Programming",
+
+    description:
+    "Learn common functional programming techniques in Python.",
+
+    introduction:
+    "map(), filter() and reduce() can be used to process collections in different ways.",
+
+    concepts: `
+        <p>
+        <strong>map()</strong> applies a function to items.
+        </p>
+
+        <p>
+        <strong>filter()</strong> selects items based on a condition.
+        </p>
+
+        <p>
+        <strong>reduce()</strong> combines values into a single result
+        and is available through functools.
+        </p>
+    `,
+
+    code:
+`numbers = [1, 2, 3, 4]
+
+squares = list(map(lambda x: x*x, numbers))
+
+print(squares)`,
+
+    points: [
+        "map transforms values.",
+        "filter selects values.",
+        "reduce combines values.",
+        "These tools are useful in functional programming."
+    ],
+
+    keywords: [
+        "map",
+        "filter",
+        "reduce",
+        "lambda"
+    ],
+
+    question:
+    "Use map() to square the numbers 1, 2 and 3.",
+
+    answer:
+    `numbers = [1, 2, 3]
+
+result = list(map(lambda x: x*x, numbers))`
+
+},
+
+
+/* =====================================================
+   5. OOP
+===================================================== */
+
+"classes-objects": {
+
+    title: "Classes & Objects",
+
+    category: "Object-Oriented Programming",
+
+    description:
+    "Learn the foundations of object-oriented programming in Python.",
+
+    introduction:
+    "A class defines a structure and behavior, while an object is an instance of a class.",
+
+    concepts: `
+        <p>
+        Classes can contain attributes and methods.
+        Objects are created from classes.
+        </p>
+    `,
+
+    code:
+`class Student:
+
+    def display(self):
+        print("Student")
+
+
+student = Student()
+
+student.display()`,
+
+    points: [
+        "A class is a blueprint for objects.",
+        "An object is an instance of a class.",
+        "Classes can contain methods.",
+        "Classes can contain attributes."
+    ],
+
+    keywords: [
+        "class",
+        "object",
+        "method",
+        "attribute"
+    ],
+
+    question:
+    "Create a class called Student.",
+
+    answer:
+    `class Student:
+    pass`
+
+},
+
+
+constructors: {
+
+    title: "Constructors",
+
+    category: "Object-Oriented Programming",
+
+    description:
+    "Understand object initialization using __init__.",
+
+    introduction:
+    "The __init__ method is commonly used to initialize object attributes when an object is created.",
+
+    concepts: `
+        <p>
+        The constructor-like initialization method receives
+        self and any values required to initialize the object.
+        </p>
+    `,
+
+    code:
+`class Student:
+
+    def __init__(self, name):
+        self.name = name
+
+
+student = Student("Alex")
+
+print(student.name)`,
+
+    points: [
+        "__init__ is used for initialization.",
+        "self refers to the current object.",
+        "Attributes can be initialized when an object is created."
+    ],
+
+    keywords: [
+        "__init__",
+        "self",
+        "constructor",
+        "attribute"
+    ],
+
+    question:
+    "Create a class that stores a student's name.",
+
+    answer:
+    `class Student:
+
+    def __init__(self, name):
+        self.name = name`
+
+},
+
+
+inheritance: {
+
+    title: "Inheritance",
+
+    category: "Object-Oriented Programming",
+
+    description:
+    "Learn how one class can inherit features from another class.",
+
+    introduction:
+    "Inheritance allows a child class to reuse and extend functionality from a parent class.",
+
+    concepts: `
+        <p>
+        Inheritance promotes code reuse and supports hierarchical
+        relationships between classes.
+        </p>
+    `,
+
+    code:
 `class Animal:
 
     def speak(self):
@@ -744,30 +1887,1228 @@ dog = Dog()
 dog.speak()
 dog.bark()`,
 
-        points: [
+    points: [
+        "Inheritance promotes code reuse.",
+        "A child class can inherit methods.",
+        "Python supports multiple inheritance.",
+        "A child class can override inherited behavior."
+    ],
 
-            "Inheritance promotes code reuse.",
+    keywords: [
+        "inheritance",
+        "parent",
+        "child",
+        "base class",
+        "derived class"
+    ],
 
-            "A child class can inherit methods from a parent class.",
+    question:
+    "What is inheritance?",
 
-            "Python supports multiple inheritance.",
+    answer:
+    "Inheritance allows one class to acquire and reuse features of another class."
 
-            "Inheritance is an important OOP concept."
+},
 
-        ],
 
-        question:
-        "Create a child class that inherits from a parent class.",
+polymorphism: {
 
-        answer:
-        "Use class Child(Parent):"
+    title: "Polymorphism",
 
-    }
+    category: "Object-Oriented Programming",
+
+    description:
+    "Understand how the same interface can work with different objects.",
+
+    introduction:
+    "Polymorphism allows different objects to respond to the same operation in different ways.",
+
+    concepts: `
+        <p>
+        Python commonly demonstrates polymorphism through
+        method overriding and duck typing.
+        </p>
+    `,
+
+    code:
+`class Dog:
+
+    def speak(self):
+        print("Woof")
+
+
+class Cat:
+
+    def speak(self):
+        print("Meow")
+
+
+for animal in [Dog(), Cat()]:
+    animal.speak()`,
+
+    points: [
+        "Polymorphism means many forms.",
+        "Different objects can implement the same method.",
+        "Python's dynamic nature supports flexible polymorphism."
+    ],
+
+    keywords: [
+        "polymorphism",
+        "method",
+        "duck typing",
+        "override"
+    ],
+
+    question:
+    "What does polymorphism mean in programming?",
+
+    answer:
+    "It allows the same operation or interface to work with different types of objects."
+
+},
+
+
+encapsulation: {
+
+    title: "Encapsulation",
+
+    category: "Object-Oriented Programming",
+
+    description:
+    "Learn how Python classes organize and control access to data.",
+
+    introduction:
+    "Encapsulation combines data and methods within a class and can be used to control how internal data is accessed.",
+
+    concepts: `
+        <p>
+        Python uses naming conventions such as a leading underscore
+        and name mangling for double-underscore attributes.
+        </p>
+    `,
+
+    code:
+`class Account:
+
+    def __init__(self):
+        self.__balance = 0
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def show_balance(self):
+        print(self.__balance)
+
+
+account = Account()
+
+account.deposit(1000)
+account.show_balance()`,
+
+    points: [
+        "Encapsulation combines data and behavior.",
+        "Double underscores trigger name mangling.",
+        "Methods can control access to internal data."
+    ],
+
+    keywords: [
+        "encapsulation",
+        "private",
+        "attribute",
+        "method"
+    ],
+
+    question:
+    "Why is encapsulation useful?",
+
+    answer:
+    "It helps organize data and behavior and can restrict direct access to internal implementation details."
+
+},
+
+
+abstraction: {
+
+    title: "Abstraction",
+
+    category: "Object-Oriented Programming",
+
+    description:
+    "Learn how to expose essential behavior while hiding implementation details.",
+
+    introduction:
+    "Abstraction focuses on what an object does rather than exposing every implementation detail.",
+
+    concepts: `
+        <p>
+        Python supports abstraction through techniques such as
+        abstract base classes in the abc module.
+        </p>
+    `,
+
+    code:
+`from abc import ABC, abstractmethod
+
+
+class Animal(ABC):
+
+    @abstractmethod
+    def speak(self):
+        pass
+
+
+class Dog(Animal):
+
+    def speak(self):
+        print("Woof!")`,
+
+    points: [
+        "Abstraction hides unnecessary implementation details.",
+        "Abstract base classes can define required methods.",
+        "Concrete classes provide implementations."
+    ],
+
+    keywords: [
+        "abstraction",
+        "ABC",
+        "abstractmethod",
+        "interface"
+    ],
+
+    question:
+    "What is the main purpose of abstraction?",
+
+    answer:
+    "To expose essential behavior while hiding unnecessary implementation details."
+
+},
+
+
+/* =====================================================
+   6. FILES, ERRORS AND MODULES
+===================================================== */
+
+"file-handling": {
+
+    title: "File Handling",
+
+    category: "Files & Errors",
+
+    description:
+    "Learn how to read, write and manage files with Python.",
+
+    introduction:
+    "Python provides built-in functions for opening and working with files.",
+
+    concepts: `
+        <p>
+        The open() function is commonly used to access files.
+        </p>
+
+        <p>
+        Common modes include read, write and append.
+        </p>
+    `,
+
+    code:
+`with open("data.txt", "w") as file:
+    file.write("Hello Python")
+
+
+with open("data.txt", "r") as file:
+    content = file.read()
+
+print(content)`,
+
+    points: [
+        "open() is used to access files.",
+        "with automatically manages the file resource.",
+        "Files can be read, written and appended.",
+        "Closing resources properly is important."
+    ],
+
+    keywords: [
+        "open",
+        "read",
+        "write",
+        "append",
+        "with"
+    ],
+
+    question:
+    "Write text to a file using Python.",
+
+    answer:
+    `with open("data.txt", "w") as file:
+    file.write("Hello")`
+
+},
+
+
+"exception-handling": {
+
+    title: "Exception Handling",
+
+    category: "Files & Errors",
+
+    description:
+    "Learn how Python handles runtime errors.",
+
+    introduction:
+    "Exception handling allows programs to respond to errors without unexpectedly terminating.",
+
+    concepts: `
+        <p>
+        Python provides try, except, else and finally for
+        structured exception handling.
+        </p>
+    `,
+
+    code:
+`try:
+
+    number = int(input("Enter a number: "))
+
+    print(10 / number)
+
+except ValueError:
+
+    print("Please enter a valid number.")
+
+except ZeroDivisionError:
+
+    print("Cannot divide by zero.")`,
+
+    points: [
+        "try contains code that may raise an exception.",
+        "except handles specific exceptions.",
+        "finally can run cleanup code.",
+        "Specific exceptions should generally be handled."
+    ],
+
+    keywords: [
+        "try",
+        "except",
+        "else",
+        "finally",
+        "Exception"
+    ],
+
+    question:
+    "What is the purpose of try and except?",
+
+    answer:
+    "They allow a program to detect and handle exceptions."
+
+},
+
+
+modules: {
+
+    title: "Modules",
+
+    category: "Modules & Packages",
+
+    description:
+    "Learn how Python code can be organized into reusable modules.",
+
+    introduction:
+    "A module is a Python file containing code such as functions, classes and variables that can be imported into another program.",
+
+    concepts: `
+        <p>
+        Python provides many standard library modules,
+        and developers can also create their own modules.
+        </p>
+    `,
+
+    code:
+`import math
+
+print(math.sqrt(25))`,
+
+    points: [
+        "Modules organize reusable code.",
+        "Modules can be imported.",
+        "Python has a large standard library.",
+        "Developers can create custom modules."
+    ],
+
+    keywords: [
+        "import",
+        "module",
+        "from",
+        "as"
+    ],
+
+    question:
+    "Import the math module and calculate the square root of 16.",
+
+    answer:
+    `import math
+
+print(math.sqrt(16))`
+
+},
+
+
+packages: {
+
+    title: "Packages",
+
+    category: "Modules & Packages",
+
+    description:
+    "Understand how multiple Python modules can be organized into packages.",
+
+    introduction:
+    "A package is a way of organizing related Python modules into a structured directory.",
+
+    concepts: `
+        <p>
+        Packages help organize larger Python applications
+        into logical components.
+        </p>
+    `,
+
+    code:
+`# Example import
+
+from mypackage import calculator
+
+result = calculator.add(10, 20)
+
+print(result)`,
+
+    points: [
+        "Packages organize related modules.",
+        "Packages help structure larger projects.",
+        "Python supports nested package structures."
+    ],
+
+    keywords: [
+        "package",
+        "module",
+        "import",
+        "__init__"
+    ],
+
+    question:
+    "What is a Python package?",
+
+    answer:
+    "A package is a structured collection of related Python modules."
+
+},
+
+
+/* =====================================================
+   7. ADVANCED PYTHON
+===================================================== */
+
+iterators: {
+
+    title: "Iterators",
+
+    category: "Advanced Python",
+
+    description:
+    "Understand Python's iterator protocol.",
+
+    introduction:
+    "An iterator is an object that produces values one at a time using the iterator protocol.",
+
+    concepts: `
+        <p>
+        Iterators commonly implement __iter__() and __next__().
+        </p>
+    `,
+
+    code:
+`numbers = [10, 20, 30]
+
+iterator = iter(numbers)
+
+print(next(iterator))
+print(next(iterator))
+print(next(iterator))`,
+
+    points: [
+        "iter() can obtain an iterator.",
+        "next() retrieves the next value.",
+        "Iterators produce values one at a time.",
+        "Iteration ends with StopIteration."
+    ],
+
+    keywords: [
+        "iterator",
+        "iter",
+        "next",
+        "StopIteration"
+    ],
+
+    question:
+    "What does next() do with an iterator?",
+
+    answer:
+    "It returns the next available value from the iterator."
+
+},
+
+
+generators: {
+
+    title: "Generators",
+
+    category: "Advanced Python",
+
+    description:
+    "Generate values efficiently using yield.",
+
+    introduction:
+    "Generators produce values lazily instead of storing all generated values in memory at once.",
+
+    concepts: `
+        <p>
+        A function containing yield becomes a generator function.
+        </p>
+    `,
+
+    code:
+`def numbers():
+
+    for i in range(1, 6):
+        yield i
+
+
+for number in numbers():
+    print(number)`,
+
+    points: [
+        "Generators use yield.",
+        "Values are produced lazily.",
+        "Generators can reduce memory usage.",
+        "Generators are iterable."
+    ],
+
+    keywords: [
+        "generator",
+        "yield",
+        "lazy evaluation"
+    ],
+
+    question:
+    "Which keyword is used to create values in a generator?",
+
+    answer:
+    "yield"
+
+},
+
+
+decorators: {
+
+    title: "Decorators",
+
+    category: "Advanced Python",
+
+    description:
+    "Learn how decorators modify or extend function behavior.",
+
+    introduction:
+    "A decorator is a callable that takes another function or callable and returns a modified or enhanced callable.",
+
+    concepts: `
+        <p>
+        Decorators are commonly used for logging,
+        authentication, timing and other cross-cutting functionality.
+        </p>
+    `,
+
+    code:
+`def decorator(function):
+
+    def wrapper():
+        print("Before function")
+        function()
+        print("After function")
+
+    return wrapper
+
+
+@decorator
+def hello():
+    print("Hello")
+
+
+hello()`,
+
+    points: [
+        "Decorators modify callable behavior.",
+        "Decorators use the @ syntax.",
+        "Decorators commonly use wrapper functions."
+    ],
+
+    keywords: [
+        "decorator",
+        "@",
+        "wrapper",
+        "callable"
+    ],
+
+    question:
+    "What is the purpose of a decorator?",
+
+    answer:
+    "A decorator can add or modify behavior without changing the original function's core code."
+
+},
+
+
+"regular-expressions": {
+
+    title: "Regular Expressions",
+
+    category: "Advanced Python",
+
+    description:
+    "Search and manipulate text patterns using regular expressions.",
+
+    introduction:
+    "Regular expressions provide a pattern-based method for finding and processing text.",
+
+    concepts: `
+        <p>
+        Python provides the re module for working with regular expressions.
+        </p>
+    `,
+
+    code:
+`import re
+
+text = "My number is 12345"
+
+result = re.search(r"\\d+", text)
+
+print(result.group())`,
+
+    points: [
+        "The re module provides regular expression functionality.",
+        "Patterns can search for specific text structures.",
+        "Regular expressions are useful for text processing."
+    ],
+
+    keywords: [
+        "re",
+        "pattern",
+        "search",
+        "match",
+        "regex"
+    ],
+
+    question:
+    "Which Python module is used for regular expressions?",
+
+    answer:
+    "The re module."
+
+},
+
+
+"date-time": {
+
+    title: "Date & Time",
+
+    category: "Advanced Python",
+
+    description:
+    "Learn how Python works with dates and times.",
+
+    introduction:
+    "Python provides the datetime module for representing and manipulating dates and times.",
+
+    concepts: `
+        <p>
+        datetime provides classes for dates, times and combined
+        date-time values.
+        </p>
+    `,
+
+    code:
+`from datetime import datetime
+
+now = datetime.now()
+
+print(now)`,
+
+    points: [
+        "datetime is part of the standard library.",
+        "Dates and times can be represented using datetime objects.",
+        "Date formatting can be customized."
+    ],
+
+    keywords: [
+        "datetime",
+        "date",
+        "time",
+        "strftime"
+    ],
+
+    question:
+    "How can you get the current date and time?",
+
+    answer:
+    `from datetime import datetime
+
+print(datetime.now())`
+
+},
+
+
+"virtual-environments": {
+
+    title: "Virtual Environments",
+
+    category: "Advanced Python",
+
+    description:
+    "Learn how to create isolated Python project environments.",
+
+    introduction:
+    "Virtual environments allow different Python projects to maintain separate dependencies.",
+
+    concepts: `
+        <p>
+        The venv module can create lightweight isolated environments
+        for Python projects.
+        </p>
+    `,
+
+    code:
+`python -m venv myenv
+
+# Windows
+myenv\\Scripts\\activate
+
+# Linux/macOS
+source myenv/bin/activate`,
+
+    points: [
+        "Virtual environments isolate project dependencies.",
+        "Different projects can use different package versions.",
+        "venv is included with standard Python installations."
+    ],
+
+    keywords: [
+        "venv",
+        "virtual environment",
+        "pip",
+        "dependency"
+    ],
+
+    question:
+    "Why are virtual environments useful?",
+
+    answer:
+    "They isolate project dependencies so different projects can use different package versions."
+
+},
+
+
+/* =====================================================
+   8. LIBRARIES
+===================================================== */
+
+numpy: {
+
+    title: "NumPy",
+
+    category: "Python Libraries",
+
+    description:
+    "Learn the basics of numerical computing with NumPy.",
+
+    introduction:
+    "NumPy is a widely used Python library for numerical computing and multidimensional arrays.",
+
+    concepts: `
+        <p>
+        NumPy provides efficient array structures and many
+        mathematical operations.
+        </p>
+    `,
+
+    code:
+`import numpy as np
+
+numbers = np.array([1, 2, 3, 4])
+
+print(numbers)
+print(numbers * 2)`,
+
+    points: [
+        "NumPy provides multidimensional arrays.",
+        "NumPy supports mathematical operations.",
+        "NumPy is widely used in data science.",
+        "NumPy integrates with many scientific libraries."
+    ],
+
+    keywords: [
+        "NumPy",
+        "array",
+        "ndarray",
+        "numerical computing"
+    ],
+
+    question:
+    "Which Python library is commonly used for numerical arrays?",
+
+    answer:
+    "NumPy"
+
+},
+
+
+pandas: {
+
+    title: "Pandas",
+
+    category: "Python Libraries",
+
+    description:
+    "Learn data manipulation and analysis using Pandas.",
+
+    introduction:
+    "Pandas is a Python library designed for data manipulation and analysis.",
+
+    concepts: `
+        <p>
+        Pandas provides important structures such as Series
+        and DataFrame.
+        </p>
+    `,
+
+    code:
+`import pandas as pd
+
+data = {
+    "Name": ["Alex", "Sam"],
+    "Marks": [85, 90]
+}
+
+df = pd.DataFrame(data)
+
+print(df)`,
+
+    points: [
+        "Pandas is widely used for data analysis.",
+        "DataFrame is a central Pandas structure.",
+        "Pandas can read many data formats.",
+        "Pandas supports filtering and transformation."
+    ],
+
+    keywords: [
+        "Pandas",
+        "DataFrame",
+        "Series",
+        "Data Analysis"
+    ],
+
+    question:
+    "Which Pandas structure is commonly used for tabular data?",
+
+    answer:
+    "DataFrame"
+
+},
+
+
+matplotlib: {
+
+    title: "Matplotlib",
+
+    category: "Python Libraries",
+
+    description:
+    "Create charts and visualizations using Matplotlib.",
+
+    introduction:
+    "Matplotlib is a Python library commonly used to create static data visualizations.",
+
+    concepts: `
+        <p>
+        It can create line charts, bar charts, scatter plots
+        and many other types of visualizations.
+        </p>
+    `,
+
+    code:
+`import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4]
+y = [10, 20, 15, 25]
+
+plt.plot(x, y)
+
+plt.show()`,
+
+    points: [
+        "Matplotlib creates visualizations.",
+        "pyplot provides a convenient plotting interface.",
+        "Charts can represent numerical data visually."
+    ],
+
+    keywords: [
+        "Matplotlib",
+        "pyplot",
+        "plot",
+        "visualization"
+    ],
+
+    question:
+    "Which module is commonly imported as plt?",
+
+    answer:
+    "matplotlib.pyplot"
+
+},
+
+
+/* =====================================================
+   9. APPLICATIONS
+===================================================== */
+
+"database-connectivity": {
+
+    title: "Database Connectivity",
+
+    category: "Python Applications",
+
+    description:
+    "Learn the basics of connecting Python programs to databases.",
+
+    introduction:
+    "Python applications can communicate with databases to store, retrieve and manage structured information.",
+
+    concepts: `
+        <p>
+        Python provides database-related modules and libraries
+        for working with different database systems.
+        </p>
+    `,
+
+    code:
+`import sqlite3
+
+connection = sqlite3.connect("students.db")
+
+cursor = connection.cursor()
+
+cursor.execute(
+    "CREATE TABLE IF NOT EXISTS students (name TEXT)"
+)
+
+connection.commit()
+
+connection.close()`,
+
+    points: [
+        "Python can communicate with databases.",
+        "sqlite3 is included in the standard library.",
+        "Database connections should be closed properly.",
+        "SQL is commonly used to work with relational databases."
+    ],
+
+    keywords: [
+        "database",
+        "SQL",
+        "sqlite3",
+        "connection",
+        "cursor"
+    ],
+
+    question:
+    "Which Python standard library module can work with SQLite?",
+
+    answer:
+    "sqlite3"
+
+},
+
+
+apis: {
+
+    title: "APIs",
+
+    category: "Python Applications",
+
+    description:
+    "Learn how Python applications communicate with external services through APIs.",
+
+    introduction:
+    "An API provides a structured way for software applications to communicate with other software or services.",
+
+    concepts: `
+        <p>
+        Python applications can send HTTP requests to web APIs
+        and process the returned data.
+        </p>
+    `,
+
+    code:
+`import requests
+
+response = requests.get(
+    "https://example.com"
+)
+
+print(response.status_code)`,
+
+    points: [
+        "APIs allow applications to communicate.",
+        "HTTP is commonly used for web APIs.",
+        "APIs may return data such as JSON.",
+        "Authentication may be required by some APIs."
+    ],
+
+    keywords: [
+        "API",
+        "HTTP",
+        "JSON",
+        "request",
+        "response"
+    ],
+
+    question:
+    "What is an API?",
+
+    answer:
+    "An API is an interface that allows software systems to communicate and exchange functionality or data."
+
+},
+
+
+"web-development": {
+
+    title: "Web Development with Python",
+
+    category: "Python Applications",
+
+    description:
+    "Explore how Python can be used to develop web applications.",
+
+    introduction:
+    "Python can be used for web development through frameworks and libraries such as Django and Flask.",
+
+    concepts: `
+        <p>
+        Web frameworks provide tools for handling requests,
+        responses, routing, templates and application logic.
+        </p>
+    `,
+
+    code:
+`# Simple Flask example
+
+from flask import Flask
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def home():
+    return "Hello Python Web"
+
+
+app.run()`,
+
+    points: [
+        "Python is widely used for backend web development.",
+        "Django and Flask are popular Python web frameworks.",
+        "Web applications receive requests and produce responses."
+    ],
+
+    keywords: [
+        "Web",
+        "Flask",
+        "Django",
+        "Backend",
+        "HTTP"
+    ],
+
+    question:
+    "Name one Python web framework.",
+
+    answer:
+    "Django or Flask."
+
+},
+
+
+automation: {
+
+    title: "Automation with Python",
+
+    category: "Python Applications",
+
+    description:
+    "Learn how Python can automate repetitive tasks.",
+
+    introduction:
+    "Python can automate many repetitive computer tasks such as file processing, data handling and workflow operations.",
+
+    concepts: `
+        <p>
+        Python's standard library and external packages provide
+        tools for interacting with files, directories, processes
+        and other systems.
+        </p>
+    `,
+
+    code:
+`from pathlib import Path
+
+for file in Path(".").glob("*.txt"):
+
+    print(file.name)`,
+
+    points: [
+        "Python can automate repetitive work.",
+        "File and directory operations can be automated.",
+        "Automation can reduce manual effort.",
+        "Automation scripts should be tested carefully."
+    ],
+
+    keywords: [
+        "automation",
+        "script",
+        "Path",
+        "file",
+        "workflow"
+    ],
+
+    question:
+    "Give one example of a task that Python can automate.",
+
+    answer:
+    "Examples include renaming files, processing data or generating reports."
+
+},
+
+
+"data-science": {
+
+    title: "Data Science with Python",
+
+    category: "Python Applications",
+
+    description:
+    "Understand how Python is used in data science.",
+
+    introduction:
+    "Python is widely used in data science for data collection, cleaning, analysis, visualization and modeling.",
+
+    concepts: `
+        <p>
+        Libraries such as NumPy, Pandas and Matplotlib form
+        part of the Python data science ecosystem.
+        </p>
+    `,
+
+    code:
+`import pandas as pd
+
+data = pd.read_csv("data.csv")
+
+print(data.head())`,
+
+    points: [
+        "Python is widely used in data science.",
+        "Data cleaning is an important step.",
+        "Visualization helps communicate findings.",
+        "Machine learning can be part of a data science workflow."
+    ],
+
+    keywords: [
+        "Data Science",
+        "Pandas",
+        "NumPy",
+        "Visualization",
+        "Data Analysis"
+    ],
+
+    question:
+    "Name two Python libraries commonly used in data science.",
+
+    answer:
+    "NumPy and Pandas."
+
+},
+
+
+"machine-learning": {
+
+    title: "Machine Learning Basics",
+
+    category: "Python Applications",
+
+    description:
+    "Get an introduction to machine learning using Python.",
+
+    introduction:
+    "Machine learning involves developing systems that learn patterns from data and use those patterns to make predictions or decisions.",
+
+    concepts: `
+        <p>
+        A typical machine learning workflow may include data preparation,
+        training, evaluation and deployment.
+        </p>
+
+        <p>
+        Python has a large ecosystem of machine learning libraries.
+        </p>
+    `,
+
+    code:
+`# Conceptual machine learning workflow
+
+data = load_data()
+
+clean_data = prepare_data(data)
+
+model = train_model(clean_data)
+
+predictions = model.predict(new_data)`,
+
+    points: [
+        "Machine learning uses data to learn patterns.",
+        "Training data is used to build models.",
+        "Models should be evaluated using suitable metrics.",
+        "Python is widely used for machine learning."
+    ],
+
+    keywords: [
+        "Machine Learning",
+        "Model",
+        "Training",
+        "Prediction",
+        "Dataset"
+    ],
+
+    question:
+    "What is machine learning?",
+
+    answer:
+    "Machine learning is a field where systems learn patterns from data to make predictions or decisions."
+
+}
 
 };
 
 
-/* GET TOPIC FROM URL */
+/* =====================================================
+   GET TOPIC FROM URL
+===================================================== */
 
 const params =
 new URLSearchParams(window.location.search);
@@ -776,45 +3117,87 @@ const topic =
 params.get("topic") || "introduction";
 
 
-/* LOAD TOPIC */
+/* =====================================================
+   LOAD TOPIC
+===================================================== */
 
 function loadTopic() {
 
     const data =
     pythonTopics[topic];
 
+
     if (!data) {
 
-        document.getElementById("topicTitle").textContent =
-        "Python Topic Not Found";
+        document.getElementById("mainContent").innerHTML = `
 
-        document.getElementById("topicDescription").textContent =
-        "The requested topic could not be found.";
+            <div class="card not-found">
+
+                <h2>Python Topic Not Found</h2>
+
+                <p>
+                    The topic you requested is not available yet.
+                </p>
+
+                <a
+                    href="python.html"
+                    class="btn">
+
+                    ← Return to Python
+
+                </a>
+
+            </div>
+
+        `;
+
+        document.getElementById("topicTitle")
+            .textContent = "Topic Not Found";
+
+        document.getElementById("topicDescription")
+            .textContent =
+            "Please return to the Python subject page.";
 
         return;
 
     }
 
 
-    document.getElementById("topicTitle").textContent =
-    data.title;
+    document.title =
+    "EduLearn - " + data.title;
 
 
-    document.getElementById("topicDescription").textContent =
-    data.description;
+    document.getElementById("topicTitle")
+        .textContent =
+        data.title;
 
 
-    document.getElementById("topicIntroduction").textContent =
-    data.introduction;
+    document.getElementById("topicDescription")
+        .textContent =
+        data.description;
 
 
-    document.getElementById("topicConcepts").innerHTML =
-    data.concepts;
+    document.getElementById("topicCategory")
+        .textContent =
+        data.category;
 
 
-    document.getElementById("topicCode").textContent =
-    data.code;
+    document.getElementById("topicIntroduction")
+        .textContent =
+        data.introduction;
 
+
+    document.getElementById("topicConcepts")
+        .innerHTML =
+        data.concepts;
+
+
+    document.getElementById("topicCode")
+        .textContent =
+        data.code;
+
+
+    /* IMPORTANT POINTS */
 
     const points =
     document.getElementById("importantPoints");
@@ -827,19 +3210,48 @@ function loadTopic() {
         const li =
         document.createElement("li");
 
-        li.textContent = point;
+        li.textContent =
+        point;
 
         points.appendChild(li);
 
     });
 
 
-    document.getElementById("practiceQuestion").textContent =
-    data.question;
+    /* KEYWORDS */
+
+    const keywords =
+    document.getElementById("topicKeywords");
+
+    keywords.innerHTML = "";
 
 
-    document.getElementById("practiceAnswer").textContent =
-    data.answer;
+    data.keywords.forEach(keyword => {
+
+        const span =
+        document.createElement("span");
+
+        span.className =
+        "keyword";
+
+        span.textContent =
+        keyword;
+
+        keywords.appendChild(span);
+
+    });
+
+
+    /* PRACTICE */
+
+    document.getElementById("practiceQuestion")
+        .textContent =
+        data.question;
+
+
+    document.getElementById("practiceAnswer")
+        .textContent =
+        data.answer;
 
 
     checkCompletion();
@@ -847,17 +3259,22 @@ function loadTopic() {
 }
 
 
-/* SHOW ANSWER */
+/* =====================================================
+   SHOW ANSWER
+===================================================== */
 
 function showAnswer() {
 
-    document.getElementById("practiceAnswer").style.display =
-    "block";
+    document.getElementById("practiceAnswer")
+        .style.display =
+        "block";
 
 }
 
 
-/* MARK COMPLETE */
+/* =====================================================
+   MARK COMPLETED
+===================================================== */
 
 function markCompleted() {
 
@@ -866,36 +3283,115 @@ function markCompleted() {
         "completed"
     );
 
-    document.getElementById("completionStatus").textContent =
-    "✓ This topic has been marked as completed.";
+
+    document.getElementById("completionStatus")
+        .textContent =
+        "✓ This topic has been marked as completed.";
+
+
+    updateProgress();
 
 }
 
 
-/* CHECK COMPLETION */
+/* =====================================================
+   CHECK COMPLETION
+===================================================== */
 
 function checkCompletion() {
 
-    if (
-        localStorage.getItem(
-            "pythonTopic_" + topic
-        ) === "completed"
-    ) {
+    const completed =
+    localStorage.getItem(
+        "pythonTopic_" + topic
+    );
 
-        document.getElementById("completionStatus").textContent =
-        "✓ You have already completed this topic.";
+
+    if (completed === "completed") {
+
+        document.getElementById("completionStatus")
+            .textContent =
+            "✓ You have already completed this topic.";
 
     }
 
 }
 
 
-/* START */
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+function updateProgress() {
+
+    const topicKeys =
+    Object.keys(pythonTopics);
+
+
+    let completed = 0;
+
+
+    topicKeys.forEach(key => {
+
+        if (
+            localStorage.getItem(
+                "pythonTopic_" + key
+            ) === "completed"
+        ) {
+
+            completed++;
+
+        }
+
+    });
+
+
+    const percentage =
+    Math.round(
+        (completed / topicKeys.length) * 100
+    );
+
+
+    const oldProgress =
+    document.getElementById("subjectProgress");
+
+
+    if (oldProgress) {
+
+        oldProgress.textContent =
+        completed +
+        " / " +
+        topicKeys.length +
+        " topics completed (" +
+        percentage +
+        "%)";
+
+    }
+
+
+    const progressBar =
+    document.getElementById("subjectProgressBar");
+
+
+    if (progressBar) {
+
+        progressBar.style.width =
+        percentage + "%";
+
+    }
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
 
 loadTopic();
 
 </script>
 
+
 </body>
 
 </html>
+```
