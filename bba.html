@@ -1,0 +1,755 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduLearn - BBA</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            background: white;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #374151;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background: linear-gradient(135deg, #7c3aed, #9333ea);
+            color: white;
+            padding: 75px 7%;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #ede9fe;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #ddd6fe;
+        }
+
+        .hero p {
+            max-width: 760px;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #f3e8ff;
+        }
+
+        /* ================= CONTENT ================= */
+
+        .container {
+            width: 86%;
+            max-width: 1150px;
+            margin: 55px auto;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .section-description {
+            color: #6b7280;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        /* ================= SUBJECT GRID ================= */
+
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .subject-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+
+        .subject-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 12px;
+            background: #f3e8ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .subject-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .subject-card p {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 14px;
+            min-height: 72px;
+            margin-bottom: 20px;
+        }
+
+        .course-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: #7c3aed;
+            color: white;
+            padding: 10px 17px;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .course-btn:hover {
+            background: #6d28d9;
+        }
+
+        .coming-soon {
+            background: #e5e7eb;
+            color: #6b7280;
+        }
+
+        /* ================= BBA SKILLS ================= */
+
+        .skills-section {
+            margin-top: 60px;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .skills-section h2 {
+            margin-bottom: 25px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .skill {
+            background: #f5f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            color: #5b21b6;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* ================= LEARNING METHOD ================= */
+
+        .method-section {
+            margin-top: 60px;
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .method-card {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .method-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .method-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .method-card p {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            margin-top: 70px;
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 30px 7%;
+        }
+
+        footer p {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .subject-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .method-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                padding: 0 5%;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a:not(:last-child) {
+                display: none;
+            }
+
+            .hero {
+                padding: 55px 7%;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .subject-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <a href="index.html" class="logo">
+            EduLearn
+        </a>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="settings.html">
+                Settings
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="breadcrumb">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            &nbsp; / &nbsp;
+
+            BBA
+
+        </div>
+
+        <h1>
+            Learn <span>BBA</span>
+        </h1>
+
+        <p>
+            Develop essential business and management knowledge
+            through structured BBA courses. Learn how organizations
+            work, how businesses make decisions and how managers
+            solve real-world business problems.
+        </p>
+
+    </section>
+
+
+    <!-- ================= SUBJECTS ================= -->
+
+    <main class="container">
+
+        <h2 class="section-title">
+            BBA Subjects
+        </h2>
+
+        <p class="section-description">
+            Explore important business and management subjects
+            and build a strong foundation for your career.
+        </p>
+
+
+        <div class="subject-grid">
+
+
+            <!-- MANAGEMENT -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    👔
+                </div>
+
+                <h3>
+                    Principles of Management
+                </h3>
+
+                <p>
+                    Understand management principles, planning,
+                    organizing, leadership, coordination and control.
+                </p>
+
+                <span class="course-btn coming-soon">
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+            <!-- MARKETING -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    📣
+                </div>
+
+                <h3>
+                    Marketing Management
+                </h3>
+
+                <p>
+                    Learn marketing concepts, consumer behavior,
+                    branding, market research and promotion.
+                </p>
+
+                <span class="course-btn coming-soon">
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+            <!-- FINANCE -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    💰
+                </div>
+
+                <h3>
+                    Financial Management
+                </h3>
+
+                <p>
+                    Learn financial planning, investment decisions,
+                    capital structure and financial analysis.
+                </p>
+
+                <span class="course-btn coming-soon">
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+            <!-- HR -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    👥
+                </div>
+
+                <h3>
+                    Human Resource Management
+                </h3>
+
+                <p>
+                    Understand recruitment, training, performance,
+                    compensation and employee relations.
+                </p>
+
+                <span class="course-btn coming-soon">
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+            <!-- BUSINESS ECONOMICS -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    📈
+                </div>
+
+                <h3>
+                    Business Economics
+                </h3>
+
+                <p>
+                    Study demand, supply, market structures,
+                    costs, pricing and economic decision-making.
+                </p>
+
+                <span class="course-btn coming-soon">
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+            <!-- BUSINESS LAW -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    ⚖️
+                </div>
+
+                <h3>
+                    Business Law
+                </h3>
+
+                <p>
+                    Learn important legal principles related to
+                    contracts, companies and business activities.
+                </p>
+
+                <span class="course-btn coming-soon">
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+            <!-- ENTREPRENEURSHIP -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    🚀
+                </div>
+
+                <h3>
+                    Entrepreneurship
+                </h3>
+
+                <p>
+                    Learn how business ideas are developed,
+                    evaluated and transformed into businesses.
+                </p>
+
+                <span class="course-btn coming-soon">
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+            <!-- BUSINESS COMMUNICATION -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    🗣️
+                </div>
+
+                <h3>
+                    Business Communication
+                </h3>
+
+                <p>
+                    Develop professional communication,
+                    presentation, writing and interpersonal skills.
+                </p>
+
+                <span class="course-btn coming-soon">
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+            <!-- BUSINESS ANALYTICS -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    📊
+                </div>
+
+                <h3>
+                    Business Analytics
+                </h3>
+
+                <p>
+                    Learn how data can be used to understand
+                    business performance and make decisions.
+                </p>
+
+                <span class="course-btn coming-soon">
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ================= SKILLS ================= -->
+
+        <section class="skills-section">
+
+            <h2>
+                Skills You'll Develop
+            </h2>
+
+            <div class="skills-grid">
+
+                <div class="skill">
+                    Leadership
+                </div>
+
+                <div class="skill">
+                    Communication
+                </div>
+
+                <div class="skill">
+                    Decision Making
+                </div>
+
+                <div class="skill">
+                    Problem Solving
+                </div>
+
+                <div class="skill">
+                    Financial Thinking
+                </div>
+
+                <div class="skill">
+                    Marketing Skills
+                </div>
+
+                <div class="skill">
+                    Team Management
+                </div>
+
+                <div class="skill">
+                    Business Analysis
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= LEARNING METHOD ================= -->
+
+        <section class="method-section">
+
+            <h2 class="section-title">
+                How You'll Learn
+            </h2>
+
+            <p class="section-description">
+                EduLearn combines concepts, practice and assessment
+                to help students understand business subjects.
+            </p>
+
+
+            <div class="method-grid">
+
+
+                <div class="method-card">
+
+                    <div class="method-icon">
+                        📚
+                    </div>
+
+                    <h3>
+                        Learn Concepts
+                    </h3>
+
+                    <p>
+                        Study structured lessons covering important
+                        BBA concepts in a simple and organized way.
+                    </p>
+
+                </div>
+
+
+                <div class="method-card">
+
+                    <div class="method-icon">
+                        🧠
+                    </div>
+
+                    <h3>
+                        Practice
+                    </h3>
+
+                    <p>
+                        Apply concepts through examples, questions
+                        and real-world business situations.
+                    </p>
+
+                </div>
+
+
+                <div class="method-card">
+
+                    <div class="method-icon">
+                        🏆
+                    </div>
+
+                    <h3>
+                        Test Yourself
+                    </h3>
+
+                    <p>
+                        Complete quizzes and assessments and track
+                        your learning progress from your dashboard.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 EduLearn. Learn. Build. Grow.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
+```
