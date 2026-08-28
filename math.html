@@ -1,12 +1,13 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>EduLearn - Mathematics</title>
+    <title>EduLearn - Engineering Mathematics</title>
 
     <style>
 
@@ -18,18 +19,19 @@
         }
 
         body {
-            background: #f5f7fb;
-            color: #222;
+            background: #f4f7fb;
+            color: #1f2937;
         }
 
         /* NAVBAR */
 
-        nav {
+        .navbar {
             background: white;
-            padding: 18px 8%;
+            height: 70px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             position: sticky;
             top: 0;
@@ -37,7 +39,7 @@
         }
 
         .logo {
-            font-size: 25px;
+            font-size: 26px;
             font-weight: bold;
             color: #2563eb;
             text-decoration: none;
@@ -45,13 +47,14 @@
 
         .nav-links {
             display: flex;
-            gap: 22px;
             align-items: center;
+            gap: 25px;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: #374151;
+            font-size: 15px;
             font-weight: 500;
         }
 
@@ -59,237 +62,200 @@
             color: #2563eb;
         }
 
-        .dashboard-link {
-            background: #2563eb;
-            color: white !important;
-            padding: 10px 18px;
-            border-radius: 7px;
-        }
-
-        .dashboard-link:hover {
-            background: #1d4ed8;
-        }
-
-        /* COURSE HEADER */
+        /* HEADER */
 
         .course-header {
-            background: linear-gradient(135deg, #eaf2ff, #ffffff);
-            padding: 60px 8%;
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            color: white;
+            padding: 70px 7%;
+        }
+
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
         }
 
         .course-header h1 {
-            font-size: 45px;
+            font-size: 44px;
             margin-bottom: 15px;
         }
 
         .course-header p {
-            max-width: 700px;
-            color: #555;
+            max-width: 750px;
             font-size: 18px;
-            line-height: 1.6;
+            line-height: 1.7;
+            opacity: 0.95;
         }
 
-        /* MAIN */
+        .course-info {
+            display: flex;
+            gap: 30px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
 
-        .container {
-            padding: 50px 8%;
-            max-width: 1300px;
-            margin: auto;
+        .info-item {
+            background: rgba(255,255,255,0.15);
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        /* COURSE CONTENT */
+
+        .course-container {
+            width: 86%;
+            max-width: 1100px;
+            margin: 50px auto;
         }
 
         .section-title {
             font-size: 30px;
-            margin-bottom: 25px;
-        }
-
-        /* PROGRESS */
-
-        .progress-box {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-        }
-
-        .progress-info {
-            display: flex;
-            justify-content: space-between;
             margin-bottom: 10px;
-            font-weight: bold;
         }
 
-        .progress {
-            height: 10px;
-            background: #e5e7eb;
-            border-radius: 10px;
-            overflow: hidden;
+        .section-description {
+            color: #6b7280;
+            margin-bottom: 30px;
+            line-height: 1.6;
         }
 
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background: #2563eb;
-            transition: width 0.5s ease;
-        }
+        /* LESSON CARDS */
 
-        /* LESSONS */
-
-        .lessons {
+        .lesson-list {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 18px;
         }
 
-        .lesson {
+        .lesson-card {
             background: white;
-            padding: 22px;
             border-radius: 12px;
+            padding: 24px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            gap: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            border: 1px solid #e5e7eb;
         }
 
-        .lesson-info {
+        .lesson-left {
             display: flex;
             align-items: center;
             gap: 18px;
         }
 
         .lesson-number {
-            width: 45px;
-            height: 45px;
-            background: #eaf2ff;
+            width: 48px;
+            height: 48px;
+            background: #eff6ff;
             color: #2563eb;
             border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             font-weight: bold;
-            flex-shrink: 0;
         }
 
-        .lesson h3 {
-            margin-bottom: 5px;
+        .lesson-info h3 {
+            margin-bottom: 6px;
+            font-size: 18px;
         }
 
-        .lesson p {
-            color: #666;
+        .lesson-info p {
+            color: #6b7280;
             font-size: 14px;
-            line-height: 1.5;
         }
 
-        .start-lesson {
+        .lesson-btn {
             background: #2563eb;
             color: white;
-            padding: 10px 17px;
-            border-radius: 7px;
             text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 7px;
+            font-size: 14px;
             font-weight: bold;
             white-space: nowrap;
         }
 
-        .start-lesson:hover {
+        .lesson-btn:hover {
             background: #1d4ed8;
         }
 
-        .completed {
-            background: #16a34a;
+        /* COURSE OVERVIEW */
+
+        .overview {
+            margin-top: 50px;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
         }
 
-        .completed:hover {
-            background: #15803d;
+        .overview h2 {
+            margin-bottom: 15px;
         }
 
-        /* FINAL ASSESSMENT */
+        .overview ul {
+            padding-left: 20px;
+            color: #4b5563;
+            line-height: 2;
+        }
 
-        .quiz {
-            margin-top: 45px;
+        /* FOOTER */
+
+        footer {
             background: #111827;
             color: white;
-            padding: 30px;
-            border-radius: 15px;
+            text-align: center;
+            padding: 30px 7%;
+            margin-top: 70px;
         }
 
-        .quiz h2 {
-            margin-bottom: 10px;
+        footer p {
+            color: #9ca3af;
+            font-size: 14px;
         }
 
-        .quiz p {
-            color: #d1d5db;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
+        /* RESPONSIVE */
 
-        .quiz-btn {
-            display: inline-block;
-            background: white;
-            color: #111827;
-            padding: 12px 20px;
-            border-radius: 7px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+        @media (max-width: 700px) {
 
-        .quiz-btn:hover {
-            background: #e5e7eb;
-        }
-
-        /* MOBILE */
-
-        @media (max-width: 800px) {
-
-            nav {
-                padding: 15px 5%;
+            .navbar {
+                padding: 0 5%;
             }
 
             .nav-links {
                 gap: 12px;
             }
 
-            .course-header h1 {
-                font-size: 35px;
-            }
-
-            .container {
-                padding: 40px 5%;
-            }
-
-        }
-
-        @media (max-width: 600px) {
-
-            nav {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-            }
-
-            .nav-links {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-
-            .lesson {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 18px;
-            }
-
-            .start-lesson {
-                width: 100%;
-                text-align: center;
+            .nav-links a:not(:last-child) {
+                display: none;
             }
 
             .course-header {
-                padding: 45px 5%;
+                padding: 50px 7%;
             }
 
             .course-header h1 {
-                font-size: 32px;
+                font-size: 34px;
+            }
+
+            .lesson-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .lesson-btn {
+                width: 100%;
+                text-align: center;
             }
 
         }
@@ -298,16 +264,15 @@
 
 </head>
 
-
 <body>
 
 
-    <!-- NAVIGATION -->
+    <!-- NAVBAR -->
 
-    <nav>
+    <nav class="navbar">
 
         <a href="index.html" class="logo">
-            🎓 EduLearn
+            EduLearn
         </a>
 
         <div class="nav-links">
@@ -320,12 +285,8 @@
                 Dashboard
             </a>
 
-            <a href="courses.html">
-                Courses
-            </a>
-
-            <a href="quiz.html" class="dashboard-link">
-                Assessment
+            <a href="settings.html">
+                Settings
             </a>
 
         </div>
@@ -335,97 +296,96 @@
 
     <!-- COURSE HEADER -->
 
-    <section class="course-header">
+    <header class="course-header">
+
+        <div class="breadcrumb">
+
+            <a href="index.html">Home</a>
+            &nbsp; / &nbsp;
+            <span>B.Tech</span>
+            &nbsp; / &nbsp;
+            <span>Engineering Mathematics</span>
+
+        </div>
 
         <h1>
-            📚 Mathematics
+            Engineering Mathematics
         </h1>
 
         <p>
-            Develop college-level mathematical knowledge
-            through mathematical foundations, functions,
-            calculus, integration and linear algebra.
+            Build a strong mathematical foundation for your B.Tech
+            studies. Learn essential mathematical concepts and
+            understand how they are applied in engineering and
+            technology.
         </p>
 
-    </section>
+        <div class="course-info">
 
-
-    <!-- MAIN -->
-
-    <main class="container">
-
-
-        <!-- PROGRESS -->
-
-        <div class="progress-box">
-
-            <div class="progress-info">
-
-                <span>
-                    Course Progress
-                </span>
-
-                <span id="progressText">
-                    0%
-                </span>
-
+            <div class="info-item">
+                🎓 B.Tech
             </div>
 
-            <div class="progress">
+            <div class="info-item">
+                📚 5 Lessons
+            </div>
 
-                <div
-                    class="progress-bar"
-                    id="progressBar">
-                </div>
+            <div class="info-item">
+                📝 Quizzes
+            </div>
 
+            <div class="info-item">
+                🏆 Final Assessment
             </div>
 
         </div>
 
+    </header>
 
-        <!-- LESSONS -->
+
+    <!-- COURSE CONTENT -->
+
+    <main class="course-container">
 
         <h2 class="section-title">
             Course Lessons
         </h2>
 
+        <p class="section-description">
+            Complete each lesson in order and test your understanding
+            with the quizzes.
+        </p>
 
-        <div class="lessons">
+
+        <div class="lesson-list">
 
 
             <!-- LESSON 1 -->
 
-            <div class="lesson">
+            <div class="lesson-card">
 
-                <div class="lesson-info">
+                <div class="lesson-left">
 
                     <div class="lesson-number">
                         1
                     </div>
 
-                    <div>
+                    <div class="lesson-info">
 
                         <h3>
                             Mathematical Foundations
                         </h3>
 
                         <p>
-                            Introduction to mathematical
-                            concepts, notation and
-                            problem-solving techniques.
+                            Essential mathematical concepts and
+                            foundations for engineering.
                         </p>
 
                     </div>
 
                 </div>
 
-                <a
-                    href="lesson1.html"
-                    class="start-lesson"
-                    id="lesson1Button">
-
+                <a href="lesson1.html" class="lesson-btn">
                     Start Lesson
-
                 </a>
 
             </div>
@@ -433,37 +393,31 @@
 
             <!-- LESSON 2 -->
 
-            <div class="lesson">
+            <div class="lesson-card">
 
-                <div class="lesson-info">
+                <div class="lesson-left">
 
                     <div class="lesson-number">
                         2
                     </div>
 
-                    <div>
+                    <div class="lesson-info">
 
                         <h3>
-                            Functions, Equations and Graphs
+                            Functions, Equations & Graphs
                         </h3>
 
                         <p>
-                            Study functions, domain, range,
-                            equations and graphical
-                            representations.
+                            Understand functions, equations,
+                            graphs and their applications.
                         </p>
 
                     </div>
 
                 </div>
 
-                <a
-                    href="lesson2.html"
-                    class="start-lesson"
-                    id="lesson2Button">
-
+                <a href="lesson2.html" class="lesson-btn">
                     Start Lesson
-
                 </a>
 
             </div>
@@ -471,37 +425,31 @@
 
             <!-- LESSON 3 -->
 
-            <div class="lesson">
+            <div class="lesson-card">
 
-                <div class="lesson-info">
+                <div class="lesson-left">
 
                     <div class="lesson-number">
                         3
                     </div>
 
-                    <div>
+                    <div class="lesson-info">
 
                         <h3>
-                            Differentiation and Applications
+                            Differentiation & Applications
                         </h3>
 
                         <p>
-                            Understand derivatives,
-                            differentiation rules and
-                            practical applications.
+                            Learn differentiation and its
+                            applications in engineering.
                         </p>
 
                     </div>
 
                 </div>
 
-                <a
-                    href="lesson3.html"
-                    class="start-lesson"
-                    id="lesson3Button">
-
+                <a href="lesson3.html" class="lesson-btn">
                     Start Lesson
-
                 </a>
 
             </div>
@@ -509,37 +457,31 @@
 
             <!-- LESSON 4 -->
 
-            <div class="lesson">
+            <div class="lesson-card">
 
-                <div class="lesson-info">
+                <div class="lesson-left">
 
                     <div class="lesson-number">
                         4
                     </div>
 
-                    <div>
+                    <div class="lesson-info">
 
                         <h3>
-                            Integration and Applications
+                            Integration & Applications
                         </h3>
 
                         <p>
-                            Learn integration techniques
-                            and their applications in
-                            mathematical problems.
+                            Study integration techniques and
+                            engineering applications.
                         </p>
 
                     </div>
 
                 </div>
 
-                <a
-                    href="lesson4.html"
-                    class="start-lesson"
-                    id="lesson4Button">
-
+                <a href="lesson4.html" class="lesson-btn">
                     Start Lesson
-
                 </a>
 
             </div>
@@ -547,37 +489,31 @@
 
             <!-- LESSON 5 -->
 
-            <div class="lesson">
+            <div class="lesson-card">
 
-                <div class="lesson-info">
+                <div class="lesson-left">
 
                     <div class="lesson-number">
                         5
                     </div>
 
-                    <div>
+                    <div class="lesson-info">
 
                         <h3>
-                            Matrices and Linear Algebra
+                            Matrices & Linear Algebra
                         </h3>
 
                         <p>
-                            Explore matrices, determinants
-                            and fundamental concepts of
-                            linear algebra.
+                            Learn matrices, linear equations
+                            and basic linear algebra.
                         </p>
 
                     </div>
 
                 </div>
 
-                <a
-                    href="lesson5.html"
-                    class="start-lesson"
-                    id="lesson5Button">
-
+                <a href="lesson5.html" class="lesson-btn">
                     Start Lesson
-
                 </a>
 
             </div>
@@ -586,125 +522,56 @@
         </div>
 
 
-        <!-- FINAL ASSESSMENT -->
+        <!-- COURSE OVERVIEW -->
 
-        <div class="quiz">
+        <section class="overview">
 
             <h2>
-                📝 Final Course Assessment
+                What You'll Learn
             </h2>
 
-            <p>
-                Complete all five lessons and take the
-                final assessment to test your
-                college-level mathematical knowledge.
-            </p>
+            <ul>
 
-            <a
-                href="quiz.html"
-                class="quiz-btn">
+                <li>
+                    Mathematical foundations required for B.Tech
+                </li>
 
-                Take Final Assessment →
+                <li>
+                    Functions, equations and graphical concepts
+                </li>
 
-            </a>
+                <li>
+                    Differentiation and engineering applications
+                </li>
 
-        </div>
+                <li>
+                    Integration and engineering applications
+                </li>
 
+                <li>
+                    Matrices and linear algebra
+                </li>
+
+                <li>
+                    Assessment and progress tracking
+                </li>
+
+            </ul>
+
+        </section>
 
     </main>
 
 
-    <script>
+    <!-- FOOTER -->
 
-        /*
-        ==========================================
-        LESSON TRACKING
-        ==========================================
-        */
+    <footer>
 
-        const totalLessons = 5;
+        <p>
+            © 2026 EduLearn. Learn. Build. Grow.
+        </p>
 
-        let completedLessons = 0;
-
-
-        for (let i = 1; i <= totalLessons; i++) {
-
-            const completed =
-                localStorage.getItem(
-                    "lesson" + i + "Completed"
-                ) === "true";
-
-
-            if (completed) {
-
-                completedLessons++;
-
-                markCompleted(
-                    "lesson" + i + "Button"
-                );
-
-            }
-
-        }
-
-
-        /*
-        ==========================================
-        COURSE PROGRESS
-        ==========================================
-        */
-
-        const progress =
-            Math.round(
-                (completedLessons / totalLessons) * 100
-            );
-
-
-        document.getElementById(
-            "progressBar"
-        ).style.width =
-            progress + "%";
-
-
-        document.getElementById(
-            "progressText"
-        ).textContent =
-            progress + "%";
-
-
-        if (completedLessons === totalLessons) {
-
-            document.getElementById(
-                "progressText"
-            ).textContent =
-                "100% - Course Lessons Completed 🎉";
-
-        }
-
-
-        /*
-        ==========================================
-        COMPLETED LESSON BUTTON
-        ==========================================
-        */
-
-        function markCompleted(buttonId) {
-
-            const button =
-                document.getElementById(buttonId);
-
-
-            button.textContent =
-                "✓ Completed";
-
-
-            button.classList.add(
-                "completed"
-            );
-
-        }
-
-    </script>
+    </footer>
 
 
 </body>
