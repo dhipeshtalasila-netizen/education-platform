@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EduLearn - Python MCQs</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f8;
+    color: #222;
+    transition: 0.3s;
+}
+
+/* NAVBAR */
+
+.navbar {
+    background: #ffffff;
+    padding: 16px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.nav-links {
+    display: flex;
+    gap: 22px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #2563eb;
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    padding: 55px 7%;
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    max-width: 800px;
+    line-height: 1.7;
+    font-size: 17px;
+}
+
+/* CONTAINER */
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* SEARCH */
+
+.search-box {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    margin-bottom: 35px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.search-box h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #d1d5db;
+    border-radius: 9px;
+    font-size: 16px;
+    outline: none;
+}
+
+#searchInput:focus {
+    border-color: #2563eb;
+}
+
+/* INFO */
+
+.info-box {
+    background: #eff6ff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+/* SECTION */
+
+.section-title {
+    color: #1e3a8a;
+    margin: 35px 0 20px;
+    font-size: 28px;
+}
+
+/* QUESTIONS */
+
+.question {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.question h3 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+.question p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* OPTIONS */
+
+.option {
+    display: block;
+    background: #f8fafc;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.option:hover {
+    background: #dbeafe;
+}
+
+.option input {
+    margin-right: 10px;
+}
+
+/* BUTTON */
+
+button {
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 13px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+.reset-btn {
+    background: #6b7280;
+    margin-left: 8px;
+}
+
+.reset-btn:hover {
+    background: #4b5563;
+}
+
+/* RESULT */
+
+#result {
+    display: none;
+    background: #ecfdf5;
+    padding: 25px;
+    border-radius: 14px;
+    margin: 30px 0;
+    line-height: 1.8;
+}
+
+#result h2 {
+    color: #15803d;
+    margin-bottom: 10px;
+}
+
+/* REVIEW */
+
+.review {
+    display: none;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    line-height: 1.6;
+}
+
+.correct {
+    background: #dcfce7;
+}
+
+.wrong {
+    background: #fee2e2;
+}
+
+/* DARK MODE */
+
+body.dark {
+    background: #111827;
+    color: #e5e7eb;
+}
+
+body.dark .navbar,
+body.dark .search-box,
+body.dark .question {
+    background: #1f2937;
+    color: #e5e7eb;
+}
+
+body.dark .nav-links a {
+    color: #e5e7eb;
+}
+
+body.dark .nav-links a:hover {
+    color: #60a5fa;
+}
+
+body.dark .section-title,
+body.dark .search-box h2,
+body.dark .question h3 {
+    color: #60a5fa;
+}
+
+body.dark .option {
+    background: #374151;
+}
+
+body.dark .option:hover {
+    background: #4b5563;
+}
+
+body.dark .info-box {
+    background: #374151;
+}
+
+body.dark #searchInput {
+    background: #374151;
+    color: white;
+    border-color: #4b5563;
+}
+
+body.dark #result {
+    background: #064e3b;
+}
+
+/* FOOTER */
+
+footer {
+    background: #1e3a8a;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 50px;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        EduLearn
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="dashboard.html">Dashboard</a>
+
+        <a href="coding.html">Coding</a>
+
+        <a href="python.html">Python</a>
+
+        <a href="settings.html">Settings</a>
+
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>Python MCQs</h1>
+
+    <p>
+        Test your understanding of Python programming
+        with multiple-choice questions from beginner
+        to advanced level.
+    </p>
+
+</section>
+
+
+<div class="container">
+
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+    <h2>🔎 Search MCQs</h2>
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search Python MCQs..."
+        onkeyup="searchMCQs()"
+    >
+
+    <div id="searchResults"></div>
+
+</div>
+
+
+<!-- INFO -->
+
+<div class="info-box">
+
+    <strong>Instructions:</strong>
+
+    <br>
+
+    • Select one answer for each question.
+
+    <br>
+
+    • Submit the test when you finish.
+
+    <br>
+
+    • Your score will be calculated automatically.
+
+    <br>
+
+    • You can review your answers after submission.
+
+</div>
+
+
+<form id="quizForm">
+
+
+<!-- BEGINNER -->
+
+<h2 class="section-title">
+    🟢 Beginner Level
+</h2>
+
+
+<div class="question" data-question="python programming language">
+
+    <h3>1. Which of the following is used to display output in Python?</h3>
+
+    <label class="option">
+        <input type="radio" name="q1" value="A">
+        A. display()
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q1" value="B">
+        B. print()
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q1" value="C">
+        C. output()
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q1" value="D">
+        D. show()
+    </label>
+
+    <div id="review1" class="review"></div>
+
+</div>
+
+
+<div class="question" data-question="variables">
+
+    <h3>2. Which symbol is used for assignment in Python?</h3>
+
+    <label class="option">
+        <input type="radio" name="q2" value="A">
+        A. ==
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q2" value="B">
+        B. =
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q2" value="C">
+        C. !=
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q2" value="D">
+        D. =>
+    </label>
+
+    <div id="review2" class="review"></div>
+
+</div>
+
+
+<div class="question" data-question="data types">
+
+    <h3>3. Which data type is used to store text?</h3>
+
+    <label class="option">
+        <input type="radio" name="q3" value="A">
+        A. int
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q3" value="B">
+        B. float
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q3" value="C">
+        C. str
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q3" value="D">
+        D. bool
+    </label>
+
+    <div id="review3" class="review"></div>
+
+</div>
+
+
+<div class="question" data-question="lists">
+
+    <h3>4. Which symbol is commonly used to create a Python list?</h3>
+
+    <label class="option">
+        <input type="radio" name="q4" value="A">
+        A. ()
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q4" value="B">
+        B. {}
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q4" value="C">
+        C. []
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q4" value="D">
+        D. &lt;&gt;
+    </label>
+
+    <div id="review4" class="review"></div>
+
+</div>
+
+
+<!-- INTERMEDIATE -->
+
+<h2 class="section-title">
+    🟡 Intermediate Level
+</h2>
+
+
+<div class="question" data-question="functions">
+
+    <h3>5. Which keyword is used to define a function?</h3>
+
+    <label class="option">
+        <input type="radio" name="q5" value="A">
+        A. function
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q5" value="B">
+        B. define
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q5" value="C">
+        C. def
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q5" value="D">
+        D. func
+    </label>
+
+    <div id="review5" class="review"></div>
+
+</div>
+
+
+<div class="question" data-question="loops">
+
+    <h3>6. Which loop is commonly used to iterate over a sequence?</h3>
+
+    <label class="option">
+        <input type="radio" name="q6" value="A">
+        A. for
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q6" value="B">
+        B. repeat
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q6" value="C">
+        C. loop
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q6" value="D">
+        D. iterate
+    </label>
+
+    <div id="review6" class="review"></div>
+
+</div>
+
+
+<div class="question" data-question="dictionary">
+
+    <h3>7. Which data structure stores key-value pairs?</h3>
+
+    <label class="option">
+        <input type="radio" name="q7" value="A">
+        A. List
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q7" value="B">
+        B. Tuple
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q7" value="C">
+        C. Dictionary
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q7" value="D">
+        D. Set
+    </label>
+
+    <div id="review7" class="review"></div>
+
+</div>
+
+
+<div class="question" data-question="exception handling">
+
+    <h3>8. Which keyword is used to handle exceptions?</h3>
+
+    <label class="option">
+        <input type="radio" name="q8" value="A">
+        A. catch
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q8" value="B">
+        B. except
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q8" value="C">
+        C. error
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q8" value="D">
+        D. handle
+    </label>
+
+    <div id="review8" class="review"></div>
+
+</div>
+
+
+<!-- ADVANCED -->
+
+<h2 class="section-title">
+    🔴 Advanced Level
+</h2>
+
+
+<div class="question" data-question="object oriented programming">
+
+    <h3>9. Which concept allows a child class to inherit features from a parent class?</h3>
+
+    <label class="option">
+        <input type="radio" name="q9" value="A">
+        A. Encapsulation
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q9" value="B">
+        B. Inheritance
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q9" value="C">
+        C. Abstraction
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q9" value="D">
+        D. Compilation
+    </label>
+
+    <div id="review9" class="review"></div>
+
+</div>
+
+
+<div class="question" data-question="generators">
+
+    <h3>10. Which keyword is commonly used by a generator to produce values?</h3>
+
+    <label class="option">
+        <input type="radio" name="q10" value="A">
+        A. return
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q10" value="B">
+        B. yield
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q10" value="C">
+        C. generate
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q10" value="D">
+        D. produce
+    </label>
+
+    <div id="review10" class="review"></div>
+
+</div>
+
+
+<div class="question" data-question="numpy">
+
+    <h3>11. Which library is widely used for numerical computing in Python?</h3>
+
+    <label class="option">
+        <input type="radio" name="q11" value="A">
+        A. NumPy
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q11" value="B">
+        B. Flask
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q11" value="C">
+        C. Django
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q11" value="D">
+        D. Tkinter
+    </label>
+
+    <div id="review11" class="review"></div>
+
+</div>
+
+
+<div class="question" data-question="pandas data science">
+
+    <h3>12. Which library is commonly used for data analysis?</h3>
+
+    <label class="option">
+        <input type="radio" name="q12" value="A">
+        A. Pandas
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q12" value="B">
+        B. Turtle
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q12" value="C">
+        C. Pygame
+    </label>
+
+    <label class="option">
+        <input type="radio" name="q12" value="D">
+        D. Random
+    </label>
+
+    <div id="review12" class="review"></div>
+
+</div>
+
+
+<br>
+
+
+<button type="button" onclick="submitQuiz()">
+    Submit Test
+</button>
+
+<button
+    type="button"
+    class="reset-btn"
+    onclick="resetQuiz()">
+
+    Reset
+
+</button>
+
+
+</form>
+
+
+<!-- RESULT -->
+
+<div id="result">
+
+    <h2>🎯 Your Result</h2>
+
+    <p id="scoreText"></p>
+
+    <p id="percentageText"></p>
+
+    <p id="messageText"></p>
+
+</div>
+
+
+</div>
+
+
+<footer>
+
+    <p>
+        © 2026 EduLearn — Learn. Grow. Succeed.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* DARK MODE */
+
+if (localStorage.getItem("darkMode") === "true") {
+
+    document.body.classList.add("dark");
+
+}
+
+
+/* ANSWERS */
+
+const correctAnswers = {
+
+    q1: "B",
+    q2: "B",
+    q3: "C",
+    q4: "C",
+    q5: "C",
+    q6: "A",
+    q7: "C",
+    q8: "B",
+    q9: "B",
+    q10: "B",
+    q11: "A",
+    q12: "A"
+
+};
+
+
+/* SUBMIT QUIZ */
+
+function submitQuiz() {
+
+    let score = 0;
+
+    const total =
+        Object.keys(correctAnswers).length;
+
+
+    for (const question in correctAnswers) {
+
+        const selected =
+            document.querySelector(
+                'input[name="' + question + '"]:checked'
+            );
+
+        const review =
+            document.getElementById(
+                "review" + question.substring(1)
+            );
+
+
+        review.style.display = "block";
+
+
+        if (!selected) {
+
+            review.className = "review wrong";
+
+            review.textContent =
+                "⚠ Not answered. Correct answer: " +
+                correctAnswers[question];
+
+        }
+
+        else if (
+            selected.value ===
+            correctAnswers[question]
+        ) {
+
+            score++;
+
+            review.className = "review correct";
+
+            review.textContent =
+                "✓ Correct answer";
+
+        }
+
+        else {
+
+            review.className = "review wrong";
+
+            review.textContent =
+                "✗ Incorrect. Correct answer: " +
+                correctAnswers[question];
+
+        }
+
+    }
+
+
+    const percentage =
+        Math.round((score / total) * 100);
+
+
+    document.getElementById("scoreText").textContent =
+        "Score: " + score + " / " + total;
+
+
+    document.getElementById("percentageText").textContent =
+        "Percentage: " + percentage + "%";
+
+
+    let message;
+
+
+    if (percentage >= 90) {
+
+        message =
+            "Excellent! You have a strong understanding of Python.";
+
+    }
+
+    else if (percentage >= 75) {
+
+        message =
+            "Very good! Keep practicing to become stronger.";
+
+    }
+
+    else if (percentage >= 50) {
+
+        message =
+            "Good attempt. Review the topics and practice more.";
+
+    }
+
+    else {
+
+        message =
+            "Keep learning. Review the Python topics and try again.";
+
+    }
+
+
+    document.getElementById("messageText").textContent =
+        message;
+
+
+    document.getElementById("result").style.display =
+        "block";
+
+
+    localStorage.setItem(
+        "pythonMCQScore",
+        score
+    );
+
+    localStorage.setItem(
+        "pythonMCQPercentage",
+        percentage
+    );
+
+
+    document.getElementById("result")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+
+}
+
+
+/* RESET */
+
+function resetQuiz() {
+
+    document.getElementById("quizForm").reset();
+
+    document.getElementById("result").style.display =
+        "none";
+
+
+    for (let i = 1; i <= 12; i++) {
+
+        const review =
+            document.getElementById("review" + i);
+
+        review.style.display =
+            "none";
+
+        review.textContent = "";
+
+    }
+
+}
+
+
+/* SEARCH */
+
+function searchMCQs() {
+
+    const search =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const questions =
+        document.querySelectorAll(".question");
+
+
+    questions.forEach(question => {
+
+        const text =
+            question.textContent.toLowerCase();
+
+        const keywords =
+            question.dataset.question.toLowerCase();
+
+
+        if (
+            search === "" ||
+            text.includes(search) ||
+            keywords.includes(search)
+        ) {
+
+            question.style.display =
+                "block";
+
+        }
+
+        else {
+
+            question.style.display =
+                "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+
+</body>
+
+</html>
