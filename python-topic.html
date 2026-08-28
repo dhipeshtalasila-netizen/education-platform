@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -64,70 +63,58 @@ body {
 .hero {
     background: linear-gradient(135deg, #1e3a8a, #2563eb);
     color: white;
-    padding: 55px 7%;
+    padding: 50px 7%;
 }
 
 .hero h1 {
     font-size: 38px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .hero p {
-    max-width: 850px;
-    line-height: 1.7;
     font-size: 17px;
+    line-height: 1.6;
 }
 
-/* MAIN */
+/* CONTAINER */
 
 .container {
-    max-width: 1100px;
+    max-width: 900px;
     margin: auto;
     padding: 40px 20px;
 }
 
-.topic-card {
+/* CARD */
+
+.card {
     background: white;
-    padding: 30px;
-    border-radius: 14px;
+    padding: 25px;
     margin-bottom: 25px;
+    border-radius: 14px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
-.topic-card h2 {
+.card h2 {
     color: #1e3a8a;
     margin-bottom: 15px;
 }
 
-.topic-card h3 {
-    color: #2563eb;
-    margin: 20px 0 10px;
-}
-
-.topic-card p {
+.card p {
     line-height: 1.7;
+    color: #555;
     margin-bottom: 12px;
-}
-
-.topic-card ul {
-    margin-left: 25px;
-    line-height: 1.8;
 }
 
 /* CODE */
 
-.code-box {
+pre {
     background: #111827;
     color: #e5e7eb;
     padding: 20px;
     border-radius: 10px;
     overflow-x: auto;
-    margin: 15px 0;
-}
-
-pre {
-    font-family: Consolas, monospace;
     line-height: 1.6;
+    margin-top: 15px;
 }
 
 /* OUTPUT */
@@ -136,7 +123,7 @@ pre {
     background: #eff6ff;
     border-left: 5px solid #2563eb;
     padding: 15px;
-    margin-top: 12px;
+    margin-top: 15px;
     border-radius: 7px;
 }
 
@@ -148,9 +135,8 @@ pre {
 
 .buttons {
     display: flex;
-    gap: 15px;
+    gap: 12px;
     flex-wrap: wrap;
-    margin-top: 25px;
 }
 
 .btn {
@@ -169,6 +155,22 @@ pre {
     background: #1d4ed8;
 }
 
+.complete {
+    background: #16a34a;
+}
+
+.complete:hover {
+    background: #15803d;
+}
+
+/* STATUS */
+
+.status {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #16a34a;
+}
+
 /* DARK MODE */
 
 body.dark {
@@ -177,7 +179,7 @@ body.dark {
 }
 
 body.dark .navbar,
-body.dark .topic-card {
+body.dark .card {
     background: #1f2937;
     color: #e5e7eb;
 }
@@ -190,16 +192,17 @@ body.dark .nav-links a:hover {
     color: #60a5fa;
 }
 
-body.dark .topic-card h2 {
+body.dark .card h2 {
     color: #60a5fa;
 }
 
-body.dark .topic-card h3 {
-    color: #93c5fd;
+body.dark .card p {
+    color: #d1d5db;
 }
 
 body.dark .output {
     background: #374151;
+    color: #e5e7eb;
 }
 
 body.dark .output strong {
@@ -213,7 +216,7 @@ footer {
     color: white;
     text-align: center;
     padding: 25px;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 /* MOBILE */
@@ -234,10 +237,6 @@ footer {
         font-size: 30px;
     }
 
-    .topic-card {
-        padding: 20px;
-    }
-
 }
 
 </style>
@@ -250,126 +249,114 @@ footer {
 
 <nav class="navbar">
 
-```
-<div class="logo">
-    EduLearn
-</div>
+    <div class="logo">
+        EduLearn
+    </div>
 
-<div class="nav-links">
+    <div class="nav-links">
 
-    <a href="index.html">Home</a>
+        <a href="index.html">Home</a>
 
-    <a href="dashboard.html">Dashboard</a>
+        <a href="dashboard.html">Dashboard</a>
 
-    <a href="coding.html">Coding</a>
+        <a href="coding.html">Coding</a>
 
-    <a href="python.html">Python</a>
+        <a href="python.html">Python</a>
 
-    <a href="settings.html">Settings</a>
+        <a href="settings.html">Settings</a>
 
-</div>
-```
+    </div>
 
 </nav>
+
 
 <!-- HERO -->
 
 <section class="hero">
 
-```
-<h1 id="topicTitle">Python Programming</h1>
+    <h1 id="topicTitle">Python Programming</h1>
 
-<p id="topicDescription">
-    Learn Python programming concepts through practical examples.
-</p>
-```
+    <p id="topicDescription">
+        Learn Python through practical programming examples.
+    </p>
 
 </section>
 
+
 <div class="container">
 
-<!-- LESSON -->
+    <!-- TOPIC INFORMATION -->
 
-<div class="topic-card">
+    <div class="card">
 
-```
-<h2 id="lessonHeading">
-    Python Programming
-</h2>
+        <h2 id="lessonHeading">
+            Python Topic
+        </h2>
 
-<div id="lessonContent">
+        <p id="lessonText">
+            Loading topic...
+        </p>
 
-    <p>
-        Select a Python program from the Python Programs page
-        to begin learning.
-    </p>
+    </div>
 
-</div>
-```
 
-</div>
+    <!-- PRACTICE PROGRAM -->
 
-<!-- PRACTICE -->
+    <div class="card">
 
-<div class="topic-card">
+        <h2>💻 Practice Program</h2>
 
-```
-<h2>💻 Practice Program</h2>
+        <pre><code id="programCode"></code></pre>
 
-<div id="programCode" class="code-box">
+        <div class="output">
 
-    <pre>
-```
+            <strong>Expected Output</strong>
 
-# Python program will appear here
+            <p id="programOutput">
+                Run the program in a Python environment to see the result.
+            </p>
 
-```
-    </pre>
+        </div>
 
-</div>
+    </div>
 
-<div id="programOutput" class="output">
 
-    <strong>Expected Output:</strong>
+    <!-- ACTIONS -->
 
-    <br>
+    <div class="card">
 
-    Run the program in a Python environment to see the result.
+        <div class="buttons">
 
-</div>
-```
+            <a href="python.html" class="btn">
+                ← Back to Python Programs
+            </a>
 
-</div>
+            <button
+                class="btn complete"
+                onclick="markComplete()"
+                id="completeButton">
+                ✓ Mark Topic Complete
+            </button>
 
-<!-- NAVIGATION -->
+        </div>
 
-<div class="buttons">
+        <div id="status" class="status"></div>
 
-```
-<a href="python.html" class="btn">
-    ← Back to Python Programs
-</a>
-
-<button class="btn" onclick="markCompleted()">
-    ✓ Mark Topic Complete
-</button>
-```
+    </div>
 
 </div>
 
-</div>
 
 <!-- FOOTER -->
 
 <footer>
 
-```
-<p>
-    © 2026 EduLearn — Learn. Grow. Succeed.
-</p>
-```
+    <p>
+        © 2026 EduLearn — Learn. Grow. Succeed.
+    </p>
 
 </footer>
+
 
 <script>
 
@@ -382,14 +369,7 @@ if (localStorage.getItem("darkMode") === "true") {
 }
 
 
-/* GET TOPIC */
-
-const params = new URLSearchParams(window.location.search);
-
-const topic = params.get("topic");
-
-
-/* TOPIC DATA */
+/* PYTHON TOPICS */
 
 const topics = {
 
@@ -398,43 +378,16 @@ const topics = {
         title: "Python Introduction",
 
         description:
-        "Learn the fundamentals of Python programming and write your first programs.",
+        "Learn the basic structure of Python programs and how Python displays information.",
 
-        heading:
-        "Introduction to Python",
-
-        content: `
-        
-        <p>
-        Python is a high-level, interpreted and general-purpose
-        programming language. It is widely used in web development,
-        data analysis, artificial intelligence, automation and software development.
-        </p>
-
-        <h3>Why Learn Python?</h3>
-
-        <ul>
-            <li>Simple and readable syntax</li>
-            <li>Easy for beginners to understand</li>
-            <li>Large collection of libraries</li>
-            <li>Used in industry and research</li>
-            <li>Useful for automation and data science</li>
-        </ul>
-
-        <h3>Hello World</h3>
-
-        <p>
-        The first program commonly written in Python displays
-        a message using the <strong>print()</strong> function.
-        </p>
-
-        `,
+        lesson:
+        "Python is a high-level programming language known for its simple and readable syntax. A Python program can contain statements, variables, functions and other programming structures. The print() function is commonly used to display information on the screen.",
 
         code:
 `print("Hello, World!")`,
 
         output:
-`Hello, World!`
+        "Hello, World!"
 
     },
 
@@ -446,47 +399,23 @@ const topics = {
         description:
         "Learn how Python operators are used to perform calculations and comparisons.",
 
-        heading:
-        "Operators in Python",
-
-        content: `
-
-        <p>
-        Operators are symbols or keywords used to perform
-        operations on values and variables.
-        </p>
-
-        <h3>Arithmetic Operators</h3>
-
-        <ul>
-            <li>+ Addition</li>
-            <li>- Subtraction</li>
-            <li>* Multiplication</li>
-            <li>/ Division</li>
-            <li>% Modulus</li>
-            <li>** Exponentiation</li>
-            <li>// Floor Division</li>
-        </ul>
-
-        <h3>Example: Add Two Numbers</h3>
-
-        <p>
-        The following program accepts two numbers and calculates
-        their sum.
-        </p>
-
-        `,
+        lesson:
+        "Operators are symbols or keywords used to perform operations on values. Arithmetic operators include +, -, *, /, %, // and **. The modulus operator (%) is especially useful for checking whether a number is even or odd.",
 
         code:
 `a = 10
-b = 20
+b = 5
 
-sum_value = a + b
-
-print("Sum =", sum_value)`,
+print("Addition:", a + b)
+print("Subtraction:", a - b)
+print("Multiplication:", a * b)
+print("Division:", a / b)`,
 
         output:
-`Sum = 30`
+`Addition: 15
+Subtraction: 5
+Multiplication: 50
+Division: 2.0`
 
     },
 
@@ -496,42 +425,21 @@ print("Sum =", sum_value)`,
         title: "Python Loops",
 
         description:
-        "Learn how loops are used to repeat instructions efficiently.",
+        "Learn how loops repeat a block of code multiple times.",
 
-        heading:
-        "Loops in Python",
-
-        content: `
-
-        <p>
-        Loops allow a program to execute a block of code repeatedly.
-        Python mainly provides the <strong>for</strong> loop and
-        <strong>while</strong> loop.
-        </p>
-
-        <h3>For Loop</h3>
-
-        <p>
-        A for loop is commonly used when the number of iterations
-        or the sequence being processed is known.
-        </p>
-
-        <h3>Example: Multiplication Table</h3>
-
-        `,
+        lesson:
+        "Loops are used when we need to execute the same instructions repeatedly. Python mainly provides for loops and while loops. A for loop is useful when the number of repetitions is known.",
 
         code:
-`number = 5
-
-for i in range(1, 11):
-    print(number, "x", i, "=", number * i)`,
+`for i in range(1, 6):
+    print(i)`,
 
         output:
-`5 x 1 = 5
-5 x 2 = 10
-5 x 3 = 15
-...
-5 x 10 = 50`
+`1
+2
+3
+4
+5`
 
     },
 
@@ -541,46 +449,27 @@ for i in range(1, 11):
         title: "Python Data Types",
 
         description:
-        "Understand strings, numbers, lists and other important Python data types.",
+        "Learn how Python stores different kinds of values.",
 
-        heading:
-        "Data Types in Python",
-
-        content: `
-
-        <p>
-        A data type determines the kind of value stored in a variable.
-        Python provides several built-in data types.
-        </p>
-
-        <h3>Common Data Types</h3>
-
-        <ul>
-            <li>int — Integer numbers</li>
-            <li>float — Decimal numbers</li>
-            <li>str — Text or strings</li>
-            <li>bool — True or False</li>
-            <li>list — Ordered collection</li>
-            <li>tuple — Immutable collection</li>
-            <li>set — Unordered unique collection</li>
-            <li>dict — Key-value collection</li>
-        </ul>
-
-        <h3>Example: List Operations</h3>
-
-        `,
+        lesson:
+        "Python provides several built-in data types. Common types include int for integers, float for decimal numbers, str for text, bool for true or false values, list for collections of values and tuple for ordered immutable collections.",
 
         code:
-`numbers = [10, 20, 30]
+`name = "EduLearn"
+age = 20
+marks = 85.5
+student = True
 
-numbers.append(40)
-
-print(numbers)
-print(numbers[0])`,
+print(name)
+print(age)
+print(marks)
+print(student)`,
 
         output:
-`[10, 20, 30, 40]
-10`
+`EduLearn
+20
+85.5
+True`
 
     },
 
@@ -590,30 +479,10 @@ print(numbers[0])`,
         title: "Python Functions",
 
         description:
-        "Learn how to create reusable blocks of code using Python functions.",
+        "Learn how to create reusable blocks of Python code.",
 
-        heading:
-        "Functions in Python",
-
-        content: `
-
-        <p>
-        A function is a reusable block of code designed to perform
-        a particular task.
-        </p>
-
-        <h3>Advantages of Functions</h3>
-
-        <ul>
-            <li>Code reusability</li>
-            <li>Better organization</li>
-            <li>Reduced repetition</li>
-            <li>Easier testing and debugging</li>
-        </ul>
-
-        <h3>Example: Calculator Function</h3>
-
-        `,
+        lesson:
+        "A function is a reusable block of code designed to perform a particular task. Functions are created using the def keyword. They can accept parameters and can return values.",
 
         code:
 `def add(a, b):
@@ -621,60 +490,35 @@ print(numbers[0])`,
 
 result = add(10, 20)
 
-print("Result =", result)`,
+print("Result:", result)`,
 
         output:
-`Result = 30`
+        "Result: 30"
 
     },
 
 
     inheritance: {
 
-        title: "Python Inheritance",
+        title: "Python Object-Oriented Programming",
 
         description:
-        "Learn the basics of object-oriented programming and inheritance in Python.",
+        "Learn the basic idea of classes, objects and inheritance in Python.",
 
-        heading:
-        "Inheritance in Python",
-
-        content: `
-
-        <p>
-        Inheritance is an object-oriented programming concept
-        where a new class can acquire properties and methods
-        from an existing class.
-        </p>
-
-        <h3>Important Terms</h3>
-
-        <ul>
-            <li><strong>Parent class:</strong> The class being inherited from.</li>
-            <li><strong>Child class:</strong> The class that inherits.</li>
-            <li><strong>Method:</strong> A function defined inside a class.</li>
-        </ul>
-
-        <h3>Example</h3>
-
-        <p>
-        The following example demonstrates a child class inheriting
-        a method from a parent class.
-        </p>
-
-        `,
+        lesson:
+        "Object-oriented programming organizes programs using classes and objects. Inheritance allows one class to reuse properties and methods from another class. It is useful when creating larger programs such as student management systems and banking applications.",
 
         code:
 `class Student:
 
     def show(self):
-        print("Student details")
+        print("Student information")
 
 
 class CollegeStudent(Student):
 
     def course(self):
-        print("B.Tech Course")
+        print("B.Tech")
 
 
 student = CollegeStudent()
@@ -683,79 +527,118 @@ student.show()
 student.course()`,
 
         output:
-`Student details
-B.Tech Course`
+`Student information
+B.Tech`
 
     }
 
 };
 
 
+/* GET TOPIC FROM URL */
+
+const params = new URLSearchParams(window.location.search);
+
+const topicName = params.get("topic");
+
+
+/* FIND TOPIC */
+
+const topic = topics[topicName];
+
+
 /* DISPLAY TOPIC */
 
-if (topics[topic]) {
-
-    const data = topics[topic];
-
-    document.title =
-        "EduLearn - " + data.title;
+if (topic) {
 
     document.getElementById("topicTitle").textContent =
-        data.title;
+        topic.title;
 
     document.getElementById("topicDescription").textContent =
-        data.description;
+        topic.description;
 
     document.getElementById("lessonHeading").textContent =
-        data.heading;
+        "📘 " + topic.title;
 
-    document.getElementById("lessonContent").innerHTML =
-        data.content;
+    document.getElementById("lessonText").textContent =
+        topic.lesson;
 
-    document.querySelector("#programCode pre").textContent =
-        data.code;
+    document.getElementById("programCode").textContent =
+        topic.code;
 
-    document.getElementById("programOutput").innerHTML =
-        "<strong>Expected Output:</strong><br>" +
-        data.output;
+    document.getElementById("programOutput").textContent =
+        topic.output;
 
-} else {
+    checkCompletion();
+
+}
+
+
+/* TOPIC NOT FOUND */
+
+else {
 
     document.getElementById("topicTitle").textContent =
-        "Python Programming";
+        "Topic Not Found";
 
     document.getElementById("topicDescription").textContent =
-        "Learn Python programming through practical programs.";
+        "The requested Python topic could not be found.";
 
     document.getElementById("lessonHeading").textContent =
         "Topic Not Found";
 
-    document.getElementById("lessonContent").innerHTML =
-        `
-        <p>
-        The requested Python topic could not be found.
-        Please return to the Python Programs page and select
-        a program.
-        </p>
-        `;
+    document.getElementById("lessonText").textContent =
+        "Please return to the Python Programs page and select a valid program.";
+
+    document.getElementById("programCode").textContent =
+        "# Python program not available";
+
+    document.getElementById("programOutput").textContent =
+        "No program is available for this topic.";
 
 }
 
 
 /* MARK COMPLETE */
 
-function markCompleted() {
+function markComplete() {
 
-    if (!topic) {
+    if (!topicName) {
         return;
     }
 
     localStorage.setItem(
-        "python_" + topic + "_completed",
-        "true"
+        "pythonTopic_" + topicName,
+        "completed"
     );
 
-    alert("Python topic marked as completed!");
+    document.getElementById("status").textContent =
+        "✓ Topic completed successfully!";
+
+    document.getElementById("completeButton").textContent =
+        "✓ Completed";
+
+}
+
+
+/* CHECK COMPLETION */
+
+function checkCompletion() {
+
+    const completed =
+        localStorage.getItem(
+            "pythonTopic_" + topicName
+        );
+
+    if (completed === "completed") {
+
+        document.getElementById("status").textContent =
+            "✓ You have already completed this topic.";
+
+        document.getElementById("completeButton").textContent =
+            "✓ Completed";
+
+    }
 
 }
 
