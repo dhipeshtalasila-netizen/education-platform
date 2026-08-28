@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EduLearn - Python Projects</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f8;
+    color: #222;
+    transition: 0.3s;
+}
+
+/* NAVBAR */
+
+.navbar {
+    background: #ffffff;
+    padding: 16px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.nav-links {
+    display: flex;
+    gap: 22px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #2563eb;
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    padding: 55px 7%;
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    max-width: 850px;
+    line-height: 1.7;
+    font-size: 17px;
+}
+
+/* CONTAINER */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* SEARCH */
+
+.search-box {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    margin-bottom: 35px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.search-box h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #d1d5db;
+    border-radius: 9px;
+    font-size: 16px;
+    outline: none;
+}
+
+#searchInput:focus {
+    border-color: #2563eb;
+}
+
+#searchResults {
+    margin-top: 15px;
+}
+
+/* INFO */
+
+.info-box {
+    background: #eff6ff;
+    padding: 20px;
+    border-radius: 12px;
+    line-height: 1.7;
+    margin-bottom: 35px;
+}
+
+/* SECTION */
+
+.section-title {
+    color: #1e3a8a;
+    margin: 35px 0 20px;
+    font-size: 28px;
+}
+
+/* PROJECT GRID */
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+}
+
+.project-card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: 0.2s;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+}
+
+.project-number {
+    color: #2563eb;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.project-card h3 {
+    color: #1e3a8a;
+    margin-bottom: 12px;
+}
+
+.project-card p {
+    line-height: 1.7;
+    margin-bottom: 12px;
+}
+
+.skills {
+    margin: 12px 0;
+}
+
+.skill {
+    display: inline-block;
+    background: #dbeafe;
+    color: #1e3a8a;
+    padding: 5px 9px;
+    border-radius: 5px;
+    margin: 3px;
+    font-size: 13px;
+}
+
+/* BUTTON */
+
+button {
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 11px 17px;
+    border-radius: 7px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+/* DETAILS */
+
+.project-details {
+    display: none;
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 9px;
+    margin-top: 15px;
+    line-height: 1.7;
+}
+
+.project-details ul {
+    padding-left: 22px;
+}
+
+/* DARK MODE */
+
+body.dark {
+    background: #111827;
+    color: #e5e7eb;
+}
+
+body.dark .navbar,
+body.dark .search-box,
+body.dark .project-card {
+    background: #1f2937;
+    color: #e5e7eb;
+}
+
+body.dark .nav-links a {
+    color: #e5e7eb;
+}
+
+body.dark .nav-links a:hover {
+    color: #60a5fa;
+}
+
+body.dark .section-title,
+body.dark .search-box h2,
+body.dark .project-card h3 {
+    color: #60a5fa;
+}
+
+body.dark .info-box {
+    background: #374151;
+}
+
+body.dark .project-details {
+    background: #374151;
+}
+
+body.dark .skill {
+    background: #4b5563;
+    color: #dbeafe;
+}
+
+body.dark #searchInput {
+    background: #374151;
+    color: white;
+    border-color: #4b5563;
+}
+
+/* FOOTER */
+
+footer {
+    background: #1e3a8a;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 50px;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        EduLearn
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="dashboard.html">Dashboard</a>
+
+        <a href="coding.html">Coding</a>
+
+        <a href="python.html">Python</a>
+
+        <a href="settings.html">Settings</a>
+
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>Python Projects</h1>
+
+    <p>
+        Build practical Python applications and turn your
+        programming knowledge into real-world projects.
+    </p>
+
+</section>
+
+
+<div class="container">
+
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+    <h2>🔎 Search Projects</h2>
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search projects, skills or difficulty..."
+        onkeyup="searchProjects()"
+    >
+
+    <div id="searchResults"></div>
+
+</div>
+
+
+<!-- INFORMATION -->
+
+<div class="info-box">
+
+    <strong>How to use this section:</strong>
+
+    <br>
+
+    Start with beginner projects if you are new to Python.
+
+    <br>
+
+    Move to intermediate projects after learning functions,
+    data structures and file handling.
+
+    <br>
+
+    Advanced projects can combine Python with databases,
+    APIs, web development and data science.
+
+</div>
+
+
+<!-- BEGINNER -->
+
+<h2 class="section-title">
+    🟢 Beginner Projects
+</h2>
+
+
+<div class="projects">
+
+
+<div class="project-card"
+     data-project="calculator beginner python">
+
+    <div class="project-number">
+        Project 01
+    </div>
+
+    <h3>Simple Calculator</h3>
+
+    <p>
+        Build a calculator that performs basic arithmetic
+        operations such as addition, subtraction,
+        multiplication and division.
+    </p>
+
+    <div class="skills">
+
+        <span class="skill">Variables</span>
+        <span class="skill">Input</span>
+        <span class="skill">Operators</span>
+        <span class="skill">Conditions</span>
+
+    </div>
+
+    <button onclick="toggleDetails(1)">
+        Project Guide
+    </button>
+
+    <div id="details1" class="project-details">
+
+        <strong>What to build:</strong>
+
+        <ul>
+
+            <li>Accept two numbers.</li>
+
+            <li>Ask the user for an operation.</li>
+
+            <li>Perform the selected calculation.</li>
+
+            <li>Display the result.</li>
+
+            <li>Handle division by zero.</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+
+<div class="project-card"
+     data-project="number guessing game beginner">
+
+    <div class="project-number">
+        Project 02
+    </div>
+
+    <h3>Number Guessing Game</h3>
+
+    <p>
+        Create a game where the computer chooses a random
+        number and the player tries to guess it.
+    </p>
+
+    <div class="skills">
+
+        <span class="skill">Random</span>
+        <span class="skill">Loops</span>
+        <span class="skill">Conditions</span>
+
+    </div>
+
+    <button onclick="toggleDetails(2)">
+        Project Guide
+    </button>
+
+    <div id="details2" class="project-details">
+
+        <strong>What to build:</strong>
+
+        <ul>
+
+            <li>Generate a random number.</li>
+
+            <li>Ask the player for guesses.</li>
+
+            <li>Tell the player whether the guess is high or low.</li>
+
+            <li>Count the number of attempts.</li>
+
+            <li>Display a success message.</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+
+<div class="project-card"
+     data-project="student grade calculator beginner">
+
+    <div class="project-number">
+        Project 03
+    </div>
+
+    <h3>Student Grade Calculator</h3>
+
+    <p>
+        Create a program that accepts marks and calculates
+        total, average and grade.
+    </p>
+
+    <div class="skills">
+
+        <span class="skill">Input</span>
+        <span class="skill">Lists</span>
+        <span class="skill">Conditions</span>
+
+    </div>
+
+    <button onclick="toggleDetails(3)">
+        Project Guide
+    </button>
+
+    <div id="details3" class="project-details">
+
+        <strong>What to build:</strong>
+
+        <ul>
+
+            <li>Accept marks for multiple subjects.</li>
+
+            <li>Calculate total marks.</li>
+
+            <li>Calculate average marks.</li>
+
+            <li>Assign grades.</li>
+
+            <li>Display the final result.</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+
+<div class="project-card"
+     data-project="quiz game beginner">
+
+    <div class="project-number">
+        Project 04
+    </div>
+
+    <h3>Quiz Game</h3>
+
+    <p>
+        Build a command-line quiz application that asks
+        questions and calculates the player's score.
+    </p>
+
+    <div class="skills">
+
+        <span class="skill">Lists</span>
+        <span class="skill">Dictionaries</span>
+        <span class="skill">Loops</span>
+
+    </div>
+
+    <button onclick="toggleDetails(4)">
+        Project Guide
+    </button>
+
+    <div id="details4" class="project-details">
+
+        <strong>What to build:</strong>
+
+        <ul>
+
+            <li>Store questions and answers.</li>
+
+            <li>Display questions to the user.</li>
+
+            <li>Check answers.</li>
+
+            <li>Calculate the score.</li>
+
+            <li>Display the final result.</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- INTERMEDIATE -->
+
+<h2 class="section-title">
+    🟡 Intermediate Projects
+</h2>
+
+
+<div class="projects">
+
+
+<div class="project-card"
+     data-project="contact management system intermediate">
+
+    <div class="project-number">
+        Project 05
+    </div>
+
+    <h3>Contact Management System</h3>
+
+    <p>
+        Create a program that allows users to add,
+        search, update and delete contacts.
+    </p>
+
+    <div class="skills">
+
+        <span class="skill">Functions</span>
+        <span class="skill">Dictionaries</span>
+        <span class="skill">File Handling</span>
+
+    </div>
+
+    <button onclick="toggleDetails(5)">
+        Project Guide
+    </button>
+
+    <div id="details5" class="project-details">
+
+        <strong>Suggested features:</strong>
+
+        <ul>
+
+            <li>Add a contact.</li>
+
+            <li>Search for a contact.</li>
+
+            <li>Update contact details.</li>
+
+            <li>Delete a contact.</li>
+
+            <li>Save contacts to a file.</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+
+<div class="project-card"
+     data-project="expense tracker intermediate">
+
+    <div class="project-number">
+        Project 06
+    </div>
+
+    <h3>Expense Tracker</h3>
+
+    <p>
+        Build an application for recording and tracking
+        personal expenses.
+    </p>
+
+    <div class="skills">
+
+        <span class="skill">Lists</span>
+        <span class="skill">Dictionaries</span>
+        <span class="skill">File Handling</span>
+
+    </div>
+
+    <button onclick="toggleDetails(6)">
+        Project Guide
+    </button>
+
+    <div id="details6" class="project-details">
+
+        <strong>Suggested features:</strong>
+
+        <ul>
+
+            <li>Add expenses.</li>
+
+            <li>Store expense categories.</li>
+
+            <li>Calculate total spending.</li>
+
+            <li>Search expenses.</li>
+
+            <li>Generate a simple report.</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+
+<div class="project-card"
+     data-project="bank management system intermediate oop">
+
+    <div class="project-number">
+        Project 07
+    </div>
+
+    <h3>Bank Management System</h3>
+
+    <p>
+        Build a simple banking application using
+        object-oriented programming.
+    </p>
+
+    <div class="skills">
+
+        <span class="skill">Classes</span>
+        <span class="skill">Objects</span>
+        <span class="skill">Methods</span>
+        <span class="skill">File Handling</span>
+
+    </div>
+
+    <button onclick="toggleDetails(7)">
+        Project Guide
+    </button>
+
+    <div id="details7" class="project-details">
+
+        <strong>Suggested features:</strong>
+
+        <ul>
+
+            <li>Create accounts.</li>
+
+            <li>Deposit money.</li>
+
+            <li>Withdraw money.</li>
+
+            <li>Check balance.</li>
+
+            <li>Store account information.</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+
+<div class="project-card"
+     data-project="library management system intermediate">
+
+    <div class="project-number">
+        Project 08
+    </div>
+
+    <h3>Library Management System</h3>
+
+    <p>
+        Create a system for managing books,
+        students and book borrowing.
+    </p>
+
+    <div class="skills">
+
+        <span class="skill">OOP</span>
+        <span class="skill">Lists</span>
+        <span class="skill">File Handling</span>
+
+    </div>
+
+    <button onclick="toggleDetails(8)">
+        Project Guide
+    </button>
+
+    <div id="details8" class="project-details">
+
+        <strong>Suggested features:</strong>
+
+        <ul>
+
+            <li>Add books.</li>
+
+            <li>Search books.</li>
+
+            <li>Issue books.</li>
+
+            <li>Return books.</li>
+
+            <li>Track available books.</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- ADVANCED -->
+
+<h2 class="section-title">
+    🔴 Advanced Projects
+</h2>
+
+
+<div class="projects">
+
+
+<div class="project-card"
+     data-project="weather application api advanced">
+
+    <div class="project-number">
+        Project 09
+    </div>
+
+    <h3>Weather Application</h3>
+
+    <p>
+        Build an application that retrieves weather
+        information using an API.
+    </p>
+
+    <div class="skills">
+
+        <span class="skill">APIs</span>
+        <span class="skill">JSON</span>
+        <span class="skill">Requests</span>
+
+    </div>
+
+    <button onclick="toggleDetails(9)">
+        Project Guide
+    </button>
+
+    <div id="details9" class="project-details">
+
+        <strong>Suggested features:</strong>
+
+        <ul>
+
+            <li>Accept a city name.</li>
+
+            <li>Send a request to a weather API.</li>
+
+            <li>Process JSON data.</li>
+
+            <li>Display temperature.</li>
+
+            <li>Display weather conditions.</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+
+<div class="project-card"
+     data-project="web application flask advanced">
+
+    <div class="project-number">
+        Project 10
+    </div>
+
+    <h3>Python Web Application</h3>
+
+    <p>
+        Build a basic web application using a Python
+        web framework.
+    </p>
+
+    <div class="skills">
+
+        <span class="skill">Python</span>
+        <span class="skill">Web Development</span>
+        <span class="skill">Database</span>
+
+    </div>
+
+    <button onclick="toggleDetails(10)">
+        Project Guide
+    </button>
+
+    <div id="details10" class="project-details">
+
+        <strong>Suggested features:</strong>
+
+        <ul>
+
+            <li>Create multiple pages.</li>
+
+            <li>Process user input.</li>
+
+            <li>Connect to a database.</li>
+
+            <li>Create forms.</li>
+
+            <li>Display stored information.</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+
+<div class="project-card"
+     data-project="data analysis pandas project advanced">
+
+    <div class="project-number">
+        Project 11
+    </div>
+
+    <h3>Data Analysis Project</h3>
+
+    <p>
+        Analyze a dataset using Python and create
+        useful summaries and visualizations.
+    </p>
+
+    <div class="skills">
+
+        <span class="skill">Pandas</span>
+        <span class="skill">NumPy</span>
+        <span class="skill">Matplotlib</span>
+
+    </div>
+
+    <button onclick="toggleDetails(11)">
+        Project Guide
+    </button>
+
+    <div id="details11" class="project-details">
+
+        <strong>Suggested workflow:</strong>
+
+        <ul>
+
+            <li>Load a dataset.</li>
+
+            <li>Clean the data.</li>
+
+            <li>Analyze the data.</li>
+
+            <li>Calculate useful statistics.</li>
+
+            <li>Create charts.</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+
+<div class="project-card"
+     data-project="machine learning project advanced">
+
+    <div class="project-number">
+        Project 12
+    </div>
+
+    <h3>Machine Learning Project</h3>
+
+    <p>
+        Create a beginner-friendly machine learning
+        project using Python.
+    </p>
+
+    <div class="skills">
+
+        <span class="skill">Python</span>
+        <span class="skill">Pandas</span>
+        <span class="skill">Machine Learning</span>
+
+    </div>
+
+    <button onclick="toggleDetails(12)">
+        Project Guide
+    </button>
+
+    <div id="details12" class="project-details">
+
+        <strong>Suggested workflow:</strong>
+
+        <ul>
+
+            <li>Choose a dataset.</li>
+
+            <li>Prepare the data.</li>
+
+            <li>Split training and testing data.</li>
+
+            <li>Train a model.</li>
+
+            <li>Evaluate the model.</li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<footer>
+
+    <p>
+        © 2026 EduLearn — Learn. Grow. Succeed.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* DARK MODE */
+
+if (localStorage.getItem("darkMode") === "true") {
+
+    document.body.classList.add("dark");
+
+}
+
+
+/* PROJECT DETAILS */
+
+function toggleDetails(number) {
+
+    const details =
+        document.getElementById("details" + number);
+
+    if (details.style.display === "block") {
+
+        details.style.display = "none";
+
+    } else {
+
+        details.style.display = "block";
+
+    }
+
+}
+
+
+/* SEARCH */
+
+function searchProjects() {
+
+    const search =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const projects =
+        document.querySelectorAll(".project-card");
+
+
+    projects.forEach(project => {
+
+        const text =
+            project.textContent.toLowerCase();
+
+        const keywords =
+            project.dataset.project.toLowerCase();
+
+
+        if (
+            search === "" ||
+            text.includes(search) ||
+            keywords.includes(search)
+        ) {
+
+            project.style.display = "block";
+
+        } else {
+
+            project.style.display = "none";
+
+        }
+
+    });
+
+
+    const results =
+        document.getElementById("searchResults");
+
+    results.innerHTML = "";
+
+
+    if (search === "") {
+
+        return;
+
+    }
+
+
+    let found = 0;
+
+
+    projects.forEach(project => {
+
+        if (project.style.display !== "none") {
+
+            found++;
+
+        }
+
+    });
+
+
+    if (found === 0) {
+
+        results.innerHTML =
+            "<div class='info-box'>No Python project found.</div>";
+
+    }
+
+}
+
+</script>
+
+
+</body>
+
+</html>
