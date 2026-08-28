@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -72,9 +73,18 @@
         }
 
         .hero p {
-            max-width: 750px;
+            max-width: 800px;
             font-size: 18px;
             line-height: 1.7;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 9px 15px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            font-size: 14px;
         }
 
         /* CONTAINER */
@@ -97,7 +107,12 @@
 
         .search-box h2 {
             color: #1e3a8a;
+            margin-bottom: 8px;
+        }
+
+        .search-description {
             margin-bottom: 15px;
+            color: #666;
         }
 
         #searchInput {
@@ -113,7 +128,30 @@
             border-color: #2563eb;
         }
 
-        /* SUBJECT OVERVIEW */
+        #searchResults {
+            margin-top: 20px;
+        }
+
+        .result-item {
+            background: #eff6ff;
+            padding: 18px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border-left: 4px solid #2563eb;
+        }
+
+        .result-item strong {
+            color: #1e3a8a;
+            font-size: 17px;
+        }
+
+        .result-category {
+            color: #666;
+            margin: 5px 0 12px;
+            font-size: 14px;
+        }
+
+        /* OVERVIEW */
 
         .overview {
             display: grid;
@@ -136,12 +174,23 @@
             margin-bottom: 8px;
         }
 
+        .overview-card p {
+            color: #555;
+        }
+
         /* SECTION */
 
         .section-title {
             color: #1e3a8a;
-            margin: 35px 0 20px;
+            margin: 40px 0 20px;
             font-size: 28px;
+        }
+
+        .section-description {
+            margin-top: -10px;
+            margin-bottom: 20px;
+            color: #666;
+            line-height: 1.6;
         }
 
         /* TOPICS */
@@ -188,9 +237,14 @@
             text-decoration: none;
             padding: 10px 16px;
             border-radius: 7px;
+            transition: 0.2s;
         }
 
-        /* RESOURCE CARDS */
+        .topic-button:hover {
+            background: #1d4ed8;
+        }
+
+        /* RESOURCES */
 
         .resources {
             display: grid;
@@ -213,6 +267,7 @@
         .resource-card p {
             line-height: 1.6;
             margin-bottom: 15px;
+            color: #555;
         }
 
         .resource-button {
@@ -224,21 +279,30 @@
             border-radius: 7px;
         }
 
-        /* SEARCH RESULTS */
+        /* PROGRESS */
 
-        #searchResults {
-            margin-top: 20px;
+        .progress-card {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            margin-top: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
-        .result-item {
-            background: #eff6ff;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 10px;
+        .progress-bar {
+            width: 100%;
+            height: 14px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 15px 0;
         }
 
-        .result-item strong {
-            color: #1e3a8a;
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #2563eb;
+            transition: 0.3s;
         }
 
         /* FOOTER */
@@ -262,7 +326,8 @@
         body.dark .search-box,
         body.dark .overview-card,
         body.dark .topic-card,
-        body.dark .resource-card {
+        body.dark .resource-card,
+        body.dark .progress-card {
             background: #1f2937;
             color: #e5e7eb;
         }
@@ -282,7 +347,10 @@
         }
 
         body.dark .topic-card p,
-        body.dark .resource-card p {
+        body.dark .resource-card p,
+        body.dark .overview-card p,
+        body.dark .section-description,
+        body.dark .search-description {
             color: #d1d5db;
         }
 
@@ -293,6 +361,14 @@
         }
 
         body.dark .result-item {
+            background: #374151;
+        }
+
+        body.dark .result-category {
+            color: #d1d5db;
+        }
+
+        body.dark .progress-bar {
             background: #374151;
         }
 
@@ -347,7 +423,6 @@
 </nav>
 
 
-
 <!-- HERO -->
 
 <section class="hero">
@@ -355,13 +430,18 @@
     <h1>Python Programming</h1>
 
     <p>
-        Learn Python from fundamentals to advanced concepts,
-        programming practice, projects, data science and
+        Complete Python learning environment covering
+        fundamentals, programming, data structures,
+        object-oriented programming, advanced Python,
+        libraries, data science, automation and
         real-world applications.
     </p>
 
-</section>
+    <div class="hero-badge">
+        College-Level Python Subject
+    </div>
 
+</section>
 
 
 <div class="container">
@@ -371,12 +451,17 @@
 
 <div class="search-box">
 
-    <h2>🔎 Search Python</h2>
+    <h2>🔎 Search the Entire Python Subject</h2>
+
+    <p class="search-description">
+        Search for any Python concept, topic, library,
+        programming technique or application.
+    </p>
 
     <input
         type="text"
         id="searchInput"
-        placeholder="Search any Python topic..."
+        placeholder="Example: variables, loops, pandas, inheritance, APIs..."
         onkeyup="searchTopics()"
     >
 
@@ -385,19 +470,17 @@
 </div>
 
 
-
 <!-- OVERVIEW -->
 
 <div class="overview">
 
     <div class="overview-card">
 
-        <h3>45+</h3>
+        <h3>47+</h3>
 
-        <p>Core Topics</p>
+        <p>Major Topics</p>
 
     </div>
-
 
     <div class="overview-card">
 
@@ -407,7 +490,6 @@
 
     </div>
 
-
     <div class="overview-card">
 
         <h3>50+</h3>
@@ -415,7 +497,6 @@
         <p>MCQs</p>
 
     </div>
-
 
     <div class="overview-card">
 
@@ -428,1015 +509,515 @@
 </div>
 
 
-
-<!-- PYTHON FUNDAMENTALS -->
+<!-- FUNDAMENTALS -->
 
 <h2 class="section-title">
-    Python Fundamentals
+    1. Python Fundamentals
 </h2>
 
+<p class="section-description">
+    Start here if you are learning Python from the beginning.
+</p>
 
 <div class="topics">
 
-
     <div class="topic-card">
-
         <div class="topic-number">01</div>
-
         <h3>Introduction to Python</h3>
-
-        <p>
-            Learn what Python is, its features,
-            applications and advantages.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Python, its features, history, advantages and applications.</p>
+        <a href="python-topic.html?topic=introduction" class="topic-button">Open Topic</a>
     </div>
 
-
-
     <div class="topic-card">
-
         <div class="topic-number">02</div>
-
         <h3>Python Installation & Setup</h3>
-
-        <p>
-            Learn how to install Python and
-            configure your programming environment.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Install Python and configure the programming environment.</p>
+        <a href="python-topic.html?topic=installation" class="topic-button">Open Topic</a>
     </div>
 
-
-
     <div class="topic-card">
-
         <div class="topic-number">03</div>
-
         <h3>Python Syntax</h3>
-
-        <p>
-            Understand indentation, statements,
-            comments and basic syntax.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Learn statements, indentation, comments and syntax rules.</p>
+        <a href="python-topic.html?topic=syntax" class="topic-button">Open Topic</a>
     </div>
 
-
-
     <div class="topic-card">
-
         <div class="topic-number">04</div>
-
         <h3>Variables</h3>
-
-        <p>
-            Learn how variables store and
-            manipulate information.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Understand variables and storing information.</p>
+        <a href="python-topic.html?topic=variables" class="topic-button">Open Topic</a>
     </div>
 
-
-
     <div class="topic-card">
-
         <div class="topic-number">05</div>
-
         <h3>Data Types</h3>
-
-        <p>
-            Learn integers, floats, strings,
-            Boolean values and more.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Integers, floats, strings, Boolean values and collections.</p>
+        <a href="python-topic.html?topic=datatypes" class="topic-button">Open Topic</a>
     </div>
 
-
-
     <div class="topic-card">
-
         <div class="topic-number">06</div>
-
         <h3>Input & Output</h3>
-
-        <p>
-            Learn how Python programs communicate
-            with users.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Learn input(), print() and user interaction.</p>
+        <a href="python-topic.html?topic=input-output" class="topic-button">Open Topic</a>
     </div>
 
 </div>
-
 
 
 <!-- CONTROL FLOW -->
 
 <h2 class="section-title">
-    Control Flow
+    2. Control Flow
 </h2>
-
 
 <div class="topics">
 
-
     <div class="topic-card">
-
         <div class="topic-number">07</div>
-
         <h3>Operators</h3>
-
-        <p>
-            Arithmetic, comparison, logical,
-            assignment and other operators.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Arithmetic, comparison, logical and assignment operators.</p>
+        <a href="python-topic.html?topic=operators" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">08</div>
-
         <h3>Conditional Statements</h3>
-
-        <p>
-            Learn if, elif and else statements.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Learn if, elif and else decision-making.</p>
+        <a href="python-topic.html?topic=conditional-statements" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">09</div>
-
         <h3>For Loops</h3>
-
-        <p>
-            Learn iteration using for loops.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Repeat operations using for loops.</p>
+        <a href="python-topic.html?topic=for-loops" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">10</div>
-
         <h3>While Loops</h3>
-
-        <p>
-            Learn condition-controlled repetition.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Use conditions to control repeated execution.</p>
+        <a href="python-topic.html?topic=while-loops" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">11</div>
-
         <h3>Break & Continue</h3>
-
-        <p>
-            Control the execution of loops.
-        </p>
-
-       <a href="python-topic.html?topic=variables" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Control loop execution.</p>
+        <a href="python-topic.html?topic=break-continue" class="topic-button">Open Topic</a>
     </div>
 
 </div>
-
 
 
 <!-- DATA STRUCTURES -->
 
 <h2 class="section-title">
-    Python Data Structures
+    3. Python Data Structures
 </h2>
-
 
 <div class="topics">
 
-
     <div class="topic-card">
-
         <div class="topic-number">12</div>
-
         <h3>Strings</h3>
-
-        <p>
-            Work with text and string operations.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Text, indexing, slicing and string methods.</p>
+        <a href="python-topic.html?topic=strings" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">13</div>
-
         <h3>Lists</h3>
-
-        <p>
-            Store and manipulate collections of values.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Store and manipulate collections of values.</p>
+        <a href="python-topic.html?topic=lists" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">14</div>
-
         <h3>Tuples</h3>
-
-        <p>
-            Learn immutable ordered collections.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Work with immutable ordered collections.</p>
+        <a href="python-topic.html?topic=tuples" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">15</div>
-
         <h3>Sets</h3>
-
-        <p>
-            Learn unordered collections of unique values.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Work with unique collections and set operations.</p>
+        <a href="python-topic.html?topic=sets" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">16</div>
-
         <h3>Dictionaries</h3>
-
-        <p>
-            Store information using key-value pairs.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Store information using key-value pairs.</p>
+        <a href="python-topic.html?topic=dictionaries" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">17</div>
-
         <h3>List Comprehensions</h3>
-
-        <p>
-            Create lists using concise expressions.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Create lists using concise expressions.</p>
+        <a href="python-topic.html?topic=list-comprehensions" class="topic-button">Open Topic</a>
     </div>
 
 </div>
-
 
 
 <!-- FUNCTIONS -->
 
 <h2 class="section-title">
-    Functions & Advanced Programming
+    4. Functions & Functional Programming
 </h2>
-
 
 <div class="topics">
 
-
     <div class="topic-card">
-
         <div class="topic-number">18</div>
-
         <h3>Functions</h3>
-
-        <p>
-            Create reusable blocks of Python code.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Create reusable blocks of Python code.</p>
+        <a href="python-topic.html?topic=functions" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">19</div>
-
         <h3>Arguments & Parameters</h3>
-
-        <p>
-            Pass information into functions.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Pass information into functions.</p>
+        <a href="python-topic.html?topic=arguments-parameters" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">20</div>
-
         <h3>Recursion</h3>
-
-        <p>
-            Understand functions that call themselves.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Understand functions that call themselves.</p>
+        <a href="python-topic.html?topic=recursion" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">21</div>
-
         <h3>Lambda Functions</h3>
-
-        <p>
-            Learn anonymous functions and expressions.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Learn anonymous functions and expressions.</p>
+        <a href="python-topic.html?topic=lambda" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">22</div>
-
         <h3>Map, Filter & Reduce</h3>
-
-        <p>
-            Work with functional programming techniques.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Functional programming techniques.</p>
+        <a href="python-topic.html?topic=map-filter-reduce" class="topic-button">Open Topic</a>
     </div>
 
 </div>
-
 
 
 <!-- OOP -->
 
 <h2 class="section-title">
-    Object-Oriented Programming
+    5. Object-Oriented Programming
 </h2>
-
 
 <div class="topics">
 
-
     <div class="topic-card">
-
         <div class="topic-number">23</div>
-
         <h3>Classes & Objects</h3>
-
-        <p>
-            Learn the foundations of object-oriented programming.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Understand the foundations of Python OOP.</p>
+        <a href="python-topic.html?topic=classes-objects" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">24</div>
-
         <h3>Constructors</h3>
-
-        <p>
-            Understand object initialization using __init__.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Initialize objects using constructors.</p>
+        <a href="python-topic.html?topic=constructors" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">25</div>
-
         <h3>Inheritance</h3>
-
-        <p>
-            Reuse functionality between classes.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Reuse functionality between classes.</p>
+        <a href="python-topic.html?topic=inheritance" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">26</div>
-
         <h3>Polymorphism</h3>
-
-        <p>
-            Understand multiple forms of behavior.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Understand multiple forms of behavior.</p>
+        <a href="python-topic.html?topic=polymorphism" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">27</div>
-
         <h3>Encapsulation</h3>
-
-        <p>
-            Control access to data and methods.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Control access to data and methods.</p>
+        <a href="python-topic.html?topic=encapsulation" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">28</div>
-
         <h3>Abstraction</h3>
-
-        <p>
-            Hide unnecessary implementation details.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Hide unnecessary implementation details.</p>
+        <a href="python-topic.html?topic=abstraction" class="topic-button">Open Topic</a>
     </div>
 
 </div>
 
 
-
-<!-- FILES AND ERRORS -->
+<!-- FILES -->
 
 <h2 class="section-title">
-    Files, Errors & Modules
+    6. Files, Errors & Modules
 </h2>
-
 
 <div class="topics">
 
-
     <div class="topic-card">
-
         <div class="topic-number">29</div>
-
         <h3>File Handling</h3>
-
-        <p>
-            Read, write and manage files using Python.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Read, write and manage files.</p>
+        <a href="python-topic.html?topic=file-handling" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">30</div>
-
         <h3>Exception Handling</h3>
-
-        <p>
-            Handle errors using try, except and finally.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Handle errors using try, except and finally.</p>
+        <a href="python-topic.html?topic=exception-handling" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">31</div>
-
         <h3>Modules</h3>
-
-        <p>
-            Organize reusable Python code.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Organize reusable Python code.</p>
+        <a href="python-topic.html?topic=modules" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">32</div>
-
         <h3>Packages</h3>
-
-        <p>
-            Organize multiple modules into packages.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Organize multiple modules into packages.</p>
+        <a href="python-topic.html?topic=packages" class="topic-button">Open Topic</a>
     </div>
 
 </div>
 
 
-
-<!-- ADVANCED PYTHON -->
+<!-- ADVANCED -->
 
 <h2 class="section-title">
-    Advanced Python
+    7. Advanced Python
 </h2>
-
 
 <div class="topics">
 
-
     <div class="topic-card">
-
         <div class="topic-number">33</div>
-
         <h3>Iterators</h3>
-
-        <p>
-            Understand Python iteration protocols.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Understand Python iteration.</p>
+        <a href="python-topic.html?topic=iterators" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">34</div>
-
         <h3>Generators</h3>
-
-        <p>
-            Generate values efficiently using yield.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Generate values efficiently using yield.</p>
+        <a href="python-topic.html?topic=generators" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">35</div>
-
         <h3>Decorators</h3>
-
-        <p>
-            Modify or extend function behavior.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Modify or extend function behavior.</p>
+        <a href="python-topic.html?topic=decorators" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">36</div>
-
         <h3>Regular Expressions</h3>
-
-        <p>
-            Search and manipulate text patterns.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Search and manipulate text patterns.</p>
+        <a href="python-topic.html?topic=regular-expressions" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">37</div>
-
         <h3>Date & Time</h3>
-
-        <p>
-            Work with dates, times and timestamps.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Work with dates and times.</p>
+        <a href="python-topic.html?topic=date-time" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">38</div>
-
         <h3>Virtual Environments</h3>
-
-        <p>
-            Manage isolated Python project environments.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Manage isolated Python environments.</p>
+        <a href="python-topic.html?topic=virtual-environments" class="topic-button">Open Topic</a>
     </div>
 
 </div>
 
 
-
-<!-- PYTHON ECOSYSTEM -->
+<!-- LIBRARIES -->
 
 <h2 class="section-title">
-    Python Libraries & Applications
+    8. Python Libraries
 </h2>
-
 
 <div class="topics">
 
-
     <div class="topic-card">
-
         <div class="topic-number">39</div>
-
         <h3>NumPy</h3>
-
-        <p>
-            Numerical computing and array operations.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Numerical computing and arrays.</p>
+        <a href="python-topic.html?topic=numpy" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">40</div>
-
         <h3>Pandas</h3>
-
-        <p>
-            Data analysis and manipulation with Python.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Data analysis and manipulation.</p>
+        <a href="python-topic.html?topic=pandas" class="topic-button">Open Topic</a>
     </div>
 
-
     <div class="topic-card">
-
         <div class="topic-number">41</div>
-
         <h3>Matplotlib</h3>
-
-        <p>
-            Create charts and visualizations.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
-    </div>
-
-
-    <div class="topic-card">
-
-        <div class="topic-number">42</div>
-
-        <h3>Database Connectivity</h3>
-
-        <p>
-            Connect Python programs with databases.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
-    </div>
-
-
-    <div class="topic-card">
-
-        <div class="topic-number">43</div>
-
-        <h3>APIs</h3>
-
-        <p>
-            Communicate with external services using APIs.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
-    </div>
-
-
-    <div class="topic-card">
-
-        <div class="topic-number">44</div>
-
-        <h3>Web Development</h3>
-
-        <p>
-            Explore Python for web application development.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
-    </div>
-
-
-    <div class="topic-card">
-
-        <div class="topic-number">45</div>
-
-        <h3>Automation</h3>
-
-        <p>
-            Automate repetitive tasks using Python.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
-    </div>
-
-
-    <div class="topic-card">
-
-        <div class="topic-number">46</div>
-
-        <h3>Data Science</h3>
-
-        <p>
-            Use Python for data analysis and scientific computing.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
-    </div>
-
-
-    <div class="topic-card">
-
-        <div class="topic-number">47</div>
-
-        <h3>Machine Learning Basics</h3>
-
-        <p>
-            Introduction to machine learning using Python.
-        </p>
-
-        <a href="#" class="topic-button">
-            Open Topic
-        </a>
-
+        <p>Charts and data visualization.</p>
+        <a href="python-topic.html?topic=matplotlib" class="topic-button">Open Topic</a>
     </div>
 
 </div>
 
 
-
-<!-- RESOURCES -->
+<!-- APPLICATIONS -->
 
 <h2 class="section-title">
-    Python Learning Resources
+    9. Python Applications
 </h2>
 
+<div class="topics">
+
+    <div class="topic-card">
+        <div class="topic-number">42</div>
+        <h3>Database Connectivity</h3>
+        <p>Connect Python applications to databases.</p>
+        <a href="python-topic.html?topic=database-connectivity" class="topic-button">Open Topic</a>
+    </div>
+
+    <div class="topic-card">
+        <div class="topic-number">43</div>
+        <h3>APIs</h3>
+        <p>Communicate with external services.</p>
+        <a href="python-topic.html?topic=apis" class="topic-button">Open Topic</a>
+    </div>
+
+    <div class="topic-card">
+        <div class="topic-number">44</div>
+        <h3>Web Development</h3>
+        <p>Explore Python for web applications.</p>
+        <a href="python-topic.html?topic=web-development" class="topic-button">Open Topic</a>
+    </div>
+
+    <div class="topic-card">
+        <div class="topic-number">45</div>
+        <h3>Automation</h3>
+        <p>Automate repetitive tasks with Python.</p>
+        <a href="python-topic.html?topic=automation" class="topic-button">Open Topic</a>
+    </div>
+
+    <div class="topic-card">
+        <div class="topic-number">46</div>
+        <h3>Data Science</h3>
+        <p>Use Python for data analysis and scientific computing.</p>
+        <a href="python-topic.html?topic=data-science" class="topic-button">Open Topic</a>
+    </div>
+
+    <div class="topic-card">
+        <div class="topic-number">47</div>
+        <h3>Machine Learning Basics</h3>
+        <p>Introduction to machine learning with Python.</p>
+        <a href="python-topic.html?topic=machine-learning" class="topic-button">Open Topic</a>
+    </div>
+
+</div>
+
+
+<!-- LEARNING RESOURCES -->
+
+<h2 class="section-title">
+    10. Python Learning Resources
+</h2>
 
 <div class="resources">
 
-
     <div class="resource-card">
-
-        <h3>💻 Programs</h3>
-
+        <h3>💻 Programming Practice</h3>
         <p>
-            Practice Python programming problems
-            from beginner to advanced level.
+            Practice Python programs from beginner
+            to advanced level.
         </p>
-
-        <a href="#" class="resource-button">
-            Practice
-        </a>
-
+        <a href="#" class="resource-button">Practice</a>
     </div>
 
-
     <div class="resource-card">
-
-        <h3>🧩 Practice Problems</h3>
-
+        <h3>🧩 Problem Solving</h3>
         <p>
-            Solve programming problems and
-            improve your problem-solving skills.
+            Solve programming problems and improve
+            your problem-solving ability.
         </p>
-
-        <a href="#" class="resource-button">
-            Practice
-        </a>
-
+        <a href="#" class="resource-button">Problems</a>
     </div>
 
-
     <div class="resource-card">
-
-        <h3>📝 MCQs</h3>
-
+        <h3>📝 Python MCQs</h3>
         <p>
-            Test your Python knowledge with
+            Test your Python knowledge using
             multiple-choice questions.
         </p>
-
-        <a href="#" class="resource-button">
-            Start MCQs
-        </a>
-
+        <a href="#" class="resource-button">MCQs</a>
     </div>
 
-
     <div class="resource-card">
-
-        <h3>🎯 Projects</h3>
-
+        <h3>🎯 Python Projects</h3>
         <p>
-            Build practical projects to apply
-            your Python knowledge.
+            Build practical projects using Python.
         </p>
-
-        <a href="#" class="resource-button">
-            View Projects
-        </a>
-
+        <a href="#" class="resource-button">Projects</a>
     </div>
 
-
     <div class="resource-card">
-
         <h3>🏆 Final Assessment</h3>
-
         <p>
-            Test your overall understanding
-            of Python.
+            Test your overall Python knowledge.
         </p>
+        <a href="#" class="resource-button">Assessment</a>
+    </div>
 
-        <a href="#" class="resource-button">
-            Assessment
-        </a>
+</div>
+
+
+<!-- PROGRESS -->
+
+<div class="progress-card">
+
+    <h2>📊 Python Progress</h2>
+
+    <p id="progressText">
+        Topics Completed: 0 / 47
+    </p>
+
+    <div class="progress-bar">
+
+        <div
+            class="progress-fill"
+            id="progressFill">
+        </div>
 
     </div>
 
 </div>
 
-</div>
 
+</div>
 
 
 <!-- FOOTER -->
@@ -1450,10 +1031,11 @@
 </footer>
 
 
-
 <script>
 
-/* DARK MODE */
+/* =========================
+   DARK MODE
+========================= */
 
 if (localStorage.getItem("darkMode") === "true") {
 
@@ -1462,72 +1044,313 @@ if (localStorage.getItem("darkMode") === "true") {
 }
 
 
-
-/* PYTHON TOPIC SEARCH */
+/* =========================
+   PYTHON SUBJECT DATABASE
+========================= */
 
 const topics = [
 
-    "Introduction to Python",
-    "Python Installation & Setup",
-    "Python Syntax",
-    "Variables",
-    "Data Types",
-    "Input & Output",
-    "Operators",
-    "Conditional Statements",
-    "For Loops",
-    "While Loops",
-    "Break & Continue",
-    "Strings",
-    "Lists",
-    "Tuples",
-    "Sets",
-    "Dictionaries",
-    "List Comprehensions",
-    "Functions",
-    "Arguments & Parameters",
-    "Recursion",
-    "Lambda Functions",
-    "Map Filter Reduce",
-    "Classes & Objects",
-    "Constructors",
-    "Inheritance",
-    "Polymorphism",
-    "Encapsulation",
-    "Abstraction",
-    "File Handling",
-    "Exception Handling",
-    "Modules",
-    "Packages",
-    "Iterators",
-    "Generators",
-    "Decorators",
-    "Regular Expressions",
-    "Date & Time",
-    "Virtual Environments",
-    "NumPy",
-    "Pandas",
-    "Matplotlib",
-    "Database Connectivity",
-    "APIs",
-    "Web Development",
-    "Automation",
-    "Data Science",
-    "Machine Learning Basics"
+    {
+        name: "Introduction to Python",
+        key: "introduction",
+        category: "Python Fundamentals"
+    },
+
+    {
+        name: "Python Installation & Setup",
+        key: "installation",
+        category: "Python Fundamentals"
+    },
+
+    {
+        name: "Python Syntax",
+        key: "syntax",
+        category: "Python Fundamentals"
+    },
+
+    {
+        name: "Variables",
+        key: "variables",
+        category: "Python Fundamentals"
+    },
+
+    {
+        name: "Data Types",
+        key: "datatypes",
+        category: "Python Fundamentals"
+    },
+
+    {
+        name: "Input & Output",
+        key: "input-output",
+        category: "Python Fundamentals"
+    },
+
+    {
+        name: "Operators",
+        key: "operators",
+        category: "Control Flow"
+    },
+
+    {
+        name: "Conditional Statements",
+        key: "conditional-statements",
+        category: "Control Flow"
+    },
+
+    {
+        name: "For Loops",
+        key: "for-loops",
+        category: "Control Flow"
+    },
+
+    {
+        name: "While Loops",
+        key: "while-loops",
+        category: "Control Flow"
+    },
+
+    {
+        name: "Break & Continue",
+        key: "break-continue",
+        category: "Control Flow"
+    },
+
+    {
+        name: "Strings",
+        key: "strings",
+        category: "Data Structures"
+    },
+
+    {
+        name: "Lists",
+        key: "lists",
+        category: "Data Structures"
+    },
+
+    {
+        name: "Tuples",
+        key: "tuples",
+        category: "Data Structures"
+    },
+
+    {
+        name: "Sets",
+        key: "sets",
+        category: "Data Structures"
+    },
+
+    {
+        name: "Dictionaries",
+        key: "dictionaries",
+        category: "Data Structures"
+    },
+
+    {
+        name: "List Comprehensions",
+        key: "list-comprehensions",
+        category: "Data Structures"
+    },
+
+    {
+        name: "Functions",
+        key: "functions",
+        category: "Functions"
+    },
+
+    {
+        name: "Arguments & Parameters",
+        key: "arguments-parameters",
+        category: "Functions"
+    },
+
+    {
+        name: "Recursion",
+        key: "recursion",
+        category: "Functions"
+    },
+
+    {
+        name: "Lambda Functions",
+        key: "lambda",
+        category: "Functions"
+    },
+
+    {
+        name: "Map, Filter & Reduce",
+        key: "map-filter-reduce",
+        category: "Functions"
+    },
+
+    {
+        name: "Classes & Objects",
+        key: "classes-objects",
+        category: "Object-Oriented Programming"
+    },
+
+    {
+        name: "Constructors",
+        key: "constructors",
+        category: "Object-Oriented Programming"
+    },
+
+    {
+        name: "Inheritance",
+        key: "inheritance",
+        category: "Object-Oriented Programming"
+    },
+
+    {
+        name: "Polymorphism",
+        key: "polymorphism",
+        category: "Object-Oriented Programming"
+    },
+
+    {
+        name: "Encapsulation",
+        key: "encapsulation",
+        category: "Object-Oriented Programming"
+    },
+
+    {
+        name: "Abstraction",
+        key: "abstraction",
+        category: "Object-Oriented Programming"
+    },
+
+    {
+        name: "File Handling",
+        key: "file-handling",
+        category: "Files & Errors"
+    },
+
+    {
+        name: "Exception Handling",
+        key: "exception-handling",
+        category: "Files & Errors"
+    },
+
+    {
+        name: "Modules",
+        key: "modules",
+        category: "Modules & Packages"
+    },
+
+    {
+        name: "Packages",
+        key: "packages",
+        category: "Modules & Packages"
+    },
+
+    {
+        name: "Iterators",
+        key: "iterators",
+        category: "Advanced Python"
+    },
+
+    {
+        name: "Generators",
+        key: "generators",
+        category: "Advanced Python"
+    },
+
+    {
+        name: "Decorators",
+        key: "decorators",
+        category: "Advanced Python"
+    },
+
+    {
+        name: "Regular Expressions",
+        key: "regular-expressions",
+        category: "Advanced Python"
+    },
+
+    {
+        name: "Date & Time",
+        key: "date-time",
+        category: "Advanced Python"
+    },
+
+    {
+        name: "Virtual Environments",
+        key: "virtual-environments",
+        category: "Advanced Python"
+    },
+
+    {
+        name: "NumPy",
+        key: "numpy",
+        category: "Python Libraries"
+    },
+
+    {
+        name: "Pandas",
+        key: "pandas",
+        category: "Python Libraries"
+    },
+
+    {
+        name: "Matplotlib",
+        key: "matplotlib",
+        category: "Python Libraries"
+    },
+
+    {
+        name: "Database Connectivity",
+        key: "database-connectivity",
+        category: "Applications"
+    },
+
+    {
+        name: "APIs",
+        key: "apis",
+        category: "Applications"
+    },
+
+    {
+        name: "Web Development",
+        key: "web-development",
+        category: "Applications"
+    },
+
+    {
+        name: "Automation",
+        key: "automation",
+        category: "Applications"
+    },
+
+    {
+        name: "Data Science",
+        key: "data-science",
+        category: "Applications"
+    },
+
+    {
+        name: "Machine Learning Basics",
+        key: "machine-learning",
+        category: "Applications"
+    }
 
 ];
 
 
+/* =========================
+   SEARCH
+========================= */
+
 function searchTopics() {
 
-    const search =
-        document.getElementById("searchInput")
-        .value
-        .toLowerCase()
-        .trim();
+    const searchInput =
+        document.getElementById("searchInput");
 
     const results =
         document.getElementById("searchResults");
+
+    const search =
+        searchInput.value
+        .toLowerCase()
+        .trim();
 
     results.innerHTML = "";
 
@@ -1539,15 +1362,35 @@ function searchTopics() {
 
 
     const matchedTopics =
-        topics.filter(topic =>
-            topic.toLowerCase().includes(search)
-        );
+        topics.filter(topic => {
+
+            return (
+                topic.name
+                .toLowerCase()
+                .includes(search)
+                ||
+
+                topic.category
+                .toLowerCase()
+                .includes(search)
+            );
+
+        });
 
 
     if (matchedTopics.length === 0) {
 
-        results.innerHTML =
-            "<div class='result-item'>No Python topic found.</div>";
+        results.innerHTML = `
+            <div class="result-item">
+                <strong>No Python topic found.</strong>
+
+                <div class="result-category">
+                    Try another search such as:
+                    variables, loops, functions,
+                    pandas, inheritance or APIs.
+                </div>
+            </div>
+        `;
 
         return;
 
@@ -1561,13 +1404,25 @@ function searchTopics() {
 
         item.className = "result-item";
 
-        item.innerHTML =
-            "<strong>" +
-            topic +
-            "</strong><br>" +
-            "<small>Python → " +
-            topic +
-            "</small>";
+        item.innerHTML = `
+
+            <strong>
+                ${topic.name}
+            </strong>
+
+            <div class="result-category">
+                Python → ${topic.category}
+            </div>
+
+            <a
+                href="python-topic.html?topic=${topic.key}"
+                class="topic-button">
+
+                Open Topic
+
+            </a>
+
+        `;
 
         results.appendChild(item);
 
@@ -1575,9 +1430,62 @@ function searchTopics() {
 
 }
 
+
+/* =========================
+   PYTHON PROGRESS
+========================= */
+
+function updateProgress() {
+
+    let completed = 0;
+
+    topics.forEach(topic => {
+
+        if (
+            localStorage.getItem(
+                "pythonTopic_" + topic.key
+            ) === "completed"
+        ) {
+
+            completed++;
+
+        }
+
+    });
+
+
+    const percentage =
+        Math.round(
+            (completed / topics.length) * 100
+        );
+
+
+    document.getElementById("progressText")
+        .textContent =
+        "Topics Completed: " +
+        completed +
+        " / " +
+        topics.length +
+        " (" +
+        percentage +
+        "%)";
+
+
+    document.getElementById("progressFill")
+        .style.width =
+        percentage + "%";
+
+}
+
+
+/* INITIALIZE */
+
+updateProgress();
+
 </script>
 
 
 </body>
 
 </html>
+```
