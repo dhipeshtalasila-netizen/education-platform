@@ -1,0 +1,761 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduLearn - B.Com</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            background: white;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #374151;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            background: linear-gradient(135deg, #047857, #059669);
+            color: white;
+            padding: 75px 7%;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #d1fae5;
+        }
+
+        .breadcrumb a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #a7f3d0;
+        }
+
+        .hero p {
+            max-width: 760px;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #ecfdf5;
+        }
+
+        /* ================= CONTENT ================= */
+
+        .container {
+            width: 86%;
+            max-width: 1150px;
+            margin: 55px auto;
+        }
+
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .section-description {
+            color: #6b7280;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        /* ================= SUBJECT GRID ================= */
+
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .subject-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            transition: 0.3s;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+
+        .subject-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 12px;
+            background: #ecfdf5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .subject-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .subject-card p {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 14px;
+            min-height: 72px;
+            margin-bottom: 20px;
+        }
+
+        .course-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: #059669;
+            color: white;
+            padding: 10px 17px;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .course-btn:hover {
+            background: #047857;
+        }
+
+        .coming-soon {
+            background: #e5e7eb;
+            color: #6b7280;
+        }
+
+        /* ================= CAREER AREAS ================= */
+
+        .career-section {
+            margin-top: 60px;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .career-section h2 {
+            margin-bottom: 25px;
+        }
+
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .career {
+            background: #ecfdf5;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            color: #047857;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* ================= LEARNING METHOD ================= */
+
+        .method-section {
+            margin-top: 60px;
+        }
+
+        .method-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .method-card {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .method-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .method-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .method-card p {
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            margin-top: 70px;
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 30px 7%;
+        }
+
+        footer p {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .subject-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .career-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .method-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                padding: 0 5%;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a:not(:last-child) {
+                display: none;
+            }
+
+            .hero {
+                padding: 55px 7%;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .subject-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .career-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <a href="index.html" class="logo">
+            EduLearn
+        </a>
+
+        <div class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="settings.html">
+                Settings
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="breadcrumb">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            &nbsp; / &nbsp;
+
+            B.Com
+
+        </div>
+
+        <h1>
+            Learn <span>B.Com</span>
+        </h1>
+
+        <p>
+            Build strong knowledge in accounting, finance,
+            economics and commerce. Learn important concepts
+            through structured lessons, practical examples,
+            quizzes and assessments.
+        </p>
+
+    </section>
+
+
+    <!-- ================= SUBJECTS ================= -->
+
+    <main class="container">
+
+        <h2 class="section-title">
+            B.Com Subjects
+        </h2>
+
+        <p class="section-description">
+            Explore core commerce subjects and develop the
+            knowledge needed for higher studies and careers
+            in accounting, finance and business.
+        </p>
+
+
+        <div class="subject-grid">
+
+
+            <!-- FINANCIAL ACCOUNTING -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    🧾
+                </div>
+
+                <h3>
+                    Financial Accounting
+                </h3>
+
+                <p>
+                    Learn journal entries, ledgers, trial balance,
+                    financial statements and accounting principles.
+                </p>
+
+                <span class="course-btn coming-soon">
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+            <!-- CORPORATE ACCOUNTING -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    🏢
+                </div>
+
+                <h3>
+                    Corporate Accounting
+                </h3>
+
+                <p>
+                    Understand company accounts, share capital,
+                    debentures and preparation of corporate
+                    financial statements.
+                </p>
+
+                <span class="course-btn coming-soon">
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+            <!-- COST ACCOUNTING -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    🧮
+                </div>
+
+                <h3>
+                    Cost Accounting
+                </h3>
+
+                <p>
+                    Learn cost classification, costing methods,
+                    cost sheets, budgeting and cost control.
+                </p>
+
+                <span class="course-btn coming-soon">
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+            <!-- BUSINESS ECONOMICS -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    📈
+                </div>
+
+                <h3>
+                    Business Economics
+                </h3>
+
+                <p>
+                    Study demand, supply, production, costs,
+                    market structures and economic decisions.
+                </p>
+
+                <span class="course-btn coming-soon">
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+            <!-- BUSINESS LAW -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    ⚖️
+                </div>
+
+                <h3>
+                    Business Law
+                </h3>
+
+                <p>
+                    Understand contracts, business regulations,
+                    legal principles and commercial transactions.
+                </p>
+
+                <span class="course-btn coming-soon">
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+            <!-- TAXATION -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    🏛️
+                </div>
+
+                <h3>
+                    Taxation
+                </h3>
+
+                <p>
+                    Learn the fundamentals of taxation,
+                    income tax concepts and GST basics.
+                </p>
+
+                <span class="course-btn coming-soon">
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+            <!-- FINANCIAL MANAGEMENT -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    💰
+                </div>
+
+                <h3>
+                    Financial Management
+                </h3>
+
+                <p>
+                    Learn financial planning, investment decisions,
+                    capital budgeting and working capital management.
+                </p>
+
+                <span class="course-btn coming-soon">
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+            <!-- AUDITING -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    🔍
+                </div>
+
+                <h3>
+                    Auditing
+                </h3>
+
+                <p>
+                    Understand auditing principles, procedures,
+                    internal controls and audit reporting.
+                </p>
+
+                <span class="course-btn coming-soon">
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+            <!-- BUSINESS STATISTICS -->
+
+            <div class="subject-card">
+
+                <div class="subject-icon">
+                    📊
+                </div>
+
+                <h3>
+                    Business Statistics
+                </h3>
+
+                <p>
+                    Learn statistical methods, data analysis,
+                    averages, probability and interpretation.
+                </p>
+
+                <span class="course-btn coming-soon">
+                    Coming Soon
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ================= CAREER AREAS ================= -->
+
+        <section class="career-section">
+
+            <h2>
+                Career Areas
+            </h2>
+
+            <div class="career-grid">
+
+                <div class="career">
+                    Accounting
+                </div>
+
+                <div class="career">
+                    Banking
+                </div>
+
+                <div class="career">
+                    Finance
+                </div>
+
+                <div class="career">
+                    Taxation
+                </div>
+
+                <div class="career">
+                    Auditing
+                </div>
+
+                <div class="career">
+                    Investment
+                </div>
+
+                <div class="career">
+                    Business
+                </div>
+
+                <div class="career">
+                    Government Services
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= LEARNING METHOD ================= -->
+
+        <section class="method-section">
+
+            <h2 class="section-title">
+                How You'll Learn
+            </h2>
+
+            <p class="section-description">
+                EduLearn combines concepts, practical examples
+                and assessments to make commerce subjects easier
+                to understand.
+            </p>
+
+
+            <div class="method-grid">
+
+
+                <div class="method-card">
+
+                    <div class="method-icon">
+                        📚
+                    </div>
+
+                    <h3>
+                        Learn Concepts
+                    </h3>
+
+                    <p>
+                        Study structured lessons covering
+                        important B.Com concepts in a simple
+                        and organized format.
+                    </p>
+
+                </div>
+
+
+                <div class="method-card">
+
+                    <div class="method-icon">
+                        🧮
+                    </div>
+
+                    <h3>
+                        Practice Problems
+                    </h3>
+
+                    <p>
+                        Work through accounting, finance,
+                        statistics and commerce problems
+                        to strengthen your understanding.
+                    </p>
+
+                </div>
+
+
+                <div class="method-card">
+
+                    <div class="method-icon">
+                        🏆
+                    </div>
+
+                    <h3>
+                        Test Yourself
+                    </h3>
+
+                    <p>
+                        Complete quizzes and assessments and
+                        track your learning progress through
+                        your EduLearn dashboard.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 EduLearn. Learn. Build. Grow.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
+```
