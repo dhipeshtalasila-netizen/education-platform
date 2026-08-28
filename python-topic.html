@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>EduLearn - Python Program</title>
+<title>EduLearn - Python Topic</title>
 
 <style>
 
@@ -64,20 +64,21 @@ body {
 .hero {
     background: linear-gradient(135deg, #1e3a8a, #2563eb);
     color: white;
-    padding: 50px 7%;
+    padding: 55px 7%;
 }
 
 .hero h1 {
     font-size: 38px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .hero p {
-    font-size: 17px;
+    max-width: 850px;
     line-height: 1.7;
+    font-size: 17px;
 }
 
-/* CONTAINER */
+/* MAIN */
 
 .container {
     max-width: 1100px;
@@ -85,60 +86,67 @@ body {
     padding: 40px 20px;
 }
 
-/* CONTENT BOX */
-
-.content-box {
+.topic-card {
     background: white;
-    padding: 28px;
+    padding: 30px;
     border-radius: 14px;
     margin-bottom: 25px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
-.content-box h2 {
+.topic-card h2 {
     color: #1e3a8a;
     margin-bottom: 15px;
 }
 
-.content-box p {
+.topic-card h3 {
+    color: #2563eb;
+    margin: 20px 0 10px;
+}
+
+.topic-card p {
     line-height: 1.7;
-    color: #555;
+    margin-bottom: 12px;
+}
+
+.topic-card ul {
+    margin-left: 25px;
+    line-height: 1.8;
 }
 
 /* CODE */
 
 .code-box {
     background: #111827;
-    color: #f9fafb;
-    padding: 22px;
+    color: #e5e7eb;
+    padding: 20px;
     border-radius: 10px;
     overflow-x: auto;
-    margin-top: 15px;
+    margin: 15px 0;
 }
 
 pre {
     font-family: Consolas, monospace;
     line-height: 1.6;
-    white-space: pre-wrap;
 }
 
 /* OUTPUT */
 
-.output-box {
-    background: #ecfdf5;
-    border-left: 5px solid #16a34a;
-    padding: 18px;
-    margin-top: 15px;
-    border-radius: 8px;
+.output {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    margin-top: 12px;
+    border-radius: 7px;
 }
 
-.output-box strong {
-    color: #15803d;
+.output strong {
+    color: #1e3a8a;
 }
 
 /* BUTTONS */
 
-.button-area {
+.buttons {
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
@@ -147,39 +155,18 @@ pre {
 
 .btn {
     display: inline-block;
-    padding: 12px 20px;
-    border-radius: 8px;
+    background: #2563eb;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 7px;
     text-decoration: none;
     border: none;
     cursor: pointer;
     font-size: 15px;
-    font-weight: bold;
 }
 
-.back-btn {
-    background: #6b7280;
-    color: white;
-}
-
-.complete-btn {
-    background: #16a34a;
-    color: white;
-}
-
-.complete-btn:hover {
-    background: #15803d;
-}
-
-.back-btn:hover {
-    background: #4b5563;
-}
-
-/* STATUS */
-
-.status {
-    margin-top: 18px;
-    font-weight: bold;
-    color: #16a34a;
+.btn:hover {
+    background: #1d4ed8;
 }
 
 /* DARK MODE */
@@ -190,7 +177,7 @@ body.dark {
 }
 
 body.dark .navbar,
-body.dark .content-box {
+body.dark .topic-card {
     background: #1f2937;
     color: #e5e7eb;
 }
@@ -203,21 +190,20 @@ body.dark .nav-links a:hover {
     color: #60a5fa;
 }
 
-body.dark .content-box h2 {
+body.dark .topic-card h2 {
     color: #60a5fa;
 }
 
-body.dark .content-box p {
-    color: #d1d5db;
+body.dark .topic-card h3 {
+    color: #93c5fd;
 }
 
-body.dark .output-box {
-    background: #064e3b;
-    border-left-color: #22c55e;
+body.dark .output {
+    background: #374151;
 }
 
-body.dark .output-box strong {
-    color: #86efac;
+body.dark .output strong {
+    color: #93c5fd;
 }
 
 /* FOOTER */
@@ -246,6 +232,10 @@ footer {
 
     .hero h1 {
         font-size: 30px;
+    }
+
+    .topic-card {
+        padding: 20px;
     }
 
 }
@@ -287,12 +277,10 @@ footer {
 <section class="hero">
 
 ```
-<h1 id="programTitle">
-    Python Program
-</h1>
+<h1 id="topicTitle">Python Programming</h1>
 
-<p id="programSubtitle">
-    Learn the concept, understand the code and practice the program.
+<p id="topicDescription">
+    Learn Python programming concepts through practical examples.
 </p>
 ```
 
@@ -300,87 +288,74 @@ footer {
 
 <div class="container">
 
-<!-- EXPLANATION -->
+<!-- LESSON -->
 
-<div class="content-box">
-
-```
-<h2>📘 Explanation</h2>
-
-<p id="programExplanation">
-    Loading program...
-</p>
-```
-
-</div>
-
-<!-- CODE -->
-
-<div class="content-box">
+<div class="topic-card">
 
 ```
-<h2>💻 Python Code</h2>
+<h2 id="lessonHeading">
+    Python Programming
+</h2>
 
-<div class="code-box">
+<div id="lessonContent">
 
-    <pre id="programCode"></pre>
+    <p>
+        Select a Python program from the Python Programs page
+        to begin learning.
+    </p>
 
 </div>
 ```
 
 </div>
 
-<!-- OUTPUT -->
+<!-- PRACTICE -->
 
-<div class="content-box">
+<div class="topic-card">
 
 ```
-<h2>▶️ Expected Output</h2>
+<h2>💻 Practice Program</h2>
 
-<div class="output-box">
+<div id="programCode" class="code-box">
 
-    <strong>Output:</strong>
+    <pre>
+```
 
-    <pre id="programOutput"></pre>
+# Python program will appear here
+
+```
+    </pre>
+
+</div>
+
+<div id="programOutput" class="output">
+
+    <strong>Expected Output:</strong>
+
+    <br>
+
+    Run the program in a Python environment to see the result.
 
 </div>
 ```
 
 </div>
 
-<!-- LEARNING -->
+<!-- NAVIGATION -->
 
-<div class="content-box">
-
-```
-<h2>🎯 What You Learn</h2>
-
-<p id="programLearning">
-    Loading...
-</p>
-```
-
-</div>
-
-<!-- BUTTONS -->
-
-<div class="button-area">
+<div class="buttons">
 
 ```
-<a href="python.html" class="btn back-btn">
+<a href="python.html" class="btn">
     ← Back to Python Programs
 </a>
 
-<button
-    class="btn complete-btn"
-    onclick="markCompleted()">
-    ✓ Mark as Completed
+<button class="btn" onclick="markCompleted()">
+    ✓ Mark Topic Complete
 </button>
 ```
 
 </div>
-
-<div id="status" class="status"></div>
 
 </div>
 
@@ -398,7 +373,7 @@ footer {
 
 <script>
 
-/* ================= DARK MODE ================= */
+/* DARK MODE */
 
 if (localStorage.getItem("darkMode") === "true") {
 
@@ -407,629 +382,367 @@ if (localStorage.getItem("darkMode") === "true") {
 }
 
 
-/* ================= PROGRAM DATA ================= */
+/* GET TOPIC */
 
-const pythonPrograms = {
+const params = new URLSearchParams(window.location.search);
 
-    "hello-world": {
+const topic = params.get("topic");
 
-        title: "Hello World",
 
-        subtitle: "Your first Python program",
+/* TOPIC DATA */
 
-        explanation:
-        "The Hello World program is usually the first program beginners write. It teaches how to display information on the screen using Python's print() function.",
+const topics = {
+
+    introduction: {
+
+        title: "Python Introduction",
+
+        description:
+        "Learn the fundamentals of Python programming and write your first programs.",
+
+        heading:
+        "Introduction to Python",
+
+        content: `
+        
+        <p>
+        Python is a high-level, interpreted and general-purpose
+        programming language. It is widely used in web development,
+        data analysis, artificial intelligence, automation and software development.
+        </p>
+
+        <h3>Why Learn Python?</h3>
+
+        <ul>
+            <li>Simple and readable syntax</li>
+            <li>Easy for beginners to understand</li>
+            <li>Large collection of libraries</li>
+            <li>Used in industry and research</li>
+            <li>Useful for automation and data science</li>
+        </ul>
+
+        <h3>Hello World</h3>
+
+        <p>
+        The first program commonly written in Python displays
+        a message using the <strong>print()</strong> function.
+        </p>
+
+        `,
 
         code:
 `print("Hello, World!")`,
 
         output:
-`Hello, World!`,
-
-        learning:
-        "You learn the basic print() function and how Python displays text as output."
+`Hello, World!`
 
     },
 
 
-    "add-two-numbers": {
+    operators: {
 
-        title: "Add Two Numbers",
+        title: "Python Operators",
 
-        subtitle: "Using input and arithmetic operations",
+        description:
+        "Learn how Python operators are used to perform calculations and comparisons.",
 
-        explanation:
-        "This program accepts two numbers from the user and calculates their sum. The input() function is used to receive data from the user.",
+        heading:
+        "Operators in Python",
+
+        content: `
+
+        <p>
+        Operators are symbols or keywords used to perform
+        operations on values and variables.
+        </p>
+
+        <h3>Arithmetic Operators</h3>
+
+        <ul>
+            <li>+ Addition</li>
+            <li>- Subtraction</li>
+            <li>* Multiplication</li>
+            <li>/ Division</li>
+            <li>% Modulus</li>
+            <li>** Exponentiation</li>
+            <li>// Floor Division</li>
+        </ul>
+
+        <h3>Example: Add Two Numbers</h3>
+
+        <p>
+        The following program accepts two numbers and calculates
+        their sum.
+        </p>
+
+        `,
 
         code:
-`a = int(input("Enter first number: "))
-b = int(input("Enter second number: "))
+`a = 10
+b = 20
 
-sum = a + b
+sum_value = a + b
 
-print("Sum =", sum)`,
+print("Sum =", sum_value)`,
 
         output:
-`Enter first number: 10
-Enter second number: 20
-Sum = 30`,
-
-        learning:
-        "You learn user input, integer conversion, variables and addition."
+`Sum = 30`
 
     },
 
 
-    "even-odd": {
+    loops: {
 
-        title: "Check Even or Odd",
+        title: "Python Loops",
 
-        subtitle: "Using the modulus operator",
+        description:
+        "Learn how loops are used to repeat instructions efficiently.",
 
-        explanation:
-        "A number is even if it is completely divisible by 2. Python's modulus operator (%) gives the remainder after division.",
+        heading:
+        "Loops in Python",
 
-        code:
-`number = int(input("Enter a number: "))
+        content: `
 
-if number % 2 == 0:
-    print("Even number")
-else:
-    print("Odd number")`,
+        <p>
+        Loops allow a program to execute a block of code repeatedly.
+        Python mainly provides the <strong>for</strong> loop and
+        <strong>while</strong> loop.
+        </p>
 
-        output:
-`Enter a number: 8
-Even number`,
+        <h3>For Loop</h3>
 
-        learning:
-        "You learn the modulus operator and if-else decision making."
+        <p>
+        A for loop is commonly used when the number of iterations
+        or the sequence being processed is known.
+        </p>
 
-    },
+        <h3>Example: Multiplication Table</h3>
 
-
-    "largest-number": {
-
-        title: "Find Largest Number",
-
-        subtitle: "Comparing values using conditions",
-
-        explanation:
-        "This program compares three numbers and determines which number has the greatest value.",
+        `,
 
         code:
-`a = int(input("Enter first number: "))
-b = int(input("Enter second number: "))
-c = int(input("Enter third number: "))
-
-if a >= b and a >= c:
-    largest = a
-elif b >= a and b >= c:
-    largest = b
-else:
-    largest = c
-
-print("Largest =", largest)`,
-
-        output:
-`Enter first number: 15
-Enter second number: 42
-Enter third number: 27
-Largest = 42`,
-
-        learning:
-        "You learn comparison operators, logical operators and conditional statements."
-
-    },
-
-
-    "multiplication-table": {
-
-        title: "Multiplication Table",
-
-        subtitle: "Using a for loop",
-
-        explanation:
-        "A loop allows the same operation to be repeated multiple times. This program generates a multiplication table for a number.",
-
-        code:
-`number = int(input("Enter a number: "))
+`number = 5
 
 for i in range(1, 11):
     print(number, "x", i, "=", number * i)`,
 
         output:
-`Enter a number: 5
-
-5 x 1 = 5
+`5 x 1 = 5
 5 x 2 = 10
 5 x 3 = 15
-5 x 4 = 20
 ...
-5 x 10 = 50`,
-
-        learning:
-        "You learn for loops, range() and repeated calculations."
+5 x 10 = 50`
 
     },
 
 
-    "factorial": {
+    datatypes: {
 
-        title: "Factorial of a Number",
+        title: "Python Data Types",
 
-        subtitle: "Using iteration",
+        description:
+        "Understand strings, numbers, lists and other important Python data types.",
 
-        explanation:
-        "The factorial of a positive integer is the product of all positive integers from 1 up to that number.",
+        heading:
+        "Data Types in Python",
 
-        code:
-`number = int(input("Enter a number: "))
+        content: `
 
-factorial = 1
+        <p>
+        A data type determines the kind of value stored in a variable.
+        Python provides several built-in data types.
+        </p>
 
-for i in range(1, number + 1):
-    factorial = factorial * i
+        <h3>Common Data Types</h3>
 
-print("Factorial =", factorial)`,
+        <ul>
+            <li>int — Integer numbers</li>
+            <li>float — Decimal numbers</li>
+            <li>str — Text or strings</li>
+            <li>bool — True or False</li>
+            <li>list — Ordered collection</li>
+            <li>tuple — Immutable collection</li>
+            <li>set — Unordered unique collection</li>
+            <li>dict — Key-value collection</li>
+        </ul>
 
-        output:
-`Enter a number: 5
-Factorial = 120`,
+        <h3>Example: List Operations</h3>
 
-        learning:
-        "You learn loops, variables and repeated multiplication."
-
-    },
-
-
-    "prime-number": {
-
-        title: "Prime Number Check",
-
-        subtitle: "Testing whether a number is prime",
-
-        explanation:
-        "A prime number has exactly two factors: 1 and itself. This program checks whether a number can be divided evenly by another number.",
-
-        code:
-`number = int(input("Enter a number: "))
-
-if number < 2:
-    print("Not a prime number")
-else:
-    prime = True
-
-    for i in range(2, number):
-        if number % i == 0:
-            prime = False
-            break
-
-    if prime:
-        print("Prime number")
-    else:
-        print("Not a prime number")`,
-
-        output:
-`Enter a number: 17
-Prime number`,
-
-        learning:
-        "You learn loops, conditions, modulus and the break statement."
-
-    },
-
-
-    "fibonacci": {
-
-        title: "Fibonacci Series",
-
-        subtitle: "Generating a number sequence",
-
-        explanation:
-        "The Fibonacci sequence is a series in which each number is obtained by adding the previous two numbers.",
-
-        code:
-`n = int(input("Enter number of terms: "))
-
-a = 0
-b = 1
-
-for i in range(n):
-    print(a, end=" ")
-    a, b = b, a + b`,
-
-        output:
-`Enter number of terms: 7
-0 1 1 2 3 5 8`,
-
-        learning:
-        "You learn loops, variables and multiple assignment."
-
-    },
-
-
-    "reverse-string": {
-
-        title: "Reverse a String",
-
-        subtitle: "Working with strings",
-
-        explanation:
-        "Python provides several ways to manipulate strings. String slicing can be used to create a reversed version of a string.",
-
-        code:
-`text = input("Enter a string: ")
-
-reverse = text[::-1]
-
-print("Reversed =", reverse)`,
-
-        output:
-`Enter a string: Python
-Reversed = nohtyP`,
-
-        learning:
-        "You learn string slicing and basic string manipulation."
-
-    },
-
-
-    "count-vowels": {
-
-        title: "Count Vowels",
-
-        subtitle: "Processing characters in a string",
-
-        explanation:
-        "This program examines each character in a string and counts how many of them are vowels.",
-
-        code:
-`text = input("Enter a string: ")
-
-count = 0
-
-for char in text.lower():
-    if char in "aeiou":
-        count += 1
-
-print("Number of vowels =", count)`,
-
-        output:
-`Enter a string: Education
-Number of vowels = 5`,
-
-        learning:
-        "You learn strings, loops, conditions and character processing."
-
-    },
-
-
-    "list-operations": {
-
-        title: "List Operations",
-
-        subtitle: "Working with Python lists",
-
-        explanation:
-        "Lists are used to store multiple values in a single variable. Python provides many operations for adding, removing and accessing list elements.",
+        `,
 
         code:
 `numbers = [10, 20, 30]
 
 numbers.append(40)
 
-print("List:", numbers)
-
-numbers.remove(20)
-
-print("After removing 20:", numbers)`,
+print(numbers)
+print(numbers[0])`,
 
         output:
-`List: [10, 20, 30, 40]
-After removing 20: [10, 30, 40]`,
-
-        learning:
-        "You learn list creation, append(), remove() and list manipulation."
+`[10, 20, 30, 40]
+10`
 
     },
 
 
-    "function-calculator": {
+    functions: {
 
-        title: "Function Calculator",
+        title: "Python Functions",
 
-        subtitle: "Creating reusable functions",
+        description:
+        "Learn how to create reusable blocks of code using Python functions.",
 
-        explanation:
-        "Functions allow programmers to divide a program into reusable blocks of code. This example creates functions for basic arithmetic operations.",
+        heading:
+        "Functions in Python",
+
+        content: `
+
+        <p>
+        A function is a reusable block of code designed to perform
+        a particular task.
+        </p>
+
+        <h3>Advantages of Functions</h3>
+
+        <ul>
+            <li>Code reusability</li>
+            <li>Better organization</li>
+            <li>Reduced repetition</li>
+            <li>Easier testing and debugging</li>
+        </ul>
+
+        <h3>Example: Calculator Function</h3>
+
+        `,
 
         code:
 `def add(a, b):
     return a + b
 
-def subtract(a, b):
-    return a - b
+result = add(10, 20)
 
-def multiply(a, b):
-    return a * b
-
-print("Addition:", add(10, 5))
-print("Subtraction:", subtract(10, 5))
-print("Multiplication:", multiply(10, 5))`,
+print("Result =", result)`,
 
         output:
-`Addition: 15
-Subtraction: 5
-Multiplication: 50`,
-
-        learning:
-        "You learn functions, parameters, return values and code reusability."
+`Result = 30`
 
     },
 
 
-    "student-management": {
+    inheritance: {
 
-        title: "Student Management System",
+        title: "Python Inheritance",
 
-        subtitle: "Managing student information",
+        description:
+        "Learn the basics of object-oriented programming and inheritance in Python.",
 
-        explanation:
-        "A student management system can store student details and perform operations such as adding, displaying and managing student records.",
+        heading:
+        "Inheritance in Python",
 
-        code:
-`students = []
+        content: `
 
-students.append({
-    "name": "Rahul",
-    "age": 20,
-    "course": "BCA"
-})
+        <p>
+        Inheritance is an object-oriented programming concept
+        where a new class can acquire properties and methods
+        from an existing class.
+        </p>
 
-for student in students:
-    print("Name:", student["name"])
-    print("Age:", student["age"])
-    print("Course:", student["course"])`,
+        <h3>Important Terms</h3>
 
-        output:
-`Name: Rahul
-Age: 20
-Course: BCA`,
+        <ul>
+            <li><strong>Parent class:</strong> The class being inherited from.</li>
+            <li><strong>Child class:</strong> The class that inherits.</li>
+            <li><strong>Method:</strong> A function defined inside a class.</li>
+        </ul>
 
-        learning:
-        "You learn lists, dictionaries and structured data management."
+        <h3>Example</h3>
 
-    },
+        <p>
+        The following example demonstrates a child class inheriting
+        a method from a parent class.
+        </p>
 
-
-    "bank-account": {
-
-        title: "Bank Account System",
-
-        subtitle: "Introduction to object-oriented programming",
-
-        explanation:
-        "Object-oriented programming allows data and related operations to be grouped together inside classes and objects.",
+        `,
 
         code:
-`class BankAccount:
+`class Student:
 
-    def __init__(self, name, balance):
-        self.name = name
-        self.balance = balance
-
-    def deposit(self, amount):
-        self.balance += amount
-
-    def display(self):
-        print("Account Holder:", self.name)
-        print("Balance:", self.balance)
+    def show(self):
+        print("Student details")
 
 
-account = BankAccount("Rahul", 5000)
+class CollegeStudent(Student):
 
-account.deposit(2000)
+    def course(self):
+        print("B.Tech Course")
 
-account.display()`,
+
+student = CollegeStudent()
+
+student.show()
+student.course()`,
 
         output:
-`Account Holder: Rahul
-Balance: 7000`,
-
-        learning:
-        "You learn classes, objects, constructors, methods and object-oriented programming."
-
-    },
-
-
-    "file-management": {
-
-        title: "File Management Program",
-
-        subtitle: "Reading and writing files",
-
-        explanation:
-        "Python can work with files to store information permanently. The open() function is used to access files.",
-
-        code:
-`with open("student.txt", "w") as file:
-    file.write("EduLearn Python Course")
-
-with open("student.txt", "r") as file:
-    data = file.read()
-
-print(data)`,
-
-        output:
-`EduLearn Python Course`,
-
-        learning:
-        "You learn file creation, writing, reading and the with statement."
-
-    },
-
-
-    "database": {
-
-        title: "Database Application",
-
-        subtitle: "Connecting Python with data storage",
-
-        explanation:
-        "Python applications can communicate with databases to store and retrieve structured information.",
-
-        code:
-`import sqlite3
-
-connection = sqlite3.connect("students.db")
-
-cursor = connection.cursor()
-
-cursor.execute(
-    "CREATE TABLE IF NOT EXISTS students (name TEXT)"
-)
-
-cursor.execute(
-    "INSERT INTO students VALUES ('Rahul')"
-)
-
-connection.commit()
-
-print("Student added successfully")
-
-connection.close()`,
-
-        output:
-`Student added successfully`,
-
-        learning:
-        "You learn database connections, SQL commands and Python database programming."
-
-    },
-
-
-    "api": {
-
-        title: "API Data Fetcher",
-
-        subtitle: "Getting information from an API",
-
-        explanation:
-        "An API allows one software application to communicate with another. Python can send requests to APIs and process the returned information.",
-
-        code:
-`import requests
-
-response = requests.get(
-    "https://api.github.com"
-)
-
-print("Status Code:", response.status_code)`,
-
-        output:
-`Status Code: 200`,
-
-        learning:
-        "You learn the basic concept of APIs, HTTP requests and response status codes."
-
-    },
-
-
-    "automation": {
-
-        title: "Automation Script",
-
-        subtitle: "Automating repetitive tasks",
-
-        explanation:
-        "Python can automate repetitive computer tasks. Automation scripts can save time by performing routine operations automatically.",
-
-        code:
-`import os
-
-files = os.listdir(".")
-
-for file in files:
-    print(file)`,
-
-        output:
-`python.html
-python-topic.html
-coding.html
-dashboard.html
-...`,
-
-        learning:
-        "You learn how Python can interact with the operating system and automate tasks."
+`Student details
+B.Tech Course`
 
     }
 
 };
 
 
-/* ================= GET TOPIC ================= */
+/* DISPLAY TOPIC */
 
-const params =
-    new URLSearchParams(window.location.search);
+if (topics[topic]) {
 
-const topic =
-    params.get("topic");
-
-
-/* ================= LOAD PROGRAM ================= */
-
-const program =
-    pythonPrograms[topic];
-
-
-if (program) {
-
-    document.getElementById("programTitle").textContent =
-        program.title;
-
-    document.getElementById("programSubtitle").textContent =
-        program.subtitle;
-
-    document.getElementById("programExplanation").textContent =
-        program.explanation;
-
-    document.getElementById("programCode").textContent =
-        program.code;
-
-    document.getElementById("programOutput").textContent =
-        program.output;
-
-    document.getElementById("programLearning").textContent =
-        program.learning;
+    const data = topics[topic];
 
     document.title =
-        "EduLearn - " + program.title;
+        "EduLearn - " + data.title;
+
+    document.getElementById("topicTitle").textContent =
+        data.title;
+
+    document.getElementById("topicDescription").textContent =
+        data.description;
+
+    document.getElementById("lessonHeading").textContent =
+        data.heading;
+
+    document.getElementById("lessonContent").innerHTML =
+        data.content;
+
+    document.querySelector("#programCode pre").textContent =
+        data.code;
+
+    document.getElementById("programOutput").innerHTML =
+        "<strong>Expected Output:</strong><br>" +
+        data.output;
+
+} else {
+
+    document.getElementById("topicTitle").textContent =
+        "Python Programming";
+
+    document.getElementById("topicDescription").textContent =
+        "Learn Python programming through practical programs.";
+
+    document.getElementById("lessonHeading").textContent =
+        "Topic Not Found";
+
+    document.getElementById("lessonContent").innerHTML =
+        `
+        <p>
+        The requested Python topic could not be found.
+        Please return to the Python Programs page and select
+        a program.
+        </p>
+        `;
 
 }
-else {
-
-    document.getElementById("programTitle").textContent =
-        "Program Not Found";
-
-    document.getElementById("programSubtitle").textContent =
-        "The requested Python program could not be found.";
-
-    document.getElementById("programExplanation").textContent =
-        "Please return to the Python Programs page and select a valid program.";
-
-    document.getElementById("programCode").textContent =
-        "";
-
-    document.getElementById("programOutput").textContent =
-        "";
-
-    document.getElementById("programLearning").textContent =
-        "";
-
-}
 
 
-/* ================= COMPLETION ================= */
+/* MARK COMPLETE */
 
 function markCompleted() {
 
@@ -1042,23 +755,7 @@ function markCompleted() {
         "true"
     );
 
-    document.getElementById("status").textContent =
-        "✓ Program completed successfully!";
-
-}
-
-
-/* ================= CHECK COMPLETION ================= */
-
-if (
-    topic &&
-    localStorage.getItem(
-        "python_" + topic + "_completed"
-    ) === "true"
-) {
-
-    document.getElementById("status").textContent =
-        "✓ You have already completed this program.";
+    alert("Python topic marked as completed!");
 
 }
 
