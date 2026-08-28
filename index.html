@@ -1,12 +1,13 @@
 ```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>EduLearn - Learn. Grow. Succeed.</title>
+    <title>EduLearn - Learn. Build. Grow.</title>
 
     <style>
 
@@ -18,334 +19,353 @@
         }
 
         body {
-            background: #f5f7fb;
-            color: #222;
+            background: #f4f7fb;
+            color: #1f2937;
         }
 
         /* NAVBAR */
 
-        nav {
+        .navbar {
             background: white;
-            padding: 18px 8%;
-
+            height: 70px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-
+            justify-content: space-between;
+            padding: 0 7%;
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
         .logo {
-            font-size: 25px;
+            font-size: 26px;
             font-weight: bold;
             color: #2563eb;
-        }
-
-        nav ul {
-            list-style: none;
-
-            display: flex;
-            gap: 25px;
-            align-items: center;
-        }
-
-        nav a {
             text-decoration: none;
-            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #374151;
+            font-size: 15px;
             font-weight: 500;
         }
 
-        nav a:hover {
+        .nav-links a:hover {
             color: #2563eb;
         }
 
-        .login {
+        .login-btn {
             background: #2563eb;
             color: white !important;
-
-            padding: 10px 18px;
-            border-radius: 7px;
+            padding: 10px 20px;
+            border-radius: 8px;
         }
 
-        .login:hover {
+        .login-btn:hover {
             background: #1d4ed8;
-            color: white !important;
         }
-
 
         /* HERO */
 
         .hero {
             min-height: 520px;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
-
-            padding: 70px 8%;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #eaf2ff,
-                    #ffffff
-                );
+            padding: 70px 7%;
+            background: linear-gradient(135deg, #eff6ff, #ffffff);
         }
 
-        .hero-text {
+        .hero-content {
             max-width: 600px;
         }
 
-        .hero h1 {
+        .hero-content h1 {
             font-size: 52px;
-            line-height: 1.1;
+            line-height: 1.15;
             margin-bottom: 20px;
+            color: #111827;
         }
 
-        .hero h1 span {
+        .hero-content h1 span {
             color: #2563eb;
         }
 
-        .hero p {
-            font-size: 18px;
-            line-height: 1.6;
-
-            color: #555;
-
+        .hero-content p {
+            font-size: 19px;
+            line-height: 1.7;
+            color: #6b7280;
             margin-bottom: 30px;
         }
 
-        .start-btn {
-            display: inline-block;
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
 
-            background: #2563eb;
-            color: white;
-
-            padding: 14px 28px;
-
-            border-radius: 8px;
-
+        .primary-btn,
+        .secondary-btn {
             text-decoration: none;
-
+            padding: 13px 24px;
+            border-radius: 8px;
             font-weight: bold;
         }
 
-        .start-btn:hover {
+        .primary-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .primary-btn:hover {
             background: #1d4ed8;
         }
 
-        .hero-box {
-            width: 360px;
-            height: 310px;
-
-            background: #2563eb;
-
-            border-radius: 25px;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            color: white;
-
-            font-size: 90px;
-
-            box-shadow:
-                0 15px 35px rgba(37,99,235,0.25);
-        }
-
-
-        /* COURSES */
-
-        .courses {
-            padding: 70px 8%;
-            text-align: center;
-        }
-
-        .courses h2 {
-            font-size: 35px;
-            margin-bottom: 10px;
-        }
-
-        .courses > p {
-            color: #666;
-            margin-bottom: 40px;
-        }
-
-        .course-container {
-            display: flex;
-
-            gap: 25px;
-
-            justify-content: center;
-
-            flex-wrap: wrap;
-        }
-
-        .course-card {
+        .secondary-btn {
             background: white;
-
-            width: 280px;
-
-            padding: 30px;
-
-            border-radius: 15px;
-
-            box-shadow:
-                0 5px 20px rgba(0,0,0,0.08);
-
-            text-align: left;
-
-            transition: 0.3s;
+            color: #2563eb;
+            border: 2px solid #2563eb;
         }
 
-        .course-card:hover {
-            transform: translateY(-8px);
+        .secondary-btn:hover {
+            background: #eff6ff;
         }
 
-        .course-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
+        .hero-card {
+            width: 350px;
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.10);
         }
 
-        .course-card h3 {
-            margin-bottom: 12px;
-        }
-
-        .course-card p {
-            color: #666;
-
-            line-height: 1.5;
-
+        .hero-card h3 {
+            font-size: 22px;
             margin-bottom: 20px;
         }
 
-        .course-btn {
-            display: inline-block;
-
-            text-decoration: none;
-
-            color: #2563eb;
-
-            font-weight: bold;
+        .progress-item {
+            margin-bottom: 18px;
         }
 
-        .course-btn:hover {
-            color: #1d4ed8;
+        .progress-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 7px;
+            font-size: 14px;
         }
 
+        .progress-bar {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
 
-        /* WHY EDULEARN */
+        .progress-fill {
+            height: 100%;
+            background: #2563eb;
+            border-radius: 10px;
+        }
 
-        .why {
-            padding: 70px 8%;
+        /* CATEGORIES */
 
-            background: white;
-
+        .categories {
+            padding: 70px 7%;
             text-align: center;
         }
 
-        .why h2 {
-            font-size: 35px;
-            margin-bottom: 40px;
+        .section-title {
+            font-size: 34px;
+            margin-bottom: 12px;
+            color: #111827;
         }
+
+        .section-description {
+            color: #6b7280;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .category-card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            transition: 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+        }
+
+        .category-icon {
+            font-size: 45px;
+            margin-bottom: 18px;
+        }
+
+        .category-card h3 {
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        .category-card p {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .category-btn {
+            display: inline-block;
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* FEATURES */
 
         .features {
-            display: flex;
+            background: white;
+            padding: 70px 7%;
+            text-align: center;
+        }
 
-            justify-content: center;
-
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
-
-            flex-wrap: wrap;
+            margin-top: 40px;
         }
 
-        .feature {
-            width: 250px;
-            padding: 25px;
+        .feature-card {
+            padding: 30px;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
         }
 
-        .feature-icon {
-            font-size: 40px;
+        .feature-card .icon {
+            font-size: 38px;
             margin-bottom: 15px;
         }
 
-        .feature h3 {
+        .feature-card h3 {
             margin-bottom: 10px;
         }
 
-        .feature p {
-            color: #666;
-
-            line-height: 1.5;
+        .feature-card p {
+            color: #6b7280;
+            line-height: 1.6;
         }
 
+        /* CTA */
+
+        .cta {
+            padding: 70px 7%;
+            text-align: center;
+            background: #2563eb;
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: white;
+            color: #2563eb;
+            padding: 13px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
         /* FOOTER */
 
         footer {
             background: #111827;
-
             color: white;
-
+            padding: 30px 7%;
             text-align: center;
-
-            padding: 25px;
         }
 
+        footer p {
+            color: #9ca3af;
+            font-size: 14px;
+        }
 
-        /* MOBILE */
+        /* RESPONSIVE */
 
         @media (max-width: 900px) {
 
-            nav ul {
-                gap: 12px;
-            }
-
             .hero {
                 flex-direction: column;
-
                 text-align: center;
-
-                gap: 45px;
+                gap: 50px;
             }
 
-            .hero-box {
-                width: 280px;
-                height: 220px;
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
             }
 
         }
 
+        @media (max-width: 600px) {
 
-        @media (max-width: 768px) {
-
-            nav {
-                padding: 15px 5%;
+            .navbar {
+                padding: 0 5%;
             }
 
-            nav ul {
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a:not(.login-btn) {
                 display: none;
             }
 
             .hero {
-                padding: 60px 5%;
+                padding: 50px 5%;
             }
 
-            .hero h1 {
+            .hero-content h1 {
                 font-size: 38px;
             }
 
-            .courses {
-                padding: 60px 5%;
+            .hero-card {
+                width: 100%;
             }
 
-            .why {
-                padding: 60px 5%;
+            .category-grid {
+                grid-template-columns: 1fr;
             }
 
         }
@@ -354,306 +374,322 @@
 
 </head>
 
-
 <body>
 
+    <!-- NAVBAR -->
 
-    <!-- NAVIGATION -->
+    <nav class="navbar">
 
-    <nav>
+        <a href="index.html" class="logo">
+            EduLearn
+        </a>
 
-        <div class="logo">
-            🎓 EduLearn
-        </div>
+        <div class="nav-links">
 
+            <a href="index.html">Home</a>
 
-        <ul>
+            <a href="dashboard.html">Dashboard</a>
 
-            <li>
-                <a href="index.html">
-                    Home
-                </a>
-            </li>
+            <a href="settings.html">Settings</a>
 
-            <li>
-                <a href="dashboard.html">
-                    Dashboard
-                </a>
-            </li>
-
-            <li>
-                <a href="courses.html">
-                    Courses
-                </a>
-            </li>
-
-            <li>
-                <a href="quiz.html">
-                    Assessment
-                </a>
-            </li>
-
-            <li>
-                <a href="login.html" class="login">
-                    Login
-                </a>
-            </li>
-
-        </ul>
-
-    </nav>
-
-
-
-    <!-- HERO -->
-
-    <section class="hero">
-
-        <div class="hero-text">
-
-            <h1>
-
-                Learn Today.<br>
-
-                <span>
-                    Build Your Future.
-                </span>
-
-            </h1>
-
-
-            <p>
-
-                Learn new skills, improve your knowledge,
-                track your progress and achieve your goals
-                with EduLearn.
-
-            </p>
-
-
-            <a
-                href="courses.html"
-                class="start-btn">
-
-                Start Learning →
-
+            <a href="login.html" class="login-btn">
+                Login
             </a>
 
         </div>
 
+    </nav>
 
-        <div class="hero-box">
 
-            🎓
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                Learn. <span>Build.</span> Grow.
+            </h1>
+
+            <p>
+                A college-focused learning platform for students
+                studying Coding, B.Tech, BBA and B.Com.
+                Learn concepts, practice skills, take quizzes
+                and track your progress.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="dashboard.html" class="primary-btn">
+                    Start Learning
+                </a>
+
+                <a href="#categories" class="secondary-btn">
+                    Explore Courses
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <h3>Your Learning Journey</h3>
+
+            <div class="progress-item">
+
+                <div class="progress-title">
+                    <span>💻 Coding</span>
+                    <span>0%</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%;"></div>
+                </div>
+
+            </div>
+
+
+            <div class="progress-item">
+
+                <div class="progress-title">
+                    <span>⚙️ B.Tech</span>
+                    <span>0%</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%;"></div>
+                </div>
+
+            </div>
+
+
+            <div class="progress-item">
+
+                <div class="progress-title">
+                    <span>📊 BBA</span>
+                    <span>0%</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%;"></div>
+                </div>
+
+            </div>
+
+
+            <div class="progress-item">
+
+                <div class="progress-title">
+                    <span>💼 B.Com</span>
+                    <span>0%</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%;"></div>
+                </div>
+
+            </div>
 
         </div>
 
     </section>
 
 
+    <!-- CATEGORIES -->
 
-    <!-- COURSES -->
+    <section class="categories" id="categories">
 
-    <section
-        class="courses"
-        id="courses">
-
-        <h2>
-            Popular Courses
+        <h2 class="section-title">
+            Explore Your Learning Path
         </h2>
 
-
-        <p>
-            Choose a subject and start learning today.
+        <p class="section-description">
+            Choose your field and start building your knowledge and skills.
         </p>
 
 
-        <div class="course-container">
+        <div class="category-grid">
 
 
-            <!-- MATHEMATICS -->
+            <!-- CODING -->
 
-            <div class="course-card">
+            <div class="category-card">
 
-                <div class="course-icon">
-                    📚
-                </div>
-
-
-                <h3>
-                    Mathematics
-                </h3>
-
-
-                <p>
-                    Explore college-level mathematics
-                    through structured lessons,
-                    examples and assessments.
-                </p>
-
-
-                <a
-                    href="math.html"
-                    class="course-btn">
-
-                    Explore Course →
-
-                </a>
-
-            </div>
-
-
-
-            <!-- COMPUTER SCIENCE -->
-
-            <div class="course-card">
-
-                <div class="course-icon">
+                <div class="category-icon">
                     💻
                 </div>
 
-
-                <h3>
-                    Computer Science
-                </h3>
-
+                <h3>Coding</h3>
 
                 <p>
-                    Learn programming, websites and
-                    modern computer technologies.
+                    Learn programming and web development
+                    from the basics to advanced concepts.
                 </p>
 
-
-                <a
-                    href="courses.html"
-                    class="course-btn">
-
-                    Explore Course →
-
+                <a href="#" class="category-btn">
+                    Explore Coding →
                 </a>
 
             </div>
 
 
+            <!-- BTECH -->
 
-            <!-- GENERAL KNOWLEDGE -->
+            <div class="category-card">
 
-            <div class="course-card">
-
-                <div class="course-icon">
-                    🌎
+                <div class="category-icon">
+                    ⚙️
                 </div>
 
-
-                <h3>
-                    General Knowledge
-                </h3>
-
+                <h3>B.Tech</h3>
 
                 <p>
-                    Develop your knowledge across
-                    important academic and general
-                    topics.
+                    Study engineering subjects including
+                    Mathematics, Programming, DBMS and more.
                 </p>
 
-
-                <a
-                    href="courses.html"
-                    class="course-btn">
-
-                    Explore Course →
-
+                <a href="math.html" class="category-btn">
+                    Explore B.Tech →
                 </a>
 
             </div>
 
+
+            <!-- BBA -->
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    📊
+                </div>
+
+                <h3>BBA</h3>
+
+                <p>
+                    Learn management, marketing, finance,
+                    economics and business concepts.
+                </p>
+
+                <a href="#" class="category-btn">
+                    Explore BBA →
+                </a>
+
+            </div>
+
+
+            <!-- BCOM -->
+
+            <div class="category-card">
+
+                <div class="category-icon">
+                    💼
+                </div>
+
+                <h3>B.Com</h3>
+
+                <p>
+                    Learn accounting, economics, taxation,
+                    finance and business law.
+                </p>
+
+                <a href="#" class="category-btn">
+                    Explore B.Com →
+                </a>
+
+            </div>
 
         </div>
 
     </section>
 
 
+    <!-- FEATURES -->
 
-    <!-- WHY EDULEARN -->
+    <section class="features">
 
-    <section
-        class="why"
-        id="about">
-
-        <h2>
-            Why Choose EduLearn?
+        <h2 class="section-title">
+            Everything You Need to Learn
         </h2>
 
+        <p class="section-description">
+            EduLearn helps you learn and track your progress in one place.
+        </p>
 
-        <div class="features">
+
+        <div class="feature-grid">
 
 
-            <div class="feature">
+            <div class="feature-card">
 
-                <div class="feature-icon">
-                    🎯
+                <div class="icon">
+                    📚
                 </div>
 
-
-                <h3>
-                    Learn at Your Pace
-                </h3>
-
+                <h3>Structured Lessons</h3>
 
                 <p>
-                    Study whenever you want and
-                    learn at your own speed.
+                    Learn through organized college-level
+                    lessons designed for easy understanding.
                 </p>
 
             </div>
 
 
+            <div class="feature-card">
 
-            <div class="feature">
-
-                <div class="feature-icon">
-                    📊
+                <div class="icon">
+                    🧠
                 </div>
 
-
-                <h3>
-                    Track Progress
-                </h3>
-
+                <h3>Practice & Quizzes</h3>
 
                 <p>
-                    Keep track of your learning
+                    Test your knowledge after learning
+                    with quizzes and assessments.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    🏆
+                </div>
+
+                <h3>Track Your Progress</h3>
+
+                <p>
+                    Monitor completed lessons, course
                     progress and achievements.
                 </p>
 
             </div>
 
-
-
-            <div class="feature">
-
-                <div class="feature-icon">
-                    🤖
-                </div>
-
-
-                <h3>
-                    AI Learning Assistant
-                </h3>
-
-
-                <p>
-                    Get help understanding difficult
-                    topics with an AI assistant.
-                </p>
-
-            </div>
-
-
         </div>
 
     </section>
 
+
+    <!-- CALL TO ACTION -->
+
+    <section class="cta">
+
+        <h2>
+            Start Your Learning Journey
+        </h2>
+
+        <p>
+            Learn useful skills and build your future with EduLearn.
+        </p>
+
+        <a href="dashboard.html" class="cta-btn">
+            Go to Dashboard
+        </a>
+
+    </section>
 
 
     <!-- FOOTER -->
@@ -661,7 +697,7 @@
     <footer>
 
         <p>
-            © 2026 EduLearn. All rights reserved.
+            © 2026 EduLearn. Learn. Build. Grow.
         </p>
 
     </footer>
