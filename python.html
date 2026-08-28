@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -23,7 +24,7 @@ body {
     transition: 0.3s;
 }
 
-/* NAVBAR */
+/* ================= NAVBAR ================= */
 
 .navbar {
     background: #ffffff;
@@ -58,7 +59,7 @@ body {
     color: #2563eb;
 }
 
-/* HERO */
+/* ================= HERO ================= */
 
 .hero {
     background: linear-gradient(135deg, #1e3a8a, #2563eb);
@@ -77,7 +78,7 @@ body {
     font-size: 17px;
 }
 
-/* CONTAINER */
+/* ================= CONTAINER ================= */
 
 .container {
     max-width: 1200px;
@@ -85,13 +86,33 @@ body {
     padding: 40px 20px;
 }
 
-/* SEARCH */
+/* ================= INFO ================= */
+
+.info-box {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.info-box h2 {
+    color: #1e3a8a;
+    margin-bottom: 12px;
+}
+
+.info-box p {
+    line-height: 1.7;
+    color: #555;
+}
+
+/* ================= SEARCH ================= */
 
 .search-box {
     background: white;
     padding: 25px;
     border-radius: 14px;
-    margin-bottom: 40px;
+    margin-bottom: 35px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
@@ -122,7 +143,6 @@ body {
     padding: 14px;
     border-radius: 8px;
     margin-top: 8px;
-    border-left: 4px solid #2563eb;
 }
 
 .result a {
@@ -131,15 +151,19 @@ body {
     font-weight: bold;
 }
 
-/* SECTION */
+.result a:hover {
+    color: #2563eb;
+}
+
+/* ================= SECTION ================= */
 
 .section-title {
     color: #1e3a8a;
-    margin: 40px 0 20px;
+    margin: 35px 0 20px;
     font-size: 28px;
 }
 
-/* PROGRAM GRID */
+/* ================= PROGRAM GRID ================= */
 
 .programs {
     display: grid;
@@ -153,8 +177,6 @@ body {
     border-radius: 14px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     transition: 0.2s;
-    display: flex;
-    flex-direction: column;
 }
 
 .program-card:hover {
@@ -175,20 +197,18 @@ body {
 .program-card p {
     line-height: 1.6;
     color: #555;
-    margin-bottom: 18px;
-    flex-grow: 1;
+    margin-bottom: 15px;
 }
 
 .level {
     display: inline-block;
-    width: fit-content;
     font-size: 13px;
     font-weight: bold;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     padding: 5px 9px;
-    border-radius: 5px;
-    background: #eff6ff;
-    color: #2563eb;
+    border-radius: 6px;
+    background: #e0e7ff;
+    color: #3730a3;
 }
 
 .btn {
@@ -198,14 +218,13 @@ body {
     padding: 10px 16px;
     border-radius: 7px;
     text-decoration: none;
-    text-align: center;
 }
 
 .btn:hover {
     background: #1d4ed8;
 }
 
-/* DARK MODE */
+/* ================= DARK MODE ================= */
 
 body.dark {
     background: #111827;
@@ -213,6 +232,7 @@ body.dark {
 }
 
 body.dark .navbar,
+body.dark .info-box,
 body.dark .search-box,
 body.dark .program-card {
     background: #1f2937;
@@ -228,11 +248,13 @@ body.dark .nav-links a:hover {
 }
 
 body.dark .section-title,
+body.dark .info-box h2,
 body.dark .search-box h2,
 body.dark .program-card h3 {
     color: #60a5fa;
 }
 
+body.dark .info-box p,
 body.dark .program-card p {
     color: #d1d5db;
 }
@@ -256,7 +278,7 @@ body.dark .level {
     color: #93c5fd;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 
 footer {
     background: #1e3a8a;
@@ -266,7 +288,7 @@ footer {
     margin-top: 50px;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 
 @media (max-width: 700px) {
 
@@ -292,69 +314,87 @@ footer {
 
 <body>
 
-
-<!-- NAVBAR -->
+<!-- ================= NAVBAR ================= -->
 
 <nav class="navbar">
 
-    <div class="logo">
-        EduLearn
-    </div>
+```
+<div class="logo">
+    EduLearn
+</div>
 
-    <div class="nav-links">
+<div class="nav-links">
 
-        <a href="index.html">Home</a>
+    <a href="index.html">Home</a>
 
-        <a href="dashboard.html">Dashboard</a>
+    <a href="dashboard.html">Dashboard</a>
 
-        <a href="coding.html">Coding</a>
+    <a href="coding.html">Coding</a>
 
-        <a href="python.html">Python</a>
+    <a href="python.html">Python</a>
 
-        <a href="settings.html">Settings</a>
+    <a href="settings.html">Settings</a>
 
-    </div>
+</div>
+```
 
 </nav>
 
-
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
-    <h1>Python Programming</h1>
+```
+<h1>Python Programming</h1>
 
-    <p>
-        Learn Python programming from basic syntax and
-        problem-solving to object-oriented programming,
-        files, databases, APIs and automation.
-    </p>
+<p>
+    Learn Python programming through college-level
+    concepts, practical programs, problem solving,
+    and real-world applications.
+</p>
+```
 
 </section>
 
-
 <div class="container">
 
+<!-- ================= INTRODUCTION ================= -->
 
-<!-- SEARCH -->
+<div class="info-box">
 
-<div class="search-box">
+```
+<h2>🐍 About Python</h2>
 
-    <h2>🔎 Search Python Programs</h2>
-
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="Search programs..."
-        onkeyup="searchPrograms()"
-    >
-
-    <div id="searchResults"></div>
+<p>
+    Python is a high-level, general-purpose programming
+    language widely used in software development,
+    data analysis, automation, artificial intelligence,
+    web development and many other fields.
+</p>
+```
 
 </div>
 
+<!-- ================= SEARCH ================= -->
 
-<!-- BEGINNER -->
+<div class="search-box">
+
+```
+<h2>🔎 Search Python Programs</h2>
+
+<input
+    type="text"
+    id="searchInput"
+    placeholder="Search a program..."
+    onkeyup="searchPrograms()"
+>
+
+<div id="searchResults"></div>
+```
+
+</div>
+
+<!-- ================= BEGINNER ================= -->
 
 <h2 class="section-title">
     🟢 Beginner Programs
@@ -362,130 +402,147 @@ footer {
 
 <div class="programs">
 
+<!-- 01 -->
 
 <div class="program-card">
 
-    <div class="program-number">01</div>
+```
+<div class="program-number">01</div>
 
-    <span class="level">Beginner</span>
+<span class="level">Beginner</span>
 
-    <h3>Hello World</h3>
+<h3>Hello World</h3>
 
-    <p>
-        Learn how to write your first Python program
-        and display text on the screen.
-    </p>
+<p>
+    Write your first Python program and learn
+    how to display output.
+</p>
 
-    <a href="python-topic.html?topic=introduction" class="btn">
-        Open Program
-    </a>
+<a href="python-topic.html?topic=hello-world" class="btn">
+    Open Program
+</a>
+```
 
 </div>
 
+<!-- 02 -->
 
 <div class="program-card">
 
-    <div class="program-number">02</div>
+```
+<div class="program-number">02</div>
 
-    <span class="level">Beginner</span>
+<span class="level">Beginner</span>
 
-    <h3>Add Two Numbers</h3>
+<h3>Add Two Numbers</h3>
 
-    <p>
-        Read two numbers from the user and calculate
-        their sum.
-    </p>
+<p>
+    Read two numbers from the user and calculate
+    their sum.
+</p>
 
-    <a href="python-topic.html?topic=operators" class="btn">
-        Open Program
-    </a>
+<a href="python-topic.html?topic=add-two-numbers" class="btn">
+    Open Program
+</a>
+```
 
 </div>
 
+<!-- 03 -->
 
 <div class="program-card">
 
-    <div class="program-number">03</div>
+```
+<div class="program-number">03</div>
 
-    <span class="level">Beginner</span>
+<span class="level">Beginner</span>
 
-    <h3>Check Even or Odd</h3>
+<h3>Check Even or Odd</h3>
 
-    <p>
-        Use the modulus operator to determine whether
-        a number is even or odd.
-    </p>
+<p>
+    Determine whether a number is even or odd
+    using a conditional statement.
+</p>
 
-    <a href="python-topic.html?topic=operators" class="btn">
-        Open Program
-    </a>
+<a href="python-topic.html?topic=even-odd" class="btn">
+    Open Program
+</a>
+```
 
 </div>
 
+<!-- 04 -->
 
 <div class="program-card">
 
-    <div class="program-number">04</div>
+```
+<div class="program-number">04</div>
 
-    <span class="level">Beginner</span>
+<span class="level">Beginner</span>
 
-    <h3>Find Largest Number</h3>
+<h3>Find Largest Number</h3>
 
-    <p>
-        Compare multiple numbers and determine which
-        one has the largest value.
-    </p>
+<p>
+    Compare numbers and determine the largest
+    value.
+</p>
 
-    <a href="python-topic.html?topic=conditions" class="btn">
-        Open Program
-    </a>
+<a href="python-topic.html?topic=largest-number" class="btn">
+    Open Program
+</a>
+```
 
 </div>
 
+<!-- 05 -->
 
 <div class="program-card">
 
-    <div class="program-number">05</div>
+```
+<div class="program-number">05</div>
 
-    <span class="level">Beginner</span>
+<span class="level">Beginner</span>
 
-    <h3>Multiplication Table</h3>
+<h3>Multiplication Table</h3>
 
-    <p>
-        Generate a multiplication table using Python
-        loops.
-    </p>
+<p>
+    Generate a multiplication table using
+    Python loops.
+</p>
 
-    <a href="python-topic.html?topic=loops" class="btn">
-        Open Program
-    </a>
+<a href="python-topic.html?topic=multiplication-table" class="btn">
+    Open Program
+</a>
+```
 
 </div>
 
+<!-- 06 -->
 
 <div class="program-card">
 
-    <div class="program-number">06</div>
+```
+<div class="program-number">06</div>
 
-    <span class="level">Beginner</span>
+<span class="level">Beginner</span>
 
-    <h3>Factorial of a Number</h3>
+<h3>Factorial of a Number</h3>
 
-    <p>
-        Calculate the factorial of a number using
-        iteration.
-    </p>
+<p>
+    Calculate the factorial of a number using
+    iteration.
+</p>
 
-    <a href="python-topic.html?topic=loops" class="btn">
-        Open Program
-    </a>
+<a href="python-topic.html?topic=factorial" class="btn">
+    Open Program
+</a>
+```
 
 </div>
 
 </div>
 
-
-<!-- INTERMEDIATE -->
+<!-- ================= INTERMEDIATE ================= -->
 
 <h2 class="section-title">
     🟡 Intermediate Programs
@@ -493,130 +550,147 @@ footer {
 
 <div class="programs">
 
+<!-- 07 -->
 
 <div class="program-card">
 
-    <div class="program-number">07</div>
+```
+<div class="program-number">07</div>
 
-    <span class="level">Intermediate</span>
+<span class="level">Intermediate</span>
 
-    <h3>Prime Number Check</h3>
+<h3>Prime Number Check</h3>
 
-    <p>
-        Check whether a number is prime using loops
-        and conditional logic.
-    </p>
+<p>
+    Check whether a given number is a prime
+    number.
+</p>
 
-    <a href="python-topic.html?topic=loops" class="btn">
-        Open Program
-    </a>
+<a href="python-topic.html?topic=prime-number" class="btn">
+    Open Program
+</a>
+```
 
 </div>
 
+<!-- 08 -->
 
 <div class="program-card">
 
-    <div class="program-number">08</div>
+```
+<div class="program-number">08</div>
 
-    <span class="level">Intermediate</span>
+<span class="level">Intermediate</span>
 
-    <h3>Fibonacci Series</h3>
+<h3>Fibonacci Series</h3>
 
-    <p>
-        Generate a Fibonacci sequence using Python
-        iteration.
-    </p>
+<p>
+    Generate a Fibonacci sequence using
+    Python loops.
+</p>
 
-    <a href="python-topic.html?topic=loops" class="btn">
-        Open Program
-    </a>
+<a href="python-topic.html?topic=fibonacci" class="btn">
+    Open Program
+</a>
+```
 
 </div>
 
+<!-- 09 -->
 
 <div class="program-card">
 
-    <div class="program-number">09</div>
+```
+<div class="program-number">09</div>
 
-    <span class="level">Intermediate</span>
+<span class="level">Intermediate</span>
 
-    <h3>Reverse a String</h3>
+<h3>Reverse a String</h3>
 
-    <p>
-        Practice string manipulation by reversing
-        a given string.
-    </p>
+<p>
+    Learn how to reverse a string using
+    Python techniques.
+</p>
 
-    <a href="python-topic.html?topic=datatypes" class="btn">
-        Open Program
-    </a>
+<a href="python-topic.html?topic=reverse-string" class="btn">
+    Open Program
+</a>
+```
 
 </div>
 
+<!-- 10 -->
 
 <div class="program-card">
 
-    <div class="program-number">10</div>
+```
+<div class="program-number">10</div>
 
-    <span class="level">Intermediate</span>
+<span class="level">Intermediate</span>
 
-    <h3>Count Vowels</h3>
+<h3>Count Vowels</h3>
 
-    <p>
-        Count the number of vowels present inside
-        a given string.
-    </p>
+<p>
+    Count the number of vowels present
+    in a given string.
+</p>
 
-    <a href="python-topic.html?topic=datatypes" class="btn">
-        Open Program
-    </a>
+<a href="python-topic.html?topic=count-vowels" class="btn">
+    Open Program
+</a>
+```
 
 </div>
 
+<!-- 11 -->
 
 <div class="program-card">
 
-    <div class="program-number">11</div>
+```
+<div class="program-number">11</div>
 
-    <span class="level">Intermediate</span>
+<span class="level">Intermediate</span>
 
-    <h3>List Operations</h3>
+<h3>List Operations</h3>
 
-    <p>
-        Practice adding, removing, updating and
-        accessing values in Python lists.
-    </p>
+<p>
+    Practice adding, removing, updating and
+    accessing values in Python lists.
+</p>
 
-    <a href="python-topic.html?topic=datatypes" class="btn">
-        Open Program
-    </a>
+<a href="python-topic.html?topic=list-operations" class="btn">
+    Open Program
+</a>
+```
 
 </div>
 
+<!-- 12 -->
 
 <div class="program-card">
 
-    <div class="program-number">12</div>
+```
+<div class="program-number">12</div>
 
-    <span class="level">Intermediate</span>
+<span class="level">Intermediate</span>
 
-    <h3>Function Calculator</h3>
+<h3>Function Calculator</h3>
 
-    <p>
-        Build a calculator by creating reusable
-        Python functions.
-    </p>
+<p>
+    Build a calculator using reusable
+    Python functions.
+</p>
 
-    <a href="python-topic.html?topic=functions" class="btn">
-        Open Program
-    </a>
+<a href="python-topic.html?topic=function-calculator" class="btn">
+    Open Program
+</a>
+```
 
 </div>
 
 </div>
 
-
-<!-- ADVANCED -->
+<!-- ================= ADVANCED ================= -->
 
 <h2 class="section-title">
     🔴 Advanced Programs
@@ -624,145 +698,163 @@ footer {
 
 <div class="programs">
 
+<!-- 13 -->
 
 <div class="program-card">
 
-    <div class="program-number">13</div>
+```
+<div class="program-number">13</div>
 
-    <span class="level">Advanced</span>
+<span class="level">Advanced</span>
 
-    <h3>Student Management System</h3>
+<h3>Student Management System</h3>
 
-    <p>
-        Create a system for storing, searching and
-        managing student information.
-    </p>
+<p>
+    Build a program for storing and managing
+    student information.
+</p>
 
-    <a href="python-topic.html?topic=oop" class="btn">
-        Open Program
-    </a>
+<a href="python-topic.html?topic=student-management" class="btn">
+    Open Program
+</a>
+```
 
 </div>
 
+<!-- 14 -->
 
 <div class="program-card">
 
-    <div class="program-number">14</div>
+```
+<div class="program-number">14</div>
 
-    <span class="level">Advanced</span>
+<span class="level">Advanced</span>
 
-    <h3>Bank Account System</h3>
+<h3>Bank Account System</h3>
 
-    <p>
-        Build a simple banking application using
-        object-oriented programming.
-    </p>
+<p>
+    Create a simple banking system using
+    object-oriented programming.
+</p>
 
-    <a href="python-topic.html?topic=oop" class="btn">
-        Open Program
-    </a>
+<a href="python-topic.html?topic=bank-account" class="btn">
+    Open Program
+</a>
+```
 
 </div>
 
+<!-- 15 -->
 
 <div class="program-card">
 
-    <div class="program-number">15</div>
+```
+<div class="program-number">15</div>
 
-    <span class="level">Advanced</span>
+<span class="level">Advanced</span>
 
-    <h3>File Management Program</h3>
+<h3>File Management Program</h3>
 
-    <p>
-        Learn how to read, write and manage information
-        stored in files.
-    </p>
+<p>
+    Read, write and manage information
+    stored in files.
+</p>
 
-    <a href="python-topic.html?topic=files" class="btn">
-        Open Program
-    </a>
+<a href="python-topic.html?topic=file-management" class="btn">
+    Open Program
+</a>
+```
 
 </div>
 
+<!-- 16 -->
 
 <div class="program-card">
 
-    <div class="program-number">16</div>
+```
+<div class="program-number">16</div>
 
-    <span class="level">Advanced</span>
+<span class="level">Advanced</span>
 
-    <h3>Database Application</h3>
+<h3>Database Application</h3>
 
-    <p>
-        Build a Python application that stores and
-        retrieves information from a database.
-    </p>
+<p>
+    Build a Python application that works
+    with a database.
+</p>
 
-    <a href="python-topic.html?topic=database" class="btn">
-        Open Program
-    </a>
+<a href="python-topic.html?topic=database" class="btn">
+    Open Program
+</a>
+```
 
 </div>
 
+<!-- 17 -->
 
 <div class="program-card">
 
-    <div class="program-number">17</div>
+```
+<div class="program-number">17</div>
 
-    <span class="level">Advanced</span>
+<span class="level">Advanced</span>
 
-    <h3>API Data Fetcher</h3>
+<h3>API Data Fetcher</h3>
 
-    <p>
-        Retrieve and process information from an
-        external API using Python.
-    </p>
+<p>
+    Retrieve and process information from
+    an external API.
+</p>
 
-    <a href="python-topic.html?topic=api" class="btn">
-        Open Program
-    </a>
+<a href="python-topic.html?topic=api" class="btn">
+    Open Program
+</a>
+```
 
 </div>
 
+<!-- 18 -->
 
 <div class="program-card">
 
-    <div class="program-number">18</div>
+```
+<div class="program-number">18</div>
 
-    <span class="level">Advanced</span>
+<span class="level">Advanced</span>
 
-    <h3>Automation Script</h3>
+<h3>Automation Script</h3>
 
-    <p>
-        Automate repetitive tasks using Python
-        programming techniques.
-    </p>
+<p>
+    Automate repetitive tasks using
+    Python programming.
+</p>
 
-    <a href="python-topic.html?topic=automation" class="btn">
-        Open Program
-    </a>
+<a href="python-topic.html?topic=automation" class="btn">
+    Open Program
+</a>
+```
+
+</div>
 
 </div>
 
 </div>
 
-</div>
-
-
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
-    <p>
-        © 2026 EduLearn — Learn. Grow. Succeed.
-    </p>
+```
+<p>
+    © 2026 EduLearn — Learn. Grow. Succeed.
+</p>
+```
 
 </footer>
 
-
 <script>
 
-/* DARK MODE */
+/* ================= DARK MODE ================= */
 
 if (localStorage.getItem("darkMode") === "true") {
 
@@ -771,83 +863,83 @@ if (localStorage.getItem("darkMode") === "true") {
 }
 
 
-/* PYTHON PROGRAM DATA */
+/* ================= PROGRAM DATA ================= */
 
 const programs = [
 
     {
         name: "Hello World",
-        topic: "introduction"
+        topic: "hello-world"
     },
 
     {
         name: "Add Two Numbers",
-        topic: "operators"
+        topic: "add-two-numbers"
     },
 
     {
         name: "Check Even or Odd",
-        topic: "operators"
+        topic: "even-odd"
     },
 
     {
         name: "Find Largest Number",
-        topic: "conditions"
+        topic: "largest-number"
     },
 
     {
         name: "Multiplication Table",
-        topic: "loops"
+        topic: "multiplication-table"
     },
 
     {
         name: "Factorial of a Number",
-        topic: "loops"
+        topic: "factorial"
     },
 
     {
         name: "Prime Number Check",
-        topic: "loops"
+        topic: "prime-number"
     },
 
     {
         name: "Fibonacci Series",
-        topic: "loops"
+        topic: "fibonacci"
     },
 
     {
         name: "Reverse a String",
-        topic: "datatypes"
+        topic: "reverse-string"
     },
 
     {
         name: "Count Vowels",
-        topic: "datatypes"
+        topic: "count-vowels"
     },
 
     {
         name: "List Operations",
-        topic: "datatypes"
+        topic: "list-operations"
     },
 
     {
         name: "Function Calculator",
-        topic: "functions"
+        topic: "function-calculator"
     },
 
     {
         name: "Student Management System",
-        topic: "oop"
+        topic: "student-management"
     },
 
     {
         name: "Bank Account System",
-        topic: "oop"
+        topic: "bank-account"
     },
 
     {
         name: "File Management Program",
-        topic: "files"
+        topic: "file-management"
     },
 
     {
@@ -868,13 +960,12 @@ const programs = [
 ];
 
 
-/* SEARCH FUNCTION */
+/* ================= SEARCH ================= */
 
 function searchPrograms() {
 
     const search =
-        document
-        .getElementById("searchInput")
+        document.getElementById("searchInput")
         .value
         .toLowerCase()
         .trim();
@@ -890,17 +981,13 @@ function searchPrograms() {
 
     const matched =
         programs.filter(program =>
-            program.name
-            .toLowerCase()
-            .includes(search)
+            program.name.toLowerCase().includes(search)
         );
 
     if (matched.length === 0) {
 
         results.innerHTML =
-            "<div class='result'>" +
-            "No Python program found." +
-            "</div>";
+            "<div class='result'>No Python program found.</div>";
 
         return;
 
@@ -927,7 +1014,6 @@ function searchPrograms() {
 }
 
 </script>
-
 
 </body>
 
