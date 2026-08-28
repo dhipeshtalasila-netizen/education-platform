@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EduLearn - Python Topic</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f8;
+    color: #222;
+    transition: 0.3s;
+}
+
+/* NAVBAR */
+
+.navbar {
+    background: #ffffff;
+    padding: 16px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.nav-links {
+    display: flex;
+    gap: 22px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #2563eb;
+}
+
+/* HEADER */
+
+.topic-header {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    padding: 50px 7%;
+}
+
+.topic-header h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.topic-header p {
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+/* MAIN */
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+.card p {
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+.card ul {
+    padding-left: 25px;
+}
+
+.card li {
+    line-height: 1.8;
+}
+
+/* CODE */
+
+pre {
+    background: #111827;
+    color: #f8fafc;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+/* BUTTONS */
+
+button,
+.btn {
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+button:hover,
+.btn:hover {
+    background: #1d4ed8;
+}
+
+.complete {
+    background: #16a34a;
+}
+
+.complete:hover {
+    background: #15803d;
+}
+
+/* PRACTICE */
+
+.practice-question {
+    background: #f8fafc;
+    padding: 18px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+/* NAVIGATION */
+
+.topic-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* STATUS */
+
+#completionStatus {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* DARK MODE */
+
+body.dark {
+    background: #111827;
+    color: #e5e7eb;
+}
+
+body.dark .navbar,
+body.dark .card {
+    background: #1f2937;
+    color: #e5e7eb;
+}
+
+body.dark .nav-links a {
+    color: #e5e7eb;
+}
+
+body.dark .nav-links a:hover {
+    color: #60a5fa;
+}
+
+body.dark .card h2 {
+    color: #60a5fa;
+}
+
+body.dark .practice-question {
+    background: #374151;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .topic-header h1 {
+        font-size: 30px;
+    }
+
+    .topic-navigation {
+        flex-direction: column;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        EduLearn
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="dashboard.html">Dashboard</a>
+
+        <a href="coding.html">Coding</a>
+
+        <a href="python.html">Python</a>
+
+        <a href="settings.html">Settings</a>
+
+    </div>
+
+</nav>
+
+
+<!-- TOPIC HEADER -->
+
+<section class="topic-header">
+
+    <h1 id="topicTitle">
+        Python Topic
+    </h1>
+
+    <p id="topicDescription">
+        Learn Python concepts with explanations,
+        examples and practice.
+    </p>
+
+</section>
+
+
+<div class="container">
+
+
+<!-- INTRODUCTION -->
+
+<div class="card">
+
+    <h2>📖 Introduction</h2>
+
+    <p id="topicIntroduction">
+        Loading topic...
+    </p>
+
+</div>
+
+
+<!-- CONCEPTS -->
+
+<div class="card">
+
+    <h2>🧠 Concepts</h2>
+
+    <div id="topicConcepts">
+        Loading...
+    </div>
+
+</div>
+
+
+<!-- SYNTAX -->
+
+<div class="card">
+
+    <h2>💻 Syntax & Example</h2>
+
+    <pre id="topicCode">
+Loading...
+    </pre>
+
+</div>
+
+
+<!-- IMPORTANT POINTS -->
+
+<div class="card">
+
+    <h2>⭐ Important Points</h2>
+
+    <ul id="importantPoints">
+    </ul>
+
+</div>
+
+
+<!-- PRACTICE -->
+
+<div class="card">
+
+    <h2>🧩 Practice</h2>
+
+    <div class="practice-question">
+
+        <p id="practiceQuestion">
+            Loading practice question...
+        </p>
+
+        <button onclick="showAnswer()">
+            Show Answer
+        </button>
+
+        <p id="practiceAnswer"
+           style="display:none;margin-top:15px;">
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- COMPLETION -->
+
+<div class="card">
+
+    <h2>✓ Topic Progress</h2>
+
+    <p>
+        Finished studying this topic?
+    </p>
+
+    <button
+        class="complete"
+        onclick="markCompleted()">
+
+        Mark Topic as Completed
+
+    </button>
+
+    <p id="completionStatus"></p>
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<div class="topic-navigation">
+
+    <a
+        href="python.html"
+        class="btn">
+
+        ← Python Subject
+
+    </a>
+
+
+    <a
+        href="python.html"
+        class="btn">
+
+        More Python Topics →
+
+    </a>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+/* DARK MODE */
+
+if (localStorage.getItem("darkMode") === "true") {
+
+    document.body.classList.add("dark");
+
+}
+
+
+/* PYTHON TOPIC DATA */
+
+const pythonTopics = {
+
+    introduction: {
+
+        title: "Introduction to Python",
+
+        description:
+        "Understand Python, its history, features and applications.",
+
+        introduction:
+        "Python is a high-level, general-purpose programming language known for its readable syntax and wide range of applications.",
+
+        concepts: `
+            <p><strong>Python</strong> can be used for software development,
+            automation, data analysis, artificial intelligence,
+            web development and many other areas.</p>
+
+            <p>Python uses a simple syntax that allows programmers
+            to focus more on solving problems rather than dealing
+            with complicated language syntax.</p>
+        `,
+
+        code: `print("Hello, World!")`,
+
+        points: [
+
+            "Python is a high-level programming language.",
+
+            "Python is interpreted.",
+
+            "Python supports object-oriented programming.",
+
+            "Python is widely used in industry and education.",
+
+            "Python has a large ecosystem of libraries."
+
+        ],
+
+        question:
+        "Write a Python program that displays your name.",
+
+        answer:
+        'Example: print("Your Name")'
+
+    },
+
+
+    variables: {
+
+        title: "Variables",
+
+        description:
+        "Learn how Python stores and manages information.",
+
+        introduction:
+        "A variable is a name that refers to a value stored in a program.",
+
+        concepts: `
+            <p>Python variables are created when a value is assigned.</p>
+
+            <p>Python does not require you to explicitly declare
+            the variable type before using it.</p>
+        `,
+
+        code:
+`name = "Alex"
+age = 20
+marks = 85.5
+
+print(name)
+print(age)
+print(marks)`,
+
+        points: [
+
+            "Variables store values.",
+
+            "Python uses dynamic typing.",
+
+            "Variable names should be meaningful.",
+
+            "Variables can be reassigned."
+
+        ],
+
+        question:
+        "Create a variable called age and store your age in it.",
+
+        answer:
+        "Example: age = 20"
+
+    },
+
+
+    datatypes: {
+
+        title: "Data Types",
+
+        description:
+        "Understand the basic data types available in Python.",
+
+        introduction:
+        "Python provides different data types for representing different kinds of information.",
+
+        concepts: `
+            <ul>
+                <li>int — whole numbers</li>
+                <li>float — decimal numbers</li>
+                <li>str — text</li>
+                <li>bool — True or False</li>
+                <li>list — collection of values</li>
+                <li>tuple — ordered immutable collection</li>
+                <li>set — collection of unique values</li>
+                <li>dict — key-value collection</li>
+            </ul>
+        `,
+
+        code:
+`age = 20
+price = 99.50
+name = "Python"
+passed = True
+
+print(type(age))
+print(type(price))
+print(type(name))
+print(type(passed))`,
+
+        points: [
+
+            "Every value has a data type.",
+
+            "Python supports built-in and user-defined types.",
+
+            "The type() function can identify a value's type."
+
+        ],
+
+        question:
+        "Create an integer, string and float variable.",
+
+        answer:
+        'Example: age = 20, name = "Alex", price = 50.5'
+
+    },
+
+
+    operators: {
+
+        title: "Operators",
+
+        description:
+        "Learn how Python performs calculations and comparisons.",
+
+        introduction:
+        "Operators are symbols or keywords used to perform operations on values.",
+
+        concepts: `
+            <ul>
+                <li>Arithmetic operators</li>
+                <li>Comparison operators</li>
+                <li>Logical operators</li>
+                <li>Assignment operators</li>
+                <li>Membership operators</li>
+                <li>Identity operators</li>
+            </ul>
+        `,
+
+        code:
+`a = 10
+b = 3
+
+print(a + b)
+print(a - b)
+print(a * b)
+print(a / b)
+print(a % b)
+print(a ** b)`,
+
+        points: [
+
+            "Arithmetic operators perform calculations.",
+
+            "Comparison operators return Boolean values.",
+
+            "Logical operators combine conditions.",
+
+            "Assignment operators modify variables."
+
+        ],
+
+        question:
+        "Calculate the remainder when 17 is divided by 5.",
+
+        answer:
+        "Example: 17 % 5"
+
+    },
+
+
+    functions: {
+
+        title: "Functions",
+
+        description:
+        "Learn how to create reusable blocks of Python code.",
+
+        introduction:
+        "A function is a reusable block of code designed to perform a particular task.",
+
+        concepts: `
+            <p>Functions are created using the
+            <strong>def</strong> keyword.</p>
+
+            <p>Functions can receive parameters and can return values.</p>
+        `,
+
+        code:
+`def add(a, b):
+    return a + b
+
+result = add(10, 20)
+
+print(result)`,
+
+        points: [
+
+            "Functions reduce code repetition.",
+
+            "Functions improve program organization.",
+
+            "Functions can accept parameters.",
+
+            "Functions can return values."
+
+        ],
+
+        question:
+        "Create a function that multiplies two numbers.",
+
+        answer:
+        `def multiply(a, b):
+    return a * b`
+
+    },
+
+
+    loops: {
+
+        title: "Loops",
+
+        description:
+        "Learn how to repeat code using Python loops.",
+
+        introduction:
+        "Loops allow a program to execute a block of code repeatedly.",
+
+        concepts: `
+            <p>Python mainly provides
+            <strong>for</strong> and
+            <strong>while</strong> loops.</p>
+        `,
+
+        code:
+`for i in range(1, 6):
+    print(i)`,
+
+        points: [
+
+            "for loops iterate over sequences.",
+
+            "while loops continue while a condition is true.",
+
+            "break can stop a loop.",
+
+            "continue can skip an iteration."
+
+        ],
+
+        question:
+        "Write a loop that prints numbers from 1 to 5.",
+
+        answer:
+        `for i in range(1, 6):
+    print(i)`
+
+    },
+
+
+    inheritance: {
+
+        title: "Inheritance",
+
+        description:
+        "Learn how classes can inherit features from other classes.",
+
+        introduction:
+        "Inheritance allows one class to acquire properties and methods from another class.",
+
+        concepts: `
+            <p>The class being inherited from is commonly
+            called the parent or base class.</p>
+
+            <p>The class that inherits is commonly called
+            the child or derived class.</p>
+        `,
+
+        code:
+`class Animal:
+
+    def speak(self):
+        print("Animal sound")
+
+
+class Dog(Animal):
+
+    def bark(self):
+        print("Woof!")
+
+
+dog = Dog()
+
+dog.speak()
+dog.bark()`,
+
+        points: [
+
+            "Inheritance promotes code reuse.",
+
+            "A child class can inherit methods from a parent class.",
+
+            "Python supports multiple inheritance.",
+
+            "Inheritance is an important OOP concept."
+
+        ],
+
+        question:
+        "Create a child class that inherits from a parent class.",
+
+        answer:
+        "Use class Child(Parent):"
+
+    }
+
+};
+
+
+/* GET TOPIC FROM URL */
+
+const params =
+new URLSearchParams(window.location.search);
+
+const topic =
+params.get("topic") || "introduction";
+
+
+/* LOAD TOPIC */
+
+function loadTopic() {
+
+    const data =
+    pythonTopics[topic];
+
+    if (!data) {
+
+        document.getElementById("topicTitle").textContent =
+        "Python Topic Not Found";
+
+        document.getElementById("topicDescription").textContent =
+        "The requested topic could not be found.";
+
+        return;
+
+    }
+
+
+    document.getElementById("topicTitle").textContent =
+    data.title;
+
+
+    document.getElementById("topicDescription").textContent =
+    data.description;
+
+
+    document.getElementById("topicIntroduction").textContent =
+    data.introduction;
+
+
+    document.getElementById("topicConcepts").innerHTML =
+    data.concepts;
+
+
+    document.getElementById("topicCode").textContent =
+    data.code;
+
+
+    const points =
+    document.getElementById("importantPoints");
+
+    points.innerHTML = "";
+
+
+    data.points.forEach(point => {
+
+        const li =
+        document.createElement("li");
+
+        li.textContent = point;
+
+        points.appendChild(li);
+
+    });
+
+
+    document.getElementById("practiceQuestion").textContent =
+    data.question;
+
+
+    document.getElementById("practiceAnswer").textContent =
+    data.answer;
+
+
+    checkCompletion();
+
+}
+
+
+/* SHOW ANSWER */
+
+function showAnswer() {
+
+    document.getElementById("practiceAnswer").style.display =
+    "block";
+
+}
+
+
+/* MARK COMPLETE */
+
+function markCompleted() {
+
+    localStorage.setItem(
+        "pythonTopic_" + topic,
+        "completed"
+    );
+
+    document.getElementById("completionStatus").textContent =
+    "✓ This topic has been marked as completed.";
+
+}
+
+
+/* CHECK COMPLETION */
+
+function checkCompletion() {
+
+    if (
+        localStorage.getItem(
+            "pythonTopic_" + topic
+        ) === "completed"
+    ) {
+
+        document.getElementById("completionStatus").textContent =
+        "✓ You have already completed this topic.";
+
+    }
+
+}
+
+
+/* START */
+
+loadTopic();
+
+</script>
+
+</body>
+
+</html>
