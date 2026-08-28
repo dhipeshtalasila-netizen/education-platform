@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EduLearn - Python Practice</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f8;
+    color: #222;
+    transition: 0.3s;
+}
+
+/* NAVBAR */
+
+.navbar {
+    background: #ffffff;
+    padding: 16px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.nav-links {
+    display: flex;
+    gap: 22px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #2563eb;
+}
+
+/* HERO */
+
+.hero {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    padding: 55px 7%;
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    max-width: 800px;
+    line-height: 1.7;
+    font-size: 17px;
+}
+
+/* CONTAINER */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* SEARCH */
+
+.search-box {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    margin-bottom: 35px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.search-box h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #d1d5db;
+    border-radius: 9px;
+    font-size: 16px;
+    outline: none;
+}
+
+#searchInput:focus {
+    border-color: #2563eb;
+}
+
+/* SECTION */
+
+.section-title {
+    color: #1e3a8a;
+    margin: 35px 0 20px;
+    font-size: 28px;
+}
+
+/* QUESTIONS */
+
+.questions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.question-card {
+    background: white;
+    padding: 24px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.question-number {
+    color: #2563eb;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.question-card h3 {
+    color: #1e3a8a;
+    margin-bottom: 12px;
+}
+
+.question-card p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.hint {
+    display: none;
+    background: #eff6ff;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 12px;
+    line-height: 1.5;
+}
+
+.answer {
+    display: none;
+    background: #ecfdf5;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 12px;
+    line-height: 1.6;
+}
+
+button {
+    border: none;
+    background: #2563eb;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 7px;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-top: 5px;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+/* DARK MODE */
+
+body.dark {
+    background: #111827;
+    color: #e5e7eb;
+}
+
+body.dark .navbar,
+body.dark .search-box,
+body.dark .question-card {
+    background: #1f2937;
+    color: #e5e7eb;
+}
+
+body.dark .nav-links a {
+    color: #e5e7eb;
+}
+
+body.dark .nav-links a:hover {
+    color: #60a5fa;
+}
+
+body.dark .section-title,
+body.dark .search-box h2,
+body.dark .question-card h3 {
+    color: #60a5fa;
+}
+
+body.dark .hint {
+    background: #374151;
+}
+
+body.dark .answer {
+    background: #064e3b;
+}
+
+body.dark #searchInput {
+    background: #374151;
+    color: white;
+    border-color: #4b5563;
+}
+
+/* FOOTER */
+
+footer {
+    background: #1e3a8a;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 50px;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        EduLearn
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+
+        <a href="dashboard.html">Dashboard</a>
+
+        <a href="coding.html">Coding</a>
+
+        <a href="python.html">Python</a>
+
+        <a href="settings.html">Settings</a>
+
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>Python Practice</h1>
+
+    <p>
+        Strengthen your Python programming skills by solving
+        practical problems from beginner to advanced level.
+    </p>
+
+</section>
+
+
+<div class="container">
+
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+    <h2>🔎 Search Practice Questions</h2>
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search questions, topics or difficulty..."
+        onkeyup="searchQuestions()"
+    >
+
+    <div id="searchResults"></div>
+
+</div>
+
+
+<!-- BEGINNER -->
+
+<h2 class="section-title">
+    🟢 Beginner Practice
+</h2>
+
+<div class="questions">
+
+
+<div class="question-card">
+
+    <div class="question-number">Question 01</div>
+
+    <h3>Hello World</h3>
+
+    <p>
+        Write a Python program that prints
+        <strong>Hello, World!</strong>
+    </p>
+
+    <button onclick="showHint(1)">
+        Show Hint
+    </button>
+
+    <button onclick="showAnswer(1)">
+        Show Answer
+    </button>
+
+    <div id="hint1" class="hint">
+        Use the print() function.
+    </div>
+
+    <div id="answer1" class="answer">
+        <code>print("Hello, World!")</code>
+    </div>
+
+</div>
+
+
+<div class="question-card">
+
+    <div class="question-number">Question 02</div>
+
+    <h3>Add Two Numbers</h3>
+
+    <p>
+        Write a program that accepts two numbers
+        and prints their sum.
+    </p>
+
+    <button onclick="showHint(2)">
+        Show Hint
+    </button>
+
+    <button onclick="showAnswer(2)">
+        Show Answer
+    </button>
+
+    <div id="hint2" class="hint">
+        Use input() and the + operator.
+    </div>
+
+    <div id="answer2" class="answer">
+        <code>
+a = int(input("Enter first number: "))<br>
+b = int(input("Enter second number: "))<br>
+print(a + b)
+        </code>
+    </div>
+
+</div>
+
+
+<div class="question-card">
+
+    <div class="question-number">Question 03</div>
+
+    <h3>Even or Odd</h3>
+
+    <p>
+        Write a program to determine whether
+        a number is even or odd.
+    </p>
+
+    <button onclick="showHint(3)">
+        Show Hint
+    </button>
+
+    <button onclick="showAnswer(3)">
+        Show Answer
+    </button>
+
+    <div id="hint3" class="hint">
+        Use the modulo (%) operator.
+    </div>
+
+    <div id="answer3" class="answer">
+        <code>
+number = int(input("Enter a number: "))<br><br>
+
+if number % 2 == 0:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print("Even")<br>
+else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print("Odd")
+        </code>
+    </div>
+
+</div>
+
+
+<div class="question-card">
+
+    <div class="question-number">Question 04</div>
+
+    <h3>Largest Number</h3>
+
+    <p>
+        Write a program to find the largest
+        among three numbers.
+    </p>
+
+    <button onclick="showHint(4)">
+        Show Hint
+    </button>
+
+    <button onclick="showAnswer(4)">
+        Show Answer
+    </button>
+
+    <div id="hint4" class="hint">
+        You can use if statements or max().
+    </div>
+
+    <div id="answer4" class="answer">
+        <code>
+a = 10<br>
+b = 25<br>
+c = 15<br><br>
+print(max(a, b, c))
+        </code>
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- INTERMEDIATE -->
+
+<h2 class="section-title">
+    🟡 Intermediate Practice
+</h2>
+
+<div class="questions">
+
+
+<div class="question-card">
+
+    <div class="question-number">Question 05</div>
+
+    <h3>Factorial</h3>
+
+    <p>
+        Write a program to calculate the factorial
+        of a number.
+    </p>
+
+    <button onclick="showHint(5)">
+        Show Hint
+    </button>
+
+    <button onclick="showAnswer(5)">
+        Show Answer
+    </button>
+
+    <div id="hint5" class="hint">
+        Use a loop and multiply the values.
+    </div>
+
+    <div id="answer5" class="answer">
+        <code>
+n = 5<br>
+factorial = 1<br><br>
+
+for i in range(1, n + 1):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;factorial *= i<br><br>
+
+print(factorial)
+        </code>
+    </div>
+
+</div>
+
+
+<div class="question-card">
+
+    <div class="question-number">Question 06</div>
+
+    <h3>Prime Number</h3>
+
+    <p>
+        Write a program to check whether
+        a number is prime.
+    </p>
+
+    <button onclick="showHint(6)">
+        Show Hint
+    </button>
+
+    <button onclick="showAnswer(6)">
+        Show Answer
+    </button>
+
+    <div id="hint6" class="hint">
+        Check whether the number has divisors
+        other than 1 and itself.
+    </div>
+
+    <div id="answer6" class="answer">
+        <code>
+n = 17<br>
+is_prime = True<br><br>
+
+if n &lt; 2:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;is_prime = False<br>
+else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for i in range(2, int(n ** 0.5) + 1):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if n % i == 0:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is_prime = False<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break<br><br>
+
+print(is_prime)
+        </code>
+    </div>
+
+</div>
+
+
+<div class="question-card">
+
+    <div class="question-number">Question 07</div>
+
+    <h3>Fibonacci Series</h3>
+
+    <p>
+        Generate the first 10 numbers
+        of the Fibonacci series.
+    </p>
+
+    <button onclick="showHint(7)">
+        Show Hint
+    </button>
+
+    <button onclick="showAnswer(7)">
+        Show Answer
+    </button>
+
+    <div id="hint7" class="hint">
+        Start with 0 and 1, then add the
+        previous two numbers.
+    </div>
+
+    <div id="answer7" class="answer">
+        <code>
+a = 0<br>
+b = 1<br><br>
+
+for i in range(10):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;print(a)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a, b = b, a + b
+        </code>
+    </div>
+
+</div>
+
+
+<div class="question-card">
+
+    <div class="question-number">Question 08</div>
+
+    <h3>Reverse a String</h3>
+
+    <p>
+        Write a program that reverses
+        a given string.
+    </p>
+
+    <button onclick="showHint(8)">
+        Show Hint
+    </button>
+
+    <button onclick="showAnswer(8)">
+        Show Answer
+    </button>
+
+    <div id="hint8" class="hint">
+        Python supports slicing.
+    </div>
+
+    <div id="answer8" class="answer">
+        <code>
+text = "Python"<br>
+print(text[::-1])
+        </code>
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- ADVANCED -->
+
+<h2 class="section-title">
+    🔴 Advanced Practice
+</h2>
+
+<div class="questions">
+
+
+<div class="question-card">
+
+    <div class="question-number">Question 09</div>
+
+    <h3>Student Management</h3>
+
+    <p>
+        Design a Python program that stores
+        student names and marks and displays
+        their information.
+    </p>
+
+    <button onclick="showHint(9)">
+        Show Hint
+    </button>
+
+    <button onclick="showAnswer(9)">
+        Show Approach
+    </button>
+
+    <div id="hint9" class="hint">
+        Consider using dictionaries or classes
+        to store student information.
+    </div>
+
+    <div id="answer9" class="answer">
+        Use a dictionary for a simple implementation,
+        or create a Student class for a more
+        advanced object-oriented implementation.
+    </div>
+
+</div>
+
+
+<div class="question-card">
+
+    <div class="question-number">Question 10</div>
+
+    <h3>Bank Account</h3>
+
+    <p>
+        Create a BankAccount class with deposit,
+        withdrawal and balance functionality.
+    </p>
+
+    <button onclick="showHint(10)">
+        Show Hint
+    </button>
+
+    <button onclick="showAnswer(10)">
+        Show Approach
+    </button>
+
+    <div id="hint10" class="hint">
+        Use a class with methods such as
+        deposit() and withdraw().
+    </div>
+
+    <div id="answer10" class="answer">
+        Create a BankAccount class with a balance
+        attribute and methods for deposit and
+        withdrawal operations.
+    </div>
+
+</div>
+
+
+<div class="question-card">
+
+    <div class="question-number">Question 11</div>
+
+    <h3>File Processing</h3>
+
+    <p>
+        Write a program that reads a text file
+        and counts the number of words.
+    </p>
+
+    <button onclick="showHint(11)">
+        Show Hint
+    </button>
+
+    <button onclick="showAnswer(11)">
+        Show Approach
+    </button>
+
+    <div id="hint11" class="hint">
+        Open the file, read its contents,
+        split the text and count the words.
+    </div>
+
+    <div id="answer11" class="answer">
+        Use open(), read(), split() and len()
+        to process the file.
+    </div>
+
+</div>
+
+
+<div class="question-card">
+
+    <div class="question-number">Question 12</div>
+
+    <h3>API Data Processing</h3>
+
+    <p>
+        Write a Python program that retrieves
+        JSON data from an API and processes it.
+    </p>
+
+    <button onclick="showHint(12)">
+        Show Hint
+    </button>
+
+    <button onclick="showAnswer(12)">
+        Show Approach
+    </button>
+
+    <div id="hint12" class="hint">
+        Use an HTTP library and convert the
+        response into JSON data.
+    </div>
+
+    <div id="answer12" class="answer">
+        A common approach is to send an HTTP request,
+        parse the JSON response and then process
+        the returned data.
+    </div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 EduLearn — Learn. Grow. Succeed.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* DARK MODE */
+
+if (localStorage.getItem("darkMode") === "true") {
+
+    document.body.classList.add("dark");
+
+}
+
+
+/* SHOW HINT */
+
+function showHint(number) {
+
+    const hint =
+        document.getElementById("hint" + number);
+
+    if (hint.style.display === "block") {
+
+        hint.style.display = "none";
+
+    } else {
+
+        hint.style.display = "block";
+
+    }
+
+}
+
+
+/* SHOW ANSWER */
+
+function showAnswer(number) {
+
+    const answer =
+        document.getElementById("answer" + number);
+
+    if (answer.style.display === "block") {
+
+        answer.style.display = "none";
+
+    } else {
+
+        answer.style.display = "block";
+
+    }
+
+}
+
+
+/* SEARCH DATA */
+
+const questions = [
+
+    "Hello World",
+    "Add Two Numbers",
+    "Even or Odd",
+    "Largest Number",
+    "Factorial",
+    "Prime Number",
+    "Fibonacci Series",
+    "Reverse a String",
+    "Student Management",
+    "Bank Account",
+    "File Processing",
+    "API Data Processing"
+
+];
+
+
+/* SEARCH */
+
+function searchQuestions() {
+
+    const search =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const results =
+        document.getElementById("searchResults");
+
+    results.innerHTML = "";
+
+    if (search === "") {
+        return;
+    }
+
+    const matched =
+        questions.filter(question =>
+            question.toLowerCase().includes(search)
+        );
+
+    if (matched.length === 0) {
+
+        results.innerHTML =
+            "<div class='hint' style='display:block;margin-top:15px;'>No practice question found.</div>";
+
+        return;
+
+    }
+
+    matched.forEach(question => {
+
+        const item =
+            document.createElement("div");
+
+        item.className = "hint";
+
+        item.style.display = "block";
+
+        item.innerHTML =
+            "<strong>" +
+            question +
+            "</strong><br>" +
+            "<small>Python Practice Question</small>";
+
+        results.appendChild(item);
+
+    });
+
+}
+
+</script>
+
+
+</body>
+
+</html>
