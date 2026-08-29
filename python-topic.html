@@ -249,7 +249,6 @@ footer {
 
 <nav class="navbar">
 
-```
 <div class="logo">
     EduLearn
 </div>
@@ -263,37 +262,30 @@ footer {
     <a href="settings.html">Settings</a>
 
 </div>
-```
 
 </nav>
 
 <section class="hero">
 
-```
 <h1 id="pageTitle">Python Program</h1>
 
 <p id="pageDescription">
     Learn Python through practical programming.
 </p>
-```
 
 </section>
 
 <div class="container">
 
-```
 <div id="programContent"></div>
-```
 
 </div>
 
 <footer>
 
-```
 <p>
     © 2026 EduLearn — Learn. Grow. Succeed.
 </p>
-```
 
 </footer>
 
@@ -1319,7 +1311,6 @@ if (topic && programs[topic]) {
 
                 <pre>${program.code}</pre>
 
-```
         </div>
 
     </div>
@@ -1370,11 +1361,9 @@ if (topic && programs[topic]) {
     </div>
 
 `;
-```
 
 } else {
 
-```
 content.innerHTML = `
 
     <div class="card not-found">
@@ -1394,7 +1383,6 @@ content.innerHTML = `
     </div>
 
 `;
-```
 
 }
 
@@ -1404,14 +1392,12 @@ MARK PROGRAM COMPLETE
 
 function markComplete(topicName) {
 
-```
 localStorage.setItem(
     "python_" + topicName + "_completed",
     "true"
 );
 
 alert("Python program completed!");
-```
 
 }
 
