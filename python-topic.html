@@ -1,7 +1,335 @@
 
-<script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EduLearn - Python Program</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f8;
+    color: #222;
+    transition: 0.3s;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+    background: white;
+    padding: 16px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.nav-links {
+    display: flex;
+    gap: 22px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #2563eb;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    padding: 50px 7%;
+}
+
+.hero h1 {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+/* ================= CONTAINER ================= */
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* ================= CARDS ================= */
+
+.card {
+    background: white;
+    padding: 28px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+.card p {
+    line-height: 1.7;
+    color: #555;
+}
+
+/* ================= LEVEL ================= */
+
+.level {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 6px 10px;
+    background: #e0e7ff;
+    color: #3730a3;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* ================= CODE ================= */
+
+.code-box {
+    background: #111827;
+    color: #e5e7eb;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    margin-top: 15px;
+}
+
+pre {
+    margin: 0;
+    font-family: Consolas, monospace;
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+/* ================= OUTPUT ================= */
+
+.output {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 6px;
+}
+
+.output strong {
+    color: #1e3a8a;
+}
+
+/* ================= BUTTONS ================= */
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #1d4ed8;
+}
+
+.complete {
+    background: #16a34a;
+}
+
+.complete:hover {
+    background: #15803d;
+}
+
+/* ================= NOT FOUND ================= */
+
+.not-found {
+    text-align: center;
+}
+
+.not-found h2 {
+    color: #dc2626;
+    margin-bottom: 12px;
+}
 
 /* ================= DARK MODE ================= */
+
+body.dark {
+    background: #111827;
+    color: #e5e7eb;
+}
+
+body.dark .navbar,
+body.dark .card {
+    background: #1f2937;
+    color: #e5e7eb;
+}
+
+body.dark .nav-links a {
+    color: #e5e7eb;
+}
+
+body.dark .nav-links a:hover {
+    color: #60a5fa;
+}
+
+body.dark .card h2 {
+    color: #60a5fa;
+}
+
+body.dark .card p {
+    color: #d1d5db;
+}
+
+body.dark .output {
+    background: #374151;
+}
+
+body.dark .output strong {
+    color: #93c5fd;
+}
+
+body.dark .level {
+    background: #374151;
+    color: #93c5fd;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    background: #1e3a8a;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        EduLearn
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="coding.html">Coding</a>
+        <a href="python.html">Python</a>
+        <a href="settings.html">Settings</a>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <h1 id="pageTitle">Python Program</h1>
+
+    <p id="pageDescription">
+        Learn Python through practical programming.
+    </p>
+
+</section>
+
+
+<!-- ================= CONTENT ================= -->
+
+<div class="container">
+
+    <div id="programContent"></div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        © 2026 EduLearn — Learn. Grow. Succeed.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* ==========================================================
+   DARK MODE
+   ========================================================== */
 
 if (localStorage.getItem("darkMode") === "true") {
     document.body.classList.add("dark");
@@ -14,746 +342,566 @@ if (localStorage.getItem("darkMode") === "true") {
 
 const programs = {
 
+    /* ================= 01 ================= */
+
     "hello-world": {
         title: "Hello World",
         level: "Beginner",
-        description: "Learn how to write your first Python program and display text on the screen.",
-        code: `print("Hello, World!")`,
-        output: `Hello, World!`,
+        description: "Write your first Python program and display a message on the screen.",
+        code: 'print("Hello, World!")',
+        output: "Hello, World!",
         concepts: "print() function, strings and basic Python syntax."
     },
+
+
+    /* ================= 02 ================= */
 
     "add-two-numbers": {
         title: "Add Two Numbers",
         level: "Beginner",
-        description: "Take two numbers from the user and calculate their sum.",
-        code: `a = int(input("Enter first number: "))
-b = int(input("Enter second number: "))
-
-sum = a + b
-
-print("Sum =", sum)`,
-        output: `Enter first number: 10
-Enter second number: 20
-Sum = 30`,
+        description: "Read two numbers from the user and calculate their sum.",
+        code: 'a = int(input("Enter first number: "))\nb = int(input("Enter second number: "))\n\nsum = a + b\n\nprint("Sum =", sum)',
+        output: "Enter first number: 10\nEnter second number: 20\nSum = 30",
         concepts: "input(), int(), variables and arithmetic operators."
     },
+
+
+    /* ================= 03 ================= */
 
     "even-odd": {
         title: "Check Even or Odd",
         level: "Beginner",
-        description: "Determine whether a number is even or odd.",
-        code: `number = int(input("Enter a number: "))
-
-if number % 2 == 0:
-    print("Even")
-else:
-    print("Odd")`,
-        output: `Enter a number: 8
-Even`,
+        description: "Determine whether a given number is even or odd.",
+        code: 'number = int(input("Enter a number: "))\n\nif number % 2 == 0:\n    print("Even")\nelse:\n    print("Odd")',
+        output: "Enter a number: 8\nEven",
         concepts: "if-else statements and modulus operator."
     },
+
+
+    /* ================= 04 ================= */
 
     "largest-number": {
         title: "Find Largest Number",
         level: "Beginner",
-        description: "Compare numbers and find the largest value.",
-        code: `a = int(input("Enter first number: "))
-b = int(input("Enter second number: "))
-c = int(input("Enter third number: "))
-
-largest = max(a, b, c)
-
-print("Largest =", largest)`,
-        output: `Largest = 30`,
+        description: "Compare three numbers and find the largest value.",
+        code: 'a = int(input("Enter first number: "))\nb = int(input("Enter second number: "))\nc = int(input("Enter third number: "))\n\nlargest = max(a, b, c)\n\nprint("Largest =", largest)',
+        output: "Largest = 30",
         concepts: "variables, input and max() function."
     },
+
+
+    /* ================= 05 ================= */
 
     "multiplication-table": {
         title: "Multiplication Table",
         level: "Beginner",
         description: "Generate a multiplication table using a Python loop.",
-        code: `number = int(input("Enter a number: "))
-
-for i in range(1, 11):
-    print(number, "x", i, "=", number * i)`,
-        output: `5 x 1 = 5
-5 x 2 = 10
-5 x 3 = 15
-5 x 4 = 20
-5 x 5 = 25`,
+        code: 'number = int(input("Enter a number: "))\n\nfor i in range(1, 11):\n    print(number, "x", i, "=", number * i)',
+        output: "Enter a number: 5\n5 x 1 = 5\n5 x 2 = 10\n5 x 3 = 15\n5 x 4 = 20\n5 x 5 = 25\n5 x 6 = 30\n5 x 7 = 35\n5 x 8 = 40\n5 x 9 = 45\n5 x 10 = 50",
         concepts: "for loops, range() and multiplication."
     },
+
+
+    /* ================= 06 ================= */
 
     "factorial": {
         title: "Factorial of a Number",
         level: "Beginner",
-        description: "Calculate the factorial of a number.",
-        code: `number = int(input("Enter a number: "))
-
-factorial = 1
-
-for i in range(1, number + 1):
-    factorial *= i
-
-print("Factorial =", factorial)`,
-        output: `Factorial = 120`,
+        description: "Calculate the factorial of a number using a loop.",
+        code: 'number = int(input("Enter a number: "))\n\nfactorial = 1\n\nfor i in range(1, number + 1):\n    factorial = factorial * i\n\nprint("Factorial =", factorial)',
+        output: "Enter a number: 5\nFactorial = 120",
         concepts: "loops, variables and iterative multiplication."
     },
+
+
+    /* ================= 07 ================= */
 
     "simple-calculator": {
         title: "Simple Calculator",
         level: "Beginner",
-        description: "Perform basic arithmetic operations.",
-        code: `a = float(input("Enter first number: "))
-b = float(input("Enter second number: "))
-
-print("Addition =", a + b)
-print("Subtraction =", a - b)
-print("Multiplication =", a * b)
-print("Division =", a / b)`,
-        output: `Addition = 25.0
-Subtraction = 15.0
-Multiplication = 100.0
-Division = 4.0`,
-        concepts: "arithmetic operators and input."
+        description: "Perform addition, subtraction, multiplication and division.",
+        code: 'a = float(input("Enter first number: "))\nb = float(input("Enter second number: "))\n\nprint("Addition =", a + b)\nprint("Subtraction =", a - b)\nprint("Multiplication =", a * b)\nprint("Division =", a / b)',
+        output: "Addition = 25.0\nSubtraction = 15.0\nMultiplication = 100.0\nDivision = 4.0",
+        concepts: "arithmetic operators, input and floating-point numbers."
     },
+
+
+    /* ================= 08 ================= */
 
     "area-circle": {
         title: "Area of a Circle",
         level: "Beginner",
         description: "Calculate the area and circumference of a circle.",
-        code: `import math
-
-radius = float(input("Enter radius: "))
-
-area = math.pi * radius * radius
-circumference = 2 * math.pi * radius
-
-print("Area =", area)
-print("Circumference =", circumference)`,
-        output: `Area = 78.54
-Circumference = 31.42`,
-        concepts: "math module and mathematical formulas."
+        code: 'import math\n\nradius = float(input("Enter radius: "))\n\narea = math.pi * radius * radius\ncircumference = 2 * math.pi * radius\n\nprint("Area =", area)\nprint("Circumference =", circumference)',
+        output: "Area = 78.54\nCircumference = 31.42",
+        concepts: "math module, constants and mathematical formulas."
     },
+
+
+    /* ================= 09 ================= */
 
     "temperature-conversion": {
         title: "Temperature Conversion",
         level: "Beginner",
-        description: "Convert Celsius temperature to Fahrenheit.",
-        code: `celsius = float(input("Enter temperature in Celsius: "))
-
-fahrenheit = (celsius * 9 / 5) + 32
-
-print("Fahrenheit =", fahrenheit)`,
-        output: `Fahrenheit = 77.0`,
-        concepts: "arithmetic operations and type conversion."
+        description: "Convert temperature from Celsius to Fahrenheit.",
+        code: 'celsius = float(input("Enter temperature in Celsius: "))\n\nfahrenheit = (celsius * 9 / 5) + 32\n\nprint("Fahrenheit =", fahrenheit)',
+        output: "Enter temperature in Celsius: 25\nFahrenheit = 77.0",
+        concepts: "input, arithmetic operations and type conversion."
     },
+
+
+    /* ================= 10 ================= */
 
     "swap-numbers": {
         title: "Swap Two Numbers",
         level: "Beginner",
-        description: "Swap two values using Python.",
-        code: `a = 10
-b = 20
-
-a, b = b, a
-
-print("a =", a)
-print("b =", b)`,
-        output: `a = 20
-b = 10`,
+        description: "Swap two values using Python multiple assignment.",
+        code: 'a = 10\nb = 20\n\nprint("Before:", a, b)\n\na, b = b, a\n\nprint("After:", a, b)',
+        output: "Before: 10 20\nAfter: 20 10",
         concepts: "variables and multiple assignment."
     },
+
+
+    /* ================= 11 ================= */
 
     "positive-negative-zero": {
         title: "Positive Negative or Zero",
         level: "Beginner",
         description: "Determine whether a number is positive, negative or zero.",
-        code: `number = float(input("Enter a number: "))
-
-if number > 0:
-    print("Positive")
-elif number < 0:
-    print("Negative")
-else:
-    print("Zero")`,
-        output: `Negative`,
+        code: 'number = float(input("Enter a number: "))\n\nif number > 0:\n    print("Positive")\nelif number < 0:\n    print("Negative")\nelse:\n    print("Zero")',
+        output: "Enter a number: -5\nNegative",
         concepts: "if, elif, else and comparison operators."
     },
+
+
+    /* ================= 12 ================= */
 
     "leap-year": {
         title: "Leap Year Check",
         level: "Beginner",
-        description: "Check whether a year is a leap year.",
-        code: `year = int(input("Enter a year: "))
-
-if (year % 400 == 0) or (year % 4 == 0 and year % 100 != 0):
-    print("Leap Year")
-else:
-    print("Not a Leap Year")`,
-        output: `Leap Year`,
-        concepts: "conditional statements and logical operators."
+        description: "Check whether a given year is a leap year.",
+        code: 'year = int(input("Enter a year: "))\n\nif (year % 400 == 0) or (year % 4 == 0 and year % 100 != 0):\n    print("Leap Year")\nelse:\n    print("Not a Leap Year")',
+        output: "Enter a year: 2024\nLeap Year",
+        concepts: "conditional statements, logical operators and modulus."
     },
+
+
+    /* ================= 13 ================= */
 
     "prime-number": {
         title: "Prime Number Check",
         level: "Intermediate",
         description: "Check whether a number is prime.",
-        code: `number = int(input("Enter a number: "))
-
-if number < 2:
-    print("Not Prime")
-else:
-    for i in range(2, int(number ** 0.5) + 1):
-        if number % i == 0:
-            print("Not Prime")
-            break
-    else:
-        print("Prime")`,
-        output: `Prime`,
-        concepts: "loops, conditions and modulus."
+        code: 'number = int(input("Enter a number: "))\n\nif number < 2:\n    print("Not Prime")\nelse:\n    for i in range(2, int(number ** 0.5) + 1):\n        if number % i == 0:\n            print("Not Prime")\n            break\n    else:\n        print("Prime")',
+        output: "Enter a number: 17\nPrime",
+        concepts: "loops, conditions, modulus and prime-number logic."
     },
+
+
+    /* ================= 14 ================= */
 
     "fibonacci": {
         title: "Fibonacci Series",
         level: "Intermediate",
         description: "Generate a Fibonacci sequence.",
-        code: `n = int(input("Enter number of terms: "))
-
-a = 0
-b = 1
-
-for i in range(n):
-    print(a, end=" ")
-    a, b = b, a + b`,
-        output: `0 1 1 2 3 5 8 13`,
-        concepts: "loops and multiple assignment."
+        code: 'n = int(input("Enter number of terms: "))\n\na = 0\nb = 1\n\nfor i in range(n):\n    print(a, end=" ")\n    a, b = b, a + b',
+        output: "Enter number of terms: 8\n0 1 1 2 3 5 8 13",
+        concepts: "loops, variables and multiple assignment."
     },
+
+
+    /* ================= 15 ================= */
 
     "reverse-string": {
         title: "Reverse a String",
         level: "Intermediate",
-        description: "Reverse a string using slicing.",
-        code: `text = input("Enter a string: ")
-
-reverse = text[::-1]
-
-print("Reversed:", reverse)`,
-        output: `Reversed: nohtyP`,
+        description: "Reverse a string using Python slicing.",
+        code: 'text = input("Enter a string: ")\n\nreverse = text[::-1]\n\nprint("Reversed:", reverse)',
+        output: "Enter a string: Python\nReversed: nohtyP",
         concepts: "strings and slicing."
     },
+
+
+    /* ================= 16 ================= */
 
     "count-vowels": {
         title: "Count Vowels",
         level: "Intermediate",
-        description: "Count vowels in a string.",
-        code: `text = input("Enter a string: ")
-
-count = 0
-
-for character in text:
-    if character.lower() in "aeiou":
-        count += 1
-
-print("Vowels =", count)`,
-        output: `Vowels = 1`,
-        concepts: "strings, loops and conditions."
+        description: "Count the number of vowels in a string.",
+        code: 'text = input("Enter a string: ")\n\ncount = 0\n\nfor character in text:\n    if character.lower() in "aeiou":\n        count += 1\n\nprint("Vowels =", count)',
+        output: "Enter a string: Python\nVowels = 1",
+        concepts: "strings, loops, conditions and string methods."
     },
+
+
+    /* ================= 17 ================= */
 
     "list-operations": {
         title: "List Operations",
         level: "Intermediate",
-        description: "Practice common Python list operations.",
-        code: `numbers = [10, 20, 30]
-
-numbers.append(40)
-numbers.remove(20)
-
-print(numbers)`,
-        output: `[10, 30, 40]`,
+        description: "Practice common operations on Python lists.",
+        code: 'numbers = [10, 20, 30]\n\nnumbers.append(40)\nnumbers.remove(20)\n\nprint(numbers)',
+        output: "[10, 30, 40]",
         concepts: "lists, append(), remove() and indexing."
     },
+
+
+    /* ================= 18 ================= */
 
     "function-calculator": {
         title: "Function Calculator",
         level: "Intermediate",
-        description: "Build a calculator using Python functions.",
-        code: `def add(a, b):
-    return a + b
-
-def subtract(a, b):
-    return a - b
-
-print(add(10, 5))
-print(subtract(10, 5))`,
-        output: `15
-5`,
+        description: "Build a calculator using reusable functions.",
+        code: 'def add(a, b):\n    return a + b\n\ndef subtract(a, b):\n    return a - b\n\ndef multiply(a, b):\n    return a * b\n\nprint(add(10, 5))\nprint(subtract(10, 5))\nprint(multiply(10, 5))',
+        output: "15\n5\n50",
         concepts: "functions, parameters and return values."
     },
+
+
+    /* ================= 19 ================= */
 
     "palindrome": {
         title: "Palindrome Check",
         level: "Intermediate",
-        description: "Check whether a word is a palindrome.",
-        code: `text = input("Enter a word: ")
-
-if text == text[::-1]:
-    print("Palindrome")
-else:
-    print("Not Palindrome")`,
-        output: `Palindrome`,
-        concepts: "strings, slicing and conditions."
+        description: "Check whether a word reads the same forwards and backwards.",
+        code: 'text = input("Enter a word: ")\n\nif text == text[::-1]:\n    print("Palindrome")\nelse:\n    print("Not Palindrome")',
+        output: "Enter a word: madam\nPalindrome",
+        concepts: "strings, slicing and conditional statements."
     },
+
+
+    /* ================= 20 ================= */
 
     "armstrong-number": {
         title: "Armstrong Number",
         level: "Intermediate",
         description: "Check whether a number is an Armstrong number.",
-        code: `number = int(input("Enter a number: "))
-
-digits = str(number)
-power = len(digits)
-
-total = sum(int(digit) ** power for digit in digits)
-
-if total == number:
-    print("Armstrong Number")
-else:
-    print("Not an Armstrong Number")`,
-        output: `Armstrong Number`,
-        concepts: "strings, powers and number logic."
+        code: 'number = int(input("Enter a number: "))\n\ndigits = str(number)\npower = len(digits)\n\ntotal = sum(int(digit) ** power for digit in digits)\n\nif total == number:\n    print("Armstrong Number")\nelse:\n    print("Not an Armstrong Number")',
+        output: "Enter a number: 153\nArmstrong Number",
+        concepts: "strings, powers, loops and number logic."
     },
+
+
+    /* ================= 21 ================= */
 
     "sum-digits": {
         title: "Sum of Digits",
         level: "Intermediate",
-        description: "Calculate the sum of all digits.",
-        code: `number = input("Enter a number: ")
-
-total = 0
-
-for digit in number:
-    total += int(digit)
-
-print("Sum of digits =", total)`,
-        output: `Sum of digits = 15`,
+        description: "Calculate the sum of all digits in a number.",
+        code: 'number = input("Enter a number: ")\n\ntotal = 0\n\nfor digit in number:\n    total += int(digit)\n\nprint("Sum of digits =", total)',
+        output: "Enter a number: 12345\nSum of digits = 15",
         concepts: "strings, loops and type conversion."
     },
+
+
+    /* ================= 22 ================= */
 
     "number-reversal": {
         title: "Number Reversal",
         level: "Intermediate",
-        description: "Reverse the digits of a number.",
-        code: `number = input("Enter a number: ")
-
-print("Reversed number =", number[::-1])`,
-        output: `Reversed number = 54321`,
+        description: "Reverse the digits of an integer.",
+        code: 'number = input("Enter a number: ")\n\nreversed_number = number[::-1]\n\nprint("Reversed number =", reversed_number)',
+        output: "Enter a number: 12345\nReversed number = 54321",
         concepts: "strings and slicing."
     },
+
+
+    /* ================= 23 ================= */
 
     "character-frequency": {
         title: "Character Frequency",
         level: "Intermediate",
-        description: "Count the frequency of characters.",
-        code: `text = input("Enter a string: ")
-
-frequency = {}
-
-for character in text:
-    frequency[character] = frequency.get(character, 0) + 1
-
-print(frequency)`,
-        output: `{'h': 1, 'e': 1, 'l': 2, 'o': 1}`,
-        concepts: "dictionaries and loops."
+        description: "Count how many times each character appears.",
+        code: 'text = input("Enter a string: ")\n\nfrequency = {}\n\nfor character in text:\n    frequency[character] = frequency.get(character, 0) + 1\n\nprint(frequency)',
+        output: "Enter a string: hello\n{'h': 1, 'e': 1, 'l': 2, 'o': 1}",
+        concepts: "dictionaries, loops and get()."
     },
+
+
+    /* ================= 24 ================= */
 
     "word-frequency": {
         title: "Word Frequency",
         level: "Intermediate",
-        description: "Count the frequency of words.",
-        code: `sentence = input("Enter a sentence: ")
-
-words = sentence.lower().split()
-
-frequency = {}
-
-for word in words:
-    frequency[word] = frequency.get(word, 0) + 1
-
-print(frequency)`,
-        output: `{'python': 2, 'is': 2}`,
+        description: "Count how many times each word appears in a sentence.",
+        code: 'sentence = input("Enter a sentence: ")\n\nwords = sentence.lower().split()\n\nfrequency = {}\n\nfor word in words:\n    frequency[word] = frequency.get(word, 0) + 1\n\nprint(frequency)',
+        output: "Enter a sentence: python is easy and python is powerful\n{'python': 2, 'is': 2, 'easy': 1, 'and': 1, 'powerful': 1}",
         concepts: "strings, split(), dictionaries and loops."
     },
+
+
+    /* ================= 25 ================= */
 
     "remove-duplicates": {
         title: "Remove Duplicates from List",
         level: "Intermediate",
-        description: "Remove duplicate values from a list.",
-        code: `numbers = [10, 20, 10, 30, 20, 40]
-
-unique_numbers = list(dict.fromkeys(numbers))
-
-print(unique_numbers)`,
-        output: `[10, 20, 30, 40]`,
-        concepts: "lists and dictionaries."
+        description: "Remove duplicate values from a Python list.",
+        code: 'numbers = [10, 20, 10, 30, 20, 40]\n\nunique_numbers = list(dict.fromkeys(numbers))\n\nprint(unique_numbers)',
+        output: "[10, 20, 30, 40]",
+        concepts: "lists, dictionaries and duplicate removal."
     },
+
+
+    /* ================= 26 ================= */
 
     "student-management": {
         title: "Student Management System",
         level: "Advanced",
-        description: "Store and manage student information.",
-        code: `students = []
-
-student = {
-    "name": "Rahul",
-    "age": 20,
-    "course": "BCA"
-}
-
-students.append(student)
-
-print(students)`,
-        output: `[{'name': 'Rahul', 'age': 20, 'course': 'BCA'}]`,
+        description: "Build a simple system for storing student information.",
+        code: 'students = []\n\nstudent = {\n    "name": "Rahul",\n    "age": 20,\n    "course": "BCA"\n}\n\nstudents.append(student)\n\nfor student in students:\n    print("Name:", student["name"])\n    print("Age:", student["age"])\n    print("Course:", student["course"])',
+        output: "Name: Rahul\nAge: 20\nCourse: BCA",
         concepts: "lists, dictionaries and data management."
     },
+
+
+    /* ================= 27 ================= */
 
     "bank-account": {
         title: "Bank Account System",
         level: "Advanced",
-        description: "Create a simple bank account using a class.",
-        code: `class BankAccount:
-
-    def __init__(self, balance):
-        self.balance = balance
-
-    def deposit(self, amount):
-        self.balance += amount
-
-account = BankAccount(1000)
-
-account.deposit(500)
-
-print("Balance =", account.balance)`,
-        output: `Balance = 1500`,
-        concepts: "classes, objects and methods."
+        description: "Create a simple bank account using object-oriented programming.",
+        code: 'class BankAccount:\n\n    def __init__(self, balance):\n        self.balance = balance\n\n    def deposit(self, amount):\n        self.balance += amount\n\n    def withdraw(self, amount):\n        if amount <= self.balance:\n            self.balance -= amount\n\naccount = BankAccount(1000)\naccount.deposit(500)\naccount.withdraw(200)\n\nprint("Balance =", account.balance)',
+        output: "Balance = 1300",
+        concepts: "classes, objects, methods and encapsulation."
     },
+
+
+    /* ================= 28 ================= */
 
     "file-management": {
         title: "File Management Program",
         level: "Advanced",
-        description: "Read and write files using Python.",
-        code: `with open("student.txt", "w") as file:
-    file.write("EduLearn Student")
-
-with open("student.txt", "r") as file:
-    data = file.read()
-
-print(data)`,
-        output: `EduLearn Student`,
-        concepts: "file handling, read() and write()."
+        description: "Write information to a file and read it again.",
+        code: 'with open("student.txt", "w") as file:\n    file.write("EduLearn Student")\n\nwith open("student.txt", "r") as file:\n    data = file.read()\n\nprint(data)',
+        output: "EduLearn Student",
+        concepts: "file handling, read(), write() and context managers."
     },
+
+
+    /* ================= 29 ================= */
 
     "database": {
         title: "Database Application",
         level: "Advanced",
-        description: "Work with a SQLite database using Python.",
-        code: `import sqlite3
-
-connection = sqlite3.connect("students.db")
-
-cursor = connection.cursor()
-
-cursor.execute("CREATE TABLE IF NOT EXISTS students (name TEXT)")
-
-connection.commit()
-
-print("Database operation completed")
-
-connection.close()`,
-        output: `Database operation completed`,
-        concepts: "SQLite, SQL and database connections."
+        description: "Create a basic SQLite database using Python.",
+        code: 'import sqlite3\n\nconnection = sqlite3.connect("students.db")\ncursor = connection.cursor()\n\ncursor.execute("CREATE TABLE IF NOT EXISTS students (name TEXT)")\n\nconnection.commit()\n\nprint("Database operation completed")\n\nconnection.close()',
+        output: "Database operation completed",
+        concepts: "SQLite, SQL, database connections and CRUD basics."
     },
+
+
+    /* ================= 30 ================= */
 
     "api": {
         title: "API Data Fetcher",
         level: "Advanced",
         description: "Retrieve information from an external API.",
-        code: `import requests
-
-response = requests.get("https://api.github.com")
-
-print("Status Code:", response.status_code)`,
-        output: `Status Code: 200`,
+        code: 'import requests\n\nurl = "https://api.github.com"\n\nresponse = requests.get(url)\n\nprint("Status Code:", response.status_code)',
+        output: "Status Code: 200",
         concepts: "APIs, HTTP requests and external data."
     },
+
+
+    /* ================= 31 ================= */
 
     "automation": {
         title: "Automation Script",
         level: "Advanced",
-        description: "Automate repetitive tasks using Python.",
-        code: `for i in range(1, 6):
-    print("Task", i, "completed")`,
-        output: `Task 1 completed
-Task 2 completed
-Task 3 completed
-Task 4 completed
-Task 5 completed`,
-        concepts: "loops and automation logic."
+        description: "Understand how Python can automate repetitive tasks.",
+        code: 'for i in range(1, 6):\n    print("Task", i, "completed")',
+        output: "Task 1 completed\nTask 2 completed\nTask 3 completed\nTask 4 completed\nTask 5 completed",
+        concepts: "loops, automation logic and repetitive task processing."
     },
+
+
+    /* ================= 32 ================= */
 
     "contact-management": {
         title: "Contact Management System",
         level: "Advanced",
         description: "Store and manage contact information.",
-        code: `contacts = {}
-
-contacts["Rahul"] = "9876543210"
-
-for name, phone in contacts.items():
-    print(name, ":", phone)`,
-        output: `Rahul : 9876543210`,
-        concepts: "dictionaries and data management."
+        code: 'contacts = {}\n\nname = "Rahul"\nphone = "9876543210"\n\ncontacts[name] = phone\n\nfor name, phone in contacts.items():\n    print(name, ":", phone)',
+        output: "Rahul : 9876543210",
+        concepts: "dictionaries, user input and data management."
     },
+
+
+    /* ================= 33 ================= */
 
     "inventory-management": {
         title: "Inventory Management System",
         level: "Advanced",
-        description: "Manage products and quantities.",
-        code: `inventory = {
-    "Laptop": 10,
-    "Mouse": 25,
-    "Keyboard": 15
-}
-
-print("Laptop quantity:", inventory["Laptop"])`,
-        output: `Laptop quantity: 10`,
-        concepts: "dictionaries and inventory logic."
+        description: "Manage products and their quantities.",
+        code: 'inventory = {\n    "Laptop": 10,\n    "Mouse": 25,\n    "Keyboard": 15\n}\n\nproduct = "Laptop"\n\nif product in inventory:\n    print("Quantity:", inventory[product])',
+        output: "Quantity: 10",
+        concepts: "dictionaries, membership operators and inventory logic."
     },
+
+
+    /* ================= 34 ================= */
 
     "quiz-application": {
         title: "Quiz Application",
         level: "Advanced",
-        description: "Build an interactive quiz.",
-        code: `question = "What is the output function in Python?"
-answer = input(question + " ")
-
-if answer.lower() == "print":
-    print("Correct")
-else:
-    print("Wrong")`,
-        output: `Correct`,
-        concepts: "input, conditions and quiz logic."
+        description: "Build a simple multiple-choice quiz.",
+        code: 'question = "What is the output function in Python?"\nanswer = input(question + " ")\n\nif answer.lower() == "print":\n    print("Correct")\nelse:\n    print("Wrong")',
+        output: "What is the output function in Python? print\nCorrect",
+        concepts: "lists, dictionaries, loops and conditional statements."
     },
+
+
+    /* ================= 35 ================= */
 
     "login-system": {
         title: "Login Authentication System",
         level: "Advanced",
-        description: "Create a basic login system.",
-        code: `username = "student"
-password = "1234"
-
-user = input("Enter username: ")
-pwd = input("Enter password: ")
-
-if user == username and pwd == password:
-    print("Login successful")
-else:
-    print("Invalid username or password")`,
-        output: `Login successful`,
-        concepts: "authentication logic and conditions."
+        description: "Create a basic username and password authentication system.",
+        code: 'username = "student"\npassword = "1234"\n\nuser = input("Enter username: ")\npwd = input("Enter password: ")\n\nif user == username and pwd == password:\n    print("Login successful")\nelse:\n    print("Invalid username or password")',
+        output: "Enter username: student\nEnter password: 1234\nLogin successful",
+        concepts: "authentication logic, strings and conditional statements."
     },
+
+
+    /* ================= 36 ================= */
 
     "expense-tracker": {
         title: "Expense Tracker",
         level: "Project",
-        description: "Record and calculate expenses.",
-        code: `expenses = [250, 500, 150, 300]
-
-total = sum(expenses)
-
-print("Total Expense =", total)`,
-        output: `Total Expense = 1200`,
-        concepts: "lists, sum() and financial calculations."
+        description: "Record and calculate personal expenses.",
+        code: 'expenses = [250, 500, 150, 300]\n\ntotal = sum(expenses)\naverage = total / len(expenses)\n\nprint("Total Expense =", total)\nprint("Average Expense =", average)',
+        output: "Total Expense = 1200\nAverage Expense = 300.0",
+        concepts: "lists, sum(), len() and financial calculations."
     },
+
+
+    /* ================= 37 ================= */
 
     "library-management": {
         title: "Library Management System",
         level: "Project",
         description: "Manage books and their availability.",
-        code: `books = {
-    "Python Basics": True,
-    "Data Structures": True
-}
-
-book = "Python Basics"
-
-if books[book]:
-    print("Book is available")`,
-        output: `Book is available`,
-        concepts: "dictionaries and library management."
+        code: 'books = {\n    "Python Basics": True,\n    "Data Structures": True,\n    "Machine Learning": False\n}\n\nbook = "Python Basics"\n\nif book in books:\n    if books[book]:\n        print("Book is available")\n    else:\n        print("Book is currently issued")',
+        output: "Book is available",
+        concepts: "dictionaries, boolean values and library management."
     },
+
+
+    /* ================= 38 ================= */
 
     "employee-management": {
         title: "Employee Management System",
         level: "Project",
         description: "Store and display employee information.",
-        code: `employees = [
-    {"name": "Amit", "department": "IT"},
-    {"name": "Priya", "department": "HR"}
-]
-
-for employee in employees:
-    print(employee["name"], employee["department"])`,
-        output: `Amit IT
-Priya HR`,
-        concepts: "lists, dictionaries and employee data."
+        code: 'employees = [\n    {"name": "Amit", "department": "IT", "salary": 40000},\n    {"name": "Priya", "department": "HR", "salary": 35000}\n]\n\nfor employee in employees:\n    print("Name:", employee["name"])\n    print("Department:", employee["department"])\n    print("Salary:", employee["salary"])',
+        output: "Name: Amit\nDepartment: IT\nSalary: 40000\n\nName: Priya\nDepartment: HR\nSalary: 35000",
+        concepts: "lists, dictionaries and employee data management."
     },
+
+
+    /* ================= 39 ================= */
 
     "hospital-management": {
         title: "Hospital Management System",
         level: "Project",
         description: "Manage basic patient information.",
-        code: `patient = {
-    "name": "Ravi",
-    "age": 25,
-    "problem": "Fever"
-}
-
-print(patient["name"])
-print(patient["problem"])`,
-        output: `Ravi
-Fever`,
-        concepts: "dictionaries and record management."
+        code: 'patients = []\n\npatient = {\n    "name": "Ravi",\n    "age": 25,\n    "problem": "Fever"\n}\n\npatients.append(patient)\n\nfor patient in patients:\n    print("Patient:", patient["name"])\n    print("Age:", patient["age"])\n    print("Problem:", patient["problem"])',
+        output: "Patient: Ravi\nAge: 25\nProblem: Fever",
+        concepts: "lists, dictionaries and record management."
     },
+
+
+    /* ================= 40 ================= */
 
     "atm-simulation": {
         title: "ATM Simulation",
         level: "Project",
         description: "Simulate basic ATM operations.",
-        code: `balance = 5000
-
-amount = 1000
-
-if amount <= balance:
-    balance -= amount
-    print("Remaining balance =", balance)
-else:
-    print("Insufficient balance")`,
-        output: `Remaining balance = 4000`,
-        concepts: "conditions, variables and transaction logic."
+        code: 'balance = 5000\n\namount = 1000\n\nif amount <= balance:\n    balance -= amount\n    print("Withdrawal successful")\n    print("Remaining balance =", balance)\nelse:\n    print("Insufficient balance")',
+        output: "Withdrawal successful\nRemaining balance = 4000",
+        concepts: "conditions, variables, user input and transaction logic."
     },
+
+
+    /* ================= 41 ================= */
 
     "weather-application": {
         title: "Weather Application",
         level: "Project",
-        description: "Retrieve weather information through an API.",
-        code: `import requests
-
-city = "Hyderabad"
-
-print("Requesting weather for:", city)`,
-        output: `Requesting weather for: Hyderabad`,
-        concepts: "APIs and external data."
+        description: "Understand the structure of an application that retrieves weather information.",
+        code: 'city = "Hyderabad"\n\nprint("Weather requested for:", city)\nprint("Connect this program to a weather API for live data.")',
+        output: "Weather requested for: Hyderabad\nConnect this program to a weather API for live data.",
+        concepts: "APIs, HTTP requests, parameters and JSON data."
     },
+
+
+    /* ================= 42 ================= */
 
     "currency-converter": {
         title: "Currency Converter",
         level: "Project",
-        description: "Convert an amount between currencies.",
-        code: `amount = float(input("Enter amount in USD: "))
-
-rate = 83
-
-inr = amount * rate
-
-print("Amount in INR =", inr)`,
-        output: `Amount in INR = 830.0`,
-        concepts: "arithmetic operations and conversion logic."
+        description: "Convert an amount from USD to INR using an example exchange rate.",
+        code: 'amount = float(input("Enter amount in USD: "))\n\nrate = 83.0\n\ninr = amount * rate\n\nprint("Amount in INR =", inr)',
+        output: "Enter amount in USD: 10\nAmount in INR = 830.0",
+        concepts: "variables, arithmetic operations and conversion logic."
     },
+
+
+    /* ================= 43 ================= */
 
     "todo-list": {
         title: "To-Do List Application",
         level: "Project",
         description: "Create a simple task management application.",
-        code: `tasks = []
-
-tasks.append("Study Python")
-tasks.append("Complete assignment")
-tasks.append("Practice programs")
-
-for task in tasks:
-    print("-", task)`,
-        output: `- Study Python
-- Complete assignment
-- Practice programs`,
+        code: 'tasks = []\n\ntasks.append("Study Python")\ntasks.append("Complete assignment")\ntasks.append("Practice programs")\n\nprint("To-Do List:")\n\nfor task in tasks:\n    print("-", task)',
+        output: "To-Do List:\n- Study Python\n- Complete assignment\n- Practice programs",
         concepts: "lists, append() and loops."
     },
+
+
+    /* ================= 44 ================= */
 
     "chat-application": {
         title: "Chat Application",
         level: "Project",
-        description: "Understand the basic structure of a chat application.",
-        code: `messages = []
-
-message = "Hello"
-
-messages.append(message)
-
-print("Bot: Message received")`,
-        output: `Bot: Message received`,
+        description: "Understand the basic structure of a simple chat application.",
+        code: 'messages = []\n\nmessage = "Hello"\nmessages.append(message)\n\nprint("Bot: Message received")',
+        output: "Bot: Message received",
         concepts: "lists, input and program control."
     },
+
+
+    /* ================= 45 ================= */
 
     "data-analysis": {
         title: "Data Analysis Program",
         level: "Project",
         description: "Analyze numerical data using Python.",
-        code: `marks = [75, 82, 68, 90, 88]
-
-average = sum(marks) / len(marks)
-
-print("Average =", average)`,
-        output: `Average = 80.6`,
-        concepts: "lists, aggregation and averages."
+        code: 'marks = [75, 82, 68, 90, 88]\n\ntotal = sum(marks)\naverage = total / len(marks)\nhighest = max(marks)\nlowest = min(marks)\n\nprint("Total =", total)\nprint("Average =", average)\nprint("Highest =", highest)\nprint("Lowest =", lowest)',
+        output: "Total = 403\nAverage = 80.6\nHighest = 90\nLowest = 68",
+        concepts: "lists, aggregation, averages and statistical calculations."
     },
+
+
+    /* ================= 46 ================= */
 
     "machine-learning": {
         title: "Machine Learning Prediction",
         level: "Project",
         description: "Understand the basic structure of a machine learning prediction program.",
-        code: `from sklearn.linear_model import LinearRegression
-
-X = [[1], [2], [3], [4]]
-y = [2, 4, 6, 8]
-
-model = LinearRegression()
-model.fit(X, y)
-
-print("Prediction:", model.predict([[5]])[0])`,
-        output: `Prediction: 10.0`,
-        concepts: "machine learning, training and prediction."
+        code: 'from sklearn.linear_model import LinearRegression\n\nX = [[1], [2], [3], [4]]\ny = [2, 4, 6, 8]\n\nmodel = LinearRegression()\nmodel.fit(X, y)\n\nprediction = model.predict([[5]])\n\nprint("Prediction:", prediction[0])',
+        output: "Prediction: 10.0",
+        concepts: "machine learning, training data, models and prediction."
     },
+
+
+    /* ================= 47 ================= */
 
     "ecommerce-system": {
         title: "Mini E-Commerce System",
         level: "Project",
-        description: "Build a small e-commerce system.",
-        code: `products = {
-    "Laptop": 50000,
-    "Mouse": 1000,
-    "Keyboard": 2000
-}
-
-cart = ["Laptop", "Mouse"]
-
-total = 0
-
-for item in cart:
-    total += products[item]
-
-print("Total =", total)`,
-        output: `Total = 51000`,
+        description: "Build a small e-commerce application with products and a shopping cart.",
+        code: 'products = {\n    "Laptop": 50000,\n    "Mouse": 1000,\n    "Keyboard": 2000\n}\n\ncart = ["Laptop", "Mouse"]\n\ntotal = 0\n\nfor item in cart:\n    total += products[item]\n\nprint("Cart:", cart)\nprint("Total =", total)',
+        output: "Cart: ['Laptop', 'Mouse']\nTotal = 51000",
         concepts: "dictionaries, lists, loops and shopping-cart logic."
     }
 
@@ -761,7 +909,7 @@ print("Total =", total)`,
 
 
 /* ==========================================================
-   READ TOPIC FROM URL
+   GET TOPIC FROM URL
    ========================================================== */
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -770,43 +918,38 @@ let topic = urlParams.get("topic");
 
 
 /* ==========================================================
-   NORMALIZE TOPIC
+   CLEAN TOPIC
    ========================================================== */
 
 if (topic) {
-    topic = decodeURIComponent(topic)
+
+    topic = topic
         .trim()
         .toLowerCase();
+
 }
 
 
 /* ==========================================================
-   GET CONTENT AREA
+   GET PAGE ELEMENTS
    ========================================================== */
 
 const content = document.getElementById("programContent");
-
-
-/* ==========================================================
-   CHECK TOPIC
-   ========================================================== */
-
-console.log("Python topic received:", topic);
-console.log("Available topics:", Object.keys(programs));
+const pageTitle = document.getElementById("pageTitle");
+const pageDescription = document.getElementById("pageDescription");
 
 
 /* ==========================================================
    DISPLAY PROGRAM
    ========================================================== */
 
-if (topic && Object.prototype.hasOwnProperty.call(programs, topic)) {
+if (topic && programs[topic]) {
 
     const program = programs[topic];
 
-    document.getElementById("pageTitle").textContent =
-        program.title;
+    pageTitle.textContent = program.title;
 
-    document.getElementById("pageDescription").textContent =
+    pageDescription.textContent =
         "Practice " + program.title + " using Python.";
 
     content.innerHTML = `
@@ -887,12 +1030,18 @@ if (topic && Object.prototype.hasOwnProperty.call(programs, topic)) {
 
     `;
 
-} else {
+}
 
-    document.getElementById("pageTitle").textContent =
-        "Python Program";
 
-    document.getElementById("pageDescription").textContent =
+/* ==========================================================
+   TOPIC NOT FOUND
+   ========================================================== */
+
+else {
+
+    pageTitle.textContent = "Python Program";
+
+    pageDescription.textContent =
         "The requested Python program could not be loaded.";
 
     content.innerHTML = `
@@ -902,7 +1051,7 @@ if (topic && Object.prototype.hasOwnProperty.call(programs, topic)) {
             <h2>⚠️ Topic Not Found</h2>
 
             <p>
-                The Python topic could not be loaded.
+                The requested Python program could not be found.
             </p>
 
             <br>
@@ -941,4 +1090,8 @@ function markComplete(topicName) {
 }
 
 </script>
+
+</body>
+
+</html>
 ```
