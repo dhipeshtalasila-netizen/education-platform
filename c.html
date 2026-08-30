@@ -1896,7 +1896,7 @@ function createTopicCard(topic) {
         </p>
 
         <a
-            href="c-topic.html?topic=${encodeURIComponent(slug)}"
+           href="c-topic.html?topic=${encodeURIComponent(topic.name)}&number=${topic.number}&module=${encodeURIComponent(topic.module)}&level=${encodeURIComponent(topic.level)}"
             class="btn"
         >
             Open Topic
