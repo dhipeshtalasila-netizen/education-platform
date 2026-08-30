@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EduLearn - C Programming</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f8;
+    color: #222;
+    transition: 0.3s;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+    background: #ffffff;
+    padding: 16px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.nav-links {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #2563eb;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    padding: 55px 7%;
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    max-width: 900px;
+    line-height: 1.7;
+    font-size: 17px;
+}
+
+/* ================= CONTAINER ================= */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* ================= INFO ================= */
+
+.info-box {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.info-box h2 {
+    color: #1e3a8a;
+    margin-bottom: 12px;
+}
+
+.info-box p {
+    line-height: 1.7;
+    color: #555;
+}
+
+/* ================= SEARCH ================= */
+
+.search-box {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    margin-bottom: 35px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.search-box h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #d1d5db;
+    border-radius: 9px;
+    font-size: 16px;
+    outline: none;
+}
+
+#searchInput:focus {
+    border-color: #2563eb;
+}
+
+#searchResults {
+    margin-top: 15px;
+}
+
+.result {
+    background: #eff6ff;
+    padding: 14px;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+
+.result a {
+    text-decoration: none;
+    color: #1e3a8a;
+    font-weight: bold;
+}
+
+.result a:hover {
+    color: #2563eb;
+}
+
+/* ================= COURSE STATS ================= */
+
+.course-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.stat-card strong {
+    display: block;
+    font-size: 28px;
+    color: #2563eb;
+    margin-bottom: 6px;
+}
+
+.stat-card span {
+    color: #555;
+}
+
+/* ================= MODULE ================= */
+
+.module {
+    margin-bottom: 45px;
+}
+
+.module-title {
+    color: #1e3a8a;
+    margin-bottom: 20px;
+    font-size: 28px;
+    line-height: 1.3;
+}
+
+/* ================= PROGRAM GRID ================= */
+
+.programs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.program-card {
+    background: white;
+    padding: 24px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: 0.2s;
+}
+
+.program-card:hover {
+    transform: translateY(-4px);
+}
+
+.program-number {
+    color: #2563eb;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.program-card h3 {
+    color: #1e3a8a;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.program-card p {
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.level {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding: 5px 9px;
+    border-radius: 6px;
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+.btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 7px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: #1d4ed8;
+}
+
+/* ================= NO RESULTS ================= */
+
+.no-results {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    color: #555;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+/* ================= DARK MODE ================= */
+
+body.dark {
+    background: #111827;
+    color: #e5e7eb;
+}
+
+body.dark .navbar,
+body.dark .info-box,
+body.dark .search-box,
+body.dark .stat-card,
+body.dark .program-card,
+body.dark .no-results {
+    background: #1f2937;
+    color: #e5e7eb;
+}
+
+body.dark .nav-links a {
+    color: #e5e7eb;
+}
+
+body.dark .nav-links a:hover {
+    color: #60a5fa;
+}
+
+body.dark .module-title,
+body.dark .info-box h2,
+body.dark .search-box h2,
+body.dark .program-card h3 {
+    color: #60a5fa;
+}
+
+body.dark .info-box p,
+body.dark .program-card p,
+body.dark .stat-card span,
+body.dark .no-results {
+    color: #d1d5db;
+}
+
+body.dark #searchInput {
+    background: #374151;
+    color: white;
+    border-color: #4b5563;
+}
+
+body.dark .result {
+    background: #374151;
+}
+
+body.dark .result a {
+    color: #93c5fd;
+}
+
+body.dark .level {
+    background: #374151;
+    color: #93c5fd;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    background: #1e3a8a;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 50px;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .programs {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        EduLearn
+    </div>
+
+    <div class="nav-links">
+
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="coding.html">Coding</a>
+        <a href="c.html">C</a>
+        <a href="python.html">Python</a>
+        <a href="settings.html">Settings</a>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <h1>💻 C Programming</h1>
+
+    <p>
+        Learn C programming from the fundamentals to advanced,
+        systems-level and professional programming concepts.
+        Study theory, syntax, memory management, data structures,
+        algorithms, debugging, security, projects and practical
+        problem solving through a complete college-level curriculum.
+    </p>
+
+</section>
+
+
+<div class="container">
+
+<!-- ================= INTRODUCTION ================= -->
+
+<div class="info-box">
+
+    <h2>💻 About C Programming</h2>
+
+    <p>
+        C is a general-purpose programming language that provides
+        a strong foundation in programming, memory management,
+        algorithms, data structures and systems programming.
+        This EduLearn course progresses from absolute fundamentals
+        through advanced C concepts, professional development,
+        secure programming, systems programming and practical projects.
+    </p>
+
+</div>
+
+
+<!-- ================= COURSE STATS ================= -->
+
+<div class="course-stats">
+
+    <div class="stat-card">
+        <strong id="moduleCount">0</strong>
+        <span>Modules</span>
+    </div>
+
+    <div class="stat-card">
+        <strong id="topicCount">0</strong>
+        <span>Topics</span>
+    </div>
+
+    <div class="stat-card">
+        <strong id="beginnerCount">0</strong>
+        <span>Foundation Topics</span>
+    </div>
+
+    <div class="stat-card">
+        <strong id="advancedCount">0</strong>
+        <span>Advanced Topics</span>
+    </div>
+
+</div>
+
+
+<!-- ================= SEARCH ================= -->
+
+<div class="search-box">
+
+    <h2>🔎 Search C Topics</h2>
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search any C programming topic..."
+        onkeyup="searchTopics()"
+    >
+
+    <div id="searchResults"></div>
+
+</div>
+
+
+<!-- ================= TOPICS ================= -->
+
+<div id="courseContent"></div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        © 2026 EduLearn — Learn. Grow. Succeed.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark");
+}
+
+
+/* =========================================================
+   COMPLETE C PROGRAMMING CURRICULUM
+========================================================= */
+
+/*
+    IMPORTANT:
+
+    Each item below is an actual curriculum topic.
+
+    There is NO artificial topic limit.
+
+    If a new important C concept is added later,
+    it can simply be added to the appropriate module.
+*/
+
+const modules = [
+
+{
+    title: "Module 1 — Introduction to Programming",
+    level: "Foundation",
+    topics: [
+        "What is a program?",
+        "What is programming?",
+        "What is a programming language?",
+        "Machine language",
+        "Assembly language",
+        "High-level languages",
+        "Compiled languages",
+        "Interpreted languages",
+        "Compiler",
+        "Interpreter",
+        "Assembler",
+        "Linker",
+        "Loader",
+        "Source code",
+        "Object code",
+        "Executable code",
+        "Runtime environment",
+        "Algorithms",
+        "Flowcharts",
+        "Pseudocode",
+        "Problem-solving process",
+        "Program development life cycle",
+        "Debugging",
+        "Testing",
+        "Documentation"
+    ]
+},
+
+{
+    title: "Module 2 — Introduction to C",
+    level: "Foundation",
+    topics: [
+        "What is C?",
+        "History of C",
+        "Dennis Ritchie",
+        "Development of C",
+        "C and UNIX",
+        "Evolution of C",
+        "Characteristics of C",
+        "Advantages of C",
+        "Limitations of C",
+        "Applications of C",
+        "Why learn C?",
+        "C for systems programming",
+        "C for embedded systems",
+        "C for operating systems",
+        "C for networking",
+        "C for compilers",
+        "C for databases",
+        "C for game development",
+        "C for scientific computing",
+        "C for cybersecurity",
+        "C compared with C++",
+        "C compared with Java",
+        "C compared with Python"
+    ]
+},
+
+{
+    title: "Module 3 — C Standards",
+    level: "Foundation",
+    topics: [
+        "K&R C",
+        "ANSI C",
+        "ISO C",
+        "C89",
+        "C90",
+        "C95",
+        "C99",
+        "C11",
+        "C17",
+        "C23",
+        "Standard vs compiler extensions",
+        "Portable C",
+        "Implementation-defined behavior",
+        "Unspecified behavior",
+        "Undefined behavior",
+        "Constraint violations",
+        "Conforming programs"
+    ]
+},
+
+{
+    title: "Module 4 — Setting Up C",
+    level: "Foundation",
+    topics: [
+        "Installing GCC",
+        "Installing Clang",
+        "MinGW",
+        "Microsoft Visual C",
+        "C compilers on Linux",
+        "C compilers on Windows",
+        "C compilers on macOS",
+        "Code editors",
+        "IDEs",
+        "VS Code",
+        "Visual Studio",
+        "Code::Blocks",
+        "Dev-C++",
+        "Online C compilers",
+        "Creating a C project",
+        "Creating a source file",
+        "Saving a C file",
+        "Compiling a C program",
+        "Running a C program",
+        "Command-line compilation",
+        "Compiler options",
+        "Compiler warnings",
+        "Debug builds",
+        "Release builds"
+    ]
+},
+
+{
+    title: "Module 5 — First C Program",
+    level: "Foundation",
+    topics: [
+        "Hello World",
+        "main()",
+        "Program entry point",
+        "#include",
+        "Header files",
+        "stdio.h",
+        "printf()",
+        "Statements",
+        "Expressions",
+        "Blocks",
+        "Braces",
+        "Semicolons",
+        "Comments",
+        "Whitespace",
+        "Program execution flow"
+    ]
+},
+
+{
+    title: "Module 6 — C Lexical Structure",
+    level: "Foundation",
+    topics: [
+        "Character sets",
+        "Tokens",
+        "Keywords",
+        "Identifiers",
+        "Constants",
+        "String literals",
+        "Character constants",
+        "Operators",
+        "Punctuators",
+        "Escape sequences",
+        "Universal character names",
+        "Preprocessing tokens",
+        "Comments and tokenization",
+        "Identifier naming rules",
+        "Reserved identifiers"
+    ]
+},
+
+{
+    title: "Module 7 — Variables",
+    level: "Foundation",
+    topics: [
+        "What is a variable?",
+        "Declaration",
+        "Definition",
+        "Initialization",
+        "Assignment",
+        "Multiple declarations",
+        "Multiple initialization",
+        "Variable naming",
+        "Local variables",
+        "Global variables",
+        "Scope",
+        "Lifetime",
+        "Storage duration",
+        "Linkage",
+        "Variable visibility",
+        "Constants",
+        "const",
+        "Symbolic constants",
+        "#define"
+    ]
+},
+
+{
+    title: "Module 8 — Data Types",
+    level: "Foundation",
+    topics: [
+        "Data types",
+        "Fundamental types",
+        "char",
+        "signed char",
+        "unsigned char",
+        "short",
+        "short int",
+        "int",
+        "long",
+        "long int",
+        "long long",
+        "float",
+        "double",
+        "long double",
+        "void",
+        "_Bool",
+        "Boolean programming",
+        "Signed integers",
+        "Unsigned integers",
+        "Integer ranges",
+        "Floating-point ranges",
+        "Precision",
+        "Type qualifiers",
+        "const",
+        "volatile",
+        "restrict",
+        "_Atomic",
+        "sizeof",
+        "size_t",
+        "<stdint.h>",
+        "Exact-width integers",
+        "Minimum-width integers",
+        "Fast integer types",
+        "Pointer-sized integers"
+    ]
+},
+
+{
+    title: "Module 9 — Constants and Literals",
+    level: "Foundation",
+    topics: [
+        "Integer constants",
+        "Decimal constants",
+        "Octal constants",
+        "Hexadecimal constants",
+        "Binary constants and implementation support",
+        "Integer suffixes",
+        "Floating-point constants",
+        "Decimal floating constants",
+        "Exponent notation",
+        "Floating-point suffixes",
+        "Character constants",
+        "Escape characters",
+        "String literals",
+        "Adjacent string literals",
+        "Wide string literals",
+        "UTF character/string literals"
+    ]
+},
+
+{
+    title: "Module 10 — Input and Output",
+    level: "Foundation",
+    topics: [
+        "Standard input",
+        "Standard output",
+        "Standard error",
+        "printf()",
+        "Format specifiers",
+        "Integer formatting",
+        "Floating-point formatting",
+        "Character formatting",
+        "String formatting",
+        "Field width",
+        "Precision",
+        "Flags",
+        "Length modifiers",
+        "scanf()",
+        "scanf() format specifiers",
+        "Reading integers",
+        "Reading floating-point values",
+        "Reading characters",
+        "Reading strings",
+        "getchar()",
+        "putchar()",
+        "fgets()",
+        "puts()",
+        "Input buffering",
+        "scanf() pitfalls",
+        "Input validation"
+    ]
+},
+
+{
+    title: "Module 11 — Operators",
+    level: "Core",
+    topics: [
+        "Arithmetic operators",
+        "Addition",
+        "Subtraction",
+        "Multiplication",
+        "Division",
+        "Modulus",
+        "Relational operators",
+        "Equality operators",
+        "Logical operators",
+        "Logical AND",
+        "Logical OR",
+        "Logical NOT",
+        "Assignment",
+        "Compound assignment",
+        "Increment",
+        "Decrement",
+        "Prefix operators",
+        "Postfix operators",
+        "Conditional operator",
+        "Comma operator",
+        "sizeof",
+        "Address-of operator",
+        "Dereference operator",
+        "Member access",
+        "Pointer member access",
+        "Bitwise AND",
+        "Bitwise OR",
+        "Bitwise XOR",
+        "Bitwise NOT",
+        "Left shift",
+        "Right shift"
+    ]
+},
+
+{
+    title: "Module 12 — Expressions",
+    level: "Core",
+    topics: [
+        "Arithmetic expressions",
+        "Relational expressions",
+        "Logical expressions",
+        "Assignment expressions",
+        "Conditional expressions",
+        "Bitwise expressions",
+        "Constant expressions",
+        "Compound expressions",
+        "Expression evaluation",
+        "Operator precedence",
+        "Operator associativity",
+        "Side effects",
+        "Evaluation order",
+        "Sequencing",
+        "Short-circuit evaluation",
+        "Comma expressions",
+        "Lvalues",
+        "Modifiable lvalues",
+        "Object expressions",
+        "Expression type rules"
+    ]
+},
+
+{
+    title: "Module 13 — Type Conversion",
+    level: "Core",
+    topics: [
+        "Implicit conversion",
+        "Explicit conversion",
+        "Type casting",
+        "Integer promotion",
+        "Usual arithmetic conversions",
+        "Signed-to-unsigned conversion",
+        "Integer conversion",
+        "Floating conversion",
+        "Narrowing conversion",
+        "Conversion between pointers",
+        "Conversion to void pointer",
+        "Conversion pitfalls",
+        "Integer overflow",
+        "Floating-point overflow",
+        "Floating-point underflow",
+        "Precision loss"
+    ]
+},
+
+{
+    title: "Module 14 — Decision Making",
+    level: "Core",
+    topics: [
+        "if",
+        "if-else",
+        "Nested if",
+        "else-if",
+        "Multiple conditions",
+        "Logical conditions",
+        "Conditional operator",
+        "switch",
+        "case",
+        "default",
+        "break",
+        "Fall-through",
+        "Nested switch",
+        "if vs switch"
+    ]
+},
+
+{
+    title: "Module 15 — Loops",
+    level: "Core",
+    topics: [
+        "Iteration",
+        "while",
+        "do-while",
+        "for",
+        "Loop initialization",
+        "Loop condition",
+        "Loop update",
+        "Infinite loops",
+        "Nested loops",
+        "break",
+        "continue",
+        "Multiple loop variables",
+        "Loop counters",
+        "Empty loops",
+        "Loop control patterns",
+        "Common loop mistakes"
+    ]
+},
+
+{
+    title: "Module 16 — Functions",
+    level: "Core",
+    topics: [
+        "Library functions",
+        "User-defined functions",
+        "Function declaration",
+        "Function prototype",
+        "Function definition",
+        "Function call",
+        "Parameters",
+        "Arguments",
+        "Return values",
+        "void functions",
+        "Functions with parameters",
+        "Functions without parameters",
+        "Multiple parameters",
+        "Function scope",
+        "Local variables",
+        "Global variables",
+        "Function linkage",
+        "Static functions",
+        "Recursive functions",
+        "Function organization",
+        "Modular programming"
+    ]
+},
+
+{
+    title: "Module 17 — Recursion",
+    level: "Core",
+    topics: [
+        "Recursion",
+        "Base case",
+        "Recursive case",
+        "Recursive call",
+        "Call stack",
+        "Factorial",
+        "Fibonacci",
+        "Power",
+        "GCD",
+        "Recursive arrays",
+        "Recursive strings",
+        "Recursive searching",
+        "Recursive sorting",
+        "Direct recursion",
+        "Indirect recursion",
+        "Recursion vs iteration",
+        "Stack overflow"
+    ]
+},
+
+{
+    title: "Module 18 — Arrays",
+    level: "Core",
+    topics: [
+        "Arrays",
+        "Array declaration",
+        "Array initialization",
+        "Array indexing",
+        "Array traversal",
+        "One-dimensional arrays",
+        "Multidimensional arrays",
+        "Two-dimensional arrays",
+        "Three-dimensional arrays",
+        "Partial initialization",
+        "Array size",
+        "Array bounds",
+        "Array memory layout",
+        "Passing arrays to functions",
+        "Arrays as function parameters",
+        "Variable-length arrays",
+        "Arrays of characters",
+        "Arrays of pointers",
+        "Arrays and pointers"
+    ]
+},
+
+{
+    title: "Module 19 — Strings",
+    level: "Core",
+    topics: [
+        "C strings",
+        "Character arrays",
+        "Null terminator",
+        "String initialization",
+        "String input",
+        "String output",
+        "String length",
+        "String copying",
+        "String concatenation",
+        "String comparison",
+        "String searching",
+        "String tokenization",
+        "strlen()",
+        "strcpy()",
+        "strncpy()",
+        "strcat()",
+        "strncat()",
+        "strcmp()",
+        "strncmp()",
+        "strchr()",
+        "strrchr()",
+        "strstr()",
+        "strtok()",
+        "String safety",
+        "Buffer overflow",
+        "Safe string handling"
+    ]
+},
+
+{
+    title: "Module 20 — Pointers",
+    level: "Advanced",
+    topics: [
+        "Pointer concept",
+        "Pointer declaration",
+        "Pointer initialization",
+        "Address operator",
+        "Dereference operator",
+        "Pointer types",
+        "Pointer arithmetic",
+        "Pointer increment",
+        "Pointer decrement",
+        "Pointer comparison",
+        "NULL pointer",
+        "Null pointer constants",
+        "Wild pointers",
+        "Dangling pointers",
+        "Void pointers",
+        "Pointer-to-pointer",
+        "Multiple indirection",
+        "Pointers and variables",
+        "Pointers and arrays",
+        "Pointers and strings",
+        "Pointers and functions",
+        "Passing pointers",
+        "Modifying values through pointers",
+        "Function pointers",
+        "Arrays of pointers",
+        "Pointer to array",
+        "Complex pointer declarations",
+        "const pointers",
+        "Pointer to const",
+        "volatile pointers",
+        "Pointer compatibility"
+    ]
+},
+
+{
+    title: "Module 21 — Dynamic Memory",
+    level: "Advanced",
+    topics: [
+        "Memory management",
+        "Stack memory",
+        "Heap memory",
+        "Static memory",
+        "Automatic storage",
+        "Dynamic allocation",
+        "malloc()",
+        "calloc()",
+        "realloc()",
+        "free()",
+        "Dynamic arrays",
+        "Dynamic strings",
+        "Dynamic structures",
+        "Allocation failure",
+        "Memory leaks",
+        "Double free",
+        "Use-after-free",
+        "Dangling memory",
+        "Memory fragmentation",
+        "Safe allocation patterns",
+        "Ownership",
+        "Resource management"
+    ]
+},
+
+{
+    title: "Module 22 — Structures",
+    level: "Advanced",
+    topics: [
+        "Structures",
+        "Structure declaration",
+        "Structure definition",
+        "Structure variables",
+        "Structure initialization",
+        "Structure members",
+        "Member access",
+        "Nested structures",
+        "Arrays of structures",
+        "Structures and functions",
+        "Passing structures",
+        "Returning structures",
+        "Pointers to structures",
+        "-> operator",
+        "Self-referential structures",
+        "Structures containing pointers",
+        "Dynamic structures",
+        "Structure padding",
+        "Structure alignment",
+        "Structure layout",
+        "Bit-fields"
+    ]
+},
+
+{
+    title: "Module 23 — Unions, Enums and Typedef",
+    level: "Advanced",
+    topics: [
+        "Unions",
+        "Union declaration",
+        "Union members",
+        "Union memory behavior",
+        "Structure vs union",
+        "Enumerations",
+        "enum",
+        "Enumeration constants",
+        "Custom enum values",
+        "typedef",
+        "Type aliases",
+        "Anonymous structures",
+        "Anonymous unions"
+    ]
+},
+
+{
+    title: "Module 24 — Storage and Linkage",
+    level: "Advanced",
+    topics: [
+        "Storage classes",
+        "auto",
+        "static",
+        "extern",
+        "register",
+        "Storage duration",
+        "Scope",
+        "Linkage",
+        "Internal linkage",
+        "External linkage",
+        "Translation units",
+        "Global variables",
+        "External declarations"
+    ]
+},
+
+{
+    title: "Module 25 — Preprocessor",
+    level: "Advanced",
+    topics: [
+        "Preprocessor",
+        "#include",
+        "#define",
+        "Object-like macros",
+        "Function-like macros",
+        "Macro arguments",
+        "Macro expansion",
+        "Stringification",
+        "Token pasting",
+        "Variadic macros",
+        "#if",
+        "#ifdef",
+        "#ifndef",
+        "#elif",
+        "#else",
+        "#endif",
+        "#undef",
+        "Predefined macros",
+        "Include guards",
+        "#pragma",
+        "Macro pitfalls"
+    ]
+},
+
+{
+    title: "Module 26 — Header Files and Modular Programming",
+    level: "Advanced",
+    topics: [
+        "Header files",
+        "Standard headers",
+        "User-defined headers",
+        "Include guards",
+        "Header dependencies",
+        "Source files",
+        "Translation units",
+        "External declarations",
+        "Separate compilation",
+        "Modular design",
+        "API design",
+        "Library design",
+        "Static libraries",
+        "Dynamic libraries",
+        "Shared libraries"
+    ]
+},
+
+{
+    title: "Module 27 — File Handling",
+    level: "Advanced",
+    topics: [
+        "Files",
+        "File streams",
+        "FILE",
+        "Opening files",
+        "Closing files",
+        "Reading files",
+        "Writing files",
+        "Append mode",
+        "Text files",
+        "Binary files",
+        "fopen()",
+        "fclose()",
+        "fgetc()",
+        "fputc()",
+        "fgets()",
+        "fputs()",
+        "fprintf()",
+        "fscanf()",
+        "fread()",
+        "fwrite()",
+        "fseek()",
+        "ftell()",
+        "rewind()",
+        "End-of-file",
+        "File errors",
+        "Random access",
+        "File serialization",
+        "Binary data representation"
+    ]
+},
+
+{
+    title: "Module 28 — Standard Library",
+    level: "Advanced",
+    topics: [
+        "<stdio.h>",
+        "<stdlib.h>",
+        "<string.h>",
+        "<math.h>",
+        "<ctype.h>",
+        "<time.h>",
+        "<stdbool.h>",
+        "<stdint.h>",
+        "<inttypes.h>",
+        "<limits.h>",
+        "<float.h>",
+        "<stddef.h>",
+        "<assert.h>",
+        "<errno.h>",
+        "<signal.h>",
+        "<setjmp.h>",
+        "<locale.h>",
+        "<wchar.h>",
+        "<wctype.h>",
+        "<complex.h>",
+        "<tgmath.h>",
+        "<stdarg.h>",
+        "<threads.h>",
+        "<stdatomic.h>"
+    ]
+},
+
+{
+    title: "Module 29 — Advanced Memory and Object Model",
+    level: "Advanced",
+    topics: [
+        "Object representation",
+        "Object lifetime",
+        "Alignment",
+        "Padding",
+        "Effective type",
+        "Strict aliasing",
+        "Type punning",
+        "Memory access rules",
+        "Pointer representation",
+        "Pointer provenance concepts",
+        "Trap representations",
+        "Character-type access",
+        "memcpy()",
+        "memmove()",
+        "memset()",
+        "memcmp()",
+        "Endianness",
+        "Portable binary representation"
+    ]
+},
+
+{
+    title: "Module 30 — Advanced Functions",
+    level: "Advanced",
+    topics: [
+        "Function pointers",
+        "Function pointer declarations",
+        "Calling functions through pointers",
+        "Callback functions",
+        "Arrays of function pointers",
+        "Dispatch tables",
+        "Variadic functions",
+        "va_list",
+        "va_start",
+        "va_arg",
+        "va_end",
+        "Variadic macros",
+        "Inline functions",
+        "_Generic",
+        "Generic programming techniques"
+    ]
+},
+
+{
+    title: "Module 31 — Bit Manipulation",
+    level: "Advanced",
+    topics: [
+        "Binary representation",
+        "Bits and bytes",
+        "Bit masks",
+        "Setting bits",
+        "Clearing bits",
+        "Toggling bits",
+        "Testing bits",
+        "Bit shifting",
+        "Bitwise operations",
+        "Bit fields",
+        "Flags",
+        "Packed data",
+        "Register-style programming",
+        "Bit manipulation problems"
+    ]
+},
+
+{
+    title: "Module 32 — Error Handling",
+    level: "Advanced",
+    topics: [
+        "Error types",
+        "Syntax errors",
+        "Semantic errors",
+        "Logical errors",
+        "Runtime errors",
+        "Compiler warnings",
+        "errno",
+        "perror()",
+        "strerror()",
+        "assert()",
+        "Error-return conventions",
+        "Error codes",
+        "Defensive programming",
+        "Error propagation",
+        "Resource cleanup"
+    ]
+},
+
+{
+    title: "Module 33 — Debugging and Tools",
+    level: "Advanced",
+    topics: [
+        "Debugging",
+        "GDB",
+        "Breakpoints",
+        "Watchpoints",
+        "Stepping",
+        "Stack inspection",
+        "Variable inspection",
+        "Core dumps",
+        "Segmentation faults",
+        "Debugging memory errors",
+        "Static analysis",
+        "Compiler diagnostics",
+        "Sanitizers",
+        "AddressSanitizer",
+        "UndefinedBehaviorSanitizer",
+        "Memory checking",
+        "Valgrind",
+        "Profiling",
+        "Performance measurement",
+        "Code coverage",
+        "Fuzz testing"
+    ]
+},
+
+{
+    title: "Module 34 — Concurrency",
+    level: "Advanced",
+    topics: [
+        "Concurrency concepts",
+        "Threads",
+        "C11 threads",
+        "Thread creation",
+        "Thread termination",
+        "Thread-local storage",
+        "Mutexes",
+        "Condition variables",
+        "Atomic operations",
+        "Atomic types",
+        "Memory ordering",
+        "Race conditions",
+        "Deadlocks",
+        "Synchronization",
+        "Lock-free concepts",
+        "Thread safety"
+    ]
+},
+
+{
+    title: "Module 35 — Signals and System Programming",
+    level: "Advanced",
+    topics: [
+        "Signals",
+        "Signal handlers",
+        "signal()",
+        "raise()",
+        "sig_atomic_t",
+        "Environment variables",
+        "Process concepts",
+        "File descriptors",
+        "System-level programming",
+        "POSIX concepts",
+        "Linux system programming",
+        "System calls",
+        "Process creation concepts",
+        "Inter-process communication concepts"
+    ]
+},
+
+{
+    title: "Module 36 — Compilation and Linking Internals",
+    level: "Advanced",
+    topics: [
+        "Translation phases",
+        "Preprocessing phase",
+        "Compilation phase",
+        "Assembly phase",
+        "Object files",
+        "Symbol tables",
+        "Relocation",
+        "Linking",
+        "Static linking",
+        "Dynamic linking",
+        "Shared objects",
+        "ABI",
+        "Calling conventions",
+        "Name visibility",
+        "Linker errors",
+        "Build systems",
+        "Makefiles",
+        "Compiler optimization"
+    ]
+},
+
+{
+    title: "Module 37 — Data Structures",
+    level: "Advanced",
+    topics: [
+        "Abstract data types",
+        "Complexity analysis",
+        "Linked lists",
+        "Singly linked lists",
+        "Doubly linked lists",
+        "Circular linked lists",
+        "Stack",
+        "Queue",
+        "Circular queue",
+        "Deque",
+        "Priority queue",
+        "Hash tables",
+        "Binary trees",
+        "Binary search trees",
+        "Tree traversal",
+        "Heaps",
+        "Graphs",
+        "Adjacency matrix",
+        "Adjacency list",
+        "BFS",
+        "DFS"
+    ]
+},
+
+{
+    title: "Module 38 — Algorithms",
+    level: "Advanced",
+    topics: [
+        "Algorithms",
+        "Big-O notation",
+        "Time complexity",
+        "Space complexity",
+        "Linear search",
+        "Binary search",
+        "Bubble sort",
+        "Selection sort",
+        "Insertion sort",
+        "Merge sort",
+        "Quick sort",
+        "Heap sort",
+        "Counting sort",
+        "Radix sort",
+        "Divide and conquer",
+        "Greedy algorithms",
+        "Dynamic programming",
+        "Graph algorithms",
+        "Shortest-path concepts",
+        "Minimum spanning trees"
+    ]
+},
+
+{
+    title: "Module 39 — Secure C Programming",
+    level: "Professional",
+    topics: [
+        "Memory safety",
+        "Buffer overflow",
+        "Stack overflow",
+        "Integer overflow",
+        "Format-string vulnerabilities",
+        "Use-after-free",
+        "Double-free vulnerabilities",
+        "Null dereference",
+        "Uninitialized memory",
+        "Unsafe input",
+        "Command injection concepts",
+        "Secure file handling",
+        "Secure parsing",
+        "Input validation",
+        "CERT C concepts",
+        "Secure coding practices"
+    ]
+},
+
+{
+    title: "Module 40 — Embedded and Systems C",
+    level: "Professional",
+    topics: [
+        "Embedded C",
+        "Microcontrollers",
+        "Hardware registers",
+        "Memory-mapped I/O",
+        "Interrupt concepts",
+        "Interrupt handlers",
+        "Volatile hardware access",
+        "Bit manipulation in embedded systems",
+        "Device drivers concepts",
+        "Real-time concepts",
+        "Resource-constrained programming",
+        "Embedded debugging",
+        "Cross-compilation"
+    ]
+},
+
+{
+    title: "Module 41 — Professional C Development",
+    level: "Professional",
+    topics: [
+        "Coding standards",
+        "Naming conventions",
+        "Documentation",
+        "Code organization",
+        "Reusable components",
+        "API design",
+        "Portability",
+        "Cross-platform development",
+        "MISRA C concepts",
+        "CERT C",
+        "Code review",
+        "Unit testing",
+        "Integration testing",
+        "Build automation",
+        "Continuous integration",
+        "Version control",
+        "Git with C",
+        "Project documentation",
+        "Release management"
+    ]
+},
+
+{
+    title: "Module 42 — Practical Programming",
+    level: "Practical",
+    topics: [
+        "Basic mathematical programs",
+        "Number manipulation",
+        "Prime-number programs",
+        "Factorial programs",
+        "Fibonacci programs",
+        "Palindrome programs",
+        "Armstrong-number programs",
+        "Pattern programs",
+        "Array problems",
+        "String problems",
+        "Matrix problems",
+        "Searching problems",
+        "Sorting problems",
+        "Pointer problems",
+        "Function problems",
+        "Recursion problems",
+        "File-handling problems",
+        "Data-structure problems",
+        "Algorithm problems"
+    ]
+},
+
+{
+    title: "Module 43 — Projects",
+    level: "Project",
+    topics: [
+        "Calculator",
+        "Unit converter",
+        "Number guessing game",
+        "Quiz application",
+        "Student management system",
+        "Employee management system",
+        "Library management system",
+        "Banking system",
+        "Contact management system",
+        "Inventory management system",
+        "File-based database",
+        "Text-processing application",
+        "Data-structure project",
+        "Algorithm project",
+        "System-level project",
+        "Final integrated C project"
+    ]
+},
+
+{
+    title: "Module 44 — Examination and Career Preparation",
+    level: "Career",
+    topics: [
+        "Concept revision",
+        "Output prediction",
+        "Find-the-error exercises",
+        "Code completion",
+        "Debugging exercises",
+        "Programming assignments",
+        "Laboratory exercises",
+        "MCQs",
+        "Short-answer questions",
+        "Long-answer questions",
+        "Programming examination",
+        "Practical examination",
+        "Viva preparation",
+        "Interview preparation",
+        "Coding interview problems",
+        "Frequently asked C questions",
+        "Final comprehensive assessment"
+    ]
+}
+
+];
+
+
+/* =========================================================
+   BUILD COMPLETE COURSE
+========================================================= */
+
+let allTopics = [];
+let topicNumber = 1;
+
+modules.forEach((module, moduleIndex) => {
+
+    module.topics.forEach(topic => {
+
+        allTopics.push({
+            number: topicNumber,
+            module: module.title,
+            level: module.level,
+            name: topic
+        });
+
+        topicNumber++;
+
+    });
+
+});
+
+
+/* =========================================================
+   SLUG GENERATOR
+========================================================= */
+
+function createSlug(text) {
+
+    return text
+        .toLowerCase()
+        .replace(/<[^>]*>/g, "")
+        .replace(/[()]/g, "")
+        .replace(/#/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+
+}
+
+
+/* =========================================================
+   TOPIC DESCRIPTION
+========================================================= */
+
+function getDescription(topic, level) {
+
+    if (level === "Foundation") {
+
+        return "Build a strong foundation in C programming and understand the core concept, syntax and principles.";
+
+    }
+
+    if (level === "Core") {
+
+        return "Learn the C concept in detail with practical programming, examples and problem-solving techniques.";
+
+    }
+
+    if (level === "Advanced") {
+
+        return "Study advanced C programming concepts, implementation details, memory behavior and professional techniques.";
+
+    }
+
+    if (level === "Professional") {
+
+        return "Explore professional, systems-level, secure and industry-oriented C programming concepts.";
+
+    }
+
+    if (level === "Practical") {
+
+        return "Practice C programming through practical exercises, programming problems and implementation tasks.";
+
+    }
+
+    if (level === "Project") {
+
+        return "Apply your C programming knowledge by building a practical project.";
+
+    }
+
+    if (level === "Career") {
+
+        return "Prepare for university examinations, practical assessments, viva examinations and C programming interviews.";
+
+    }
+
+    return "Learn this C programming topic through EduLearn.";
+
+}
+
+
+/* =========================================================
+   DISPLAY COURSE
+========================================================= */
+
+function displayCourse(topicList = allTopics) {
+
+    const container = document.getElementById("courseContent");
+
+    container.innerHTML = "";
+
+    if (topicList.length === 0) {
+
+        container.innerHTML = `
+            <div class="no-results">
+                No C topic found.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    /* SEARCH RESULT MODE */
+
+    if (topicList.length !== allTopics.length) {
+
+        const searchModule = document.createElement("div");
+
+        searchModule.className = "module";
+
+        searchModule.innerHTML = `
+            <h2 class="module-title">
+                🔎 Search Results
+            </h2>
+
+            <div class="programs"></div>
+        `;
+
+        container.appendChild(searchModule);
+
+        const grid = searchModule.querySelector(".programs");
+
+        topicList.forEach(topic => {
+
+            grid.appendChild(createTopicCard(topic));
+
+        });
+
+        return;
+
+    }
+
+
+    /* NORMAL MODULE MODE */
+
+    modules.forEach(module => {
+
+        const moduleDiv = document.createElement("div");
+
+        moduleDiv.className = "module";
+
+        moduleDiv.innerHTML = `
+            <h2 class="module-title">
+                ${module.title}
+            </h2>
+
+            <div class="programs"></div>
+        `;
+
+        container.appendChild(moduleDiv);
+
+        const grid = moduleDiv.querySelector(".programs");
+
+        const moduleTopics = allTopics.filter(
+            topic => topic.module === module.title
+        );
+
+        moduleTopics.forEach(topic => {
+
+            grid.appendChild(createTopicCard(topic));
+
+        });
+
+    });
+
+}
+
+
+/* =========================================================
+   CREATE TOPIC CARD
+========================================================= */
+
+function createTopicCard(topic) {
+
+    const card = document.createElement("div");
+
+    card.className = "program-card";
+
+    const slug = createSlug(topic.name);
+
+    card.innerHTML = `
+
+        <div class="program-number">
+            ${String(topic.number).padStart(3, "0")}
+        </div>
+
+        <span class="level">
+            ${topic.level}
+        </span>
+
+        <h3>
+            ${escapeHTML(topic.name)}
+        </h3>
+
+        <p>
+            ${getDescription(topic.name, topic.level)}
+        </p>
+
+        <a
+            href="c-topic.html?topic=${encodeURIComponent(slug)}"
+            class="btn"
+        >
+            Open Topic
+        </a>
+
+    `;
+
+    return card;
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(text) {
+
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function searchTopics() {
+
+    const search = document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const results = document.getElementById("searchResults");
+
+    results.innerHTML = "";
+
+
+    if (search === "") {
+
+        displayCourse();
+
+        return;
+
+    }
+
+
+    const matched = allTopics.filter(topic =>
+
+        topic.name.toLowerCase().includes(search) ||
+
+        topic.module.toLowerCase().includes(search) ||
+
+        topic.level.toLowerCase().includes(search)
+
+    );
+
+
+    if (matched.length === 0) {
+
+        results.innerHTML = `
+            <div class="result">
+                No C topic found.
+            </div>
+        `;
+
+        displayCourse([]);
+
+        return;
+
+    }
+
+
+    results.innerHTML = `
+        <div class="result">
+            Found <strong>${matched.length}</strong> matching C topic(s).
+        </div>
+    `;
+
+
+    displayCourse(matched);
+
+}
+
+
+/* =========================================================
+   COURSE STATISTICS
+========================================================= */
+
+document.getElementById("moduleCount").textContent =
+    modules.length;
+
+document.getElementById("topicCount").textContent =
+    allTopics.length;
+
+document.getElementById("beginnerCount").textContent =
+    allTopics.filter(topic =>
+        topic.level === "Foundation" ||
+        topic.level === "Core"
+    ).length;
+
+document.getElementById("advancedCount").textContent =
+    allTopics.filter(topic =>
+        topic.level === "Advanced" ||
+        topic.level === "Professional"
+    ).length;
+
+
+/* =========================================================
+   INITIAL DISPLAY
+========================================================= */
+
+displayCourse();
+
+</script>
+
+</body>
+
+</html>
