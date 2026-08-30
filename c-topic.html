@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -185,6 +186,8 @@ body {
     border-radius: 8px;
     text-decoration: none;
     font-weight: bold;
+    border: none;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -197,6 +200,34 @@ body {
 
 .btn.secondary:hover {
     background: #1f2937;
+}
+
+.btn.success {
+    background: #16a34a;
+}
+
+.btn.success:hover {
+    background: #15803d;
+}
+
+/* ================= STATUS ================= */
+
+.completion-box {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 25px;
+}
+
+.completion-box h3 {
+    color: #1e3a8a;
+    margin-bottom: 8px;
+}
+
+#completionStatus {
+    color: #555;
+    line-height: 1.6;
 }
 
 /* ================= DARK MODE ================= */
@@ -236,6 +267,15 @@ body.dark .content-card li {
 body.dark .badge {
     background: #374151;
     color: #93c5fd;
+}
+
+body.dark .completion-box {
+    background: #1e3a8a;
+    border-color: #2563eb;
+}
+
+body.dark #completionStatus {
+    color: #dbeafe;
 }
 
 /* ================= FOOTER ================= */
@@ -281,112 +321,111 @@ footer {
 
 <nav class="navbar">
 
-    <div class="logo">
-        EduLearn
-    </div>
+```
+<div class="logo">
+    EduLearn
+</div>
 
-    <div class="nav-links">
+<div class="nav-links">
 
-        <a href="index.html">Home</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="coding.html">Coding</a>
-        <a href="c.html">C</a>
-        <a href="python.html">Python</a>
-        <a href="settings.html">Settings</a>
+    <a href="index.html">Home</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="coding.html">Coding</a>
+    <a href="c.html">C</a>
+    <a href="python.html">Python</a>
+    <a href="settings.html">Settings</a>
 
-    </div>
+</div>
+```
 
 </nav>
-
 
 <!-- ================= HERO ================= -->
 
 <section class="hero">
 
-    <div class="topic-number" id="topicNumber">
-        C Programming Topic
-    </div>
+```
+<div class="topic-number" id="topicNumber">
+    C Programming Topic
+</div>
 
-    <h1 id="topicTitle">
-        Loading...
-    </h1>
+<h1 id="topicTitle">
+    Loading...
+</h1>
 
-    <p id="topicDescription">
-        Loading topic information...
-    </p>
+<p id="topicDescription">
+    Loading topic information...
+</p>
+```
 
 </section>
 
-
 <div class="container">
 
-    <!-- ================= TOPIC INFO ================= -->
+```
+<!-- ================= TOPIC INFO ================= -->
 
-    <div class="topic-info">
+<div class="topic-info">
 
-        <span class="badge" id="moduleBadge">
-            Module
-        </span>
+    <span class="badge" id="moduleBadge">
+        C Programming
+    </span>
 
-        <span class="badge" id="levelBadge">
-            Level
-        </span>
+    <span class="badge" id="levelBadge">
+        Level
+    </span>
 
-    </div>
-
-
-    <!-- ================= LEARNING OBJECTIVE ================= -->
-
-    <div class="content-card">
-
-        <h2>🎯 Learning Objective</h2>
-
-        <p id="objective">
-            By completing this topic, you will understand the fundamental
-            concept and practical importance of this C programming topic.
-        </p>
-
-    </div>
+</div>
 
 
-    <!-- ================= CONCEPT ================= -->
+<!-- ================= LEARNING OBJECTIVE ================= -->
 
-    <div class="content-card">
+<div class="content-card">
 
-        <h2>📚 Understanding the Topic</h2>
+    <h2>🎯 Learning Objective</h2>
 
-        <p id="conceptText">
-            This topic is part of the complete EduLearn C Programming
-            curriculum. Study the concept carefully and understand how
-            it is used in real C programs.
-        </p>
+    <p id="objective">
+        After completing this topic, you will understand the
+        concept and its importance in C programming.
+    </p>
 
-        <h3>Why is this important?</h3>
-
-        <p id="importanceText">
-            Understanding individual C programming concepts helps you
-            develop strong programming fundamentals and prepares you
-            for practical programming, examinations and professional
-            development.
-        </p>
-
-    </div>
+</div>
 
 
-    <!-- ================= EXAMPLE ================= -->
+<!-- ================= CONCEPT ================= -->
 
-    <div class="content-card">
+<div class="content-card">
 
-        <h2>💻 Example</h2>
+    <h2>📚 Understanding the Topic</h2>
 
-        <p>
-            The following example demonstrates the basic structure of
-            a C program related to learning this topic.
-        </p>
+    <p id="conceptText">
+        Loading topic concept...
+    </p>
 
-        <div class="code-box">
+    <h3>Why is this important?</h3>
 
-<pre>#include &lt;stdio.h&gt;
+    <p id="importanceText">
+        Loading importance...
+    </p>
+
+</div>
+
+
+<!-- ================= EXAMPLE ================= -->
+
+<div class="content-card">
+
+    <h2>💻 Example</h2>
+
+    <p id="exampleIntroduction">
+        The following example demonstrates the basic structure
+        of a C program.
+    </p>
+
+    <div class="code-box">
+```
+
+<pre id="codeExample">#include &lt;stdio.h&gt;
 
 int main(void)
 {
@@ -395,78 +434,105 @@ int main(void)
     return 0;
 }</pre>
 
-        </div>
-
+```
     </div>
 
-
-    <!-- ================= KEY POINTS ================= -->
-
-    <div class="content-card">
-
-        <h2>📝 Key Points</h2>
-
-        <ul>
-
-            <li>Understand the definition of the topic.</li>
-
-            <li>Learn how the concept works in C.</li>
-
-            <li>Understand its syntax and usage where applicable.</li>
-
-            <li>Practice the concept with C programs.</li>
-
-            <li>Understand common mistakes and programming problems.</li>
-
-            <li>Connect the topic with other C programming concepts.</li>
-
-        </ul>
-
-    </div>
+</div>
 
 
-    <!-- ================= PRACTICE ================= -->
+<!-- ================= KEY POINTS ================= -->
 
-    <div class="content-card">
+<div class="content-card">
 
-        <h2>🧠 Practice</h2>
+    <h2>📝 Key Points</h2>
 
-        <p>
-            After studying this topic, try writing a small C program
-            related to the concept. Practice is essential for developing
-            programming skills.
-        </p>
+    <ul id="keyPoints">
 
-    </div>
+        <li>Understand the definition of the topic.</li>
+
+        <li>Learn how the concept works in C.</li>
+
+        <li>Understand its syntax and usage.</li>
+
+        <li>Practice the concept with C programs.</li>
+
+        <li>Understand common mistakes.</li>
+
+        <li>Connect the topic with other C concepts.</li>
+
+    </ul>
+
+</div>
 
 
-    <!-- ================= NAVIGATION ================= -->
+<!-- ================= PRACTICE ================= -->
+
+<div class="content-card">
+
+    <h2>🧠 Practice</h2>
+
+    <p id="practiceText">
+        After studying this topic, try writing a small C program
+        related to the concept. Practice is essential for developing
+        programming skills.
+    </p>
+
+</div>
+
+
+<!-- ================= COMPLETION ================= -->
+
+<div class="completion-box">
+
+    <h3>📊 Topic Progress</h3>
+
+    <p id="completionStatus">
+        This topic has not been completed yet.
+    </p>
 
     <div class="buttons">
 
-        <a href="c.html" class="btn secondary">
-            ← Back to C Course
-        </a>
-
-        <a href="c.html" class="btn">
-            View All C Topics
-        </a>
+        <button
+            class="btn success"
+            id="completeButton"
+            onclick="markTopicComplete()"
+        >
+            ✓ Mark Topic as Completed
+        </button>
 
     </div>
 
 </div>
 
 
+<!-- ================= NAVIGATION ================= -->
+
+<div class="buttons">
+
+    <a href="c.html" class="btn secondary">
+        ← Back to C Course
+    </a>
+
+    <a href="c.html" class="btn">
+        View All C Topics
+    </a>
+
+</div>
+```
+
+</div>
+
 <!-- ================= FOOTER ================= -->
 
 <footer>
 
-    <p>
-        © 2026 EduLearn — Learn. Grow. Succeed.
-    </p>
+```
+<p>
+    © 2026 EduLearn — Learn. Grow. Succeed.
+</p>
+```
 
 </footer>
-
 
 <script>
 
@@ -482,15 +548,32 @@ if (localStorage.getItem("darkMode") === "true") {
 
 
 /* =========================================================
-   READ TOPIC INFORMATION FROM URL
+   READ URL INFORMATION
 ========================================================= */
 
 const params = new URLSearchParams(window.location.search);
 
-const topic = params.get("topic");
-const number = params.get("number");
-const module = params.get("module");
-const level = params.get("level");
+let topic = params.get("topic");
+let number = params.get("number");
+let moduleName = params.get("module");
+let level = params.get("level");
+
+
+/* =========================================================
+   CONVERT URL SLUG INTO READABLE TITLE
+========================================================= */
+
+function slugToTitle(slug) {
+
+    if (!slug) {
+        return "C Programming Topic";
+    }
+
+    return slug
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, letter => letter.toUpperCase());
+
+}
 
 
 /* =========================================================
@@ -531,7 +614,7 @@ function getTopicDescription(level) {
 
     if (level === "Project") {
 
-        return "Apply your C programming knowledge by developing a practical project.";
+        return "Apply your C programming knowledge by developing a practical C project.";
 
     }
 
@@ -547,66 +630,447 @@ function getTopicDescription(level) {
 
 
 /* =========================================================
-   DISPLAY TOPIC
+   TOPIC-SPECIFIC EXAMPLES
 ========================================================= */
 
-if (!topic) {
+function getExample(topicName) {
 
-    document.getElementById("topicTitle").textContent =
-        "C Programming Topic";
+    const name = topicName.toLowerCase();
 
-    document.getElementById("topicDescription").textContent =
-        "Select a topic from the C Programming course.";
 
-} else {
+    if (name === "hello world") {
 
-    document.getElementById("topicNumber").textContent =
-        "Topic " + (number || "");
+        return {
+            introduction: "A simple C program that prints Hello World to the screen.",
+            code:
+`#include <stdio.h>
 
-    document.getElementById("topicTitle").textContent =
-        topic;
+int main(void)
+{
+    printf("Hello, World!\\n");
 
-    document.getElementById("topicDescription").textContent =
-        getTopicDescription(level);
+    return 0;
+}`
+        };
 
-    document.getElementById("moduleBadge").textContent =
-        module || "C Programming";
+    }
 
-    document.getElementById("levelBadge").textContent =
-        level || "C Programming";
 
-    document.getElementById("objective").textContent =
-        "After completing Topic " +
-        (number || "") +
-        ", you should be able to understand " +
-        topic +
-        " and explain its role in C programming.";
+    if (name === "variables") {
 
-    document.getElementById("conceptText").textContent =
-        topic +
-        " is an important part of the EduLearn C Programming curriculum. " +
-        "Study its definition, purpose, syntax, behavior and practical usage. " +
-        "Connect this concept with the other topics you have already learned.";
+        return {
+            introduction: "Variables are used to store values that a C program can work with.",
+            code:
+`#include <stdio.h>
 
-    document.getElementById("importanceText").textContent =
-        "Learning " +
-        topic +
-        " helps you build a complete understanding of C programming " +
-        "and prepares you for programming exercises, examinations, projects " +
-        "and professional development.";
+int main(void)
+{
+    int age = 20;
+
+    printf("Age = %d\\n", age);
+
+    return 0;
+}`
+        };
+
+    }
+
+
+    if (name === "if") {
+
+        return {
+            introduction: "The if statement allows a C program to execute code when a condition is true.",
+            code:
+`#include <stdio.h>
+
+int main(void)
+{
+    int age = 20;
+
+    if (age >= 18)
+    {
+        printf("Adult\\n");
+    }
+
+    return 0;
+}`
+        };
+
+    }
+
+
+    if (name === "for") {
+
+        return {
+            introduction: "A for loop is commonly used when a block of code must be repeated a known number of times.",
+            code:
+`#include <stdio.h>
+
+int main(void)
+{
+    for (int i = 1; i <= 5; i++)
+    {
+        printf("%d\\n", i);
+    }
+
+    return 0;
+}`
+        };
+
+    }
+
+
+    if (name === "while") {
+
+        return {
+            introduction: "A while loop repeatedly executes a block of code while its condition remains true.",
+            code:
+`#include <stdio.h>
+
+int main(void)
+{
+    int i = 1;
+
+    while (i <= 5)
+    {
+        printf("%d\\n", i);
+        i++;
+    }
+
+    return 0;
+}`
+        };
+
+    }
+
+
+    if (name === "pointers") {
+
+        return {
+            introduction: "A pointer stores the memory address of another object.",
+            code:
+`#include <stdio.h>
+
+int main(void)
+{
+    int number = 10;
+    int *ptr = &number;
+
+    printf("Value = %d\\n", *ptr);
+
+    return 0;
+}`
+        };
+
+    }
+
+
+    if (name === "arrays") {
+
+        return {
+            introduction: "An array stores multiple values of the same type in contiguous memory locations.",
+            code:
+`#include <stdio.h>
+
+int main(void)
+{
+    int numbers[3] = {10, 20, 30};
+
+    printf("%d\\n", numbers[0]);
+
+    return 0;
+}`
+        };
+
+    }
+
+
+    if (name === "functions") {
+
+        return {
+            introduction: "Functions allow a C program to divide a large problem into smaller reusable units.",
+            code:
+`#include <stdio.h>
+
+void greet(void)
+{
+    printf("Hello from a function!\\n");
+}
+
+int main(void)
+{
+    greet();
+
+    return 0;
+}`
+        };
+
+    }
+
+
+    return {
+        introduction:
+            "The following example provides a simple starting point for understanding this C programming concept.",
+        code:
+`#include <stdio.h>
+
+int main(void)
+{
+    printf("Learning C programming with EduLearn!\\n");
+
+    return 0;
+}`
+    };
 
 }
 
 
 /* =========================================================
-   PAGE TITLE
+   KEY POINT GENERATOR
 ========================================================= */
 
-if (topic) {
+function getKeyPoints(topicName, levelName) {
 
-    document.title = "EduLearn - " + topic;
+    return [
+
+        "Understand the definition and purpose of " + topicName + ".",
+
+        "Learn how " + topicName + " works in C programming.",
+
+        "Understand the syntax, rules and important characteristics.",
+
+        "Practice " + topicName + " using appropriate C programs.",
+
+        "Identify common programming mistakes related to the topic.",
+
+        "Understand how this topic connects with other C concepts.",
+
+        "Apply the concept to practical programming problems."
+
+    ];
 
 }
+
+
+/* =========================================================
+   PRACTICE GENERATOR
+========================================================= */
+
+function getPractice(topicName) {
+
+    return "Create a small C program that demonstrates " +
+        topicName +
+        ". Test your program with different inputs and check whether the output is correct. Try to modify the program after understanding the basic implementation.";
+
+
+}
+
+
+/* =========================================================
+   DISPLAY TOPIC
+========================================================= */
+
+if (!topic) {
+
+    document.getElementById("topicNumber").textContent =
+        "C Programming";
+
+    document.getElementById("topicTitle").textContent =
+        "Select a C Topic";
+
+    document.getElementById("topicDescription").textContent =
+        "Open a topic from the C Programming course to start learning.";
+
+    document.getElementById("moduleBadge").textContent =
+        "C Programming";
+
+    document.getElementById("levelBadge").textContent =
+        "Course";
+
+} else {
+
+    /*
+        If c.html sends a slug such as:
+
+        hello-world
+
+        convert it into:
+
+        Hello World
+    */
+
+    const topicTitle = slugToTitle(topic);
+
+
+    document.getElementById("topicNumber").textContent =
+        number ? "Topic " + number : "C Programming Topic";
+
+
+    document.getElementById("topicTitle").textContent =
+        topicTitle;
+
+
+    document.getElementById("topicDescription").textContent =
+        getTopicDescription(level);
+
+
+    document.getElementById("moduleBadge").textContent =
+        moduleName || "C Programming";
+
+
+    document.getElementById("levelBadge").textContent =
+        level || "C Programming";
+
+
+    document.getElementById("objective").textContent =
+        "After completing this topic, you should be able to explain " +
+        topicTitle +
+        ", understand its purpose, use it correctly in C programs, " +
+        "and apply it to practical programming problems.";
+
+
+    document.getElementById("conceptText").textContent =
+        topicTitle +
+        " is an important part of the EduLearn C Programming curriculum. " +
+        "You should understand its definition, purpose, syntax, rules, " +
+        "behavior and practical usage. The topic should also be connected " +
+        "with other C programming concepts that you have already learned.";
+
+
+    document.getElementById("importanceText").textContent =
+        "Learning " +
+        topicTitle +
+        " helps you develop stronger C programming skills. " +
+        "It is useful for programming practice, university examinations, " +
+        "projects, problem solving and further study of advanced C concepts.";
+
+
+    const example = getExample(topicTitle);
+
+
+    document.getElementById("exampleIntroduction").textContent =
+        example.introduction;
+
+
+    document.getElementById("codeExample").textContent =
+        example.code;
+
+
+    const keyPoints =
+        getKeyPoints(topicTitle, level);
+
+
+    const keyPointList =
+        document.getElementById("keyPoints");
+
+
+    keyPointList.innerHTML = "";
+
+
+    keyPoints.forEach(point => {
+
+        const li = document.createElement("li");
+
+        li.textContent = point;
+
+        keyPointList.appendChild(li);
+
+    });
+
+
+    document.getElementById("practiceText").textContent =
+        getPractice(topicTitle);
+
+
+    document.title =
+        "EduLearn - " + topicTitle;
+
+}
+
+
+/* =========================================================
+   TOPIC COMPLETION
+========================================================= */
+
+function getTopicKey() {
+
+    if (!topic) {
+        return null;
+    }
+
+    return "c_topic_completed_" + topic;
+
+}
+
+
+function checkCompletion() {
+
+    const key = getTopicKey();
+
+    if (!key) {
+        return;
+    }
+
+
+    const completed =
+        localStorage.getItem(key) === "true";
+
+
+    const status =
+        document.getElementById("completionStatus");
+
+
+    const button =
+        document.getElementById("completeButton");
+
+
+    if (completed) {
+
+        status.textContent =
+            "✓ This topic has been completed. You can continue practicing or move back to the C course.";
+
+        button.textContent =
+            "✓ Topic Completed";
+
+    } else {
+
+        status.textContent =
+            "This topic has not been completed yet.";
+
+        button.textContent =
+            "✓ Mark Topic as Completed";
+
+    }
+
+}
+
+
+/* =========================================================
+   MARK TOPIC COMPLETE
+========================================================= */
+
+function markTopicComplete() {
+
+    const key = getTopicKey();
+
+    if (!key) {
+        return;
+    }
+
+
+    localStorage.setItem(key, "true");
+
+
+    checkCompletion();
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+checkCompletion();
 
 </script>
 
