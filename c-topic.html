@@ -362,67 +362,70 @@ footer {
 
 <div class="container">
 
-```
 <!-- ================= TOPIC INFO ================= -->
 
 <div class="topic-info">
 
-    <span class="badge" id="moduleBadge">
-        C Programming
-    </span>
+```
+<span class="badge" id="moduleBadge">
+    C Programming
+</span>
 
-    <span class="badge" id="levelBadge">
-        Level
-    </span>
+<span class="badge" id="levelBadge">
+    Level
+</span>
+```
 
 </div>
-
 
 <!-- ================= LEARNING OBJECTIVE ================= -->
 
 <div class="content-card">
 
-    <h2>🎯 Learning Objective</h2>
+```
+<h2>🎯 Learning Objective</h2>
 
-    <p id="objective">
-        After completing this topic, you will understand the
-        concept and its importance in C programming.
-    </p>
+<p id="objective">
+    After completing this topic, you will understand the
+    concept and its importance in C programming.
+</p>
+```
 
 </div>
-
 
 <!-- ================= CONCEPT ================= -->
 
 <div class="content-card">
 
-    <h2>📚 Understanding the Topic</h2>
+```
+<h2>📚 Understanding the Topic</h2>
 
-    <p id="conceptText">
-        Loading topic concept...
-    </p>
+<p id="conceptText">
+    Loading topic concept...
+</p>
 
-    <h3>Why is this important?</h3>
+<h3>Why is this important?</h3>
 
-    <p id="importanceText">
-        Loading importance...
-    </p>
+<p id="importanceText">
+    Loading importance...
+</p>
+```
 
 </div>
-
 
 <!-- ================= EXAMPLE ================= -->
 
 <div class="content-card">
 
-    <h2>💻 Example</h2>
+```
+<h2>💻 Example</h2>
 
-    <p id="exampleIntroduction">
-        The following example demonstrates the basic structure
-        of a C program.
-    </p>
+<p id="exampleIntroduction">
+    The following example demonstrates the basic structure
+    of a C program.
+</p>
 
-    <div class="code-box">
+<div class="code-box">
 ```
 
 <pre id="codeExample">#include &lt;stdio.h&gt;
@@ -435,90 +438,88 @@ int main(void)
 }</pre>
 
 ```
-    </div>
+</div>
+```
 
 </div>
-
 
 <!-- ================= KEY POINTS ================= -->
 
 <div class="content-card">
 
-    <h2>📝 Key Points</h2>
+```
+<h2>📝 Key Points</h2>
 
-    <ul id="keyPoints">
+<ul id="keyPoints">
 
-        <li>Understand the definition of the topic.</li>
+    <li>Understand the definition of the topic.</li>
+    <li>Learn how the concept works in C.</li>
+    <li>Understand its syntax and usage.</li>
+    <li>Practice the concept with C programs.</li>
+    <li>Understand common mistakes.</li>
+    <li>Connect the topic with other C concepts.</li>
 
-        <li>Learn how the concept works in C.</li>
-
-        <li>Understand its syntax and usage.</li>
-
-        <li>Practice the concept with C programs.</li>
-
-        <li>Understand common mistakes.</li>
-
-        <li>Connect the topic with other C concepts.</li>
-
-    </ul>
+</ul>
+```
 
 </div>
-
 
 <!-- ================= PRACTICE ================= -->
 
 <div class="content-card">
 
-    <h2>🧠 Practice</h2>
+```
+<h2>🧠 Practice</h2>
 
-    <p id="practiceText">
-        After studying this topic, try writing a small C program
-        related to the concept. Practice is essential for developing
-        programming skills.
-    </p>
+<p id="practiceText">
+    After studying this topic, try writing a small C program
+    related to the concept.
+</p>
+```
 
 </div>
-
 
 <!-- ================= COMPLETION ================= -->
 
 <div class="completion-box">
 
-    <h3>📊 Topic Progress</h3>
+```
+<h3>📊 Topic Progress</h3>
 
-    <p id="completionStatus">
-        This topic has not been completed yet.
-    </p>
+<p id="completionStatus">
+    This topic has not been completed yet.
+</p>
 
-    <div class="buttons">
+<div class="buttons">
 
-        <button
-            class="btn success"
-            id="completeButton"
-            onclick="markTopicComplete()"
-        >
-            ✓ Mark Topic as Completed
-        </button>
-
-    </div>
+    <button
+        class="btn success"
+        id="completeButton"
+        onclick="markTopicComplete()"
+    >
+        ✓ Mark Topic as Completed
+    </button>
 
 </div>
+```
 
+</div>
 
 <!-- ================= NAVIGATION ================= -->
 
 <div class="buttons">
 
-    <a href="c.html" class="btn secondary">
-        ← Back to C Course
-    </a>
+```
+<a href="c.html" class="btn secondary">
+    ← Back to C Course
+</a>
 
-    <a href="c.html" class="btn">
-        View All C Topics
-    </a>
+<a href="c.html" class="btn">
+    View All C Topics
+</a>
+```
 
 </div>
-```
 
 </div>
 
@@ -548,77 +549,60 @@ if (localStorage.getItem("darkMode") === "true") {
 
 
 /* =========================================================
-   READ URL INFORMATION
+   READ TOPIC INFORMATION FROM URL
 ========================================================= */
 
 const params = new URLSearchParams(window.location.search);
 
-let topic = params.get("topic");
-let number = params.get("number");
-let moduleName = params.get("module");
-let level = params.get("level");
-
-
-/* =========================================================
-   CONVERT URL SLUG INTO READABLE TITLE
-========================================================= */
-
-function slugToTitle(slug) {
-
-    if (!slug) {
-        return "C Programming Topic";
-    }
-
-    return slug
-        .replace(/-/g, " ")
-        .replace(/\b\w/g, letter => letter.toUpperCase());
-
-}
+const topic = params.get("topic");
+const number = params.get("number");
+const moduleName = params.get("module");
+const level = params.get("level");
 
 
 /* =========================================================
    TOPIC DESCRIPTION
 ========================================================= */
 
-function getTopicDescription(level) {
+function getTopicDescription(levelName) {
 
-    if (level === "Foundation") {
+    if (levelName === "Foundation") {
 
         return "Build your C programming foundation by understanding the basic concepts, terminology, syntax and principles required for further programming.";
 
     }
 
-    if (level === "Core") {
+    if (levelName === "Core") {
 
         return "Develop strong C programming skills by understanding core language features, expressions, operators, control structures and functions.";
 
     }
 
-    if (level === "Advanced") {
+    if (levelName === "Advanced") {
 
         return "Explore advanced C programming concepts including memory management, pointers, structures, files, libraries and implementation details.";
 
     }
 
-    if (level === "Professional") {
+    if (levelName === "Professional") {
 
         return "Study professional C programming practices involving security, systems programming, embedded development and industry-oriented techniques.";
 
     }
 
-    if (level === "Practical") {
+    if (levelName === "Practical") {
 
         return "Apply C programming knowledge through practical programming problems and implementation exercises.";
 
     }
 
-    if (level === "Project") {
+    if (levelName === "Project") {
 
         return "Apply your C programming knowledge by developing a practical C project.";
 
     }
 
-    if (level === "Career") {
+    if (levelName === "Career") {
 
         return "Prepare for C programming examinations, practical assessments, viva examinations and technical interviews.";
 
@@ -635,13 +619,15 @@ function getTopicDescription(level) {
 
 function getExample(topicName) {
 
-    const name = topicName.toLowerCase();
+    const name = topicName.toLowerCase().trim();
 
 
     if (name === "hello world") {
 
         return {
-            introduction: "A simple C program that prints Hello World to the screen.",
+            introduction:
+                "A simple C program that prints Hello World to the screen.",
+
             code:
 `#include <stdio.h>
 
@@ -656,10 +642,38 @@ int main(void)
     }
 
 
-    if (name === "variables") {
+    if (
+        name === "what is c?" ||
+        name === "what is c"
+    ) {
 
         return {
-            introduction: "Variables are used to store values that a C program can work with.",
+            introduction:
+                "A basic C program showing the standard structure of a C program.",
+
+            code:
+`#include <stdio.h>
+
+int main(void)
+{
+    printf("C Programming\\n");
+
+    return 0;
+}`
+        };
+
+    }
+
+
+    if (
+        name === "variables" ||
+        name === "what is a variable?"
+    ) {
+
+        return {
+            introduction:
+                "Variables are used to store values that a C program can work with.",
+
             code:
 `#include <stdio.h>
 
@@ -679,7 +693,9 @@ int main(void)
     if (name === "if") {
 
         return {
-            introduction: "The if statement allows a C program to execute code when a condition is true.",
+            introduction:
+                "The if statement allows a C program to execute code when a condition is true.",
+
             code:
 `#include <stdio.h>
 
@@ -702,7 +718,9 @@ int main(void)
     if (name === "for") {
 
         return {
-            introduction: "A for loop is commonly used when a block of code must be repeated a known number of times.",
+            introduction:
+                "A for loop is commonly used when a block of code must be repeated a known number of times.",
+
             code:
 `#include <stdio.h>
 
@@ -723,7 +741,9 @@ int main(void)
     if (name === "while") {
 
         return {
-            introduction: "A while loop repeatedly executes a block of code while its condition remains true.",
+            introduction:
+                "A while loop repeatedly executes a block of code while its condition remains true.",
+
             code:
 `#include <stdio.h>
 
@@ -744,10 +764,15 @@ int main(void)
     }
 
 
-    if (name === "pointers") {
+    if (
+        name === "pointers" ||
+        name === "pointer concept"
+    ) {
 
         return {
-            introduction: "A pointer stores the memory address of another object.",
+            introduction:
+                "A pointer stores the memory address of another object.",
+
             code:
 `#include <stdio.h>
 
@@ -765,10 +790,15 @@ int main(void)
     }
 
 
-    if (name === "arrays") {
+    if (
+        name === "arrays" ||
+        name === "array declaration"
+    ) {
 
         return {
-            introduction: "An array stores multiple values of the same type in contiguous memory locations.",
+            introduction:
+                "An array stores multiple values of the same type in contiguous memory locations.",
+
             code:
 `#include <stdio.h>
 
@@ -785,10 +815,15 @@ int main(void)
     }
 
 
-    if (name === "functions") {
+    if (
+        name === "functions" ||
+        name === "user-defined functions"
+    ) {
 
         return {
-            introduction: "Functions allow a C program to divide a large problem into smaller reusable units.",
+            introduction:
+                "Functions allow a C program to divide a large problem into smaller reusable units.",
+
             code:
 `#include <stdio.h>
 
@@ -808,9 +843,184 @@ int main(void)
     }
 
 
+    if (name === "printf()") {
+
+        return {
+            introduction:
+                "The printf() function is used to display formatted output on the standard output stream.",
+
+            code:
+`#include <stdio.h>
+
+int main(void)
+{
+    int number = 25;
+
+    printf("Number = %d\\n", number);
+
+    return 0;
+}`
+        };
+
+    }
+
+
+    if (name === "scanf()") {
+
+        return {
+            introduction:
+                "The scanf() function can be used to read formatted input from the standard input stream.",
+
+            code:
+`#include <stdio.h>
+
+int main(void)
+{
+    int number;
+
+    printf("Enter a number: ");
+    scanf("%d", &number);
+
+    printf("You entered: %d\\n", number);
+
+    return 0;
+}`
+        };
+
+    }
+
+
+    if (name === "switch") {
+
+        return {
+            introduction:
+                "The switch statement selects one block of code from multiple possible cases.",
+
+            code:
+`#include <stdio.h>
+
+int main(void)
+{
+    int choice = 2;
+
+    switch (choice)
+    {
+        case 1:
+            printf("One\\n");
+            break;
+
+        case 2:
+            printf("Two\\n");
+            break;
+
+        default:
+            printf("Other\\n");
+    }
+
+    return 0;
+}`
+        };
+
+    }
+
+
+    if (name === "malloc()") {
+
+        return {
+            introduction:
+                "malloc() dynamically allocates a block of memory from the heap.",
+
+            code:
+`#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+    int *ptr = malloc(sizeof(int));
+
+    if (ptr == NULL)
+    {
+        return 1;
+    }
+
+    *ptr = 50;
+
+    printf("%d\\n", *ptr);
+
+    free(ptr);
+
+    return 0;
+}`
+        };
+
+    }
+
+
+    if (name === "structure declaration") {
+
+        return {
+            introduction:
+                "A structure groups related variables of different data types under one user-defined type.",
+
+            code:
+`#include <stdio.h>
+
+struct Student
+{
+    int age;
+    float marks;
+};
+
+int main(void)
+{
+    struct Student student = {20, 85.5f};
+
+    printf("Age = %d\\n", student.age);
+    printf("Marks = %.1f\\n", student.marks);
+
+    return 0;
+}`
+        };
+
+    }
+
+
+    if (name === "file handling") {
+
+        return {
+            introduction:
+                "File handling allows a C program to store and retrieve information using files.",
+
+            code:
+`#include <stdio.h>
+
+int main(void)
+{
+    FILE *file;
+
+    file = fopen("data.txt", "w");
+
+    if (file == NULL)
+    {
+        return 1;
+    }
+
+    fprintf(file, "Hello from C!\\n");
+
+    fclose(file);
+
+    return 0;
+}`
+        };
+
+    }
+
+
     return {
+
         introduction:
             "The following example provides a simple starting point for understanding this C programming concept.",
+
         code:
 `#include <stdio.h>
 
@@ -820,16 +1030,17 @@ int main(void)
 
     return 0;
 }`
+
     };
 
 }
 
 
 /* =========================================================
-   KEY POINT GENERATOR
+   KEY POINTS
 ========================================================= */
 
-function getKeyPoints(topicName, levelName) {
+function getKeyPoints(topicName) {
 
     return [
 
@@ -853,7 +1064,7 @@ function getKeyPoints(topicName, levelName) {
 
 
 /* =========================================================
-   PRACTICE GENERATOR
+   PRACTICE
 ========================================================= */
 
 function getPractice(topicName) {
@@ -861,7 +1072,6 @@ function getPractice(topicName) {
     return "Create a small C program that demonstrates " +
         topicName +
         ". Test your program with different inputs and check whether the output is correct. Try to modify the program after understanding the basic implementation.";
-
 
 }
 
@@ -890,20 +1100,28 @@ if (!topic) {
 } else {
 
     /*
-        If c.html sends a slug such as:
+        IMPORTANT:
 
-        hello-world
+        Use the exact topic name received from c.html.
 
-        convert it into:
+        Example:
+
+        topic=Hello%20World
+
+        becomes:
 
         Hello World
+
+        We do NOT convert it into a slug.
     */
 
-    const topicTitle = slugToTitle(topic);
+    const topicTitle = topic.trim();
 
 
     document.getElementById("topicNumber").textContent =
-        number ? "Topic " + number : "C Programming Topic";
+        number
+            ? "Topic " + number
+            : "C Programming Topic";
 
 
     document.getElementById("topicTitle").textContent =
@@ -945,7 +1163,8 @@ if (!topic) {
         "projects, problem solving and further study of advanced C concepts.";
 
 
-    const example = getExample(topicTitle);
+    const example =
+        getExample(topicTitle);
 
 
     document.getElementById("exampleIntroduction").textContent =
@@ -957,7 +1176,7 @@ if (!topic) {
 
 
     const keyPoints =
-        getKeyPoints(topicTitle, level);
+        getKeyPoints(topicTitle);
 
 
     const keyPointList =
@@ -969,9 +1188,11 @@ if (!topic) {
 
     keyPoints.forEach(point => {
 
-        const li = document.createElement("li");
+        const li =
+            document.createElement("li");
 
-        li.textContent = point;
+        li.textContent =
+            point;
 
         keyPointList.appendChild(li);
 
@@ -995,7 +1216,9 @@ if (!topic) {
 function getTopicKey() {
 
     if (!topic) {
+
         return null;
+
     }
 
     return "c_topic_completed_" + topic;
@@ -1005,10 +1228,14 @@ function getTopicKey() {
 
 function checkCompletion() {
 
-    const key = getTopicKey();
+    const key =
+        getTopicKey();
+
 
     if (!key) {
+
         return;
+
     }
 
 
@@ -1051,14 +1278,21 @@ function checkCompletion() {
 
 function markTopicComplete() {
 
-    const key = getTopicKey();
+    const key =
+        getTopicKey();
+
 
     if (!key) {
+
         return;
+
     }
 
 
-    localStorage.setItem(key, "true");
+    localStorage.setItem(
+        key,
+        "true"
+    );
 
 
     checkCompletion();
