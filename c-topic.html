@@ -243,6 +243,26 @@ body {
     line-height: 1.6;
 }
 
+/* ================= NOT FOUND ================= */
+
+.not-found {
+    background: white;
+    padding: 35px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.not-found h2 {
+    color: #1e3a8a;
+    margin-bottom: 12px;
+}
+
+.not-found p {
+    color: #555;
+    line-height: 1.7;
+}
+
 /* ================= DARK MODE ================= */
 
 body.dark {
@@ -251,7 +271,8 @@ body.dark {
 }
 
 body.dark .navbar,
-body.dark .content-card {
+body.dark .content-card,
+body.dark .not-found {
     background: #1f2937;
     color: #e5e7eb;
 }
@@ -264,7 +285,8 @@ body.dark .nav-links a:hover {
     color: #60a5fa;
 }
 
-body.dark .content-card h2 {
+body.dark .content-card h2,
+body.dark .not-found h2 {
     color: #60a5fa;
 }
 
@@ -273,7 +295,8 @@ body.dark .content-card h3 {
 }
 
 body.dark .content-card p,
-body.dark .content-card li {
+body.dark .content-card li,
+body.dark .not-found p {
     color: #d1d5db;
 }
 
@@ -381,6 +404,8 @@ footer {
 
 
 <div class="container">
+
+    <!-- ================= TOPIC INFO ================= -->
 
     <div class="topic-info">
 
@@ -552,6 +577,8 @@ footer {
 </div>
 
 
+<!-- ================= FOOTER ================= -->
+
 <footer>
 
     <p>
@@ -586,7 +613,6 @@ const level = params.get("level");
 
 /* =========================================================
    NORMALIZE TOPIC NAME
-   This is the important part that was missing before.
 ========================================================= */
 
 function normalizeTopic(topicName) {
@@ -595,90 +621,78 @@ function normalizeTopic(topicName) {
         return "";
     }
 
-    return topicName
+    return decodeURIComponent(topicName)
         .toLowerCase()
         .trim()
+        .replace(/\+/g, " ")
+        .replace(/[_-]+/g, " ")
         .replace(/\s+/g, " ")
-        .replace(/[–—]/g, "-");
+        .replace(/\s*\(\s*/g, "(")
+        .replace(/\s*\)\s*/g, ")");
 
 }
 
 
 /* =========================================================
    TOPIC ALIASES
-   Different names from c.html can point to the same content.
 ========================================================= */
 
 const topicAliases = {
 
-    "what is c programming?": "what is c?",
+    "what is c": "what is c?",
     "what is c programming": "what is c?",
+    "c programming": "what is c?",
     "introduction to c": "what is c?",
     "introduction to c programming": "what is c?",
 
     "hello world program": "hello world",
-    "hello, world": "hello world",
-    "hello world program in c": "hello world",
+    "hello world in c": "hello world",
 
     "what is a variable": "what is a variable?",
+    "what are variables": "variables",
     "variable": "variables",
-    "variables in c": "variables",
 
-    "formatted output": "printf()",
+    "print": "printf()",
     "printf": "printf()",
     "printf function": "printf()",
 
-    "formatted input": "scanf()",
+    "input": "scanf()",
     "scanf": "scanf()",
     "scanf function": "scanf()",
 
-    "character input": "getchar()",
     "getchar": "getchar()",
+    "getchar function": "getchar()",
 
-    "character output": "putchar()",
     "putchar": "putchar()",
+    "putchar function": "putchar()",
 
     "if statement": "if",
-    "if statement in c": "if",
-
     "if else": "if-else",
     "if else statement": "if-else",
-    "if-else statement": "if-else",
 
     "switch statement": "switch",
-    "switch case": "switch",
 
     "for loop": "for",
-    "for loop in c": "for",
-
     "while loop": "while",
-    "while loop in c": "while",
-
     "do while": "do-while",
     "do while loop": "do-while",
-    "do-while loop": "do-while",
 
     "array": "arrays",
-    "arrays in c": "arrays",
+    "array declaration and initialization": "array declaration",
 
-    "array declaration in c": "array declaration",
-
-    "string": "c strings",
     "strings": "c strings",
-    "strings in c": "c strings",
     "c string": "c strings",
+    "string": "c strings",
 
-    "string length": "strlen()",
     "strlen": "strlen()",
     "strlen function": "strlen()",
 
     "pointer": "pointers",
-    "pointers in c": "pointers",
-    "pointer concept in c": "pointer concept",
+    "pointer concept": "pointer concept",
+    "pointers concept": "pointer concept",
 
-    "memory allocation": "malloc()",
-    "dynamic memory allocation": "malloc()",
     "malloc": "malloc()",
+    "malloc function": "malloc()",
 
     "calloc": "calloc()",
     "calloc function": "calloc()",
@@ -690,37 +704,35 @@ const topicAliases = {
     "free function": "free()",
 
     "structure": "structures",
-    "structures in c": "structures",
-
-    "structure declaration in c": "structure declaration",
+    "struct": "structures",
+    "structure declaration": "structure declaration",
 
     "file": "file handling",
+    "files": "file handling",
     "file handling in c": "file handling",
 
-    "open file": "fopen()",
     "fopen": "fopen()",
     "fopen function": "fopen()",
 
-    "close file": "fclose()",
     "fclose": "fclose()",
     "fclose function": "fclose()",
 
     "function": "functions",
     "functions in c": "functions",
-
     "user defined function": "user-defined functions",
-    "user-defined function": "user-defined functions",
+    "user defined functions": "user-defined functions",
 
     "recursive function": "recursion",
     "recursion in c": "recursion",
 
     "bitwise and operator": "bitwise and",
-    "bitwise &": "bitwise and",
-
     "bitwise or operator": "bitwise or",
-    "bitwise |": "bitwise or",
 
-    "memory management in c": "memory management"
+    "memory": "memory management",
+    "memory management in c": "memory management",
+
+    "heap memory": "heap memory",
+    "stack memory": "stack memory"
 
 };
 
@@ -769,16 +781,12 @@ function getTopicDescription(levelName) {
 const topicContent = {
 
     "what is c?": {
-
         concept:
-            "C is a general-purpose programming language designed for efficient and structured programming. It provides direct access to memory while supporting structured and modular programming techniques.",
-
+            "C is a general-purpose programming language designed for efficient and structured programming. It provides low-level memory access while also supporting high-level programming techniques.",
         importance:
-            "C is widely used in operating systems, embedded systems, compilers, networking software and performance-oriented applications.",
-
+            "C is widely used for operating systems, embedded systems, compilers, networking software and performance-oriented applications.",
         syntax:
             "A basic C program normally contains header files, a main function, statements and a return statement.",
-
         syntaxCode:
 `#include <stdio.h>
 
@@ -788,10 +796,8 @@ int main(void)
 
     return 0;
 }`,
-
         example:
             "This example demonstrates the basic structure of a C program.",
-
         code:
 `#include <stdio.h>
 
@@ -801,33 +807,24 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Write a program that prints your name, college name and a sentence explaining why you are learning C.",
-
         tip:
             "Understand the structure of main() before moving to more advanced topics."
-
     },
 
 
     "hello world": {
-
         concept:
             "The Hello World program is usually the first C program written by a beginner. It demonstrates how a C program displays text using printf().",
-
         importance:
             "It helps you understand headers, main(), statements, printf(), strings and program execution.",
-
         syntax:
             "Use printf() inside main() to display text.",
-
         syntaxCode:
 `printf("message");`,
-
         example:
             "The following program displays Hello, World! on the screen.",
-
         code:
 `#include <stdio.h>
 
@@ -837,37 +834,28 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Modify the program so that it prints your name and your college name.",
-
         tip:
             "Remember that text printed by printf() is placed inside quotation marks."
-
     },
 
 
     "variables": {
-
         concept:
-            "A variable is a named object used by a C program to store a value. Its stored value can normally be changed during program execution.",
-
+            "A variable is a named memory location used to store a value that can be accessed and modified by a C program.",
         importance:
-            "Variables are fundamental because programs need to store and manipulate data.",
-
+            "Variables are fundamental to almost every C program because programs need to store and manipulate data.",
         syntax:
             "A variable is normally declared using a data type followed by its name.",
-
         syntaxCode:
 `int age;
 
 float marks;
 
 char grade;`,
-
         example:
             "The following program declares and uses an integer variable.",
-
         code:
 `#include <stdio.h>
 
@@ -879,33 +867,24 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Create variables for your age, marks and grade, then display them using printf().",
-
         tip:
             "Always choose a suitable data type for the value you want to store."
-
     },
 
 
     "what is a variable?": {
-
         concept:
             "A variable is a named object that stores a value in memory. The value can normally be changed during program execution.",
-
         importance:
             "Variables allow programs to work with changing data such as numbers, characters and calculated results.",
-
         syntax:
             "Declare a variable using a data type and identifier.",
-
         syntaxCode:
 `int number = 10;`,
-
         example:
             "This example creates an integer variable and changes its value.",
-
         code:
 `#include <stdio.h>
 
@@ -919,33 +898,24 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Create an integer variable, assign two different values to it and print both values.",
-
         tip:
             "Initialization gives a variable its first value."
-
     },
 
 
     "printf()": {
-
         concept:
-            "printf() is a standard C library function used to display formatted output on the standard output stream.",
-
+            "printf() is a standard library function used to display formatted output on the standard output stream.",
         importance:
             "It is one of the most frequently used functions in C for displaying program results and information.",
-
         syntax:
-            "The format string specifies how supplied values should be displayed.",
-
+            "The format string specifies how the supplied values should be displayed.",
         syntaxCode:
 `printf("format", value1, value2);`,
-
         example:
             "The following program prints an integer using the %d format specifier.",
-
         code:
 `#include <stdio.h>
 
@@ -957,35 +927,26 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Write a program that prints an integer, a floating-point number and a character.",
-
         tip:
             "Make sure your format specifier matches the type of the value being printed."
-
     },
 
 
     "scanf()": {
-
         concept:
             "scanf() is a formatted input function that reads values from the standard input stream.",
-
         importance:
             "It allows programs to receive data entered by the user.",
-
         syntax:
             "For most scalar variables, scanf() requires the address of the variable.",
-
         syntaxCode:
 `int number;
 
 scanf("%d", &number);`,
-
         example:
             "The program reads an integer entered by the user.",
-
         code:
 `#include <stdio.h>
 
@@ -1001,35 +962,26 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Write a program that reads two integers and prints their sum.",
-
         tip:
             "For scanf() with an ordinary integer variable, remember the & address operator."
-
     },
 
 
     "getchar()": {
-
         concept:
             "getchar() reads one character from the standard input stream.",
-
         importance:
             "It is useful when programs need to process input character by character.",
-
         syntax:
             "The function takes no argument and returns the next character from the input stream.",
-
         syntaxCode:
 `int ch;
 
 ch = getchar();`,
-
         example:
             "This program reads one character and displays it.",
-
         code:
 `#include <stdio.h>
 
@@ -1045,33 +997,24 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Read one character and determine whether it is a digit, letter or another character.",
-
         tip:
             "Use int for the result of getchar() so that EOF can also be represented."
-
     },
 
 
     "putchar()": {
-
         concept:
             "putchar() writes a single character to the standard output stream.",
-
         importance:
             "It is useful for simple character-based output.",
-
         syntax:
             "Pass the character to be printed as the argument.",
-
         syntaxCode:
 `putchar('A');`,
-
         example:
             "The following program prints a character.",
-
         code:
 `#include <stdio.h>
 
@@ -1082,36 +1025,27 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Use putchar() to display the characters of a word one by one.",
-
         tip:
             "A character constant such as 'A' uses single quotation marks."
-
     },
 
 
     "if": {
-
         concept:
             "The if statement allows a program to execute a block of code only when a specified condition evaluates as true.",
-
         importance:
             "Decision-making is essential when program behavior must change according to input or calculated values.",
-
         syntax:
             "The condition is placed inside parentheses after the if keyword.",
-
         syntaxCode:
 `if (condition)
 {
     statement;
 }`,
-
         example:
             "This program checks whether a person is an adult.",
-
         code:
 `#include <stdio.h>
 
@@ -1126,27 +1060,20 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Write a program that checks whether a number is positive.",
-
         tip:
             "Use == when comparing values and = when assigning a value."
-
     },
 
 
     "if-else": {
-
         concept:
             "The if-else statement provides two possible execution paths: one when the condition is true and another when it is false.",
-
         importance:
             "It is useful when a program must choose between two alternatives.",
-
         syntax:
             "The else block executes when the if condition is false.",
-
         syntaxCode:
 `if (condition)
 {
@@ -1156,10 +1083,8 @@ else
 {
     statement2;
 }`,
-
         example:
             "The program determines whether a number is even or odd.",
-
         code:
 `#include <stdio.h>
 
@@ -1178,27 +1103,20 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Read a number from the user and determine whether it is positive or negative.",
-
         tip:
             "Make sure both possible conditions are handled correctly."
-
     },
 
 
     "switch": {
-
         concept:
             "The switch statement selects one block of code from several possible cases based on the value of an expression.",
-
         importance:
             "It is particularly useful for menus and situations where one value corresponds to several possible choices.",
-
         syntax:
             "Each case specifies a possible value. break normally prevents execution from continuing into the next case.",
-
         syntaxCode:
 `switch (choice)
 {
@@ -1213,10 +1131,8 @@ int main(void)
     default:
         statement;
 }`,
-
         example:
             "This example selects an option using switch.",
-
         code:
 `#include <stdio.h>
 
@@ -1240,36 +1156,27 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Create a simple calculator menu using switch.",
-
         tip:
             "Understand fall-through behavior and use break when you want to stop at a case."
-
     },
 
 
     "for": {
-
         concept:
             "A for loop repeatedly executes a block of code using an initialization expression, a condition and an update expression.",
-
         importance:
             "It is useful when a task needs to be repeated a known number of times.",
-
         syntax:
             "The three parts of the for loop control initialization, continuation and update.",
-
         syntaxCode:
 `for (initialization; condition; update)
 {
     statements;
 }`,
-
         example:
             "This program prints numbers from 1 to 5.",
-
         code:
 `#include <stdio.h>
 
@@ -1282,36 +1189,27 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Write a program to print the multiplication table of a number.",
-
         tip:
             "Check the loop condition carefully to avoid off-by-one errors."
-
     },
 
 
     "while": {
-
         concept:
             "A while loop repeatedly executes its body as long as its condition remains true.",
-
         importance:
             "It is useful when the number of repetitions is not known in advance.",
-
         syntax:
             "The condition is checked before each iteration.",
-
         syntaxCode:
 `while (condition)
 {
     statements;
 }`,
-
         example:
             "The program prints numbers from 1 to 5 using a while loop.",
-
         code:
 `#include <stdio.h>
 
@@ -1328,37 +1226,28 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Write a while loop that keeps accepting numbers until the user enters zero.",
-
         tip:
             "Make sure something inside the loop eventually changes the condition."
-
     },
 
 
     "do-while": {
-
         concept:
             "A do-while loop executes its body first and checks the condition afterward.",
-
         importance:
             "This guarantees that the loop body executes at least once.",
-
         syntax:
             "The while condition appears after the loop body and is followed by a semicolon.",
-
         syntaxCode:
 `do
 {
     statements;
 }
 while (condition);`,
-
         example:
-            "This example displays a message at least once.",
-
+            "This example repeatedly asks the user for a choice.",
         code:
 `#include <stdio.h>
 
@@ -1376,33 +1265,24 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Create a menu that repeatedly asks the user for a choice until an exit option is selected.",
-
         tip:
             "Remember the semicolon after the while condition."
-
     },
 
 
     "arrays": {
-
         concept:
             "An array is a collection of elements of the same type stored in contiguous memory locations.",
-
         importance:
             "Arrays make it possible to efficiently store and process multiple related values.",
-
         syntax:
             "Declare an array by specifying its element type, name and size.",
-
         syntaxCode:
 `int numbers[5];`,
-
         example:
             "The following program initializes and accesses an integer array.",
-
         code:
 `#include <stdio.h>
 
@@ -1416,73 +1296,53 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Create an array of five numbers and calculate their sum.",
-
         tip:
             "Array indexing starts at zero, not one."
-
     },
 
 
     "array declaration": {
-
         concept:
             "Array declaration creates an array object capable of storing multiple values of the specified type.",
-
         importance:
             "Correct array declaration is necessary before the elements can be safely accessed.",
-
         syntax:
             "The array size specifies the number of elements for an ordinary fixed-size array.",
-
         syntaxCode:
 `int marks[5];`,
-
         example:
             "This program declares an array and initializes its elements.",
-
         code:
 `#include <stdio.h>
 
 int main(void)
 {
-    int marks[5] = {
-        70, 80, 75, 90, 85
-    };
+    int marks[5] = {70, 80, 75, 90, 85};
 
     printf("%d\\n", marks[0]);
 
     return 0;
 }`,
-
         practice:
             "Declare an array for five student marks and print every element using a loop.",
-
         tip:
             "Never access an array outside its valid range."
-
     },
 
 
     "c strings": {
-
         concept:
             "A C string is a sequence of characters stored in an array and terminated by a null character.",
-
         importance:
             "Strings are widely used for names, messages, file paths, commands and textual data.",
-
         syntax:
             "A string can be initialized using a string literal.",
-
         syntaxCode:
 `char name[] = "EduLearn";`,
-
         example:
             "This program stores and displays a C string.",
-
         code:
 `#include <stdio.h>
 
@@ -1494,33 +1354,24 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Read a name and display its length using strlen().",
-
         tip:
             "A C string must have a terminating null character."
-
     },
 
 
     "strlen()": {
-
         concept:
             "strlen() calculates the length of a null-terminated string, excluding the terminating null character.",
-
         importance:
             "String length is frequently required when processing and validating textual input.",
-
         syntax:
             "Pass a pointer to the null-terminated string.",
-
         syntaxCode:
 `size_t length = strlen(text);`,
-
         example:
             "This program calculates the length of a string.",
-
         code:
 `#include <stdio.h>
 #include <string.h>
@@ -1533,35 +1384,26 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Read a string and display its length.",
-
         tip:
             "strlen() counts characters before the terminating '\\0'."
-
     },
 
 
     "pointers": {
-
         concept:
             "A pointer is an object that stores the address of another object or function, depending on its type.",
-
         importance:
             "Pointers are fundamental to arrays, dynamic memory, functions, data structures and systems programming.",
-
         syntax:
             "The * in a declaration indicates a pointer type, while & obtains an object's address.",
-
         syntaxCode:
 `int number = 10;
 
 int *ptr = &number;`,
-
         example:
             "The program stores the address of an integer in a pointer and accesses the value through dereferencing.",
-
         code:
 `#include <stdio.h>
 
@@ -1575,37 +1417,28 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Create a pointer to an integer and use it to change the integer's value.",
-
         tip:
             "Never dereference an invalid or uninitialized pointer."
-
     },
 
 
     "pointer concept": {
-
         concept:
             "Pointers provide a way to work with memory addresses. A pointer can refer to an object of a compatible type.",
-
         importance:
             "Understanding pointers is essential for dynamic memory, arrays, structures and advanced C programming.",
-
         syntax:
             "Use & to obtain an address and * to dereference a pointer.",
-
         syntaxCode:
 `int value = 10;
 
 int *ptr = &value;
 
 printf("%d", *ptr);`,
-
         example:
             "The pointer is used to access the value stored in another object.",
-
         code:
 `#include <stdio.h>
 
@@ -1619,33 +1452,24 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Create two integer variables and use pointers to access their values.",
-
         tip:
             "Always know which object a pointer currently points to."
-
     },
 
 
     "malloc()": {
-
         concept:
             "malloc() requests a block of dynamically allocated memory and returns a pointer to the allocated storage.",
-
         importance:
             "Dynamic memory allows programs to allocate storage when the required size is determined during execution.",
-
         syntax:
             "malloc() receives the number of bytes required.",
-
         syntaxCode:
 `int *ptr = malloc(sizeof(int));`,
-
         example:
             "The following program allocates memory for one integer and releases it afterward.",
-
         code:
 `#include <stdio.h>
 #include <stdlib.h>
@@ -1667,33 +1491,24 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Dynamically allocate an array for five integers and store values in it.",
-
         tip:
             "Always check whether allocation succeeded and release memory with free()."
-
     },
 
 
     "calloc()": {
-
         concept:
             "calloc() allocates space for a specified number of objects and initializes all bytes of the allocated storage to zero.",
-
         importance:
-            "It is useful when a dynamically allocated array needs zero-initialized storage.",
-
+            "It is useful when a dynamically allocated array needs predictable zero-initialized storage.",
         syntax:
             "calloc() takes the number of elements and the size of each element.",
-
         syntaxCode:
 `int *ptr = calloc(5, sizeof(int));`,
-
         example:
             "The following program allocates five integers.",
-
         code:
 `#include <stdio.h>
 #include <stdlib.h>
@@ -1716,33 +1531,24 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Allocate an array using calloc() and assign values to its elements.",
-
         tip:
             "Remember to free dynamically allocated memory when it is no longer needed."
-
     },
 
 
     "realloc()": {
-
         concept:
             "realloc() changes the size of a previously allocated memory block.",
-
         importance:
             "It is useful when a dynamically allocated data structure needs to grow or shrink.",
-
         syntax:
             "Pass the existing pointer and the new size in bytes.",
-
         syntaxCode:
 `ptr = realloc(ptr, newSize);`,
-
         example:
             "This example expands a dynamically allocated array.",
-
         code:
 `#include <stdio.h>
 #include <stdlib.h>
@@ -1760,8 +1566,7 @@ int main(void)
     numbers[1] = 20;
     numbers[2] = 30;
 
-    int *temp =
-        realloc(numbers, 5 * sizeof(int));
+    int *temp = realloc(numbers, 5 * sizeof(int));
 
     if (temp == NULL)
     {
@@ -1783,33 +1588,24 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Create a dynamically allocated array and increase its size using realloc().",
-
         tip:
             "Use a temporary pointer with realloc() so the original pointer is not lost if allocation fails."
-
     },
 
 
     "free()": {
-
         concept:
             "free() releases dynamically allocated memory so that it can be reused by the program's memory allocator.",
-
         importance:
             "Properly releasing dynamic memory helps prevent memory leaks.",
-
         syntax:
             "Pass a pointer returned by a compatible memory allocation function.",
-
         syntaxCode:
 `free(ptr);`,
-
         example:
             "This program allocates memory and releases it.",
-
         code:
 `#include <stdio.h>
 #include <stdlib.h>
@@ -1833,37 +1629,28 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Allocate memory for several integers, use it and release it correctly.",
-
         tip:
             "After freeing a pointer, do not continue using the released storage."
-
     },
 
 
     "structures": {
-
         concept:
             "A structure is a user-defined type that groups related objects, potentially of different types, into a single object.",
-
         importance:
             "Structures are essential for representing real-world entities such as students, employees and products.",
-
         syntax:
             "Define a structure using the struct keyword followed by its members.",
-
         syntaxCode:
 `struct Student
 {
     int age;
     float marks;
 };`,
-
         example:
             "The following program creates and uses a structure object.",
-
         code:
 `#include <stdio.h>
 
@@ -1882,37 +1669,28 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Create a structure representing an employee with an ID, name and salary.",
-
         tip:
             "Use the dot operator when accessing members of a structure object."
-
     },
 
 
     "structure declaration": {
-
         concept:
             "A structure declaration defines a structure type and specifies the members it contains.",
-
         importance:
             "Structure declarations provide a way to organize related data into meaningful records.",
-
         syntax:
             "Use struct followed by a tag and a member list.",
-
         syntaxCode:
 `struct Student
 {
     int age;
     float marks;
 };`,
-
         example:
             "This structure contains two members.",
-
         code:
 `#include <stdio.h>
 
@@ -1935,27 +1713,20 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Define a structure for a book containing title, author and price.",
-
         tip:
             "The structure definition describes the type; declaring a structure variable creates an object of that type."
-
     },
 
 
     "file handling": {
-
         concept:
             "File handling allows a C program to communicate with files through streams provided by the standard I/O library.",
-
         importance:
             "Files allow data to remain available after a program terminates and are useful for records, configuration and persistent storage.",
-
         syntax:
             "A file is commonly opened with fopen(), used with an appropriate I/O function and then closed with fclose().",
-
         syntaxCode:
 `FILE *file;
 
@@ -1963,14 +1734,10 @@ file = fopen("data.txt", "w");
 
 if (file != NULL)
 {
-    /* file operations */
-
     fclose(file);
 }`,
-
         example:
             "This program creates or opens a text file and writes a message to it.",
-
         code:
 `#include <stdio.h>
 
@@ -1991,40 +1758,30 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Create a program that writes student information into a text file and then reads it back.",
-
         tip:
             "Always check whether fopen() succeeded before using the FILE pointer."
-
     },
 
 
     "fopen()": {
-
         concept:
             "fopen() opens a file and associates it with a stream.",
-
         importance:
             "It is the starting point for most standard C file input and output operations.",
-
         syntax:
             "The first argument specifies the file name and the second specifies the access mode.",
-
         syntaxCode:
 `FILE *file = fopen("data.txt", "r");`,
-
         example:
             "This program opens a file for reading.",
-
         code:
 `#include <stdio.h>
 
 int main(void)
 {
-    FILE *file =
-        fopen("data.txt", "r");
+    FILE *file = fopen("data.txt", "r");
 
     if (file == NULL)
     {
@@ -2038,83 +1795,63 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Open a file in write mode and store three lines of text.",
-
         tip:
             "Choose the file mode carefully: r, w, a and their update/binary variants have different behavior."
-
     },
 
 
     "fclose()": {
-
         concept:
             "fclose() closes a file stream and releases resources associated with it.",
-
         importance:
             "Closing files properly helps ensure buffered output is written and resources are released.",
-
         syntax:
             "Pass the FILE pointer returned by a successful file-opening operation.",
-
         syntaxCode:
 `fclose(file);`,
-
         example:
             "This program opens and closes a file.",
-
         code:
 `#include <stdio.h>
 
 int main(void)
 {
-    FILE *file =
-        fopen("data.txt", "w");
+    FILE *file = fopen("data.txt", "w");
 
     if (file == NULL)
     {
         return 1;
     }
 
-    fprintf(file,
-            "EduLearn C Programming\\n");
+    fprintf(file, "EduLearn C Programming\\n");
 
     fclose(file);
 
     return 0;
 }`,
-
         practice:
             "Write a program that opens a file, writes data and closes it correctly.",
-
         tip:
             "Do not use the stream after it has been closed."
-
     },
 
 
     "functions": {
-
         concept:
             "A function is a reusable unit of code that performs a specific task. C supports both standard library functions and user-defined functions.",
-
         importance:
             "Functions make programs easier to understand, test, reuse and maintain.",
-
         syntax:
             "A function generally has a return type, name, parameter list and body.",
-
         syntaxCode:
 `return_type function_name(parameters)
 {
     statements;
 }`,
-
         example:
             "The following example defines and calls a simple function.",
-
         code:
 `#include <stdio.h>
 
@@ -2129,36 +1866,27 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Create a function that accepts two integers and returns their sum.",
-
         tip:
             "Use function prototypes when a function is defined after the point where it is called."
-
     },
 
 
     "user-defined functions": {
-
         concept:
             "User-defined functions are functions created by the programmer to perform specific tasks.",
-
         importance:
             "They allow large programs to be divided into smaller and reusable components.",
-
         syntax:
             "Define the function and call it from another part of the program.",
-
         syntaxCode:
 `int add(int a, int b)
 {
     return a + b;
 }`,
-
         example:
             "This function returns the sum of two integers.",
-
         code:
 `#include <stdio.h>
 
@@ -2175,27 +1903,20 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Create functions for addition, subtraction, multiplication and division.",
-
         tip:
             "Give each function a clear responsibility."
-
     },
 
 
     "recursion": {
-
         concept:
             "Recursion occurs when a function directly or indirectly calls itself. A recursive solution normally contains a base case and a recursive case.",
-
         importance:
             "Recursion is useful for naturally recursive problems such as tree traversal and divide-and-conquer algorithms.",
-
         syntax:
             "A recursive function must eventually reach a base case to stop further calls.",
-
         syntaxCode:
 `void function(void)
 {
@@ -2204,10 +1925,8 @@ int main(void)
 
     function();
 }`,
-
         example:
             "This program calculates a factorial recursively.",
-
         code:
 `#include <stdio.h>
 
@@ -2227,33 +1946,24 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Write recursive functions for factorial and Fibonacci numbers.",
-
         tip:
             "Always verify that every recursive path eventually reaches the base case."
-
     },
 
 
     "bitwise and": {
-
         concept:
             "The bitwise AND operator compares corresponding bits of two integer operands and produces a result containing 1 only where both corresponding bits are 1.",
-
         importance:
             "Bitwise operations are useful for masks, flags, embedded systems and low-level programming.",
-
         syntax:
             "Use the & operator between integer operands.",
-
         syntaxCode:
 `result = a & b;`,
-
         example:
             "This example demonstrates bitwise AND.",
-
         code:
 `#include <stdio.h>
 
@@ -2268,33 +1978,24 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Use a bit mask to test whether a particular bit is set.",
-
         tip:
             "Distinguish bitwise & from logical &&."
-
     },
 
 
     "bitwise or": {
-
         concept:
             "The bitwise OR operator produces a 1 in each bit position where at least one operand has a 1.",
-
         importance:
             "Bitwise OR is commonly used to set selected bits and combine flags.",
-
         syntax:
             "Use the | operator.",
-
         syntaxCode:
 `result = a | b;`,
-
         example:
             "This program combines two integer bit patterns.",
-
         code:
 `#include <stdio.h>
 
@@ -2307,27 +2008,20 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Use bitwise OR to set a particular flag in an integer.",
-
         tip:
             "Bitwise OR and logical OR have different purposes."
-
     },
 
 
     "memory management": {
-
         concept:
             "Memory management in C involves understanding how objects obtain storage, how long that storage exists and how dynamically allocated memory is released.",
-
         importance:
             "Good memory management is essential for correctness, reliability and security in C programs.",
-
         syntax:
             "Dynamic memory is commonly managed with malloc(), calloc(), realloc() and free().",
-
         syntaxCode:
 `int *ptr = malloc(sizeof(int));
 
@@ -2337,10 +2031,8 @@ if (ptr != NULL)
 
     free(ptr);
 }`,
-
         example:
             "A dynamically allocated integer is used and then released.",
-
         code:
 `#include <stdio.h>
 #include <stdlib.h>
@@ -2362,34 +2054,21 @@ int main(void)
 
     return 0;
 }`,
-
         practice:
             "Create and release dynamic memory for an array of integers.",
-
         tip:
             "Learn ownership and lifetime carefully before working with complex dynamic structures."
-
-    }
-
-};
+    },
 
 
-/* =========================================================
-   DEFAULT CONTENT
-========================================================= */
-
-const defaultContent = {
-
-    concept:
-        "This topic is an important part of the EduLearn C Programming curriculum. Understanding it requires learning its definition, purpose, syntax, behavior and relationship with other C concepts.",
-
-    importance:
-        "This concept contributes to stronger programming skills and is useful for university examinations, programming assignments, projects and technical interviews.",
-
-    syntax:
-        "The exact syntax depends on the specific C feature being studied. Review the rules of the topic and apply them through small programs.",
-
-    syntaxCode:
+    "default": {
+        concept:
+            "This topic is an important part of the EduLearn C Programming curriculum. Understanding it requires learning its definition, purpose, syntax, behavior and relationship with other C concepts.",
+        importance:
+            "This concept contributes to stronger programming skills and is useful for university examinations, programming assignments, projects and technical interviews.",
+        syntax:
+            "The exact syntax depends on the specific C feature being studied. Review the rules of the topic and apply them through small programs.",
+        syntaxCode:
 `#include <stdio.h>
 
 int main(void)
@@ -2398,11 +2077,9 @@ int main(void)
 
     return 0;
 }`,
-
-    example:
-        "Start with a small program that demonstrates the basic idea of this topic.",
-
-    code:
+        example:
+            "Start with a small program that demonstrates the basic idea of this topic.",
+        code:
 `#include <stdio.h>
 
 int main(void)
@@ -2411,19 +2088,17 @@ int main(void)
 
     return 0;
 }`,
-
-    practice:
-        "Write a small C program that demonstrates this topic. Test the program, modify it and observe how the output changes.",
-
-    tip:
-        "Do not only memorize the definition. Write and run a program to understand how the concept behaves."
+        practice:
+            "Write a small C program that demonstrates this topic. Test the program, modify it and observe how the output changes.",
+        tip:
+            "Do not only memorize the definition. Write and run a program to understand how the concept behaves."
+    }
 
 };
 
 
 /* =========================================================
    GET CONTENT
-   THIS IS THE CORRECTED FUNCTION
 ========================================================= */
 
 function getContent(topicName) {
@@ -2437,9 +2112,6 @@ function getContent(topicName) {
     const finalName =
         alias || normalized;
 
-
-    /* Exact topic or alias match */
-
     if (topicContent[finalName]) {
 
         return topicContent[finalName];
@@ -2447,10 +2119,9 @@ function getContent(topicName) {
     }
 
 
-    /*
-       Dynamic topic-specific content.
-       This prevents unknown topics from looking completely identical.
-    */
+    /* =====================================================
+       AUTOMATIC TOPIC-SPECIFIC FALLBACK
+    ===================================================== */
 
     let concept =
         topicName +
@@ -2500,16 +2171,18 @@ int main(void)
         "Understand the concept first, then practice it by writing your own C program.";
 
 
-    /* ---------- DATA TYPES ---------- */
+    /* =====================================================
+       DATA TYPES
+    ===================================================== */
 
     if (
-        normalized.includes("data type") ||
-        normalized === "int" ||
-        normalized === "float" ||
-        normalized === "double" ||
-        normalized === "char" ||
-        normalized === "long" ||
-        normalized === "short"
+        finalName.includes("data type") ||
+        finalName === "int" ||
+        finalName === "float" ||
+        finalName === "double" ||
+        finalName === "char" ||
+        finalName === "long" ||
+        finalName === "short"
     ) {
 
         concept =
@@ -2557,18 +2230,19 @@ int main(void)
     }
 
 
-    /* ---------- OPERATORS ---------- */
+    /* =====================================================
+       OPERATORS
+    ===================================================== */
 
     else if (
-        normalized.includes("operator") ||
-        normalized === "addition" ||
-        normalized === "subtraction" ||
-        normalized === "multiplication" ||
-        normalized === "division" ||
-        normalized === "modulus" ||
-        normalized.includes("logical") ||
-        normalized.includes("relational") ||
-        normalized.includes("assignment")
+        finalName.includes("operator") ||
+        finalName === "addition" ||
+        finalName === "subtraction" ||
+        finalName === "multiplication" ||
+        finalName === "division" ||
+        finalName === "modulus" ||
+        finalName.includes("logical") ||
+        finalName.includes("relational")
     ) {
 
         concept =
@@ -2612,10 +2286,12 @@ int main(void)
     }
 
 
-    /* ---------- STRINGS ---------- */
+    /* =====================================================
+       STRINGS
+    ===================================================== */
 
     else if (
-        normalized.includes("string")
+        finalName.includes("string")
     ) {
 
         concept =
@@ -2659,12 +2335,14 @@ int main(void)
     }
 
 
-    /* ---------- POINTERS ---------- */
+    /* =====================================================
+       POINTERS
+    ===================================================== */
 
     else if (
-        normalized.includes("pointer") ||
-        normalized.includes("dereference") ||
-        normalized.includes("address")
+        finalName.includes("pointer") ||
+        finalName.includes("dereference") ||
+        finalName.includes("address")
     ) {
 
         concept =
@@ -2709,13 +2387,15 @@ int main(void)
     }
 
 
-    /* ---------- MEMORY ---------- */
+    /* =====================================================
+       MEMORY
+    ===================================================== */
 
     else if (
-        normalized.includes("memory") ||
-        normalized.includes("allocation") ||
-        normalized === "heap memory" ||
-        normalized === "stack memory"
+        finalName.includes("memory") ||
+        finalName.includes("allocation") ||
+        finalName === "heap memory" ||
+        finalName === "stack memory"
     ) {
 
         concept =
@@ -2771,14 +2451,16 @@ int main(void)
     }
 
 
-    /* ---------- FILES ---------- */
+    /* =====================================================
+       FILES
+    ===================================================== */
 
     else if (
-        normalized.includes("file") ||
-        normalized.includes("fopen") ||
-        normalized.includes("fclose") ||
-        normalized.includes("fread") ||
-        normalized.includes("fwrite")
+        finalName.includes("file") ||
+        finalName.includes("fopen") ||
+        finalName.includes("fclose") ||
+        finalName.includes("fread") ||
+        finalName.includes("fwrite")
     ) {
 
         concept =
@@ -2798,8 +2480,6 @@ file = fopen("data.txt", "w");
 
 if (file != NULL)
 {
-    /* file operation */
-
     fclose(file);
 }`;
 
@@ -2811,16 +2491,14 @@ if (file != NULL)
 
 int main(void)
 {
-    FILE *file =
-        fopen("data.txt", "w");
+    FILE *file = fopen("data.txt", "w");
 
     if (file == NULL)
     {
         return 1;
     }
 
-    fprintf(file,
-            "EduLearn C Programming\\n");
+    fprintf(file, "EduLearn C Programming\\n");
 
     fclose(file);
 
@@ -2836,10 +2514,12 @@ int main(void)
     }
 
 
-    /* ---------- FUNCTIONS ---------- */
+    /* =====================================================
+       FUNCTIONS
+    ===================================================== */
 
     else if (
-        normalized.includes("function")
+        finalName.includes("function")
     ) {
 
         concept =
@@ -2887,10 +2567,12 @@ int main(void)
     }
 
 
-    /* ---------- ARRAYS ---------- */
+    /* =====================================================
+       ARRAYS
+    ===================================================== */
 
     else if (
-        normalized.includes("array")
+        finalName.includes("array")
     ) {
 
         concept =
@@ -2939,13 +2621,15 @@ int main(void)
     }
 
 
-    /* ---------- STRUCTURES / UNIONS / ENUM ---------- */
+    /* =====================================================
+       STRUCTURES / UNIONS / ENUM / TYPEDEF
+    ===================================================== */
 
     else if (
-        normalized.includes("structure") ||
-        normalized.includes("union") ||
-        normalized.includes("enum") ||
-        normalized.includes("typedef")
+        finalName.includes("structure") ||
+        finalName.includes("union") ||
+        finalName.includes("enum") ||
+        finalName.includes("typedef")
     ) {
 
         concept =
@@ -2979,8 +2663,7 @@ struct Student
 
 int main(void)
 {
-    struct Student student =
-        {20, 85.5f};
+    struct Student student = {20, 85.5f};
 
     printf("%d %.1f\\n",
            student.age,
@@ -2998,12 +2681,14 @@ int main(void)
     }
 
 
-    /* ---------- PREPROCESSOR ---------- */
+    /* =====================================================
+       PREPROCESSOR
+    ===================================================== */
 
     else if (
-        normalized.includes("preprocessor") ||
-        normalized.startsWith("#") ||
-        normalized.includes("macro")
+        finalName.includes("preprocessor") ||
+        finalName.startsWith("#") ||
+        finalName.includes("macro")
     ) {
 
         concept =
@@ -3047,13 +2732,15 @@ int main(void)
     }
 
 
-    /* ---------- DEBUGGING ---------- */
+    /* =====================================================
+       DEBUGGING
+    ===================================================== */
 
     else if (
-        normalized.includes("debug") ||
-        normalized.includes("gdb") ||
-        normalized.includes("sanitizer") ||
-        normalized.includes("valgrind")
+        finalName.includes("debug") ||
+        finalName.includes("gdb") ||
+        finalName.includes("sanitizer") ||
+        finalName.includes("valgrind")
     ) {
 
         concept =
@@ -3084,15 +2771,17 @@ int main(void)
     }
 
 
-    /* ---------- SECURITY ---------- */
+    /* =====================================================
+       SECURITY
+    ===================================================== */
 
     else if (
-        normalized.includes("security") ||
-        normalized.includes("buffer overflow") ||
-        normalized.includes("use-after-free") ||
-        normalized.includes("integer overflow") ||
-        normalized.includes("vulnerability") ||
-        normalized.includes("secure")
+        finalName.includes("security") ||
+        finalName.includes("buffer overflow") ||
+        finalName.includes("use-after-free") ||
+        finalName.includes("integer overflow") ||
+        finalName.includes("vulnerability") ||
+        finalName.includes("secure")
     ) {
 
         concept =
@@ -3119,15 +2808,12 @@ int main(void)
 
 int main(void)
 {
-    int values[5] =
-        {10, 20, 30, 40, 50};
-
+    int values[5] = {10, 20, 30, 40, 50};
     int index = 2;
 
     if (index >= 0 && index < 5)
     {
-        printf("%d\\n",
-               values[index]);
+        printf("%d\\n", values[index]);
     }
 
     return 0;
@@ -3203,12 +2889,18 @@ function getTopicKey() {
         return null;
     }
 
+    /*
+        Topic number gets priority.
+
+        This prevents two topics with similar names
+        from sharing the same completion status.
+    */
+
     if (number) {
         return "c_topic_completed_" + number;
     }
 
-    return "c_topic_completed_" +
-        normalizeTopic(topic);
+    return "c_topic_completed_" + normalizeTopic(topic);
 
 }
 
@@ -3275,6 +2967,7 @@ function displayTopic() {
 
     const topicTitle =
         topic.trim();
+
 
     const content =
         getContent(topicTitle);
@@ -3413,15 +3106,19 @@ function checkCompletion() {
     const key =
         getTopicKey();
 
+
     if (!key) {
         return;
     }
 
+
     const completed =
         localStorage.getItem(key) === "true";
 
+
     const status =
         document.getElementById("completionStatus");
+
 
     const button =
         document.getElementById("completeButton");
@@ -3457,14 +3154,17 @@ function markTopicComplete() {
     const key =
         getTopicKey();
 
+
     if (!key) {
         return;
     }
+
 
     localStorage.setItem(
         key,
         "true"
     );
+
 
     checkCompletion();
 
