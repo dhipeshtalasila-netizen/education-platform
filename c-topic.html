@@ -613,8 +613,6 @@ const level = params.get("level");
 
 /* =========================================================
    NORMALIZE TOPIC NAME
-   ---------------------------------------------------------
-   THIS IS THE IMPORTANT FIX
 ========================================================= */
 
 function normalizeTopic(topicName) {
@@ -623,155 +621,442 @@ function normalizeTopic(topicName) {
         return "";
     }
 
-    return decodeURIComponent(topicName)
-        .trim()
+    return topicName
         .toLowerCase()
-        .replace(/\+/g, " ")
-        .replace(/[–—]/g, "-")
-        .replace(/[’']/g, "'")
+        .trim()
         .replace(/\s+/g, " ")
-        .replace(/\s*\(\s*/g, "(")
-        .replace(/\s*\)\s*/g, ")")
-        .replace(/\s*-\s*/g, "-")
-        .trim();
+        .replace(/[“”‘’]/g, "'");
 
 }
 
 
 /* =========================================================
    TOPIC ALIASES
-   ---------------------------------------------------------
-   Different names from c.html can now point to the
-   correct content without creating duplicate entries.
 ========================================================= */
 
 const topicAliases = {
 
-    "what is c": "what is c?",
-    "what is c programming": "what is c?",
-    "c programming": "what is c?",
-    "introduction to c": "what is c?",
-    "introduction to c programming": "what is c?",
+    /* ---------- BASIC ---------- */
 
-    "hello world program": "hello world",
-    "hello world in c": "hello world",
+    "what is c":
+        "what is c?",
 
-    "variable": "variables",
-    "what is a variable": "what is a variable?",
+    "what is c programming":
+        "what is c?",
 
-    "integer": "int",
-    "integer data type": "int",
-    "floating point": "float",
-    "floating point data type": "float",
-    "double data type": "double",
-    "character data type": "char",
-    "character": "char",
-    "long integer": "long",
-    "short integer": "short",
+    "introduction to c":
+        "what is c?",
 
-    "print": "printf()",
-    "printf": "printf()",
-    "formatted output": "printf()",
+    "introduction to c programming":
+        "what is c?",
 
-    "input": "scanf()",
-    "scanf": "scanf()",
-    "formatted input": "scanf()",
+    "c introduction":
+        "what is c?",
 
-    "getchar": "getchar()",
-    "putchar": "putchar()",
+    "hello world program":
+        "hello world",
 
-    "if statement": "if",
-    "if else": "if-else",
-    "if else statement": "if-else",
-    "switch statement": "switch",
+    "hello world in c":
+        "hello world",
 
-    "for loop": "for",
-    "while loop": "while",
-    "do while": "do-while",
-    "do-while loop": "do-while",
 
-    "array": "arrays",
-    "array declaration and initialization": "array declaration",
-    "array declaration": "array declaration",
+    /* ---------- VARIABLES ---------- */
 
-    "strings": "c strings",
-    "string": "c strings",
-    "c string": "c strings",
-    "c strings": "c strings",
+    "variable":
+        "variables",
 
-    "string length": "strlen()",
-    "strlen": "strlen()",
+    "what are variables":
+        "variables",
 
-    "pointer": "pointers",
-    "pointer concept": "pointer concept",
-    "pointer concepts": "pointer concept",
-    "dereferencing": "pointer concept",
-    "dereference": "pointer concept",
-    "address operator": "pointer concept",
+    "what is variable":
+        "what is a variable?",
 
-    "malloc": "malloc()",
-    "calloc": "calloc()",
-    "realloc": "realloc()",
-    "free": "free()",
+    "variable declaration":
+        "variables",
 
-    "dynamic memory": "memory management",
-    "memory allocation": "memory management",
-    "memory management": "memory management",
-    "heap memory": "memory management",
-    "stack memory": "memory management",
+    "variable initialization":
+        "variables",
 
-    "structure": "structures",
-    "struct": "structures",
-    "structure declaration": "structure declaration",
 
-    "union": "union",
-    "enumeration": "enum",
-    "enum": "enum",
-    "typedef": "typedef",
+    /* ---------- INPUT / OUTPUT ---------- */
 
-    "file": "file handling",
-    "file handling": "file handling",
-    "file input output": "file handling",
-    "fopen": "fopen()",
-    "fclose": "fclose()",
-    "fread": "fread()",
-    "fwrite": "fwrite()",
+    "printf":
+        "printf()",
 
-    "function": "functions",
-    "function declaration": "functions",
-    "function definition": "functions",
-    "function call": "functions",
-    "user defined function": "user-defined functions",
-    "user-defined function": "user-defined functions",
-    "user defined functions": "user-defined functions",
+    "printf function":
+        "printf()",
 
-    "recursive function": "recursion",
-    "recursion": "recursion",
+    "printf() function":
+        "printf()",
 
-    "bitwise and operator": "bitwise and",
-    "bitwise &": "bitwise and",
-    "bitwise or operator": "bitwise or",
-    "bitwise |": "bitwise or",
+    "scanf":
+        "scanf()",
 
-    "preprocessor directive": "preprocessor",
-    "preprocessor directives": "preprocessor",
-    "c preprocessor": "preprocessor",
-    "macro": "macro",
-    "macros": "macro",
+    "scanf function":
+        "scanf()",
 
-    "debugging": "debugging",
-    "debugger": "debugging",
-    "gdb": "gdb",
-    "address sanitizer": "sanitizer",
-    "asan": "sanitizer",
-    "valgrind": "valgrind",
+    "scanf() function":
+        "scanf()",
 
-    "buffer overflow": "buffer overflow",
-    "integer overflow": "integer overflow",
-    "use after free": "use-after-free",
-    "use-after-free": "use-after-free",
-    "security": "security",
-    "c security": "security"
+    "getchar":
+        "getchar()",
+
+    "getchar function":
+        "getchar()",
+
+    "putchar":
+        "putchar()",
+
+    "putchar function":
+        "putchar()",
+
+
+    /* ---------- DECISION MAKING ---------- */
+
+    "if statement":
+        "if",
+
+    "if-else statement":
+        "if-else",
+
+    "if else":
+        "if-else",
+
+    "if else statement":
+        "if-else",
+
+    "switch statement":
+        "switch",
+
+    "switch case":
+        "switch",
+
+
+    /* ---------- LOOPS ---------- */
+
+    "for loop":
+        "for",
+
+    "while loop":
+        "while",
+
+    "do while":
+        "do-while",
+
+    "do while loop":
+        "do-while",
+
+    "do-while loop":
+        "do-while",
+
+
+    /* ---------- ARRAYS ---------- */
+
+    "array":
+        "arrays",
+
+    "array declaration":
+        "array declaration",
+
+    "array initialization":
+        "arrays",
+
+    "one dimensional array":
+        "arrays",
+
+    "1d array":
+        "arrays",
+
+    "two dimensional array":
+        "arrays",
+
+    "2d array":
+        "arrays",
+
+
+    /* ---------- STRINGS ---------- */
+
+    "string":
+        "c strings",
+
+    "strings":
+        "c strings",
+
+    "c string":
+        "c strings",
+
+    "string in c":
+        "c strings",
+
+    "string length":
+        "strlen()",
+
+    "strlen":
+        "strlen()",
+
+    "strlen function":
+        "strlen()",
+
+
+    /* ---------- POINTERS ---------- */
+
+    "pointer":
+        "pointers",
+
+    "pointer concept":
+        "pointer concept",
+
+    "pointer concepts":
+        "pointer concept",
+
+    "pointers concept":
+        "pointer concept",
+
+    "pointer declaration":
+        "pointer concept",
+
+    "pointer basics":
+        "pointer concept",
+
+    "dereferencing":
+        "pointer concept",
+
+    "pointer dereferencing":
+        "pointer concept",
+
+    "address operator":
+        "pointer concept",
+
+
+    /* ---------- DYNAMIC MEMORY ---------- */
+
+    "dynamic memory":
+        "memory management",
+
+    "dynamic memory allocation":
+        "memory management",
+
+    "memory allocation":
+        "memory management",
+
+    "malloc":
+        "malloc()",
+
+    "malloc function":
+        "malloc()",
+
+    "calloc":
+        "calloc()",
+
+    "calloc function":
+        "calloc()",
+
+    "realloc":
+        "realloc()",
+
+    "realloc function":
+        "realloc()",
+
+    "free":
+        "free()",
+
+    "free function":
+        "free()",
+
+
+    /* ---------- STRUCTURES ---------- */
+
+    "structure":
+        "structures",
+
+    "structure declaration":
+        "structure declaration",
+
+    "struct":
+        "structures",
+
+    "struct keyword":
+        "structures",
+
+    "union":
+        "structures",
+
+    "enumeration":
+        "structures",
+
+    "enum":
+        "structures",
+
+    "typedef":
+        "structures",
+
+
+    /* ---------- FILE HANDLING ---------- */
+
+    "files":
+        "file handling",
+
+    "file handling in c":
+        "file handling",
+
+    "file input output":
+        "file handling",
+
+    "file input/output":
+        "file handling",
+
+    "file i/o":
+        "file handling",
+
+    "fopen":
+        "fopen()",
+
+    "fopen function":
+        "fopen()",
+
+    "fclose":
+        "fclose()",
+
+    "fclose function":
+        "fclose()",
+
+
+    /* ---------- FUNCTIONS ---------- */
+
+    "function":
+        "functions",
+
+    "function in c":
+        "functions",
+
+    "functions in c":
+        "functions",
+
+    "user defined function":
+        "user-defined functions",
+
+    "user-defined function":
+        "user-defined functions",
+
+    "user defined functions":
+        "user-defined functions",
+
+
+    /* ---------- RECURSION ---------- */
+
+    "recursive function":
+        "recursion",
+
+    "recursive functions":
+        "recursion",
+
+    "recursion in c":
+        "recursion",
+
+
+    /* ---------- BITWISE ---------- */
+
+    "bitwise &":
+        "bitwise and",
+
+    "bitwise and operator":
+        "bitwise and",
+
+    "and operator":
+        "bitwise and",
+
+    "bitwise |":
+        "bitwise or",
+
+    "bitwise or operator":
+        "bitwise or",
+
+    "or operator":
+        "bitwise or",
+
+
+    /* ---------- MEMORY ---------- */
+
+    "memory":
+        "memory management",
+
+    "memory management in c":
+        "memory management",
+
+    "heap memory":
+        "memory management",
+
+    "stack memory":
+        "memory management",
+
+
+    /* ---------- PREPROCESSOR ---------- */
+
+    "c preprocessor":
+        "preprocessor",
+
+    "preprocessor directives":
+        "preprocessor",
+
+    "preprocessor directive":
+        "preprocessor",
+
+    "macros":
+        "macro",
+
+    "#define":
+        "macro",
+
+    "#include":
+        "preprocessor",
+
+
+    /* ---------- DEBUGGING ---------- */
+
+    "debugging":
+        "debugging",
+
+    "debug":
+        "debugging",
+
+    "gdb debugger":
+        "gdb",
+
+    "address sanitizer":
+        "sanitizer",
+
+    "asan":
+        "sanitizer",
+
+    "valgrind tool":
+        "valgrind",
+
+
+    /* ---------- SECURITY ---------- */
+
+    "buffer overflows":
+        "buffer overflow",
+
+    "buffer overflow in c":
+        "buffer overflow",
+
+    "use after free":
+        "use-after-free",
+
+    "use-after-free vulnerability":
+        "use-after-free",
+
+    "integer overflows":
+        "integer overflow",
+
+    "integer overflow in c":
+        "integer overflow",
+
+    "secure c programming":
+        "secure programming",
+
+    "secure programming":
+        "secure programming"
 
 };
 
@@ -782,27 +1067,27 @@ const topicAliases = {
 
 function getTopicDescription(levelName) {
 
-    switch ((levelName || "").trim()) {
+    switch (normalizeTopic(levelName)) {
 
-        case "Foundation":
+        case "foundation":
             return "Build a strong foundation in C programming by understanding the basic concepts, terminology, syntax and principles required for further programming.";
 
-        case "Core":
+        case "core":
             return "Develop strong C programming skills by understanding core language features, expressions, operators, control structures and functions.";
 
-        case "Advanced":
+        case "advanced":
             return "Explore advanced C programming concepts including memory management, pointers, structures, files, libraries and implementation details.";
 
-        case "Professional":
+        case "professional":
             return "Study professional C programming practices involving security, systems programming, embedded development and industry-oriented techniques.";
 
-        case "Practical":
+        case "practical":
             return "Apply C programming knowledge through practical programming problems and implementation exercises.";
 
-        case "Project":
+        case "project":
             return "Apply your C programming knowledge by developing a practical C project.";
 
-        case "Career":
+        case "career":
             return "Prepare for C programming examinations, practical assessments, viva examinations and technical interviews.";
 
         default:
@@ -820,7 +1105,9 @@ function getTopicDescription(levelName) {
 const topicContent = {
 
 
-/* ================= BASIC C ================= */
+/* =========================================================
+   BASIC C
+========================================================= */
 
 "what is c?": {
 
@@ -983,7 +1270,9 @@ int main(void)
 },
 
 
-/* ================= INPUT / OUTPUT ================= */
+/* =========================================================
+   INPUT / OUTPUT
+========================================================= */
 
 "printf()": {
 
@@ -1148,7 +1437,9 @@ int main(void)
 },
 
 
-/* ================= DECISION MAKING ================= */
+/* =========================================================
+   DECISION MAKING
+========================================================= */
 
 "if": {
 
@@ -1308,7 +1599,9 @@ int main(void)
 },
 
 
-/* ================= LOOPS ================= */
+/* =========================================================
+   LOOPS
+========================================================= */
 
 "for": {
 
@@ -1417,7 +1710,7 @@ int main(void)
 while (condition);`,
 
     example:
-        "This example displays a menu repeatedly until the user chooses to stop.",
+        "This example displays a message at least once.",
 
     code:
 `#include <stdio.h>
@@ -1446,7 +1739,9 @@ int main(void)
 },
 
 
-/* ================= ARRAYS ================= */
+/* =========================================================
+   ARRAYS
+========================================================= */
 
 "arrays": {
 
@@ -1526,7 +1821,9 @@ int main(void)
 },
 
 
-/* ================= STRINGS ================= */
+/* =========================================================
+   STRINGS
+========================================================= */
 
 "c strings": {
 
@@ -1558,7 +1855,7 @@ int main(void)
 }`,
 
     practice:
-        "Read a string and display its length using strlen().",
+        "Read a name and display its length using strlen().",
 
     tip:
         "A C string must have a terminating null character."
@@ -1605,7 +1902,9 @@ int main(void)
 },
 
 
-/* ================= POINTERS ================= */
+/* =========================================================
+   POINTERS
+========================================================= */
 
 "pointers": {
 
@@ -1693,7 +1992,9 @@ int main(void)
 },
 
 
-/* ================= DYNAMIC MEMORY ================= */
+/* =========================================================
+   DYNAMIC MEMORY
+========================================================= */
 
 "malloc()": {
 
@@ -1908,7 +2209,9 @@ int main(void)
 },
 
 
-/* ================= STRUCTURES ================= */
+/* =========================================================
+   STRUCTURES
+========================================================= */
 
 "structures": {
 
@@ -2012,7 +2315,9 @@ int main(void)
 },
 
 
-/* ================= FILE HANDLING ================= */
+/* =========================================================
+   FILE HANDLING
+========================================================= */
 
 "file handling": {
 
@@ -2161,7 +2466,9 @@ int main(void)
 },
 
 
-/* ================= FUNCTIONS ================= */
+/* =========================================================
+   FUNCTIONS
+========================================================= */
 
 "functions": {
 
@@ -2253,7 +2560,9 @@ int main(void)
 },
 
 
-/* ================= RECURSION ================= */
+/* =========================================================
+   RECURSION
+========================================================= */
 
 "recursion": {
 
@@ -2307,7 +2616,9 @@ int main(void)
 },
 
 
-/* ================= BITWISE ================= */
+/* =========================================================
+   BITWISE
+========================================================= */
 
 "bitwise and": {
 
@@ -2389,7 +2700,9 @@ int main(void)
 },
 
 
-/* ================= MEMORY ================= */
+/* =========================================================
+   MEMORY MANAGEMENT
+========================================================= */
 
 "memory management": {
 
@@ -2446,237 +2759,9 @@ int main(void)
 },
 
 
-/* ================= DATA TYPES ================= */
-
-"int": {
-
-    concept:
-        "int is an integer type used to represent whole-number values in C.",
-
-    importance:
-        "Integer values are fundamental for counting, indexing, calculations and many programming tasks.",
-
-    syntax:
-        "Declare an integer using the int keyword.",
-
-    syntaxCode:
-`int age = 20;`,
-
-    example:
-        "This program stores and displays an integer.",
-
-    code:
-`#include <stdio.h>
-
-int main(void)
-{
-    int age = 20;
-
-    printf("%d\\n", age);
-
-    return 0;
-}`,
-
-    practice:
-        "Create integer variables for age, marks and quantity.",
-
-    tip:
-        "Use an appropriate integer type for the range of values required."
-
-},
-
-
-"float": {
-
-    concept:
-        "float is a floating-point type used to represent real-number values with single-precision storage.",
-
-    importance:
-        "Floating-point types are useful when calculations require fractional values.",
-
-    syntax:
-        "Declare a float using the float keyword.",
-
-    syntaxCode:
-`float marks = 85.5f;`,
-
-    example:
-        "This program stores and displays a floating-point value.",
-
-    code:
-`#include <stdio.h>
-
-int main(void)
-{
-    float marks = 85.5f;
-
-    printf("%.2f\\n", marks);
-
-    return 0;
-}`,
-
-    practice:
-        "Create floating-point variables for price, percentage and average.",
-
-    tip:
-        "Use the f suffix for float constants when appropriate."
-
-},
-
-
-"double": {
-
-    concept:
-        "double is a floating-point type that normally provides more precision than float.",
-
-    importance:
-        "It is useful when calculations require greater floating-point precision.",
-
-    syntax:
-        "Declare a double using the double keyword.",
-
-    syntaxCode:
-`double value = 123.456;`,
-
-    example:
-        "This program stores and displays a double value.",
-
-    code:
-`#include <stdio.h>
-
-int main(void)
-{
-    double value = 123.456;
-
-    printf("%.3f\\n", value);
-
-    return 0;
-}`,
-
-    practice:
-        "Create a program that calculates an average using double.",
-
-    tip:
-        "Choose floating-point precision according to the requirements of the program."
-
-},
-
-
-"char": {
-
-    concept:
-        "char is an integer type capable of representing character values and small integer values.",
-
-    importance:
-        "Characters are essential for text processing and character-based input and output.",
-
-    syntax:
-        "Declare a character using the char keyword.",
-
-    syntaxCode:
-`char grade = 'A';`,
-
-    example:
-        "This program stores and displays a character.",
-
-    code:
-`#include <stdio.h>
-
-int main(void)
-{
-    char grade = 'A';
-
-    printf("%c\\n", grade);
-
-    return 0;
-}`,
-
-    practice:
-        "Create a program that stores and displays a student's grade.",
-
-    tip:
-        "Character constants normally use single quotation marks."
-
-},
-
-
-"long": {
-
-    concept:
-        "long is an integer type modifier that can provide a range suitable for larger integer values than int on some implementations.",
-
-    importance:
-        "It is useful when a program needs an integer range beyond what a normal int provides.",
-
-    syntax:
-        "Use long with an integer declaration.",
-
-    syntaxCode:
-`long population = 1000000L;`,
-
-    example:
-        "This program stores a long integer.",
-
-    code:
-`#include <stdio.h>
-
-int main(void)
-{
-    long population = 1000000L;
-
-    printf("%ld\\n", population);
-
-    return 0;
-}`,
-
-    practice:
-        "Create a long integer variable and display its value.",
-
-    tip:
-        "Use sizeof and the limits provided by the implementation when exact ranges matter."
-
-},
-
-
-"short": {
-
-    concept:
-        "short is an integer type modifier that may use less storage than int when supported by the implementation.",
-
-    importance:
-        "It can be useful when working with values that have a relatively small required range.",
-
-    syntax:
-        "Use short with an integer declaration.",
-
-    syntaxCode:
-`short count = 100;`,
-
-    example:
-        "This program stores a short integer.",
-
-    code:
-`#include <stdio.h>
-
-int main(void)
-{
-    short count = 100;
-
-    printf("%hd\\n", count);
-
-    return 0;
-}`,
-
-    practice:
-        "Declare a short integer and print its value.",
-
-    tip:
-        "Do not assume the exact size of short without checking the implementation."
-
-},
-
-
-/* ================= DEFAULT ================= */
+/* =========================================================
+   DEFAULT
+========================================================= */
 
 "default": {
 
@@ -2725,8 +2810,6 @@ int main(void)
 
 /* =========================================================
    GET CONTENT FOR ANY TOPIC
-   ---------------------------------------------------------
-   UPDATED VERSION
 ========================================================= */
 
 function getContent(topicName) {
@@ -2741,7 +2824,7 @@ function getContent(topicName) {
         alias || normalized;
 
 
-    /* ---------- EXACT CONTENT ---------- */
+    /* ---------- EXACT / ALIASED CONTENT ---------- */
 
     if (topicContent[finalName]) {
 
@@ -2750,12 +2833,13 @@ function getContent(topicName) {
     }
 
 
-    /* =====================================================
-       AUTOMATIC TOPIC-SPECIFIC FALLBACK
-    ===================================================== */
+    /*
+       The remaining section provides intelligent
+       topic-specific content for topics that are not
+       individually stored above.
+    */
 
-    const name = finalName;
-
+    const name = normalized;
 
     let concept =
         topicName +
@@ -2805,7 +2889,9 @@ int main(void)
         "Understand the concept first, then practice it by writing your own C program.";
 
 
-    /* ---------- DATA TYPES ---------- */
+    /* =====================================================
+       DATA TYPES
+    ===================================================== */
 
     if (
         name.includes("data type") ||
@@ -2814,7 +2900,8 @@ int main(void)
         name === "double" ||
         name === "char" ||
         name === "long" ||
-        name === "short"
+        name === "short" ||
+        name === "unsigned"
     ) {
 
         concept =
@@ -2862,7 +2949,9 @@ int main(void)
     }
 
 
-    /* ---------- OPERATORS ---------- */
+    /* =====================================================
+       OPERATORS
+    ===================================================== */
 
     else if (
         name.includes("operator") ||
@@ -2872,7 +2961,10 @@ int main(void)
         name === "division" ||
         name === "modulus" ||
         name.includes("logical") ||
-        name.includes("relational")
+        name.includes("relational") ||
+        name.includes("assignment") ||
+        name.includes("increment") ||
+        name.includes("decrement")
     ) {
 
         concept =
@@ -2916,7 +3008,9 @@ int main(void)
     }
 
 
-    /* ---------- STRINGS ---------- */
+    /* =====================================================
+       STRINGS
+    ===================================================== */
 
     else if (
         name.includes("string")
@@ -2963,7 +3057,9 @@ int main(void)
     }
 
 
-    /* ---------- POINTERS ---------- */
+    /* =====================================================
+       POINTERS
+    ===================================================== */
 
     else if (
         name.includes("pointer") ||
@@ -3013,7 +3109,9 @@ int main(void)
     }
 
 
-    /* ---------- MEMORY ---------- */
+    /* =====================================================
+       MEMORY
+    ===================================================== */
 
     else if (
         name.includes("memory") ||
@@ -3075,14 +3173,18 @@ int main(void)
     }
 
 
-    /* ---------- FILES ---------- */
+    /* =====================================================
+       FILES
+    ===================================================== */
 
     else if (
         name.includes("file") ||
         name.includes("fopen") ||
         name.includes("fclose") ||
         name.includes("fread") ||
-        name.includes("fwrite")
+        name.includes("fwrite") ||
+        name.includes("fprintf") ||
+        name.includes("fscanf")
     ) {
 
         concept =
@@ -3138,7 +3240,9 @@ int main(void)
     }
 
 
-    /* ---------- FUNCTIONS ---------- */
+    /* =====================================================
+       FUNCTIONS
+    ===================================================== */
 
     else if (
         name.includes("function")
@@ -3189,7 +3293,9 @@ int main(void)
     }
 
 
-    /* ---------- ARRAYS ---------- */
+    /* =====================================================
+       ARRAYS
+    ===================================================== */
 
     else if (
         name.includes("array")
@@ -3241,7 +3347,9 @@ int main(void)
     }
 
 
-    /* ---------- STRUCTURES / UNIONS / ENUM / TYPEDEF ---------- */
+    /* =====================================================
+       STRUCTURES / UNION / ENUM / TYPEDEF
+    ===================================================== */
 
     else if (
         name.includes("structure") ||
@@ -3299,7 +3407,9 @@ int main(void)
     }
 
 
-    /* ---------- PREPROCESSOR ---------- */
+    /* =====================================================
+       PREPROCESSOR
+    ===================================================== */
 
     else if (
         name.includes("preprocessor") ||
@@ -3348,7 +3458,9 @@ int main(void)
     }
 
 
-    /* ---------- DEBUGGING ---------- */
+    /* =====================================================
+       DEBUGGING
+    ===================================================== */
 
     else if (
         name.includes("debug") ||
@@ -3385,7 +3497,9 @@ int main(void)
     }
 
 
-    /* ---------- SECURITY ---------- */
+    /* =====================================================
+       SECURITY
+    ===================================================== */
 
     else if (
         name.includes("security") ||
@@ -3462,13 +3576,9 @@ function getKeyPoints(topicName) {
 
     return [
 
-        "Understand what " +
-        topicName +
-        " means in C programming.",
+        "Understand what " + topicName + " means in C programming.",
 
-        "Learn the purpose and practical use of " +
-        topicName +
-        ".",
+        "Learn the purpose and practical use of " + topicName + ".",
 
         "Understand the syntax and important rules.",
 
@@ -3493,9 +3603,7 @@ function getMistakes(topicName) {
 
     return [
 
-        "Memorizing " +
-        topicName +
-        " without understanding how it works.",
+        "Memorizing " + topicName + " without understanding how it works.",
 
         "Using incorrect syntax or incompatible data types.",
 
@@ -3522,22 +3630,19 @@ function getTopicKey() {
         return null;
     }
 
-
     /*
-       Topic number is preferred because two topics
-       may have similar or identical names.
+       Topic number is preferred because two different
+       topics can sometimes have similar names.
     */
 
     if (number) {
 
-        return "c_topic_completed_" +
-               number;
+        return "c_topic_completed_" + number;
 
     }
 
-
     return "c_topic_completed_" +
-           normalizeTopic(topic);
+        normalizeTopic(topic);
 
 }
 
@@ -3730,8 +3835,7 @@ function displayTopic() {
     /* ---------- PAGE TITLE ---------- */
 
     document.title =
-        "EduLearn - " +
-        topicTitle;
+        "EduLearn - " + topicTitle;
 
 }
 
@@ -3771,9 +3875,7 @@ function checkCompletion() {
         button.textContent =
             "✓ Topic Completed";
 
-    }
-
-    else {
+    } else {
 
         status.textContent =
             "This topic has not been completed yet.";
