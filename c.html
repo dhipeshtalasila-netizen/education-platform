@@ -183,6 +183,90 @@ body {
     color: #555;
 }
 
+
+/* ================= COURSE PROGRESS ================= */
+
+.progress-box {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    margin-bottom: 35px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.progress-header h2 {
+    color: #1e3a8a;
+}
+
+#progressPercent {
+    font-size: 22px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.progress-track {
+    width: 100%;
+    height: 14px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+#progressBar {
+    width: 0%;
+    height: 100%;
+    background: #2563eb;
+    border-radius: 999px;
+    transition: width 0.3s ease;
+}
+
+#progressText {
+    margin-top: 12px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.completed-badge {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 5px 9px;
+    border-radius: 6px;
+    background: #dcfce7;
+    color: #166534;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+body.dark .progress-box {
+    background: #1f2937;
+    color: #e5e7eb;
+}
+
+body.dark .progress-header h2 {
+    color: #60a5fa;
+}
+
+body.dark #progressText {
+    color: #d1d5db;
+}
+
+body.dark .progress-track {
+    background: #374151;
+}
+
+body.dark .completed-badge {
+    background: #14532d;
+    color: #bbf7d0;
+}
+
 /* ================= MODULE ================= */
 
 .module {
@@ -451,6 +535,27 @@ footer {
 
 </div>
 
+
+
+
+<!-- ================= COURSE PROGRESS ================= -->
+
+<div class="progress-box">
+
+    <div class="progress-header">
+        <h2>📊 C Course Progress</h2>
+        <span id="progressPercent">0%</span>
+    </div>
+
+    <div class="progress-track">
+        <div id="progressBar"></div>
+    </div>
+
+    <p id="progressText">
+        0 of 0 topics completed.
+    </p>
+
+</div>
 
 <!-- ================= SEARCH ================= -->
 
@@ -1887,6 +1992,10 @@ function createTopicCard(topic) {
             ${topic.level}
         </span>
 
+        ${localStorage.getItem("c_topic_completed_" + topic.number) === "true"
+            ? '<span class="completed-badge">✓ Completed</span>'
+            : ''}
+
         <h3>
             ${escapeHTML(topic.name)}
         </h3>
@@ -1989,6 +2098,42 @@ function searchTopics() {
 }
 
 
+
+
+/* =========================================================
+   COURSE PROGRESS
+========================================================= */
+
+function updateCourseProgress() {
+
+    const total = allTopics.length;
+
+    let completed = 0;
+
+    allTopics.forEach(topic => {
+
+        if (localStorage.getItem("c_topic_completed_" + topic.number) === "true") {
+            completed++;
+        }
+
+    });
+
+    const percent = total === 0
+        ? 0
+        : Math.round((completed / total) * 100);
+
+    document.getElementById("progressPercent").textContent =
+        percent + "%";
+
+    document.getElementById("progressBar").style.width =
+        percent + "%";
+
+    document.getElementById("progressText").textContent =
+        completed + " of " + total +
+        " C programming topics completed.";
+
+}
+
 /* =========================================================
    COURSE STATISTICS
 ========================================================= */
@@ -2017,6 +2162,9 @@ document.getElementById("advancedCount").textContent =
 ========================================================= */
 
 displayCourse();
+updateCourseProgress();
+
+window.addEventListener("focus", updateCourseProgress);
 
 </script>
 
