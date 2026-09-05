@@ -592,19 +592,40 @@ const level = params.get("level");
    NORMALIZE TOPIC NAME
 ========================================================= */
 
-function normalizeTopic(topicName) {
+function safeDecodeTopic(value) {
 
-    if (!topicName) {
+    if (value === null || value === undefined) {
         return "";
     }
 
-    return decodeURIComponent(topicName)
+    const text = String(value);
+
+    try {
+        return decodeURIComponent(text);
+    } catch (error) {
+        return text;
+    }
+}
+
+
+function normalizeTopic(topicName) {
+
+    if (topicName === null || topicName === undefined) {
+        return "";
+    }
+
+    return safeDecodeTopic(topicName)
+        .replace(/\+/g, " ")
         .trim()
         .toLowerCase()
+        .replace(/[–—]/g, "-")
+        .replace(/[_]+/g, " ")
         .replace(/\s+/g, " ")
         .replace(/\s*\(\s*/g, "(")
         .replace(/\s*\)\s*/g, ")")
-        .replace(/\s+/g, " ");
+        .replace(/\s*\-\s*/g, "-")
+        .replace(/\s+/g, " ")
+        .trim();
 
 }
 
@@ -2382,16 +2403,32 @@ function getContent(topicName) {
     const normalized =
         normalizeTopic(topicName);
 
-    const alias =
-        topicAliases[normalized];
+    /*
+        Resolve aliases with the same normalization rules used
+        for incoming topic names.
+    */
+    let finalName = normalized;
 
-    const finalName =
-        alias || normalized;
+    const aliasEntry =
+        Object.entries(topicAliases).find(([aliasName]) =>
+            normalizeTopic(aliasName) === normalized
+        );
 
-    if (topicContent[finalName]) {
+    if (aliasEntry) {
+        finalName = normalizeTopic(aliasEntry[1]);
+    }
 
-        return topicContent[finalName];
+    /*
+        Match topicContent by normalized key so small differences
+        in spacing, hyphens or underscores do not break a topic.
+    */
+    const contentKey =
+        Object.keys(topicContent).find(key =>
+            normalizeTopic(key) === finalName
+        );
 
+    if (contentKey) {
+        return topicContent[contentKey];
     }
 
 
@@ -3243,7 +3280,7 @@ function displayTopic() {
 
 
     const topicTitle =
-        decodeURIComponent(topic).trim();
+        safeDecodeTopic(topic).replace(/\+/g, " ").trim();
 
 
     const content =
