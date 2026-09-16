@@ -1,0 +1,2038 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EduLearn - C++ Topic</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6f8;
+    color: #222;
+    transition: 0.3s;
+}
+
+/* ================= NAVBAR ================= */
+
+nav {
+    background: #111827;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+nav ul li a:hover {
+    color: #60a5fa;
+}
+
+/* ================= PAGE ================= */
+
+.container {
+    width: 92%;
+    max-width: 1100px;
+    margin: 35px auto;
+}
+
+/* ================= BREADCRUMB ================= */
+
+.breadcrumb {
+    margin-bottom: 20px;
+    color: #64748b;
+    font-size: 14px;
+}
+
+.breadcrumb a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+/* ================= TOPIC HEADER ================= */
+
+.topic-header {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    color: white;
+    padding: 40px 30px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+}
+
+.topic-header .module {
+    font-size: 14px;
+    opacity: 0.85;
+    margin-bottom: 10px;
+}
+
+.topic-header h1 {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.topic-header p {
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.level {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 7px 12px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* ================= CONTENT ================= */
+
+.section {
+    background: white;
+    padding: 28px;
+    border-radius: 12px;
+    margin-bottom: 22px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+}
+
+.section h2 {
+    color: #1e3a8a;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.section h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.section p {
+    line-height: 1.75;
+    margin-bottom: 12px;
+}
+
+.section ul {
+    padding-left: 25px;
+    line-height: 1.8;
+}
+
+.section li {
+    margin-bottom: 5px;
+}
+
+/* ================= CODE ================= */
+
+pre {
+    background: #111827;
+    color: #e5e7eb;
+    padding: 20px;
+    border-radius: 9px;
+    overflow-x: auto;
+    line-height: 1.6;
+    margin-top: 12px;
+}
+
+code {
+    font-family: Consolas, monospace;
+}
+
+/* ================= OUTPUT ================= */
+
+.output {
+    background: #f1f5f9;
+    border-left: 4px solid #2563eb;
+    padding: 15px;
+    margin-top: 12px;
+    border-radius: 5px;
+    font-family: Consolas, monospace;
+    white-space: pre-wrap;
+}
+
+/* ================= KEY POINTS ================= */
+
+.key-points {
+    display: grid;
+    gap: 10px;
+}
+
+.key-point {
+    background: #eff6ff;
+    padding: 13px 15px;
+    border-radius: 7px;
+    border-left: 4px solid #2563eb;
+}
+
+/* ================= WARNING ================= */
+
+.warning {
+    background: #fff7ed;
+    border-left: 4px solid #f97316;
+    padding: 16px;
+    border-radius: 7px;
+    margin-top: 12px;
+}
+
+/* ================= NAVIGATION ================= */
+
+.topic-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.nav-btn {
+    background: #2563eb;
+    color: white;
+    padding: 13px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-btn:hover {
+    background: #1d4ed8;
+}
+
+/* ================= COMPLETE ================= */
+
+.complete-box {
+    background: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+}
+
+.complete-btn {
+    border: none;
+    background: #16a34a;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.complete-btn.completed {
+    background: #475569;
+}
+
+#statusMessage {
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+/* ================= DARK MODE ================= */
+
+body.dark {
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+body.dark .breadcrumb {
+    color: #94a3b8;
+}
+
+body.dark .section,
+body.dark .complete-box {
+    background: #1e293b;
+    color: #e5e7eb;
+}
+
+body.dark .section h2 {
+    color: #60a5fa;
+}
+
+body.dark .key-point {
+    background: #172554;
+}
+
+body.dark .output {
+    background: #0f172a;
+}
+
+body.dark .warning {
+    background: #431407;
+}
+
+/* ================= FOOTER ================= */
+
+footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 50px;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .topic-header h1 {
+        font-size: 29px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .topic-navigation {
+        flex-direction: column;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo">
+        EduLearn
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="index.html">Home</a>
+        </li>
+
+        <li>
+            <a href="dashboard.html">Dashboard</a>
+        </li>
+
+        <li>
+            <a href="coding.html">Coding</a>
+        </li>
+
+        <li>
+            <a href="python.html">Python</a>
+        </li>
+
+        <li>
+            <a href="c.html">C</a>
+        </li>
+
+        <li>
+            <a href="cpp.html">C++</a>
+        </li>
+
+        <li>
+            <a href="settings.html">Settings</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<div class="container">
+
+
+<!-- ================= BREADCRUMB ================= -->
+
+<div class="breadcrumb">
+
+    <a href="cpp.html">C++ Programming</a>
+    &nbsp; / &nbsp;
+    <span id="breadcrumbTopic">Topic</span>
+
+</div>
+
+
+<!-- ================= TOPIC HEADER ================= -->
+
+<div class="topic-header">
+
+    <div class="module" id="moduleName">
+        C++ Programming
+    </div>
+
+    <h1 id="topicTitle">
+        Loading...
+    </h1>
+
+    <p id="topicDescription">
+        Loading topic...
+    </p>
+
+    <span class="level" id="topicLevel">
+        C++
+    </span>
+
+</div>
+
+
+<!-- ================= INTRODUCTION ================= -->
+
+<div class="section">
+
+    <h2>Introduction</h2>
+
+    <div id="introduction"></div>
+
+</div>
+
+
+<!-- ================= OBJECTIVE ================= -->
+
+<div class="section">
+
+    <h2>Learning Objectives</h2>
+
+    <ul id="objectives"></ul>
+
+</div>
+
+
+<!-- ================= CONCEPT ================= -->
+
+<div class="section">
+
+    <h2>Concept</h2>
+
+    <div id="concept"></div>
+
+</div>
+
+
+<!-- ================= SYNTAX ================= -->
+
+<div class="section">
+
+    <h2>Syntax</h2>
+
+    <pre><code id="syntax"></code></pre>
+
+</div>
+
+
+<!-- ================= EXAMPLE ================= -->
+
+<div class="section">
+
+    <h2>Example Program</h2>
+
+    <pre><code id="codeExample"></code></pre>
+
+</div>
+
+
+<!-- ================= OUTPUT ================= -->
+
+<div class="section">
+
+    <h2>Expected Output</h2>
+
+    <div class="output" id="output"></div>
+
+</div>
+
+
+<!-- ================= KEY POINTS ================= -->
+
+<div class="section">
+
+    <h2>Key Points</h2>
+
+    <div class="key-points" id="keyPoints"></div>
+
+</div>
+
+
+<!-- ================= COMMON MISTAKES ================= -->
+
+<div class="section">
+
+    <h2>Common Mistakes</h2>
+
+    <div id="mistakes"></div>
+
+</div>
+
+
+<!-- ================= PRACTICE ================= -->
+
+<div class="section">
+
+    <h2>Practice</h2>
+
+    <div id="practice"></div>
+
+</div>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<div class="topic-navigation">
+
+    <a
+        href="cpp.html"
+        class="nav-btn">
+        ← Back to C++
+    </a>
+
+    <a
+        href="cpp.html"
+        class="nav-btn">
+        All C++ Topics
+    </a>
+
+</div>
+
+
+<!-- ================= COMPLETION ================= -->
+
+<div class="complete-box">
+
+    <h2>Topic Progress</h2>
+
+    <p style="margin:15px 0;">
+        Mark this topic as completed after you finish learning it.
+    </p>
+
+    <button
+        id="completeButton"
+        class="complete-btn"
+        onclick="markTopicComplete()">
+
+        Mark Topic Complete
+
+    </button>
+
+    <div id="statusMessage"></div>
+
+</div>
+
+
+</div>
+
+
+<footer>
+
+    <p>© 2026 EduLearn - C++ Programming</p>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   GET URL PARAMETERS
+========================================================= */
+
+const params =
+    new URLSearchParams(window.location.search);
+
+const topic =
+    params.get("topic") || "Introduction to C++";
+
+const moduleName =
+    params.get("module") || "C++ Programming";
+
+const level =
+    params.get("level") || "Beginner";
+
+
+/* =========================================================
+   TOPIC DATABASE
+========================================================= */
+
+const topicContent = {};
+
+
+/* =========================================================
+   DEFAULT CONTENT GENERATOR
+========================================================= */
+
+function createContent(
+    title,
+    description,
+    introduction,
+    objectives,
+    concept,
+    syntax,
+    code,
+    output,
+    keyPoints,
+    mistakes,
+    practice
+) {
+
+    topicContent[title] = {
+
+        description: description,
+
+        introduction: introduction,
+
+        objectives: objectives,
+
+        concept: concept,
+
+        syntax: syntax,
+
+        code: code,
+
+        output: output,
+
+        keyPoints: keyPoints,
+
+        mistakes: mistakes,
+
+        practice: practice
+
+    };
+
+}
+
+
+/* =========================================================
+   CORE C++ TOPICS
+========================================================= */
+
+createContent(
+"Introduction to C++",
+
+"C++ is a powerful general-purpose programming language.",
+
+"C++ is a general-purpose programming language created by Bjarne Stroustrup. It extends the capabilities of C with features such as classes, objects, inheritance and polymorphism.",
+
+[
+"Understand what C++ is.",
+"Learn where C++ is used.",
+"Understand the basic purpose of the language."
+],
+
+"C++ can be used for system software, games, applications, embedded systems, competitive programming and many other types of software.",
+
+`#include <iostream>
+using namespace std;
+
+int main()
+{
+    cout << "Hello World";
+    return 0;
+}`,
+
+`#include <iostream>
+using namespace std;
+
+int main()
+{
+    cout << "Hello World";
+    return 0;
+}`,
+
+`Hello World`,
+
+[
+"C++ supports procedural programming.",
+"C++ supports Object-Oriented Programming.",
+"C++ provides the Standard Template Library.",
+"C++ is widely used for performance-oriented applications."
+],
+
+[
+"Missing the #include directive.",
+"Forgetting the semicolon.",
+"Writing main incorrectly."
+],
+
+"Write a program that prints your name, college and course."
+);
+
+
+createContent(
+"History of C++",
+
+"C++ evolved from the C programming language.",
+
+"C++ was developed by Bjarne Stroustrup at Bell Labs. It began as an extension of C and was originally associated with the name C with Classes.",
+
+[
+"Understand the origin of C++.",
+"Know the connection between C and C++.",
+"Understand why C++ was developed."
+],
+
+"C++ added object-oriented features to C while retaining many of C's performance characteristics.",
+
+`C
+↓
+C with Classes
+↓
+C++
+↓
+Modern C++`,
+
+`// C++ programs can combine
+// procedural and object-oriented
+// programming techniques.`,
+
+`C++ evolved from C with Classes.`,
+
+[
+"C++ was developed by Bjarne Stroustrup.",
+"It originated at Bell Labs.",
+"The language continued evolving through multiple standards."
+],
+
+[
+"Confusing C++ with a completely unrelated language.",
+"Assuming modern C++ is identical to early C++."
+],
+
+"Research the major C++ standards and identify important features introduced by each."
+);
+
+
+createContent(
+"Features of C++",
+
+"C++ provides many programming features.",
+
+"C++ combines low-level control with high-level programming abstractions. Important features include classes, inheritance, polymorphism, templates and the STL.",
+
+[
+"Identify major C++ features.",
+"Understand why C++ is versatile.",
+"Recognize object-oriented features."
+],
+
+"C++ supports multiple programming styles including procedural, object-oriented and generic programming.",
+
+`class Student
+{
+public:
+    string name;
+};`,
+
+`#include <iostream>
+using namespace std;
+
+class Student
+{
+public:
+    string name;
+};
+
+int main()
+{
+    Student s;
+    s.name = "Rahul";
+
+    cout << s.name;
+
+    return 0;
+}`,
+
+`Rahul`,
+
+[
+"Object-oriented programming",
+"Generic programming",
+"Templates",
+"STL",
+"Exception handling",
+"Memory management"
+],
+
+[
+"Trying to use an OOP concept without understanding classes.",
+"Using dynamic memory unnecessarily."
+],
+
+"List five C++ features and explain each one."
+);
+
+
+createContent(
+"C++ Program Structure",
+
+"Understand the basic structure of a C++ program.",
+
+"A typical C++ program contains headers, optional namespaces, a main function and program statements.",
+
+[
+"Understand headers.",
+"Understand main().",
+"Understand statements."
+],
+
+"The main function is the entry point of a normal C++ program.",
+
+`#include <iostream>
+
+int main()
+{
+    // statements
+
+    return 0;
+}`,
+
+`#include <iostream>
+using namespace std;
+
+int main()
+{
+    cout << "EduLearn";
+    return 0;
+}`,
+
+`EduLearn`,
+
+[
+"main() is normally required for an executable program.",
+"Statements usually end with semicolons.",
+"Headers provide declarations for library functionality."
+],
+
+[
+"Forgetting braces.",
+"Forgetting semicolons.",
+"Incorrectly writing main()."
+],
+
+"Write a C++ program with three output statements."
+);
+
+
+createContent(
+"Variables",
+
+"Variables store values that can change during program execution.",
+
+"A variable is a named storage location. Its type determines what kind of value it can store.",
+
+[
+"Understand variables.",
+"Declare variables.",
+"Initialize variables."
+],
+
+`data_type variable_name = value;`,
+
+`int age = 20;
+
+cout << age;`,
+
+`20`,
+
+[
+"Variables have names.",
+"Variables have data types.",
+"Variables can be changed during execution."
+],
+
+[
+"Using a variable before declaring it.",
+"Using invalid variable names."
+],
+
+"Create variables for your name, age, percentage and college."
+);
+
+
+createContent(
+"Data Types",
+
+"C++ data types determine the kind of data a variable stores.",
+
+"C++ provides fundamental types such as int, float, double, char and bool.",
+
+[
+"Understand fundamental data types.",
+"Choose suitable types.",
+"Understand Boolean values."
+],
+
+`int age;
+float marks;
+double salary;
+char grade;
+bool passed;`,
+
+`#include <iostream>
+using namespace std;
+
+int main()
+{
+    int age = 20;
+    double marks = 85.5;
+    char grade = 'A';
+    bool passed = true;
+
+    cout << age << endl;
+    cout << marks << endl;
+    cout << grade << endl;
+    cout << passed;
+
+    return 0;
+}`,
+
+`20
+85.5
+A
+1`,
+
+[
+"int stores integers.",
+"float and double store decimal values.",
+"char stores a character.",
+"bool stores true or false."
+],
+
+[
+"Putting multiple characters into char.",
+"Using integer division when decimal precision is required."
+],
+
+"Create a program using at least five different data types."
+);
+
+
+createContent(
+"if Statement",
+
+"Use conditions to make decisions in a program.",
+
+"The if statement executes a block of code when a condition evaluates to true.",
+
+[
+"Understand conditional execution.",
+"Write if statements.",
+"Use comparison operators."
+],
+
+`if (condition)
+{
+    // statements
+}`,
+
+`#include <iostream>
+using namespace std;
+
+int main()
+{
+    int age = 20;
+
+    if (age >= 18)
+    {
+        cout << "Eligible";
+    }
+
+    return 0;
+}`,
+
+`Eligible`,
+
+[
+"The condition is evaluated first.",
+"Braces define the statement block.",
+"Comparison operators are commonly used."
+],
+
+[
+"Using = instead of ==.",
+"Incorrectly writing the condition."
+],
+
+"Write a program that checks whether a number is positive."
+);
+
+
+createContent(
+"if-else Statement",
+
+"Choose between two possible execution paths.",
+
+"if-else executes one block when a condition is true and another block when it is false.",
+
+[
+"Understand if-else.",
+"Write two-way decisions.",
+"Use conditions effectively."
+],
+
+`if (condition)
+{
+    // true
+}
+else
+{
+    // false
+}`,
+
+`int number = 7;
+
+if (number % 2 == 0)
+{
+    cout << "Even";
+}
+else
+{
+    cout << "Odd";
+}`,
+
+`Odd`,
+
+[
+"Exactly one branch normally executes.",
+"Conditions should produce true or false results."
+],
+
+[
+"Incorrect braces.",
+"Using the wrong comparison operator."
+],
+
+"Write a program to determine whether a student passed or failed."
+);
+
+
+createContent(
+"for Loop",
+
+"Repeat a block of code a controlled number of times.",
+
+"The for loop is useful when the number of iterations is known or controlled by a counter.",
+
+[
+"Understand loop initialization.",
+"Use loop conditions.",
+"Update a loop counter."
+],
+
+`for (initialization; condition; update)
+{
+    // statements
+}`,
+
+`for (int i = 1; i <= 5; i++)
+{
+    cout << i << endl;
+}`,
+
+`1
+2
+3
+4
+5`,
+
+[
+"Initialization runs first.",
+"The condition is checked before each iteration.",
+"The update runs after the loop body."
+],
+
+[
+"Forgetting to update the counter.",
+"Creating an infinite loop."
+],
+
+"Print the multiplication table of any number."
+);
+
+
+createContent(
+"while Loop",
+
+"Repeat statements while a condition remains true.",
+
+"The while loop checks its condition before every iteration.",
+
+[
+"Understand while loops.",
+"Create condition-controlled loops.",
+"Avoid infinite loops."
+],
+
+`while (condition)
+{
+    // statements
+}`,
+
+`int i = 1;
+
+while (i <= 5)
+{
+    cout << i << endl;
+    i++;
+}`,
+
+`1
+2
+3
+4
+5`,
+
+[
+"The condition is checked before execution.",
+"The loop may execute zero times."
+],
+
+[
+"Not changing the condition variable.",
+"Creating an infinite loop."
+],
+
+"Print numbers from 1 to 100 using while."
+);
+
+
+createContent(
+"Functions",
+
+"Functions divide a program into reusable blocks.",
+
+"A function is a named block of code designed to perform a particular task.",
+
+[
+"Understand reusable code.",
+"Declare and define functions.",
+"Call functions."
+],
+
+`return_type functionName(parameters)
+{
+    // statements
+}`,
+
+`#include <iostream>
+using namespace std;
+
+void greet()
+{
+    cout << "Welcome to EduLearn";
+}
+
+int main()
+{
+    greet();
+    return 0;
+}`,
+
+`Welcome to EduLearn`,
+
+[
+"Functions improve code organization.",
+"Functions can accept parameters.",
+"Functions can return values."
+],
+
+[
+"Calling a function before declaring it.",
+"Using an incorrect return type."
+],
+
+"Create a function that calculates the square of a number."
+);
+
+
+/* =========================================================
+   OOP TOPICS
+========================================================= */
+
+createContent(
+"Classes",
+
+"Classes are blueprints for creating objects.",
+
+"A class combines data and functions into a user-defined type.",
+
+[
+"Understand classes.",
+"Create class members.",
+"Create objects from classes."
+],
+
+`class ClassName
+{
+public:
+    // members
+};`,
+
+`#include <iostream>
+using namespace std;
+
+class Student
+{
+public:
+    string name;
+
+    void display()
+    {
+        cout << name;
+    }
+};
+
+int main()
+{
+    Student s;
+
+    s.name = "Dhipesh";
+    s.display();
+
+    return 0;
+}`,
+
+`Dhipesh`,
+
+[
+"Classes define the structure of objects.",
+"Objects are instances of classes.",
+"Access specifiers control member visibility."
+],
+
+[
+"Forgetting the semicolon after a class.",
+"Trying to access private members directly."
+],
+
+"Create a Student class containing name, age and course."
+);
+
+
+createContent(
+"Objects",
+
+"Objects are instances of classes.",
+
+"Once a class is defined, objects can be created from it. Each object can have its own data.",
+
+[
+"Create objects.",
+"Access public members.",
+"Understand object state."
+],
+
+`ClassName objectName;`,
+
+`class Car
+{
+public:
+    string brand;
+};
+
+int main()
+{
+    Car car1;
+
+    car1.brand = "Toyota";
+
+    cout << car1.brand;
+}`,
+
+`Toyota`,
+
+[
+"Objects are created from classes.",
+"Different objects can contain different data."
+],
+
+[
+"Using an object before declaring it.",
+"Incorrect member access."
+],
+
+"Create two Student objects with different names."
+);
+
+
+createContent(
+"Constructors",
+
+"Constructors initialize objects when they are created.",
+
+"A constructor is a special member function that has the same name as the class and no return type.",
+
+[
+"Understand constructors.",
+"Initialize object data.",
+"Use parameterized constructors."
+],
+
+`ClassName()
+{
+    // initialization
+}`,
+
+`class Student
+{
+public:
+
+    Student()
+    {
+        cout << "Object created";
+    }
+};
+
+int main()
+{
+    Student s;
+}`,
+
+`Object created`,
+
+[
+"Constructors are called automatically.",
+"Constructors do not have return types.",
+"A class can have multiple constructors."
+],
+
+[
+"Adding a return type.",
+"Using the wrong constructor name."
+],
+
+"Create a class with a parameterized constructor."
+);
+
+
+createContent(
+"Inheritance",
+
+"Inheritance allows a class to acquire features from another class.",
+
+"Inheritance supports code reuse and allows derived classes to extend base classes.",
+
+[
+"Understand base and derived classes.",
+"Create inherited classes.",
+"Understand code reuse."
+],
+
+`class Derived : public Base
+{
+};`,
+
+`class Animal
+{
+public:
+    void eat()
+    {
+        cout << "Eating";
+    }
+};
+
+class Dog : public Animal
+{
+};
+
+int main()
+{
+    Dog d;
+    d.eat();
+}`,
+
+`Eating`,
+
+[
+"Base class contains reusable functionality.",
+"Derived classes inherit accessible members.",
+"Different inheritance types exist."
+],
+
+[
+"Incorrect inheritance syntax.",
+"Trying to access private base members directly."
+],
+
+"Create a Vehicle base class and Car derived class."
+);
+
+
+createContent(
+"Polymorphism",
+
+"Polymorphism allows the same interface to behave differently.",
+
+"Polymorphism is a major OOP concept. C++ supports compile-time and runtime polymorphism.",
+
+[
+"Understand polymorphism.",
+"Differentiate compile-time and runtime polymorphism.",
+"Understand virtual functions."
+],
+
+`virtual void function()
+{
+}`,
+
+`class Animal
+{
+public:
+
+    virtual void sound()
+    {
+        cout << "Animal sound";
+    }
+};
+
+class Dog : public Animal
+{
+public:
+
+    void sound() override
+    {
+        cout << "Bark";
+    }
+};
+
+int main()
+{
+    Animal* a = new Dog();
+
+    a->sound();
+
+    delete a;
+}`,
+
+`Bark`,
+
+[
+"Function overloading is compile-time polymorphism.",
+"Virtual functions support runtime polymorphism.",
+"override can make overriding clearer."
+],
+
+[
+"Forgetting virtual in the base class.",
+"Incorrect function signatures."
+],
+
+"Create a base Shape class and derived Circle and Rectangle classes."
+);
+
+
+/* =========================================================
+   STL
+========================================================= */
+
+createContent(
+"vector",
+
+"std::vector is a dynamic sequence container.",
+
+"A vector stores elements in contiguous memory and can grow or shrink dynamically.",
+
+[
+"Create vectors.",
+"Insert elements.",
+"Access elements.",
+"Iterate through vectors."
+],
+
+`vector<int> numbers;`,
+
+`#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<int> numbers;
+
+    numbers.push_back(10);
+    numbers.push_back(20);
+    numbers.push_back(30);
+
+    for (int x : numbers)
+    {
+        cout << x << " ";
+    }
+
+    return 0;
+}`,
+
+`10 20 30`,
+
+[
+"vector can grow dynamically.",
+"push_back adds an element.",
+"size() returns the number of elements."
+],
+
+[
+"Accessing an invalid index.",
+"Confusing capacity with size."
+],
+
+"Create a vector of five numbers and find their sum."
+);
+
+
+createContent(
+"map",
+
+"std::map stores key-value pairs in sorted key order.",
+
+"A map associates each key with a value. Keys are unique in a standard map.",
+
+[
+"Create maps.",
+"Insert key-value pairs.",
+"Access values.",
+"Iterate through maps."
+],
+
+`map<key_type, value_type> name;`,
+
+`#include <iostream>
+#include <map>
+using namespace std;
+
+int main()
+{
+    map<string, int> marks;
+
+    marks["Math"] = 90;
+    marks["C++"] = 95;
+
+    for (auto item : marks)
+    {
+        cout << item.first
+             << " "
+             << item.second
+             << endl;
+    }
+
+    return 0;
+}`,
+
+`C++ 95
+Math 90`,
+
+[
+"Keys are unique.",
+"map maintains sorted key order.",
+"first represents the key.",
+"second represents the value."
+],
+
+[
+"Assuming insertion order is preserved.",
+"Using duplicate keys expecting multiple values."
+],
+
+"Create a map containing five subjects and marks."
+);
+
+
+createContent(
+"set",
+
+"std::set stores unique elements in sorted order.",
+
+"A set automatically maintains unique elements and normally stores them in sorted order.",
+
+[
+"Create sets.",
+"Insert values.",
+"Understand uniqueness.",
+"Iterate through sets."
+],
+
+`set<int> numbers;`,
+
+`#include <iostream>
+#include <set>
+using namespace std;
+
+int main()
+{
+    set<int> numbers;
+
+    numbers.insert(30);
+    numbers.insert(10);
+    numbers.insert(30);
+    numbers.insert(20);
+
+    for (int x : numbers)
+    {
+        cout << x << " ";
+    }
+}`,
+
+`10 20 30`,
+
+[
+"Duplicate values are ignored.",
+"Elements are ordered."
+],
+
+[
+"Expecting duplicates.",
+"Assuming values remain in insertion order."
+],
+
+"Insert ten numbers into a set and display unique values."
+);
+
+
+/* =========================================================
+   MODERN C++
+========================================================= */
+
+createContent(
+"auto",
+
+"auto allows the compiler to determine a variable's type.",
+
+"The auto keyword is useful when the type is obvious from the initializer.",
+
+[
+"Understand type deduction.",
+"Use auto correctly.",
+"Recognize where auto improves readability."
+],
+
+`auto variable = value;`,
+
+`auto number = 10;
+auto price = 99.5;
+
+cout << number << endl;
+cout << price;`,
+
+`10
+99.5`,
+
+[
+"The compiler determines the type.",
+"auto requires an initializer in normal variable declarations."
+],
+
+[
+"Using auto when the resulting type is unclear.",
+"Assuming auto makes variables dynamically typed."
+],
+
+"Use auto with a vector iterator and a normal variable."
+);
+
+
+createContent(
+"Lambda Functions",
+
+"Lambda functions are anonymous functions that can be defined inline.",
+
+"Lambda expressions are useful for short operations, callbacks and STL algorithms.",
+
+[
+"Understand lambda syntax.",
+"Create simple lambdas.",
+"Use lambdas with STL."
+],
+
+`[capture](parameters)
+{
+    // body
+}`,
+
+`auto greet = []()
+{
+    cout << "Hello from lambda";
+};
+
+greet();`,
+
+`Hello from lambda`,
+
+[
+"Lambdas do not require a separate function name.",
+"The capture list controls access to surrounding variables.",
+"Lambdas can have parameters and return values."
+],
+
+[
+"Incorrect capture syntax.",
+"Capturing variables unnecessarily."
+],
+
+"Create a lambda that calculates the square of a number."
+);
+
+
+createContent(
+"Smart Pointers",
+
+"Smart pointers help manage dynamically allocated objects.",
+
+"C++ provides smart pointers such as unique_ptr, shared_ptr and weak_ptr.",
+
+[
+"Understand automatic memory management.",
+"Understand unique_ptr.",
+"Understand shared_ptr."
+],
+
+`unique_ptr<Type> pointer;`,
+
+`#include <iostream>
+#include <memory>
+using namespace std;
+
+int main()
+{
+    unique_ptr<int> number =
+        make_unique<int>(100);
+
+    cout << *number;
+
+    return 0;
+}`,
+
+`100`,
+
+[
+"Smart pointers automatically manage ownership.",
+"unique_ptr represents exclusive ownership.",
+"shared_ptr supports shared ownership."
+],
+
+[
+"Using raw delete with smart pointers.",
+"Creating unnecessary shared ownership."
+],
+
+"Create a unique_ptr that stores a dynamically allocated integer."
+);
+
+
+/* =========================================================
+   FALLBACK CONTENT
+========================================================= */
+
+function generateFallback(title) {
+
+    return {
+
+        description:
+            "Learn the C++ programming concept: " + title + ".",
+
+        introduction:
+            title +
+            " is an important concept in C++. This lesson introduces the purpose, syntax and practical use of the topic.",
+
+        objectives: [
+            "Understand the meaning of " + title + ".",
+            "Learn the basic syntax.",
+            "Understand how the concept is used in C++.",
+            "Practice the concept with a program."
+        ],
+
+        concept:
+            "The topic " +
+            title +
+            " is used to solve programming problems and build larger C++ applications. Understanding its syntax and behavior is important before using it in advanced programs.",
+
+        syntax:
+`// Basic structure
+
+// Learn the syntax of:
+${title}`,
+
+        code:
+`#include <iostream>
+using namespace std;
+
+int main()
+{
+    cout << "C++ Topic: ${title}";
+    return 0;
+}`,
+
+        output:
+            "C++ Topic: " + title,
+
+        keyPoints: [
+            "Understand the purpose of the concept.",
+            "Learn its syntax.",
+            "Practice with simple programs.",
+            "Use it in larger programs."
+        ],
+
+        mistakes: [
+            "Using incorrect syntax.",
+            "Forgetting semicolons.",
+            "Not understanding the purpose of the concept."
+        ],
+
+        practice:
+            "Write your own C++ program using " + title + " and test it with different inputs."
+
+    };
+
+}
+
+
+/* =========================================================
+   LOAD TOPIC
+========================================================= */
+
+function loadTopic() {
+
+    let data = topicContent[topic];
+
+    if (!data) {
+        data = generateFallback(topic);
+    }
+
+    document.title =
+        "EduLearn - " + topic;
+
+    document.getElementById(
+        "topicTitle"
+    ).textContent = topic;
+
+    document.getElementById(
+        "breadcrumbTopic"
+    ).textContent = topic;
+
+    document.getElementById(
+        "moduleName"
+    ).textContent = moduleName;
+
+    document.getElementById(
+        "topicLevel"
+    ).textContent = level;
+
+    document.getElementById(
+        "topicDescription"
+    ).textContent = data.description;
+
+    document.getElementById(
+        "introduction"
+    ).innerHTML =
+        "<p>" +
+        data.introduction +
+        "</p>";
+
+    const objectives =
+        document.getElementById("objectives");
+
+    objectives.innerHTML = "";
+
+    data.objectives.forEach(item => {
+
+        const li =
+            document.createElement("li");
+
+        li.textContent = item;
+
+        objectives.appendChild(li);
+
+    });
+
+
+    document.getElementById(
+        "concept"
+    ).innerHTML =
+        "<p>" +
+        data.concept +
+        "</p>";
+
+
+    document.getElementById(
+        "syntax"
+    ).textContent =
+        data.syntax;
+
+
+    document.getElementById(
+        "codeExample"
+    ).textContent =
+        data.code;
+
+
+    document.getElementById(
+        "output"
+    ).textContent =
+        data.output;
+
+
+    const keyPoints =
+        document.getElementById("keyPoints");
+
+    keyPoints.innerHTML = "";
+
+    data.keyPoints.forEach(item => {
+
+        const div =
+            document.createElement("div");
+
+        div.className = "key-point";
+
+        div.textContent = item;
+
+        keyPoints.appendChild(div);
+
+    });
+
+
+    const mistakes =
+        document.getElementById("mistakes");
+
+    mistakes.innerHTML = "";
+
+    data.mistakes.forEach(item => {
+
+        const div =
+            document.createElement("div");
+
+        div.className = "warning";
+
+        div.textContent = item;
+
+        mistakes.appendChild(div);
+
+    });
+
+
+    document.getElementById(
+        "practice"
+    ).innerHTML =
+        "<p>" +
+        data.practice +
+        "</p>";
+
+
+    loadCompletionStatus();
+
+}
+
+
+/* =========================================================
+   COMPLETION SYSTEM
+========================================================= */
+
+function completionKey() {
+
+    return "cpp_completed_" +
+        topic.toLowerCase()
+        .replace(/[^a-z0-9]+/g, "_");
+
+}
+
+
+function markTopicComplete() {
+
+    localStorage.setItem(
+        completionKey(),
+        "true"
+    );
+
+    showCompleted();
+
+}
+
+
+function loadCompletionStatus() {
+
+    if (
+        localStorage.getItem(
+            completionKey()
+        ) === "true"
+    ) {
+
+        showCompleted();
+
+    }
+
+}
+
+
+function showCompleted() {
+
+    const button =
+        document.getElementById(
+            "completeButton"
+        );
+
+    const message =
+        document.getElementById(
+            "statusMessage"
+        );
+
+    button.textContent =
+        "✓ Topic Completed";
+
+    button.classList.add(
+        "completed"
+    );
+
+    message.textContent =
+        "This C++ topic has been marked as completed.";
+
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+if (
+    localStorage.getItem("darkMode") === "true"
+) {
+
+    document.body.classList.add("dark");
+
+}
+
+
+/* =========================================================
+   START
+========================================================= */
+
+loadTopic();
+
+</script>
+
+</body>
+
+</html>
