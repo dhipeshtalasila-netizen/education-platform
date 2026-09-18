@@ -47,7 +47,7 @@ body.dark {
 .nav-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 5px;
 }
 
 .nav-links a {
@@ -86,16 +86,13 @@ body.dark {
     line-height: 1.7;
 }
 
-.hero-buttons {
-    margin-top: 25px;
-}
-
-.hero-buttons a {
+.hero-btn {
     display: inline-block;
+    margin-top: 25px;
+    padding: 12px 20px;
     background: white;
     color: #1d4ed8;
     text-decoration: none;
-    padding: 12px 20px;
     border-radius: 8px;
     font-weight: bold;
 }
@@ -137,38 +134,6 @@ body.dark .stat p {
     color: #bbb;
 }
 
-.search-box {
-    background: white;
-    padding: 22px;
-    border-radius: 14px;
-    margin: 25px 0;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-}
-
-body.dark .search-box {
-    background: #1e1e1e;
-}
-
-.search-box h2 {
-    margin-bottom: 12px;
-    color: #2563eb;
-}
-
-.search-box input {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 16px;
-    outline: none;
-}
-
-body.dark .search-box input {
-    background: #111827;
-    color: white;
-    border-color: #374151;
-}
-
 .about {
     background: white;
     padding: 28px;
@@ -190,8 +155,36 @@ body.dark .about {
     line-height: 1.8;
 }
 
-#courseContent {
-    margin-bottom: 40px;
+.search-box {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+body.dark .search-box {
+    background: #1e1e1e;
+}
+
+.search-box h2 {
+    color: #2563eb;
+    margin-bottom: 12px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+body.dark .search-box input {
+    background: #111827;
+    color: white;
+    border-color: #374151;
 }
 
 .module {
@@ -207,19 +200,18 @@ body.dark .module {
 }
 
 .module-header {
-    padding: 20px 22px;
     background: #111827;
     color: white;
+    padding: 20px;
 }
 
 .module-header h2 {
-    font-size: 20px;
+    font-size: 21px;
 }
 
 .module-header p {
     margin-top: 7px;
     color: #d1d5db;
-    font-size: 14px;
 }
 
 .topic-grid {
@@ -232,11 +224,11 @@ body.dark .module {
 .topic-card {
     text-decoration: none;
     color: inherit;
+    background: #f9fafb;
     border: 1px solid #e5e7eb;
     border-radius: 10px;
     padding: 15px;
     transition: 0.2s;
-    background: #fafafa;
 }
 
 body.dark .topic-card {
@@ -247,12 +239,12 @@ body.dark .topic-card {
 .topic-card:hover {
     transform: translateY(-2px);
     border-color: #2563eb;
-    box-shadow: 0 4px 10px rgba(37,99,235,0.15);
+    box-shadow: 0 4px 12px rgba(37,99,235,0.15);
 }
 
 .topic-number {
-    font-size: 12px;
     color: #2563eb;
+    font-size: 12px;
     font-weight: bold;
     margin-bottom: 7px;
 }
@@ -265,11 +257,11 @@ body.dark .topic-card {
 .topic-level {
     display: inline-block;
     margin-top: 9px;
-    font-size: 11px;
     padding: 4px 8px;
     border-radius: 20px;
     background: #e0e7ff;
     color: #3730a3;
+    font-size: 11px;
 }
 
 body.dark .topic-level {
@@ -280,8 +272,8 @@ body.dark .topic-level {
 .no-results {
     background: white;
     padding: 30px;
-    border-radius: 12px;
     text-align: center;
+    border-radius: 12px;
 }
 
 body.dark .no-results {
@@ -289,14 +281,14 @@ body.dark .no-results {
 }
 
 footer {
+    margin-top: 40px;
+    padding: 30px;
+    text-align: center;
     background: #111827;
     color: white;
-    text-align: center;
-    padding: 30px;
-    margin-top: 40px;
 }
 
-@media(max-width:900px) {
+@media(max-width: 900px) {
 
     .stats {
         grid-template-columns: repeat(2, 1fr);
@@ -308,7 +300,7 @@ footer {
 
 }
 
-@media(max-width:600px) {
+@media(max-width: 600px) {
 
     .navbar {
         padding: 15px;
@@ -324,10 +316,6 @@ footer {
 
     .hero h1 {
         font-size: 30px;
-    }
-
-    .stats {
-        grid-template-columns: 1fr 1fr;
     }
 
     .topic-grid {
@@ -346,16 +334,24 @@ footer {
 
 <nav class="navbar">
 
-    <div class="logo">EduLearn</div>
+    <div class="logo">
+        EduLearn
+    </div>
 
     <div class="nav-links">
 
         <a href="index.html">Home</a>
+
         <a href="dashboard.html">Dashboard</a>
+
         <a href="coding.html">Coding</a>
+
         <a href="python.html">Python</a>
+
         <a href="c.html">C</a>
+
         <a href="cpp.html">C++</a>
+
         <a href="settings.html">Settings</a>
 
     </div>
@@ -371,18 +367,15 @@ footer {
     <h1>🚀 C++ Programming</h1>
 
     <p>
-        Master C++ from fundamentals to advanced programming,
-        object-oriented programming, STL, algorithms, memory management,
-        competitive programming, projects, debugging and interview preparation.
+        Learn C++ from the fundamentals to advanced programming,
+        object-oriented programming, STL, modern C++, data structures,
+        algorithms, competitive programming, projects, debugging and
+        interview preparation.
     </p>
 
-    <div class="hero-buttons">
-
-        <a href="#courseContent">
-            Start Learning
-        </a>
-
-    </div>
+    <a class="hero-btn" href="#courseContent">
+        Start Learning
+    </a>
 
 </section>
 
@@ -390,23 +383,54 @@ footer {
 <section class="stats">
 
     <div class="stat">
-        <h2 id="moduleCount">40</h2>
-        <p>Modules</p>
+
+        <h2 id="moduleCount">
+            40
+        </h2>
+
+        <p>
+            Modules
+        </p>
+
     </div>
 
-    <div class="stat">
-        <h2 id="topicCount">0</h2>
-        <p>Topics</p>
-    </div>
 
     <div class="stat">
-        <h2 id="beginnerCount">0</h2>
-        <p>Foundation Topics</p>
+
+        <h2 id="topicCount">
+            0
+        </h2>
+
+        <p>
+            Topics
+        </p>
+
     </div>
 
+
     <div class="stat">
-        <h2 id="advancedCount">0</h2>
-        <p>Advanced Topics</p>
+
+        <h2 id="foundationCount">
+            0
+        </h2>
+
+        <p>
+            Foundation Topics
+        </p>
+
+    </div>
+
+
+    <div class="stat">
+
+        <h2 id="advancedCount">
+            0
+        </h2>
+
+        <p>
+            Advanced Topics
+        </p>
+
     </div>
 
 </section>
@@ -414,22 +438,25 @@ footer {
 
 <section class="about">
 
-    <h2>📘 About C++</h2>
+    <h2>
+        📘 About C++
+    </h2>
 
     <p>
-        C++ is a powerful general-purpose programming language used for
-        software development, game development, competitive programming,
-        systems programming, embedded systems, high-performance applications,
-        data structures and algorithms.
+        C++ is a powerful general-purpose programming language widely
+        used for software development, systems programming, game
+        development, embedded systems, competitive programming and
+        high-performance applications.
     </p>
 
     <br>
 
     <p>
-        This EduLearn C++ course covers the subject from the fundamentals
-        through object-oriented programming, templates, STL, modern C++,
-        memory management, algorithms, graphs, competitive programming,
-        projects, debugging and interview preparation.
+        This complete EduLearn C++ course covers fundamentals,
+        object-oriented programming, memory management, templates,
+        STL, modern C++, data structures, algorithms, graph algorithms,
+        competitive programming, projects, debugging and interview
+        preparation.
     </p>
 
 </section>
@@ -437,12 +464,14 @@ footer {
 
 <section class="search-box">
 
-    <h2>🔎 Search the C++ Subject</h2>
+    <h2>
+        🔎 Search C++ Topics
+    </h2>
 
     <input
         type="text"
         id="searchInput"
-        placeholder="Search any C++ topic... example: vector, inheritance, pointers, Dijkstra"
+        placeholder="Search any C++ topic..."
         oninput="searchTopics()"
     >
 
@@ -457,7 +486,9 @@ footer {
 
 <footer>
 
-<p>© 2026 EduLearn | C++ Programming</p>
+    <p>
+        © 2026 EduLearn | C++ Programming
+    </p>
 
 </footer>
 
@@ -466,8 +497,9 @@ footer {
 
 
 /* =========================================================
-   COMPLETE C++ CURRICULUM
+   C++ COMPLETE CURRICULUM
    ========================================================= */
+
 
 const modules = [
 
@@ -505,6 +537,7 @@ topics: [
 ]
 },
 
+
 {
 name: "Basic Syntax",
 topics: [
@@ -532,6 +565,7 @@ topics: [
 ]
 },
 
+
 {
 name: "Data Types",
 topics: [
@@ -557,6 +591,7 @@ topics: [
 "Data Type Selection"
 ]
 },
+
 
 {
 name: "Variables and Constants",
@@ -593,6 +628,7 @@ topics: [
 "Direct Initialization"
 ]
 },
+
 
 {
 name: "Input and Output",
@@ -638,6 +674,7 @@ topics: [
 ]
 },
 
+
 {
 name: "Operators",
 topics: [
@@ -674,6 +711,7 @@ topics: [
 ]
 },
 
+
 {
 name: "Type Conversion",
 topics: [
@@ -702,6 +740,7 @@ topics: [
 ]
 },
 
+
 {
 name: "Conditional Statements",
 topics: [
@@ -726,6 +765,7 @@ topics: [
 "if constexpr"
 ]
 },
+
 
 {
 name: "Loops",
@@ -754,6 +794,7 @@ topics: [
 "Breaking Nested Loops"
 ]
 },
+
 
 {
 name: "Functions",
@@ -784,6 +825,7 @@ topics: [
 ]
 },
 
+
 {
 name: "Arrays",
 topics: [
@@ -809,6 +851,7 @@ topics: [
 "Common Array Errors"
 ]
 },
+
 
 {
 name: "Strings",
@@ -837,6 +880,7 @@ topics: [
 "String Algorithms"
 ]
 },
+
 
 {
 name: "Pointers",
@@ -867,6 +911,7 @@ topics: [
 ]
 },
 
+
 {
 name: "References",
 topics: [
@@ -888,6 +933,7 @@ topics: [
 "Reference Safety"
 ]
 },
+
 
 {
 name: "Structures and Enumerations",
@@ -911,6 +957,7 @@ topics: [
 "Structures vs Classes"
 ]
 },
+
 
 {
 name: "Object Oriented Programming",
@@ -938,6 +985,7 @@ topics: [
 ]
 },
 
+
 {
 name: "Constructors and Destructors",
 topics: [
@@ -959,6 +1007,7 @@ topics: [
 "Temporary Objects"
 ]
 },
+
 
 {
 name: "Inheritance",
@@ -984,6 +1033,7 @@ topics: [
 ]
 },
 
+
 {
 name: "Polymorphism",
 topics: [
@@ -1006,6 +1056,7 @@ topics: [
 ]
 },
 
+
 {
 name: "Friend Functions and Classes",
 topics: [
@@ -1021,6 +1072,7 @@ topics: [
 "Disadvantages of Friend Functions"
 ]
 },
+
 
 {
 name: "Operator Overloading",
@@ -1044,6 +1096,7 @@ topics: [
 ]
 },
 
+
 {
 name: "Templates",
 topics: [
@@ -1064,6 +1117,7 @@ topics: [
 "Template Best Practices"
 ]
 },
+
 
 {
 name: "Exception Handling",
@@ -1088,6 +1142,7 @@ topics: [
 "RAII and Exceptions"
 ]
 },
+
 
 {
 name: "File Handling",
@@ -1115,6 +1170,7 @@ topics: [
 ]
 },
 
+
 {
 name: "STL Introduction",
 topics: [
@@ -1131,6 +1187,7 @@ topics: [
 "Container Iterator Algorithm Model"
 ]
 },
+
 
 {
 name: "STL Containers",
@@ -1159,6 +1216,7 @@ topics: [
 ]
 },
 
+
 {
 name: "STL Container Adapters",
 topics: [
@@ -1176,6 +1234,7 @@ topics: [
 "Choosing an Adapter"
 ]
 },
+
 
 {
 name: "STL Iterators",
@@ -1198,6 +1257,7 @@ topics: [
 "Iterator with Algorithms"
 ]
 },
+
 
 {
 name: "STL Algorithms",
@@ -1229,6 +1289,7 @@ topics: [
 ]
 },
 
+
 {
 name: "Lambda and Functional Programming",
 topics: [
@@ -1249,6 +1310,7 @@ topics: [
 "Higher Order Functions"
 ]
 },
+
 
 {
 name: "Modern C++",
@@ -1277,6 +1339,7 @@ topics: [
 ]
 },
 
+
 {
 name: "Smart Pointers",
 topics: [
@@ -1298,6 +1361,7 @@ topics: [
 "Smart Pointer Best Practices"
 ]
 },
+
 
 {
 name: "Memory Management",
@@ -1323,6 +1387,7 @@ topics: [
 ]
 },
 
+
 {
 name: "Data Structures",
 topics: [
@@ -1347,6 +1412,7 @@ topics: [
 "Choosing Data Structures"
 ]
 },
+
 
 {
 name: "Algorithms",
@@ -1376,6 +1442,7 @@ topics: [
 ]
 },
 
+
 {
 name: "Graph Algorithms",
 topics: [
@@ -1401,6 +1468,7 @@ topics: [
 "Graph Coloring"
 ]
 },
+
 
 {
 name: "Competitive Programming",
@@ -1429,6 +1497,7 @@ topics: [
 ]
 },
 
+
 {
 name: "C++ Projects",
 topics: [
@@ -1454,6 +1523,7 @@ topics: [
 "Project Documentation"
 ]
 },
+
 
 {
 name: "C++ Debugging and Best Practices",
@@ -1483,6 +1553,7 @@ topics: [
 "Testing Best Practices"
 ]
 },
+
 
 {
 name: "C++ Interview Preparation",
@@ -1516,41 +1587,29 @@ topics: [
 
 
 /* =========================================================
-   LEVEL CALCULATION
+   LEVELS
    ========================================================= */
 
-function getLevel(moduleIndex, topicIndex) {
+function getLevel(moduleIndex) {
 
-    if (moduleIndex <= 2) {
+    if (moduleIndex <= 9) {
         return "Foundation";
     }
 
-    if (moduleIndex <= 9) {
-        return topicIndex < 8 ? "Foundation" : "Core";
-    }
-
-    if (moduleIndex <= 15) {
-        return topicIndex < 7 ? "Core" : "Advanced";
-    }
-
-    if (moduleIndex <= 24) {
-        return topicIndex < 6 ? "Advanced" : "Professional";
+    if (moduleIndex <= 20) {
+        return "Core";
     }
 
     if (moduleIndex <= 30) {
         return "Advanced";
     }
 
-    if (moduleIndex <= 36) {
+    if (moduleIndex <= 35) {
         return "Professional";
     }
 
-    if (moduleIndex === 37) {
+    if (moduleIndex <= 38) {
         return "Practical";
-    }
-
-    if (moduleIndex === 38) {
-        return "Project";
     }
 
     return "Career";
@@ -1558,28 +1617,39 @@ function getLevel(moduleIndex, topicIndex) {
 
 
 /* =========================================================
-   NORMALIZE TOPIC FOR URL
+   HTML ESCAPE
    ========================================================= */
 
-function normalizeTopic(text) {
+function escapeHtml(text) {
 
-    return String(text || "")
-        .trim();
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
 }
 
 
 /* =========================================================
-   CREATE TOPIC URL
+   TOPIC URL
    ========================================================= */
 
-function topicURL(topic, moduleName, level, number) {
+function createTopicURL(
+    topic,
+    moduleName,
+    level,
+    number
+) {
 
-    return "cpp-topic.html?" +
+    return (
+        "cpp-topic.html?" +
         "topic=" + encodeURIComponent(topic) +
         "&module=" + encodeURIComponent(moduleName) +
         "&level=" + encodeURIComponent(level) +
-        "&number=" + encodeURIComponent(number);
+        "&number=" + encodeURIComponent(number)
+    );
 
 }
 
@@ -1588,36 +1658,82 @@ function topicURL(topic, moduleName, level, number) {
    RENDER COURSE
    ========================================================= */
 
-function renderCourse(filter = "") {
+function renderCourse(searchTerm = "") {
 
-    const content =
+    const courseContent =
         document.getElementById("courseContent");
 
-    content.innerHTML = "";
+    courseContent.innerHTML = "";
 
     let totalTopics = 0;
+
     let foundationTopics = 0;
+
     let advancedTopics = 0;
 
-    let moduleNumber = 0;
 
-    modules.forEach(function(module) {
+    modules.forEach(function(module, moduleIndex) {
 
-        moduleNumber++;
+        totalTopics += module.topics.length;
 
-        const filteredTopics =
+        const level =
+            getLevel(moduleIndex);
+
+
+        if (level === "Foundation") {
+
+            foundationTopics +=
+                module.topics.length;
+
+        }
+
+
+        if (
+            level === "Advanced" ||
+            level === "Professional"
+        ) {
+
+            advancedTopics +=
+                module.topics.length;
+
+        }
+
+    });
+
+
+    modules.forEach(function(module, moduleIndex) {
+
+        const level =
+            getLevel(moduleIndex);
+
+
+        const matchingTopics =
             module.topics.filter(function(topic) {
 
-                return topic
-                    .toLowerCase()
-                    .includes(filter.toLowerCase());
+                if (!searchTerm) {
+                    return true;
+                }
+
+                return (
+                    topic
+                        .toLowerCase()
+                        .includes(
+                            searchTerm.toLowerCase()
+                        ) ||
+
+                    module.name
+                        .toLowerCase()
+                        .includes(
+                            searchTerm.toLowerCase()
+                        )
+                );
 
             });
 
 
         if (
-            filter &&
-            filteredTopics.length === 0
+            searchTerm &&
+            matchingTopics.length === 0
         ) {
             return;
         }
@@ -1632,17 +1748,29 @@ function renderCourse(filter = "") {
         const header =
             document.createElement("div");
 
-        header.className = "module-header";
+        header.className =
+            "module-header";
+
 
         header.innerHTML =
-            "<h2>Module " +
-            moduleNumber +
+
+            "<h2>" +
+
+            "Module " +
+            (moduleIndex + 1) +
             ": " +
-            module.name +
+
+            escapeHtml(module.name) +
+
             "</h2>" +
+
             "<p>" +
+
             module.topics.length +
-            " topics</p>";
+            " topics • " +
+            level +
+
+            "</p>";
 
 
         moduleDiv.appendChild(header);
@@ -1651,55 +1779,52 @@ function renderCourse(filter = "") {
         const grid =
             document.createElement("div");
 
-        grid.className = "topic-grid";
+        grid.className =
+            "topic-grid";
 
 
-        module.topics.forEach(function(topic, index) {
+        matchingTopics.forEach(function(topic) {
 
-            const level =
-                getLevel(
-                    moduleNumber - 1,
-                    index
-                );
-
-
-            if (
-                filter &&
-                !topic
-                    .toLowerCase()
-                    .includes(filter.toLowerCase())
-            ) {
-                return;
-            }
+            const originalIndex =
+                module.topics.indexOf(topic);
 
 
             const card =
                 document.createElement("a");
 
-            card.className = "topic-card";
+            card.className =
+                "topic-card";
+
 
             card.href =
-                topicURL(
+                createTopicURL(
                     topic,
                     module.name,
                     level,
-                    index + 1
+                    originalIndex + 1
                 );
 
 
             card.innerHTML =
+
                 '<div class="topic-number">' +
-                'Topic ' +
-                (index + 1) +
-                '</div>' +
+
+                "Topic " +
+                (originalIndex + 1) +
+
+                "</div>" +
 
                 '<div class="topic-name">' +
+
                 escapeHtml(topic) +
-                '</div>' +
+
+                "</div>" +
 
                 '<span class="topic-level">' +
+
                 level +
-                '</span>';
+
+                "</span>";
 
 
             grid.appendChild(card);
@@ -1709,61 +1834,52 @@ function renderCourse(filter = "") {
 
         moduleDiv.appendChild(grid);
 
-        content.appendChild(moduleDiv);
+        courseContent.appendChild(moduleDiv);
 
     });
 
 
-    modules.forEach(function(module, moduleIndex) {
-
-        module.topics.forEach(function(topic, topicIndex) {
-
-            totalTopics++;
-
-            const level =
-                getLevel(
-                    moduleIndex,
-                    topicIndex
-                );
-
-            if (level === "Foundation") {
-                foundationTopics++;
-            }
-
-            if (
-                level === "Advanced" ||
-                level === "Professional" ||
-                level === "Project" ||
-                level === "Career"
-            ) {
-                advancedTopics++;
-            }
-
-        });
-
-    });
-
-
-    document.getElementById("moduleCount").textContent =
+    document.getElementById(
+        "moduleCount"
+    ).textContent =
         modules.length;
 
-    document.getElementById("topicCount").textContent =
+
+    document.getElementById(
+        "topicCount"
+    ).textContent =
         totalTopics;
 
-    document.getElementById("beginnerCount").textContent =
+
+    document.getElementById(
+        "foundationCount"
+    ).textContent =
         foundationTopics;
 
-    document.getElementById("advancedCount").textContent =
+
+    document.getElementById(
+        "advancedCount"
+    ).textContent =
         advancedTopics;
 
 
-    if (!content.innerHTML) {
+    if (
+        courseContent.children.length === 0
+    ) {
 
-        content.innerHTML =
+        courseContent.innerHTML =
+
             '<div class="no-results">' +
-            '<h2>No topics found</h2>' +
-            '<p>Try another C++ topic or keyword.</p>' +
-            '</div>';
+
+            "<h2>No topics found</h2>" +
+
+            "<p>" +
+
+            "Try another C++ topic or keyword." +
+
+            "</p>" +
+
+            "</div>";
 
     }
 
@@ -1779,26 +1895,9 @@ function searchTopics() {
     const input =
         document.getElementById("searchInput");
 
-    const value =
-        input.value.trim();
-
-    renderCourse(value);
-
-}
-
-
-/* =========================================================
-   ESCAPE HTML
-   ========================================================= */
-
-function escapeHtml(text) {
-
-    return String(text || "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+    renderCourse(
+        input.value.trim()
+    );
 
 }
 
@@ -1821,7 +1920,7 @@ function loadDarkMode() {
 
 
 /* =========================================================
-   START
+   INITIALIZE
    ========================================================= */
 
 loadDarkMode();
@@ -1830,6 +1929,7 @@ renderCourse();
 
 
 </script>
+
 
 </body>
 
