@@ -64,6 +64,16 @@ nav a:hover {
     padding: 35px 20px;
 }
 
+.back-btn {
+    display: inline-block;
+    text-decoration: none;
+    background: #374151;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
 .breadcrumb {
     margin-bottom: 20px;
     color: #666;
@@ -88,8 +98,8 @@ body.dark .breadcrumb {
 }
 
 .topic-header p {
-    font-size: 16px;
-    line-height: 1.6;
+    font-size: 17px;
+    line-height: 1.7;
 }
 
 .badges {
@@ -123,14 +133,14 @@ body.dark .card {
 }
 
 .card p {
-    line-height: 1.7;
+    line-height: 1.8;
     margin-bottom: 12px;
 }
 
 .card ul,
 .card ol {
     margin-left: 25px;
-    line-height: 1.8;
+    line-height: 1.9;
 }
 
 .code-box {
@@ -140,6 +150,11 @@ body.dark .card {
     border-radius: 10px;
     overflow-x: auto;
     margin-top: 15px;
+}
+
+.code-title {
+    color: #93c5fd;
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
@@ -149,26 +164,16 @@ pre {
     line-height: 1.6;
 }
 
-.code-title {
-    color: #93c5fd;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
 .example-output {
     background: #f1f5f9;
     padding: 15px;
     border-radius: 8px;
-    margin-top: 12px;
+    margin-top: 15px;
     font-family: Consolas, monospace;
 }
 
 body.dark .example-output {
     background: #292929;
-}
-
-.key-points li {
-    margin-bottom: 6px;
 }
 
 .warning {
@@ -222,16 +227,6 @@ body.dark .complete-area {
 
 .complete-btn.completed {
     background: #16a34a;
-}
-
-.back-btn {
-    display: inline-block;
-    text-decoration: none;
-    background: #374151;
-    color: white;
-    padding: 11px 18px;
-    border-radius: 8px;
-    margin-bottom: 20px;
 }
 
 .not-found {
@@ -326,22 +321,23 @@ footer {
 
 <script>
 
-
 /* =========================================================
-   GET TOPIC FROM URL
+   READ URL
 ========================================================= */
 
 const params = new URLSearchParams(window.location.search);
 
 const topicName = params.get("topic") || "";
 
-const moduleName = params.get("module") || "C++ Programming";
+const moduleName =
+    params.get("module") || "C++ Programming";
 
-const level = params.get("level") || "Core";
+const level =
+    params.get("level") || "Core";
 
 
 /* =========================================================
-   NORMALIZE TOPIC
+   NORMALIZE TEXT
 ========================================================= */
 
 function normalizeTopic(text) {
@@ -351,6 +347,7 @@ function normalizeTopic(text) {
         .trim()
         .replace(/\+/g, " plus ")
         .replace(/#/g, " sharp ")
+        .replace(/&/g, " and ")
         .replace(/[()]/g, "")
         .replace(/[-]/g, " ")
         .replace(/[.,]/g, "")
@@ -360,28 +357,29 @@ function normalizeTopic(text) {
 
 
 /* =========================================================
-   TOPIC DATABASE
+   SPECIAL TOPIC CONTENT
 ========================================================= */
 
 const topicContent = {
 
-
 "what is c++": {
 
 description:
-"C++ is a general-purpose, compiled programming language that supports procedural, object-oriented and generic programming.",
+"C++ is a general-purpose programming language that supports procedural, object-oriented, generic and other programming techniques.",
 
 objective:
-"Understand what C++ is, why it was created, its major features and where it is used.",
+"Understand what C++ is, where it came from, its major features and why it is widely used.",
 
 explanation:
-"C++ was created by Bjarne Stroustrup as an extension of the C programming language. It adds features such as classes, objects, inheritance, polymorphism, templates and the Standard Template Library.",
+"C++ evolved from the C programming language and was developed by Bjarne Stroustrup. It provides low-level control together with higher-level abstractions such as classes, templates and the Standard Library.",
 
 syntax:
 `#include <iostream>
 
 int main() {
+
     std::cout << "Hello, C++!";
+
     return 0;
 }`,
 
@@ -392,15 +390,15 @@ keyPoints: [
 "C++ is a compiled language.",
 "It supports procedural programming.",
 "It supports object-oriented programming.",
-"It supports generic programming through templates.",
-"The Standard Library provides many reusable components.",
-"C++ is commonly used when performance and control are important."
+"It supports generic programming.",
+"The Standard Library provides reusable components.",
+"C++ is widely used for performance-sensitive software."
 ],
 
 mistakes: [
-"Thinking C++ is exactly the same as C.",
-"Confusing compilation with interpretation.",
-"Using C++ features without understanding their fundamentals."
+"Thinking C++ and C are identical.",
+"Trying advanced C++ before learning the fundamentals.",
+"Assuming every C++ feature must be used in every program."
 ]
 
 },
@@ -409,19 +407,21 @@ mistakes: [
 "history of c++": {
 
 description:
-"C++ evolved from the C programming language and was developed by Bjarne Stroustrup.",
+"C++ originated at Bell Labs and evolved from work on extending C with classes.",
 
 objective:
-"Learn the origins and major evolution of C++.",
+"Understand the historical development of C++.",
 
 explanation:
-"Development of C++ began at Bell Labs. The language was initially known as 'C with Classes'. It later became C++ and continued evolving through standardized versions such as C++98, C++03, C++11, C++14, C++17, C++20 and C++23.",
+"Bjarne Stroustrup began developing C++ at Bell Labs. The language was initially known as C with Classes before becoming C++. It has since evolved through multiple ISO standards.",
 
 syntax:
 `#include <iostream>
 
 int main() {
+
     std::cout << "C++";
+
     return 0;
 }`,
 
@@ -429,15 +429,15 @@ output:
 `C++`,
 
 keyPoints: [
-"C++ originated at Bell Labs.",
-"Bjarne Stroustrup designed the language.",
-"Early C++ was called C with Classes.",
-"C++ continues to evolve through language standards."
+"Bjarne Stroustrup developed C++.",
+"It originated at Bell Labs.",
+"Early development was based on C.",
+"C++ has evolved through many standards."
 ],
 
 mistakes: [
-"Assuming modern C++ is identical to old C++.",
-"Learning only old syntax and ignoring modern C++ features."
+"Assuming old C++ and modern C++ are identical.",
+"Ignoring modern language features."
 ]
 
 },
@@ -446,13 +446,13 @@ mistakes: [
 "features of c++": {
 
 description:
-"C++ provides a combination of performance, abstraction and powerful programming features.",
+"C++ combines performance, abstraction and several programming paradigms.",
 
 objective:
-"Understand the major capabilities provided by C++.",
+"Learn the major capabilities provided by C++.",
 
 explanation:
-"Important C++ features include classes, inheritance, polymorphism, templates, operator overloading, exception handling, references, pointers, the Standard Template Library and modern memory-management tools.",
+"Important C++ features include classes, inheritance, polymorphism, templates, operator overloading, exception handling, references, pointers, STL and modern resource-management facilities.",
 
 syntax:
 `class Student {
@@ -475,290 +475,12 @@ keyPoints: [
 "Operator overloading",
 "Exception handling",
 "STL",
-"Manual and automatic resource management"
+"RAII and smart pointers"
 ],
 
 mistakes: [
-"Trying to learn every advanced feature before understanding fundamentals.",
-"Using complex features when a simple solution is sufficient."
-]
-
-},
-
-
-"advantages of c++": {
-
-description:
-"C++ provides high performance while still supporting high-level abstractions.",
-
-objective:
-"Understand why C++ is widely used in performance-sensitive software.",
-
-explanation:
-"C++ gives programmers significant control over memory and system resources. It also provides abstraction mechanisms such as classes, templates and the Standard Library.",
-
-syntax:
-`int a = 10;
-int b = 20;
-
-int sum = a + b;
-
-std::cout << sum;`,
-
-output:
-`30`,
-
-keyPoints: [
-"High performance",
-"Fine-grained resource control",
-"Object-oriented programming",
-"Generic programming",
-"Large Standard Library",
-"Suitable for large software systems"
-],
-
-mistakes: [
-"Assuming performance automatically means good program design.",
-"Ignoring memory-management responsibilities."
-]
-
-},
-
-
-"applications of c++": {
-
-description:
-"C++ is used in many areas where performance, portability and system-level control are important.",
-
-objective:
-"Identify common applications of C++.",
-
-explanation:
-"C++ is used in game engines, operating systems, embedded systems, browsers, desktop applications, financial systems, simulations, scientific software and competitive programming.",
-
-syntax:
-`#include <iostream>
-
-int main() {
-
-    std::cout << "C++ Application";
-
-    return 0;
-}`,
-
-output:
-`C++ Application`,
-
-keyPoints: [
-"Game development",
-"Operating systems",
-"Embedded systems",
-"Desktop software",
-"Browsers",
-"Scientific applications",
-"High-performance systems",
-"Competitive programming"
-],
-
-mistakes: [
-"Assuming C++ is used only for games.",
-"Ignoring the importance of performance and resource management."
-]
-
-},
-
-
-"c vs c++": {
-
-description:
-"C and C++ are closely related languages, but C++ adds many additional programming features.",
-
-objective:
-"Understand important differences between C and C++.",
-
-explanation:
-"C primarily follows procedural programming. C++ supports procedural programming as well as object-oriented, generic and other programming techniques.",
-
-syntax:
-`// C++
-#include <iostream>
-
-int main() {
-
-    std::cout << "Hello";
-
-    return 0;
-}`,
-
-output:
-`Hello`,
-
-keyPoints: [
-"C is primarily procedural.",
-"C++ supports object-oriented programming.",
-"C++ provides classes and objects.",
-"C++ provides function and operator overloading.",
-"C++ provides templates.",
-"C++ provides the STL."
-],
-
-mistakes: [
-"Thinking C++ completely replaces the need to understand C concepts.",
-"Assuming every C program and every C++ program behaves identically."
-]
-
-},
-
-
-"c++ standards": {
-
-description:
-"C++ is standardized through successive language versions.",
-
-objective:
-"Understand why C++ standards exist and recognize major standards.",
-
-explanation:
-"Important standards include C++98, C++03, C++11, C++14, C++17, C++20 and C++23. Newer standards introduce language improvements and library features.",
-
-syntax:
-`#include <iostream>
-
-int main() {
-
-    auto number = 100;
-
-    std::cout << number;
-
-    return 0;
-}`,
-
-output:
-`100`,
-
-keyPoints: [
-"C++ standards define language and library behavior.",
-"C++11 introduced many major modern features.",
-"C++17 added features such as structured bindings.",
-"C++20 introduced concepts, ranges and modules-related facilities.",
-"Modern C++ should generally be preferred for new learning."
-],
-
-mistakes: [
-"Learning only obsolete syntax.",
-"Assuming every compiler supports every newest feature equally."
-]
-
-},
-
-
-"c++ compiler": {
-
-description:
-"A compiler translates C++ source code into a form that the computer can execute.",
-
-objective:
-"Understand the basic role of a C++ compiler.",
-
-explanation:
-"When a C++ program is compiled, the compiler checks the source code and translates it into machine code or an intermediate/object representation. Linking then combines required components into an executable program.",
-
-syntax:
-`g++ program.cpp -o program
-
-./program`,
-
-output:
-`Program execution depends on the code.`,
-
-keyPoints: [
-"The compiler checks source code.",
-"Compilation produces object or machine-level code.",
-"Linking combines required program components.",
-"The executable can then be run."
-],
-
-mistakes: [
-"Thinking the compiler is the same thing as the IDE.",
-"Confusing compile errors with runtime errors."
-]
-
-},
-
-
-"c++ ide": {
-
-description:
-"An IDE provides tools for writing, compiling, debugging and managing C++ programs.",
-
-objective:
-"Understand what an Integrated Development Environment provides.",
-
-explanation:
-"An IDE can provide a code editor, compiler integration, debugger, project management, code completion and other development tools.",
-
-syntax:
-`#include <iostream>
-
-int main() {
-    std::cout << "Using an IDE";
-    return 0;
-}`,
-
-output:
-`Using an IDE`,
-
-keyPoints: [
-"Code editor",
-"Compiler integration",
-"Debugger",
-"Project management",
-"Code completion"
-],
-
-mistakes: [
-"Thinking the IDE itself is the programming language.",
-"Depending completely on automatic suggestions without understanding the code."
-]
-
-},
-
-
-"writing your first c++ program": {
-
-description:
-"Your first C++ program introduces the basic structure of a C++ source file.",
-
-objective:
-"Write, compile and execute a simple C++ program.",
-
-explanation:
-"A basic program commonly includes a library, defines main(), performs an operation and returns from the program.",
-
-syntax:
-`#include <iostream>
-
-int main() {
-
-    std::cout << "Hello, EduLearn!";
-
-    return 0;
-}`,
-
-output:
-`Hello, EduLearn!`,
-
-keyPoints: [
-"main() is the program entry point.",
-"#include imports a header.",
-"std::cout displays output.",
-"return 0 indicates successful completion."
-],
-
-mistakes: [
-"Forgetting required headers.",
-"Misspelling main.",
-"Forgetting semicolons."
+"Using complex features without understanding their purpose.",
+"Assuming more features always means better code."
 ]
 
 },
@@ -767,13 +489,13 @@ mistakes: [
 "hello world program": {
 
 description:
-"The Hello World program is a simple first example used to demonstrate C++ output.",
+"The Hello World program is a simple first C++ program used to demonstrate standard output.",
 
 objective:
-"Learn how to display text using std::cout.",
+"Learn the basic structure of a C++ executable program.",
 
 explanation:
-"The iostream header provides stream-based input and output facilities. std::cout can be used to send text to the standard output stream.",
+"The program includes the iostream header, defines main() and sends a string to standard output using std::cout.",
 
 syntax:
 `#include <iostream>
@@ -789,90 +511,16 @@ output:
 `Hello World!`,
 
 keyPoints: [
-"Include <iostream>.",
-"Use std::cout for standard output.",
-"Use << to send data to the output stream.",
-"main() is required for a normal executable program."
+"#include <iostream> provides stream functionality.",
+"main() is the entry point.",
+"std::cout writes to standard output.",
+"<< sends data to the output stream."
 ],
 
 mistakes: [
-"Forgetting #include <iostream>.",
-"Writing cout without std:: when the namespace has not been imported.",
-"Using a comma instead of <<."
-]
-
-},
-
-
-"compilation and execution": {
-
-description:
-"Compilation converts source code into an executable program that can be run.",
-
-objective:
-"Understand the basic compile-run workflow.",
-
-explanation:
-"A C++ source file is normally compiled by a compiler. The compiler reports errors if the program cannot be translated successfully. After successful compilation, the resulting executable can be run.",
-
-syntax:
-`g++ main.cpp -o main
-
-./main`,
-
-output:
-`Output depends on the program.`,
-
-keyPoints: [
-"Write source code.",
-"Compile the source code.",
-"Fix compilation errors.",
-"Run the executable.",
-"Check program output."
-],
-
-mistakes: [
-"Trying to execute source code as if it were already an executable.",
-"Ignoring compiler error messages."
-]
-
-},
-
-
-"comments in c++": {
-
-description:
-"Comments are notes in source code that are ignored by the compiler.",
-
-objective:
-"Learn single-line and multi-line comments.",
-
-explanation:
-"Comments help programmers explain code, document decisions and temporarily disable code during development.",
-
-syntax:
-`// This is a single-line comment
-
-/*
-   This is
-   a multi-line comment
-*/
-
-int x = 10;`,
-
-output:
-`No output is produced by the comments themselves.`,
-
-keyPoints: [
-"// creates a single-line comment.",
-"/* */ creates a multi-line comment.",
-"Comments are ignored during compilation.",
-"Comments should explain useful information."
-],
-
-mistakes: [
-"Writing comments that are incorrect or outdated.",
-"Using comments instead of clear variable and function names."
+"Forgetting the header.",
+"Writing main incorrectly.",
+"Forgetting semicolons."
 ]
 
 },
@@ -881,251 +529,37 @@ mistakes: [
 "variables": {
 
 description:
-"A variable is a named storage location whose value can be used and, when permitted, changed during program execution.",
+"Variables are named objects used to store values during program execution.",
 
 objective:
-"Learn how to declare, initialize and use variables.",
+"Learn declaration, initialization, modification and scope of variables.",
 
 explanation:
-"A C++ variable has a type and a name. The type determines what kind of value it can store and influences its operations and memory representation.",
+"A variable has a type and a name. Its type determines the kind of value it can represent and affects the operations that can be performed on it.",
 
 syntax:
 `int age = 20;
 
-double salary = 25000.50;
+double price = 99.50;
 
 char grade = 'A';
 
 bool passed = true;`,
 
 output:
-`No output unless the variables are printed.`,
+`Values are stored in the variables and can be used by the program.`,
 
 keyPoints: [
 "Variables have types.",
-"Variables have names.",
 "Variables can be initialized.",
-"Variables may be changed when they are not const.",
-"Choose meaningful variable names."
+"Variables can usually be modified unless declared const.",
+"Meaningful names improve readability."
 ],
 
 mistakes: [
-"Using a variable before initialization.",
+"Using uninitialized variables.",
 "Using invalid identifiers.",
-"Assigning incompatible values without understanding conversions."
-]
-
-},
-
-
-"integer data types": {
-
-description:
-"Integer types store whole-number values.",
-
-objective:
-"Understand common integer types used in C++.",
-
-explanation:
-"C++ provides several integer types including short, int, long and long long. Their exact ranges depend on the implementation, while minimum size requirements are defined by the language.",
-
-syntax:
-`int age = 21;
-
-long population = 1000000;
-
-long long distance = 9000000000LL;`,
-
-output:
-`No output unless the values are printed.`,
-
-keyPoints: [
-"int is a common integer type.",
-"long long supports larger integer values.",
-"Signed integers can represent negative values.",
-"Unsigned integer types represent non-negative values."
-],
-
-mistakes: [
-"Assuming all integer types have exactly the same size on every system.",
-"Ignoring overflow."
-]
-
-},
-
-
-"floating point data types": {
-
-description:
-"Floating-point types represent numbers that can contain fractional parts.",
-
-objective:
-"Understand float, double and long double.",
-
-explanation:
-"Common floating-point types are float, double and long double. They provide different levels of precision and range depending on the implementation.",
-
-syntax:
-`float temperature = 36.5f;
-
-double price = 199.99;
-
-long double value = 12345.6789L;`,
-
-output:
-`No output unless the values are printed.`,
-
-keyPoints: [
-"float provides single precision.",
-"double commonly provides greater precision.",
-"Floating-point values are approximations.",
-"Use appropriate precision for the problem."
-],
-
-mistakes: [
-"Expecting floating-point calculations to always be exact.",
-"Comparing floating-point values using exact equality without considering precision."
-]
-
-},
-
-
-"character data type": {
-
-description:
-"The char type is commonly used to store a character value.",
-
-objective:
-"Learn how character values are represented and used.",
-
-explanation:
-"A character literal is written using single quotes. Character types are integral types, so they can also participate in numeric operations.",
-
-syntax:
-`char grade = 'A';
-
-std::cout << grade;`,
-
-output:
-`A`,
-
-keyPoints: [
-"Character literals use single quotes.",
-"char is an integral type.",
-"Character encoding affects numeric character values."
-],
-
-mistakes: [
-"Using double quotes for a single character.",
-"Confusing a character with a string."
-]
-
-},
-
-
-"boolean data type": {
-
-description:
-"The bool type represents logical true or false values.",
-
-objective:
-"Use Boolean values in conditions and logical operations.",
-
-explanation:
-"A bool can hold true or false. It is commonly used in conditions, flags and logical expressions.",
-
-syntax:
-`bool isStudent = true;
-
-if (isStudent) {
-    std::cout << "Student";
-}`,
-
-output:
-`Student`,
-
-keyPoints: [
-"bool stores true or false.",
-"Boolean expressions are used heavily in conditions.",
-"true and false are C++ Boolean literals."
-],
-
-mistakes: [
-"Confusing bool with integer values.",
-"Writing unnecessarily complicated Boolean expressions."
-]
-
-},
-
-
-"sizeof operator": {
-
-description:
-"The sizeof operator reports the size in bytes of a type or object.",
-
-objective:
-"Learn how to determine the size of data types and objects.",
-
-explanation:
-"sizeof is evaluated by the compiler for ordinary types and expressions and returns a value of type std::size_t.",
-
-syntax:
-`#include <iostream>
-
-int main() {
-
-    std::cout << sizeof(int);
-
-    return 0;
-}`,
-
-output:
-`The result depends on the implementation.`,
-
-keyPoints: [
-"sizeof returns a size in bytes.",
-"The exact size of some types is implementation-dependent.",
-"sizeof can be applied to types and expressions."
-],
-
-mistakes: [
-"Assuming int always occupies exactly four bytes.",
-"Confusing bytes with bits."
-]
-
-},
-
-
-"auto keyword": {
-
-description:
-"The auto keyword allows the compiler to deduce a variable's type from its initializer.",
-
-objective:
-"Learn how automatic type deduction works.",
-
-explanation:
-"auto can reduce repetitive type declarations while preserving static typing. The compiler determines the variable's type from the initializer.",
-
-syntax:
-`auto age = 20;
-
-auto price = 99.50;
-
-auto name = std::string("Deepu");`,
-
-output:
-`No output unless the variables are printed.`,
-
-keyPoints: [
-"auto performs compile-time type deduction.",
-"A variable declared with auto needs an initializer.",
-"auto does not make C++ dynamically typed."
-],
-
-mistakes: [
-"Thinking auto means the type can change later.",
-"Using auto where the actual type is important for readability."
+"Ignoring narrowing conversions."
 ]
 
 },
@@ -1134,13 +568,13 @@ mistakes: [
 "if statement": {
 
 description:
-"The if statement executes code when a condition evaluates to true.",
+"The if statement executes a block when its condition is true.",
 
 objective:
-"Learn basic conditional execution.",
+"Learn conditional execution.",
 
 explanation:
-"An if statement evaluates a Boolean condition. If the condition is true, its associated statement or block is executed.",
+"The condition is evaluated first. If it evaluates to true, the associated statement or block is executed.",
 
 syntax:
 `int age = 20;
@@ -1155,15 +589,14 @@ output:
 `Adult`,
 
 keyPoints: [
-"if evaluates a condition.",
-"Braces define a block.",
-"Conditions can contain logical and relational operators."
+"if tests a condition.",
+"Conditions commonly use relational operators.",
+"Braces define a block of statements."
 ],
 
 mistakes: [
-"Using = instead of == when comparison is intended.",
-"Forgetting braces in complex conditions.",
-"Creating unnecessarily nested conditions."
+"Using = instead of == for comparison.",
+"Creating unnecessarily complicated conditions."
 ]
 
 },
@@ -1172,13 +605,13 @@ mistakes: [
 "if else": {
 
 description:
-"if-else provides two alternative execution paths.",
+"if-else provides two possible execution paths.",
 
 objective:
-"Learn how to execute one block when a condition is true and another when it is false.",
+"Learn how to handle true and false conditions.",
 
 explanation:
-"If the condition of an if statement is false, the else block executes.",
+"If the condition is true, the if block runs. Otherwise, the else block runs.",
 
 syntax:
 `int age = 16;
@@ -1197,14 +630,14 @@ output:
 `Minor`,
 
 keyPoints: [
-"if handles the true condition.",
-"else handles the false condition.",
-"Only the appropriate branch executes."
+"if handles the true branch.",
+"else handles the false branch.",
+"Exactly one of the two branches executes."
 ],
 
 mistakes: [
-"Writing conditions that overlap unnecessarily.",
-"Putting semicolons directly after if conditions."
+"Using a semicolon immediately after if.",
+"Writing conditions that do not cover the intended cases."
 ]
 
 },
@@ -1213,13 +646,13 @@ mistakes: [
 "for loop": {
 
 description:
-"The for loop is commonly used when repeated execution follows a clear initialization, condition and update pattern.",
+"A for loop repeats a block using initialization, a condition and an update expression.",
 
 objective:
-"Learn how to repeat a block using a for loop.",
+"Learn counted repetition in C++.",
 
 explanation:
-"A traditional for loop contains initialization, condition and iteration expression.",
+"The initialization executes first, the condition is checked before each iteration and the update expression normally executes after the body.",
 
 syntax:
 `for (int i = 1; i <= 5; i++) {
@@ -1232,16 +665,14 @@ output:
 `1 2 3 4 5`,
 
 keyPoints: [
-"Initialization runs first.",
-"The condition is checked before each iteration.",
-"The update expression runs after each iteration.",
-"for loops are useful for counted repetition."
+"Useful for counted loops.",
+"Loop variables commonly control the number of iterations.",
+"Range-based for loops are useful for containers."
 ],
 
 mistakes: [
-"Creating an infinite loop accidentally.",
-"Using the wrong loop boundary.",
-"Changing the loop counter unexpectedly inside the body."
+"Incorrect loop boundaries.",
+"Accidentally creating an infinite loop."
 ]
 
 },
@@ -1250,13 +681,13 @@ mistakes: [
 "while loop": {
 
 description:
-"The while loop repeats a block while a condition remains true.",
+"A while loop repeats while its condition remains true.",
 
 objective:
 "Learn condition-controlled repetition.",
 
 explanation:
-"A while loop checks its condition before each iteration. If the condition is initially false, the body may never execute.",
+"The condition is checked before each iteration, so a while loop may execute zero times.",
 
 syntax:
 `int i = 1;
@@ -1273,13 +704,13 @@ output:
 `1 2 3 4 5`,
 
 keyPoints: [
-"The condition is checked before the body.",
+"The condition is checked first.",
 "The loop may execute zero times.",
-"The condition must eventually become false."
+"The loop should eventually reach a false condition."
 ],
 
 mistakes: [
-"Forgetting to update the loop condition.",
+"Forgetting to update the loop variable.",
 "Creating an infinite loop."
 ]
 
@@ -1289,13 +720,13 @@ mistakes: [
 "do while loop": {
 
 description:
-"The do-while loop executes its body at least once before checking the condition.",
+"A do-while loop executes its body before checking the condition.",
 
 objective:
-"Understand post-condition loops.",
+"Understand loops that must execute at least once.",
 
 explanation:
-"A do-while loop runs the body first and then evaluates its condition.",
+"The body executes first. Afterward, the condition is evaluated to determine whether another iteration should occur.",
 
 syntax:
 `int i = 1;
@@ -1318,51 +749,8 @@ keyPoints: [
 ],
 
 mistakes: [
-"Forgetting the semicolon after the while condition.",
-"Using do-while when the body should potentially execute zero times."
-]
-
-},
-
-
-"function declaration": {
-
-description:
-"A function declaration tells the compiler about a function before its definition or use.",
-
-objective:
-"Understand function prototypes and declarations.",
-
-explanation:
-"A declaration specifies information such as the function's return type, name and parameter types.",
-
-syntax:
-`int add(int a, int b);
-
-int main() {
-
-    std::cout << add(2, 3);
-
-}
-
-int add(int a, int b) {
-
-    return a + b;
-
-}`,
-
-output:
-`5`,
-
-keyPoints: [
-"A declaration can appear before main().",
-"The declaration must match the definition.",
-"Function declarations support organized programs."
-],
-
-mistakes: [
-"Using a function without a visible declaration or definition when required.",
-"Writing a declaration that does not match the definition."
+"Forgetting the final semicolon.",
+"Using do-while when zero executions are required."
 ]
 
 },
@@ -1371,13 +759,13 @@ mistakes: [
 "function overloading": {
 
 description:
-"Function overloading allows multiple functions to use the same name with different parameter lists.",
+"Function overloading allows multiple functions to have the same name with different parameter lists.",
 
 objective:
-"Learn compile-time polymorphism through overloaded functions.",
+"Understand compile-time polymorphism through overloaded functions.",
 
 explanation:
-"The compiler selects an appropriate overloaded function based on the arguments supplied.",
+"The compiler selects an overload based on the number and types of arguments.",
 
 syntax:
 `int add(int a, int b) {
@@ -1389,11 +777,10 @@ double add(double a, double b) {
 }`,
 
 output:
-`The appropriate overload is selected from the argument types.`,
+`The matching overload is selected based on the arguments.`,
 
 keyPoints: [
-"Overloaded functions share a name.",
-"The parameter list must differ.",
+"Parameter lists must differ.",
 "Return type alone cannot overload a function.",
 "Overload resolution occurs at compile time."
 ],
@@ -1409,13 +796,13 @@ mistakes: [
 "recursive functions": {
 
 description:
-"A recursive function calls itself to solve a problem through smaller instances of the same problem.",
+"A recursive function calls itself to solve smaller versions of a problem.",
 
 objective:
-"Understand the basic structure of recursion.",
+"Understand recursion and base cases.",
 
 explanation:
-"A recursive function normally needs a base case that stops further recursive calls.",
+"Recursion works by repeatedly reducing a problem until a base case is reached. Each call uses stack space.",
 
 syntax:
 `int factorial(int n) {
@@ -1427,18 +814,18 @@ syntax:
 }`,
 
 output:
-`factorial(5) produces 120.`,
+`factorial(5) = 120`,
 
 keyPoints: [
-"A recursive solution needs a base case.",
-"Each recursive call should move toward the base case.",
-"Recursion uses the call stack."
+"A recursive function needs a base case.",
+"Each call should move toward the base case.",
+"Recursive calls use the call stack."
 ],
 
 mistakes: [
 "Forgetting the base case.",
-"Creating recursion that never reaches the base case.",
-"Using recursion when a simple iterative solution is more appropriate."
+"Creating infinite recursion.",
+"Ignoring stack usage for very deep recursion."
 ]
 
 },
@@ -1447,16 +834,18 @@ mistakes: [
 "arrays": {
 
 description:
-"An array stores a fixed number of elements of the same type in contiguous storage.",
+"An array stores a fixed number of elements of the same type.",
 
 objective:
-"Learn how to declare, initialize and access arrays.",
+"Learn array declaration, initialization and indexing.",
 
 explanation:
-"Array elements are accessed using indexes beginning at zero.",
+"Traditional C++ arrays have a fixed size. Elements are accessed using indexes beginning at zero.",
 
 syntax:
-`int numbers[5] = {10, 20, 30, 40, 50};
+`int numbers[5] = {
+    10, 20, 30, 40, 50
+};
 
 std::cout << numbers[0];`,
 
@@ -1464,15 +853,15 @@ output:
 `10`,
 
 keyPoints: [
-"Array indexing starts at zero.",
-"Traditional arrays have a fixed size.",
-"Elements share the same type.",
-"Accessing outside the valid range is an error in program logic."
+"Indexing begins at zero.",
+"Traditional arrays have fixed size.",
+"Elements have the same type.",
+"std::array and std::vector are often useful alternatives."
 ],
 
 mistakes: [
-"Using an index equal to the array size.",
-"Confusing array size with the last index."
+"Accessing outside the valid range.",
+"Confusing size with the last index."
 ]
 
 },
@@ -1481,40 +870,33 @@ mistakes: [
 "std::string": {
 
 description:
-"std::string is the standard C++ string class used to represent sequences of characters.",
+"std::string is the standard C++ class for working with sequences of characters.",
 
 objective:
-"Learn basic string creation and manipulation.",
+"Learn basic string storage and manipulation.",
 
 explanation:
-"The std::string type provides convenient operations for storing and manipulating text.",
+"std::string manages its character storage automatically and provides functions for searching, modifying and comparing text.",
 
 syntax:
-`#include <iostream>
-#include <string>
+`#include <string>
 
-int main() {
+std::string name = "EduLearn";
 
-    std::string name = "EduLearn";
-
-    std::cout << name;
-
-    return 0;
-}`,
+std::cout << name;`,
 
 output:
 `EduLearn`,
 
 keyPoints: [
-"Include <string> when using std::string.",
-"Strings can grow and shrink.",
-"String objects provide many useful member functions.",
-"Use double quotes for string literals."
+"Use double quotes for string literals.",
+"std::string manages dynamic string storage.",
+"It provides many useful member functions."
 ],
 
 mistakes: [
-"Confusing std::string with a single char.",
-"Forgetting the std:: namespace when appropriate."
+"Confusing char and std::string.",
+"Forgetting the <string> header when needed."
 ]
 
 },
@@ -1526,10 +908,10 @@ description:
 "A pointer is an object that stores the address of another object or function.",
 
 objective:
-"Understand addresses, pointers and dereferencing.",
+"Understand addresses, pointer variables and dereferencing.",
 
 explanation:
-"Pointers are powerful tools that allow indirect access to objects. They are important in systems programming, dynamic memory management and many data structures.",
+"Pointers provide indirect access to objects and are important in systems programming, dynamic memory and data structures.",
 
 syntax:
 `int number = 10;
@@ -1542,16 +924,16 @@ output:
 `10`,
 
 keyPoints: [
-"& obtains an object's address.",
-"* can dereference a pointer.",
-"A pointer has a type.",
-"nullptr represents a null pointer value."
+"& obtains an address.",
+"* dereferences a pointer.",
+"nullptr represents a null pointer.",
+"Pointers must be used carefully."
 ],
 
 mistakes: [
-"Dereferencing a null or invalid pointer.",
+"Dereferencing nullptr.",
 "Using an uninitialized pointer.",
-"Confusing an address with the value stored at that address."
+"Using a pointer after its target lifetime ends."
 ]
 
 },
@@ -1563,10 +945,10 @@ description:
 "nullptr is the modern C++ null pointer literal.",
 
 objective:
-"Learn how to safely represent a pointer that points to no object.",
+"Learn how to represent a pointer that does not point to an object.",
 
 explanation:
-"nullptr has a dedicated type and is preferred over the older NULL and integer zero approaches for null pointers.",
+"nullptr is type-safe and should generally be preferred to the older NULL macro for null pointer values.",
 
 syntax:
 `int* ptr = nullptr;
@@ -1583,13 +965,12 @@ output:
 keyPoints: [
 "nullptr represents a null pointer.",
 "It is type-safe.",
-"It was introduced in C++11.",
-"It should generally be preferred over NULL."
+"It was introduced in C++11."
 ],
 
 mistakes: [
 "Dereferencing nullptr.",
-"Assuming nullptr points to valid memory."
+"Treating nullptr as a valid object address."
 ]
 
 },
@@ -1598,13 +979,13 @@ mistakes: [
 "reference": {
 
 description:
-"A reference provides another name, or alias, for an existing object.",
+"A reference is an alias for an existing object.",
 
 objective:
-"Understand reference variables and how they differ from pointers.",
+"Understand references and their common uses.",
 
 explanation:
-"A reference must be initialized when declared and normally refers to an existing object for its lifetime.",
+"References are frequently used for function parameters, especially when a function needs to work with an existing object without copying it.",
 
 syntax:
 `int number = 10;
@@ -1619,55 +1000,14 @@ output:
 `20`,
 
 keyPoints: [
-"A reference is an alias.",
-"A reference must be initialized.",
-"Changing the referenced object changes the original object.",
-"References are commonly used for function parameters."
+"References must be initialized.",
+"A reference aliases an existing object.",
+"Const references are commonly used for read-only access."
 ],
 
 mistakes: [
-"Trying to declare an uninitialized reference.",
+"Trying to create an uninitialized reference.",
 "Confusing references with pointers."
-]
-
-},
-
-
-"structures": {
-
-description:
-"A structure groups related values, potentially of different types, into one user-defined type.",
-
-objective:
-"Learn the basic use of struct.",
-
-explanation:
-"Structures are useful for representing records or objects composed of multiple related fields.",
-
-syntax:
-`struct Student {
-
-    std::string name;
-    int age;
-
-};
-
-Student s{"Rahul", 20};
-
-std::cout << s.name;`,
-
-output:
-`Rahul`,
-
-keyPoints: [
-"struct defines a user-defined type.",
-"Members can have different types.",
-"Members are public by default in a struct."
-],
-
-mistakes: [
-"Confusing struct syntax with array syntax.",
-"Forgetting to include <string> when using std::string."
 ]
 
 },
@@ -1676,25 +1016,24 @@ mistakes: [
 "classes": {
 
 description:
-"A class is a user-defined type that can combine data and functions while controlling access to its members.",
+"A class is a user-defined type that can combine data and functions with controlled access.",
 
 objective:
-"Understand the basic structure of a C++ class.",
+"Understand the foundation of C++ object-oriented programming.",
 
 explanation:
-"Classes are central to object-oriented programming in C++. They can encapsulate data and behavior and use access specifiers such as private and public.",
+"Classes can encapsulate state and behavior. Class members are private by default, while public and protected access can be explicitly specified.",
 
 syntax:
 `class Student {
 
 private:
-
     int age;
 
 public:
 
-    void setAge(int a) {
-        age = a;
+    void setAge(int value) {
+        age = value;
     }
 
     int getAge() {
@@ -1704,18 +1043,18 @@ public:
 };`,
 
 output:
-`No output unless an object is created and used.`,
+`The class defines the Student type.`,
 
 keyPoints: [
 "Classes define user-defined types.",
 "Members can be data or functions.",
 "Class members are private by default.",
-"public members can be accessed from outside the class."
+"Access specifiers control visibility."
 ],
 
 mistakes: [
-"Making all data public without considering encapsulation.",
-"Forgetting the semicolon after a class definition."
+"Forgetting the semicolon after a class.",
+"Making internal state public without a reason."
 ]
 
 },
@@ -1727,10 +1066,10 @@ description:
 "An object is an instance of a class.",
 
 objective:
-"Learn how objects are created and used.",
+"Learn how to create and use class objects.",
 
 explanation:
-"When a class defines the structure and behavior, an object represents an actual instance of that class.",
+"After defining a class, objects can be created from it. Each object can contain its own state.",
 
 syntax:
 `class Student {
@@ -1756,13 +1095,13 @@ output:
 
 keyPoints: [
 "Objects are instances of classes.",
-"Objects can access accessible class members.",
-"Each object can have its own state."
+"Objects can call accessible member functions.",
+"Different objects can maintain different state."
 ],
 
 mistakes: [
 "Trying to access private members directly.",
-"Confusing a class definition with an object."
+"Confusing class definitions with objects."
 ]
 
 },
@@ -1771,13 +1110,13 @@ mistakes: [
 "encapsulation": {
 
 description:
-"Encapsulation combines data and related behavior while controlling access to the internal state of an object.",
+"Encapsulation organizes data and behavior together while controlling access to internal state.",
 
 objective:
-"Understand why classes often keep data private.",
+"Understand controlled access to class data.",
 
 explanation:
-"Encapsulation can prevent uncontrolled modification of an object's internal state and provide controlled interfaces through member functions.",
+"Keeping implementation details private and exposing a controlled public interface can help maintain valid object state.",
 
 syntax:
 `class Account {
@@ -1798,17 +1137,17 @@ public:
 };`,
 
 output:
-`No direct output.`,
+`The balance is controlled through the public interface.`,
 
 keyPoints: [
-"Private members cannot normally be accessed directly from outside.",
-"Public member functions can provide controlled access.",
-"Encapsulation helps protect object state."
+"private protects implementation details.",
+"public provides the external interface.",
+"Member functions can validate changes."
 ],
 
 mistakes: [
-"Making internal data public unnecessarily.",
-"Providing setters that allow invalid state."
+"Exposing all internal data unnecessarily.",
+"Allowing invalid state through poorly designed setters."
 ]
 
 },
@@ -1817,13 +1156,13 @@ mistakes: [
 "constructors": {
 
 description:
-"A constructor is a special member function used to initialize an object.",
+"Constructors initialize objects when they are created.",
 
 objective:
-"Understand constructor syntax and purpose.",
+"Understand constructor syntax and object initialization.",
 
 explanation:
-"Constructors have the same name as the class and do not have a return type. They are called automatically when objects are created.",
+"A constructor has the same name as its class and no return type. Constructors can be overloaded and can use member initializer lists.",
 
 syntax:
 `class Student {
@@ -1831,30 +1170,26 @@ syntax:
 public:
 
     Student() {
-        std::cout << "Object created";
+        std::cout << "Created";
     }
 
 };
 
-int main() {
-
-    Student s;
-
-}`,
+Student s;`,
 
 output:
-`Object created`,
+`Created`,
 
 keyPoints: [
-"Constructors initialize objects.",
-"They have the class name.",
+"Constructors run during object initialization.",
 "They have no return type.",
-"They execute automatically during object construction."
+"They can accept parameters.",
+"Initializer lists are important for efficient initialization."
 ],
 
 mistakes: [
 "Giving a constructor a return type.",
-"Confusing constructors with ordinary member functions."
+"Putting initialization unnecessarily inside the constructor body."
 ]
 
 },
@@ -1863,13 +1198,13 @@ mistakes: [
 "destructors": {
 
 description:
-"A destructor is a special member function called when an object's lifetime ends.",
+"Destructors perform cleanup when an object's lifetime ends.",
 
 objective:
-"Understand basic destructor behavior.",
+"Understand object destruction and resource management.",
 
 explanation:
-"A destructor has the class name preceded by a tilde and has no parameters or return type. Destructors are commonly important for resource management.",
+"A destructor has the class name preceded by ~. Destructors are called automatically when objects leave their lifetime.",
 
 syntax:
 `class Test {
@@ -1877,73 +1212,23 @@ syntax:
 public:
 
     ~Test() {
-        std::cout << "Object destroyed";
+        std::cout << "Destroyed";
     }
 
 };`,
 
 output:
-`Object destroyed`,
+`Destroyed`,
 
 keyPoints: [
-"Destructor syntax uses ~ before the class name.",
-"A class has only one destructor.",
-"Destructors do not take parameters.",
-"Destructors are important in resource management."
+"Destructors have no return type.",
+"A class has one destructor.",
+"Destructors are important for resource management."
 ],
 
 mistakes: [
-"Giving a destructor parameters.",
-"Trying to overload destructors."
-]
-
-},
-
-
-"single inheritance": {
-
-description:
-"Single inheritance occurs when one derived class inherits from one base class.",
-
-objective:
-"Understand the basic inheritance relationship.",
-
-explanation:
-"Inheritance allows a derived class to reuse accessible members and behavior from a base class.",
-
-syntax:
-`class Animal {
-
-public:
-
-    void eat() {
-        std::cout << "Eating";
-    }
-
-};
-
-class Dog : public Animal {
-
-public:
-
-    void bark() {
-        std::cout << "Barking";
-    }
-
-};`,
-
-output:
-`A Dog object can access its own bark() and the inherited accessible eat().`,
-
-keyPoints: [
-"The base class provides inherited members.",
-"The derived class can add new members.",
-"public inheritance represents an is-a relationship in many designs."
-],
-
-mistakes: [
-"Using inheritance only for code reuse without a valid relationship.",
-"Expecting private base members to become directly accessible."
+"Trying to overload destructors.",
+"Putting unrelated program logic into destructors."
 ]
 
 },
@@ -1952,13 +1237,13 @@ mistakes: [
 "virtual functions": {
 
 description:
-"A virtual function enables dynamic dispatch when called through a base-class interface.",
+"Virtual functions enable dynamic dispatch through a base-class interface.",
 
 objective:
 "Understand runtime polymorphism.",
 
 explanation:
-"When a virtual function is overridden in a derived class and called through an appropriate base reference or pointer, the derived implementation can be selected at runtime.",
+"When a virtual function is overridden by a derived class, calls through an appropriate base pointer or reference can select the derived implementation at runtime.",
 
 syntax:
 `class Animal {
@@ -1966,7 +1251,7 @@ syntax:
 public:
 
     virtual void sound() {
-        std::cout << "Animal sound";
+        std::cout << "Animal";
     }
 
 };
@@ -1982,18 +1267,17 @@ public:
 };`,
 
 output:
-`Bark`,
+`Bark when a Dog object is accessed polymorphically.`,
 
 keyPoints: [
 "virtual enables dynamic dispatch.",
-"Derived classes can override virtual functions.",
-"override makes the programmer's intent explicit.",
-"Polymorphism works through suitable base interfaces."
+"override documents an intended override.",
+"Virtual destructors are important for polymorphic base classes."
 ],
 
 mistakes: [
-"Forgetting virtual in the base interface when dynamic dispatch is required.",
-"Not using override when overriding a virtual function."
+"Forgetting virtual in the base interface.",
+"Failing to use override when appropriate."
 ]
 
 },
@@ -2002,13 +1286,13 @@ mistakes: [
 "abstract classes": {
 
 description:
-"An abstract class is a class that cannot be instantiated directly and is commonly used as an interface or base class.",
+"An abstract class cannot normally be instantiated and can define an interface for derived classes.",
 
 objective:
-"Understand pure virtual functions and abstract classes.",
+"Understand pure virtual functions and abstraction.",
 
 explanation:
-"A class containing at least one pure virtual function is abstract.",
+"A class containing at least one pure virtual function is abstract. Derived concrete classes generally need to implement the required functions.",
 
 syntax:
 `class Shape {
@@ -2024,13 +1308,13 @@ output:
 
 keyPoints: [
 "Pure virtual functions use = 0.",
-"Abstract classes cannot normally be instantiated.",
-"They can define interfaces for derived classes."
+"Abstract classes define interfaces.",
+"Concrete derived classes implement required behavior."
 ],
 
 mistakes: [
-"Trying to create an object of an abstract class.",
-"Failing to implement required pure virtual functions in a concrete derived class."
+"Trying to instantiate an abstract class.",
+"Forgetting to implement required pure virtual functions."
 ]
 
 },
@@ -2039,13 +1323,13 @@ mistakes: [
 "templates": {
 
 description:
-"Templates allow code to work with different types while retaining compile-time type checking.",
+"Templates allow generic C++ code to work with multiple types.",
 
 objective:
-"Understand the foundation of generic programming in C++.",
+"Understand the foundation of generic programming.",
 
 explanation:
-"Function and class templates allow algorithms and data structures to be written generically.",
+"Templates are used for generic functions, classes and many Standard Library components.",
 
 syntax:
 `template <typename T>
@@ -2057,17 +1341,17 @@ T maximum(T a, T b) {
 }`,
 
 output:
-`maximum(10, 20) produces 20.`,
+`maximum(10, 20) returns 20.`,
 
 keyPoints: [
 "Templates support generic programming.",
-"typename and class can be used in many template parameter declarations.",
-"Template code is instantiated for required types."
+"Types can be deduced in many situations.",
+"The STL makes extensive use of templates."
 ],
 
 mistakes: [
-"Writing templates before understanding ordinary functions and classes.",
-"Creating overly complicated template interfaces."
+"Writing overly complex templates.",
+"Trying to solve simple problems with unnecessary template machinery."
 ]
 
 },
@@ -2076,18 +1360,18 @@ mistakes: [
 "exception handling": {
 
 description:
-"Exception handling provides a structured mechanism for dealing with exceptional conditions.",
+"Exception handling provides a mechanism for transferring control when exceptional conditions occur.",
 
 objective:
 "Learn try, throw and catch.",
 
 explanation:
-"A program can throw an exception from a protected operation and handle it using a matching catch block.",
+"Code can throw an exception and a suitable catch block can handle it.",
 
 syntax:
 `try {
 
-    throw std::runtime_error("Something went wrong");
+    throw std::runtime_error("Error");
 
 }
 catch (const std::exception& e) {
@@ -2097,56 +1381,18 @@ catch (const std::exception& e) {
 }`,
 
 output:
-`Something went wrong`,
+`Error`,
 
 keyPoints: [
-"try contains code that may throw.",
+"try contains potentially throwing code.",
 "throw raises an exception.",
-"catch handles matching exceptions.",
-"Standard exceptions are available through the library."
+"catch handles a matching exception.",
+"Standard exceptions are provided by the library."
 ],
 
 mistakes: [
-"Catching everything without understanding the error.",
-"Using exceptions for ordinary control flow."
-]
-
-},
-
-
-"file handling": {
-
-description:
-"C++ provides stream classes for reading and writing files.",
-
-objective:
-"Learn the basic approach to file input and output.",
-
-explanation:
-"ofstream can write to files, ifstream can read from files, and fstream can support both operations.",
-
-syntax:
-`#include <fstream>
-
-std::ofstream file("data.txt");
-
-file << "EduLearn";
-
-file.close();`,
-
-output:
-`A file named data.txt receives the text EduLearn when the operation succeeds.`,
-
-keyPoints: [
-"ofstream is commonly used for output.",
-"ifstream is commonly used for input.",
-"Always consider whether opening the file succeeded.",
-"Streams should be closed appropriately."
-],
-
-mistakes: [
-"Assuming the file always opens successfully.",
-"Using the wrong file mode."
+"Catching exceptions without understanding them.",
+"Using exceptions for normal program flow."
 ]
 
 },
@@ -2155,18 +1401,20 @@ mistakes: [
 "vector": {
 
 description:
-"std::vector is a dynamic sequence container provided by the C++ Standard Library.",
+"std::vector is a dynamic contiguous sequence container in the C++ Standard Library.",
 
 objective:
-"Learn how to store a variable number of elements using vector.",
+"Learn how to store and manipulate a dynamically sized sequence.",
 
 explanation:
-"A vector manages a dynamically sized contiguous sequence. It provides efficient random access and automatically manages its storage.",
+"Vector automatically manages its storage and provides random access to elements.",
 
 syntax:
 `#include <vector>
 
-std::vector<int> numbers = {10, 20, 30};
+std::vector<int> numbers = {
+    10, 20, 30
+};
 
 numbers.push_back(40);
 
@@ -2181,14 +1429,14 @@ output:
 
 keyPoints: [
 "vector can grow dynamically.",
-"Elements are stored contiguously.",
+"Elements are contiguous.",
 "push_back adds an element.",
-"size() reports the number of elements."
+"size() gives the number of elements."
 ],
 
 mistakes: [
 "Accessing an invalid index.",
-"Confusing size() with capacity()."
+"Confusing size with capacity."
 ]
 
 },
@@ -2197,18 +1445,16 @@ mistakes: [
 "stack": {
 
 description:
-"std::stack is a container adaptor implementing a last-in-first-out data structure.",
+"std::stack provides last-in-first-out access to elements.",
 
 objective:
-"Learn basic stack operations.",
+"Learn stack operations and LIFO behavior.",
 
 explanation:
-"The most recently inserted element is removed first. Common operations include push, pop and top.",
+"The last element inserted is the first element removed. Common operations include push, top and pop.",
 
 syntax:
-`#include <stack>
-
-std::stack<int> s;
+`std::stack<int> s;
 
 s.push(10);
 s.push(20);
@@ -2220,14 +1466,14 @@ output:
 
 keyPoints: [
 "Stack follows LIFO.",
-"push inserts an element.",
+"push inserts.",
 "top accesses the top element.",
 "pop removes the top element."
 ],
 
 mistakes: [
-"Calling top() on an empty stack.",
-"Expecting queue-like FIFO behavior."
+"Calling top on an empty stack.",
+"Expecting FIFO behavior."
 ]
 
 },
@@ -2236,18 +1482,16 @@ mistakes: [
 "queue": {
 
 description:
-"std::queue is a container adaptor implementing a first-in-first-out data structure.",
+"std::queue provides first-in-first-out access to elements.",
 
 objective:
-"Learn basic queue operations.",
+"Learn queue operations and FIFO behavior.",
 
 explanation:
-"The first element inserted is the first element removed. Common operations include push, front, back and pop.",
+"The first element inserted is the first one removed.",
 
 syntax:
-`#include <queue>
-
-std::queue<int> q;
+`std::queue<int> q;
 
 q.push(10);
 q.push(20);
@@ -2259,14 +1503,14 @@ output:
 
 keyPoints: [
 "Queue follows FIFO.",
-"push adds an element at the back.",
 "front accesses the first element.",
-"pop removes the first element."
+"back accesses the last element.",
+"pop removes the front element."
 ],
 
 mistakes: [
-"Calling front() on an empty queue.",
-"Confusing FIFO with LIFO."
+"Calling front on an empty queue.",
+"Confusing FIFO and LIFO."
 ]
 
 },
@@ -2275,21 +1519,20 @@ mistakes: [
 "sort": {
 
 description:
-"std::sort orders elements in a range according to a comparison rule.",
+"std::sort orders elements in a specified iterator range.",
 
 objective:
-"Learn the basic use of the Standard Library sorting algorithm.",
+"Learn a fundamental STL sorting algorithm.",
 
 explanation:
-"std::sort is a general-purpose sorting algorithm that normally requires random-access iterators, such as those provided by vector.",
+"std::sort can sort random-access ranges such as vectors and arrays. A comparator can be supplied for custom ordering.",
 
 syntax:
-`#include <algorithm>
-#include <vector>
+`std::vector<int> v = {
+    5, 2, 4, 1, 3
+};
 
-std::vector<int> numbers = {5, 2, 4, 1, 3};
-
-std::sort(numbers.begin(), numbers.end());`,
+std::sort(v.begin(), v.end());`,
 
 output:
 `1 2 3 4 5`,
@@ -2297,13 +1540,13 @@ output:
 keyPoints: [
 "Include <algorithm>.",
 "Pass a valid iterator range.",
-"A custom comparator can change ordering.",
-"Sorting complexity is generally O(n log n)."
+"Custom comparators allow different ordering.",
+"Typical complexity is O(n log n)."
 ],
 
 mistakes: [
-"Passing an invalid range.",
-"Forgetting to include <algorithm>."
+"Passing an invalid iterator range.",
+"Forgetting the required header."
 ]
 
 },
@@ -2312,13 +1555,13 @@ mistakes: [
 "lambda expressions": {
 
 description:
-"A lambda expression creates an unnamed function object directly where it is needed.",
+"A lambda expression creates an unnamed function object.",
 
 objective:
-"Learn basic lambda syntax and usage.",
+"Learn modern C++ local functions and callbacks.",
 
 explanation:
-"Lambdas are frequently used with STL algorithms, callbacks and local operations.",
+"Lambdas are commonly used with STL algorithms and can capture variables from their surrounding scope.",
 
 syntax:
 `auto add = [](int a, int b) {
@@ -2333,15 +1576,15 @@ output:
 `5`,
 
 keyPoints: [
-"Lambdas can be assigned to variables.",
-"They can accept parameters.",
-"They can capture variables from surrounding scope.",
-"They are commonly used with STL algorithms."
+"Lambdas can accept parameters.",
+"They can return values.",
+"They can capture surrounding variables.",
+"They are widely used with STL algorithms."
 ],
 
 mistakes: [
 "Capturing variables unnecessarily.",
-"Using complicated lambdas when a named function would be clearer."
+"Making a lambda so large that a named function would be clearer."
 ]
 
 },
@@ -2350,18 +1593,17 @@ mistakes: [
 "smart pointers": {
 
 description:
-"Smart pointers help manage dynamically allocated objects using ownership-aware classes.",
+"Smart pointers manage object ownership automatically through RAII.",
 
 objective:
-"Understand why modern C++ often prefers smart pointers over raw owning pointers.",
+"Understand unique_ptr, shared_ptr and weak_ptr.",
 
 explanation:
-"The Standard Library provides unique_ptr, shared_ptr and weak_ptr. They support automatic resource management through RAII.",
+"Smart pointers are Standard Library types that help manage dynamically allocated objects according to ownership rules.",
 
 syntax:
-`#include <memory>
-
-auto ptr = std::make_unique<int>(42);
+`auto ptr =
+    std::make_unique<int>(42);
 
 std::cout << *ptr;`,
 
@@ -2371,252 +1613,14 @@ output:
 keyPoints: [
 "unique_ptr represents exclusive ownership.",
 "shared_ptr represents shared ownership.",
-"weak_ptr observes shared objects without owning them.",
-"make_unique and make_shared are preferred construction helpers."
+"weak_ptr observes shared ownership without owning.",
+"make_unique and make_shared are useful construction helpers."
 ],
 
 mistakes: [
-"Using shared_ptr everywhere without needing shared ownership.",
-"Creating ownership cycles with shared_ptr.",
+"Using shared_ptr when unique ownership is enough.",
+"Creating shared_ptr ownership cycles.",
 "Using raw new/delete unnecessarily."
-]
-
-},
-
-
-"raii": {
-
-description:
-"RAII means Resource Acquisition Is Initialization and is a central resource-management technique in C++.",
-
-objective:
-"Understand automatic resource management through object lifetime.",
-
-explanation:
-"With RAII, a resource is tied to an object's lifetime. The object's destructor releases the resource automatically when the object goes out of scope.",
-
-syntax:
-`{
-    std::lock_guard<std::mutex> lock(mutex);
-
-    // protected work
-}`,
-
-output:
-`The resource is automatically released when lock leaves scope.`,
-
-keyPoints: [
-"Resource lifetime follows object lifetime.",
-"Destructors perform cleanup.",
-"RAII reduces manual cleanup errors.",
-"RAII is used by many Standard Library classes."
-],
-
-mistakes: [
-"Managing resources manually when an RAII class already exists.",
-"Creating ownership systems that are unclear."
-]
-
-},
-
-
-"move semantics": {
-
-description:
-"Move semantics allow resources to be transferred from temporary or otherwise movable objects instead of unnecessarily copied.",
-
-objective:
-"Understand the basic idea behind move constructors and move assignment.",
-
-explanation:
-"Move semantics can improve performance by transferring ownership of resources. They are closely connected with rvalue references and std::move.",
-
-syntax:
-`std::string a = "Hello";
-
-std::string b = std::move(a);`,
-
-output:
-`b contains the moved string; the exact state of a after the move should not be assumed beyond its valid but unspecified state.`,
-
-keyPoints: [
-"Move operations can avoid expensive copies.",
-"std::move enables treating an object as an rvalue.",
-"Moved-from objects remain valid but their value is generally unspecified.",
-"Move constructors and move assignment can customize resource transfer."
-],
-
-mistakes: [
-"Using a moved-from object as if it still contained its previous value.",
-"Assuming std::move itself moves data."
-]
-
-},
-
-
-"time complexity": {
-
-description:
-"Time complexity describes how an algorithm's running time grows as input size increases.",
-
-objective:
-"Learn the foundation of algorithmic efficiency.",
-
-explanation:
-"Big-O notation is commonly used to describe an upper-bound growth rate such as O(1), O(log n), O(n), O(n log n) or O(n²).",
-
-syntax:
-`for (int i = 0; i < n; i++) {
-
-    std::cout << i;
-
-}`,
-
-output:
-`The loop performs approximately n iterations.`,
-
-keyPoints: [
-"O(1) represents constant growth.",
-"O(log n) grows logarithmically.",
-"O(n) grows linearly.",
-"O(n²) grows quadratically.",
-"Complexity helps compare algorithm scalability."
-],
-
-mistakes: [
-"Treating Big-O as an exact runtime.",
-"Ignoring hidden constants and practical hardware effects."
-]
-
-},
-
-
-"linear search": {
-
-description:
-"Linear search checks elements one by one until the target is found or the range ends.",
-
-objective:
-"Implement and understand a simple searching algorithm.",
-
-explanation:
-"Linear search works on unsorted data and has linear worst-case time complexity.",
-
-syntax:
-`int target = 30;
-
-for (int i = 0; i < n; i++) {
-
-    if (arr[i] == target) {
-
-        std::cout << "Found";
-
-        break;
-
-    }
-
-}`,
-
-output:
-`Found when the target exists in the array.`,
-
-keyPoints: [
-"Works without sorted data.",
-"Simple to implement.",
-"Worst-case time complexity is O(n)."
-],
-
-mistakes: [
-"Continuing to search unnecessarily after finding the target.",
-"Using binary search assumptions on unsorted data."
-]
-
-},
-
-
-"binary search": {
-
-description:
-"Binary search repeatedly divides a sorted search range in half.",
-
-objective:
-"Understand an efficient search algorithm for sorted data.",
-
-explanation:
-"Binary search requires an appropriate sorted range and has logarithmic search complexity.",
-
-syntax:
-`int left = 0;
-int right = n - 1;
-
-while (left <= right) {
-
-    int mid = left + (right - left) / 2;
-
-    if (arr[mid] == target)
-        break;
-
-    if (arr[mid] < target)
-        left = mid + 1;
-    else
-        right = mid - 1;
-}`,
-
-output:
-`The algorithm determines whether the target exists.`,
-
-keyPoints: [
-"Data must be sorted according to the search ordering.",
-"Each step eliminates about half of the remaining range.",
-"Typical time complexity is O(log n)."
-],
-
-mistakes: [
-"Using binary search on unsorted data.",
-"Calculating the midpoint in an overflow-prone way."
-]
-
-},
-
-
-"bubble sort": {
-
-description:
-"Bubble sort repeatedly compares adjacent elements and swaps them when they are in the wrong order.",
-
-objective:
-"Understand a simple sorting algorithm and its limitations.",
-
-explanation:
-"Bubble sort is useful for learning algorithm fundamentals but is generally inefficient for large datasets.",
-
-syntax:
-`for (int i = 0; i < n - 1; i++) {
-
-    for (int j = 0; j < n - i - 1; j++) {
-
-        if (arr[j] > arr[j + 1]) {
-
-            std::swap(arr[j], arr[j + 1]);
-
-        }
-
-    }
-
-}`,
-
-output:
-`The array becomes sorted in ascending order.`,
-
-keyPoints: [
-"Uses adjacent comparisons.",
-"Repeatedly moves larger elements toward the end.",
-"Typical worst-case complexity is O(n²)."
-],
-
-mistakes: [
-"Incorrect loop boundaries.",
-"Swapping the wrong elements."
 ]
 
 },
@@ -2625,13 +1629,13 @@ mistakes: [
 "dynamic programming": {
 
 description:
-"Dynamic programming solves problems by combining solutions to overlapping subproblems and storing previously computed results.",
+"Dynamic programming solves problems by storing results of overlapping subproblems.",
 
 objective:
-"Understand the basic principles behind dynamic programming.",
+"Understand memoization, tabulation and state transitions.",
 
 explanation:
-"Dynamic programming commonly uses memoization or tabulation to avoid repeatedly solving the same subproblems.",
+"A dynamic programming solution normally identifies a state, a transition between states and appropriate base cases.",
 
 syntax:
 `std::vector<int> dp(n + 1);
@@ -2641,23 +1645,25 @@ dp[1] = 1;
 
 for (int i = 2; i <= n; i++) {
 
-    dp[i] = dp[i - 1] + dp[i - 2];
+    dp[i] =
+        dp[i - 1] + dp[i - 2];
 
 }`,
 
 output:
-`dp[n] contains the computed Fibonacci value.`,
+`dp[n] contains the computed result.`,
 
 keyPoints: [
 "Identify overlapping subproblems.",
-"Identify an appropriate state.",
-"Define a recurrence or transition.",
+"Define a useful state.",
+"Define transitions.",
 "Use memoization or tabulation."
 ],
 
 mistakes: [
-"Using DP when subproblems do not overlap.",
-"Defining an unnecessarily large state."
+"Choosing an unnecessary DP state.",
+"Missing base cases.",
+"Using DP without identifying overlapping subproblems."
 ]
 
 },
@@ -2666,13 +1672,13 @@ mistakes: [
 "breadth first search": {
 
 description:
-"Breadth First Search explores a graph level by level.",
+"Breadth First Search explores graph vertices level by level.",
 
 objective:
-"Understand BFS and its common uses.",
+"Understand BFS and its common graph applications.",
 
 explanation:
-"BFS typically uses a queue. In an unweighted graph, BFS can find shortest paths measured by number of edges.",
+"BFS generally uses a queue. In an unweighted graph, BFS can determine shortest paths measured by number of edges.",
 
 syntax:
 `std::queue<int> q;
@@ -2706,13 +1712,13 @@ output:
 
 keyPoints: [
 "BFS uses a queue.",
-"Visited tracking prevents repeated processing.",
-"BFS is useful for shortest paths in unweighted graphs."
+"Visited tracking prevents repeated traversal.",
+"BFS is useful for unweighted shortest paths."
 ],
 
 mistakes: [
-"Forgetting to mark nodes visited.",
-"Using BFS assumptions for weighted shortest-path problems."
+"Forgetting visited tracking.",
+"Using BFS directly for general weighted shortest paths."
 ]
 
 },
@@ -2721,13 +1727,13 @@ mistakes: [
 "depth first search": {
 
 description:
-"Depth First Search explores as far as possible along a branch before backtracking.",
+"Depth First Search explores one branch deeply before backtracking.",
 
 objective:
-"Understand DFS and its common uses.",
+"Learn recursive and iterative graph traversal.",
 
 explanation:
-"DFS can be implemented recursively or with an explicit stack. It is useful for connectivity, cycle detection and many graph and tree problems.",
+"DFS can be implemented using recursion or an explicit stack. It is useful for connectivity, cycle detection and many tree and graph problems.",
 
 syntax:
 `void dfs(int node) {
@@ -2751,157 +1757,13 @@ output:
 
 keyPoints: [
 "DFS can use recursion.",
-"DFS can use an explicit stack.",
-"Visited tracking is commonly required."
+"DFS can use a stack.",
+"Visited tracking is usually required."
 ],
 
 mistakes: [
 "Forgetting visited tracking.",
-"Using recursion on extremely deep graphs without considering stack limits."
-]
-
-},
-
-
-"competitive programming introduction": {
-
-description:
-"Competitive programming focuses on solving algorithmic problems efficiently under time and memory constraints.",
-
-objective:
-"Understand the basic skills needed for competitive programming in C++.",
-
-explanation:
-"Competitive programming commonly requires strong knowledge of data structures, algorithms, complexity analysis, mathematics and fast implementation.",
-
-syntax:
-`#include <bits/stdc++.h>
-using namespace std;
-
-int main() {
-
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    return 0;
-}`,
-
-output:
-`No output.`,
-
-keyPoints: [
-"Know data structures.",
-"Understand algorithmic complexity.",
-"Practice problem solving.",
-"Learn standard algorithms.",
-"Write efficient input/output when needed."
-],
-
-mistakes: [
-"Focusing only on memorizing code.",
-"Ignoring complexity.",
-"Not testing edge cases."
-]
-
-},
-
-
-"calculator project": {
-
-description:
-"A calculator is a useful beginner C++ project for practicing input, operators, conditions and functions.",
-
-objective:
-"Combine basic C++ concepts into a practical program.",
-
-explanation:
-"A calculator can accept two numbers and an operator and then perform the requested arithmetic operation.",
-
-syntax:
-`double a, b;
-char op;
-
-std::cin >> a >> op >> b;
-
-switch (op) {
-
-    case '+':
-        std::cout << a + b;
-        break;
-
-    case '-':
-        std::cout << a - b;
-        break;
-
-    case '*':
-        std::cout << a * b;
-        break;
-
-    case '/':
-        if (b != 0)
-            std::cout << a / b;
-        else
-            std::cout << "Cannot divide by zero";
-
-        break;
-
-}`,
-
-output:
-`Example: 10 + 5 -> 15`,
-
-keyPoints: [
-"Practice input and output.",
-"Use switch or conditional logic.",
-"Handle division by zero.",
-"Functions can be used to organize operations."
-],
-
-mistakes: [
-"Not checking division by zero.",
-"Accepting invalid operators without handling them."
-]
-
-},
-
-
-"c++ interview basics": {
-
-description:
-"C++ interviews commonly test language fundamentals, memory, OOP, STL and problem-solving.",
-
-objective:
-"Build a foundation for C++ technical interviews.",
-
-explanation:
-"Interview preparation should combine conceptual understanding with the ability to write and explain working code.",
-
-syntax:
-`class Example {
-
-public:
-
-    virtual void show() {
-        std::cout << "Base";
-    }
-
-};`,
-
-output:
-`Depends on how the class is used.`,
-
-keyPoints: [
-"Know C++ fundamentals.",
-"Understand OOP.",
-"Understand pointers and references.",
-"Know STL containers and algorithms.",
-"Practice DSA problems.",
-"Be able to explain your code."
-],
-
-mistakes: [
-"Memorizing answers without understanding them.",
-"Ignoring practical coding."
+"Using recursion on extremely deep structures without considering stack limits."
 ]
 
 }
@@ -2916,6 +1778,7 @@ mistakes: [
 const topicAliases = {
 
     "what is cpp": "what is c++",
+
     "cpp": "what is c++",
 
     "history of cpp": "history of c++",
@@ -2934,64 +1797,109 @@ const topicAliases = {
 
     "cpp ide": "c++ ide",
 
-    "writing your first cpp program":
-        "writing your first c++ program",
+    "hello world": "hello world program",
 
-    "hello world":
-        "hello world program",
+    "pointer": "what is a pointer",
 
-    "cpp comments":
-        "comments in c++",
+    "pointers": "what is a pointer",
 
-    "what is a variable":
-        "variables",
+    "class": "classes",
 
-    "pointer":
-        "what is a pointer",
+    "object": "objects",
 
-    "reference":
-        "reference",
+    "constructor": "constructors",
 
-    "class":
-        "classes",
+    "destructor": "destructors",
 
-    "object":
-        "objects",
+    "virtual function": "virtual functions",
 
-    "constructor":
-        "constructors",
+    "lambda": "lambda expressions",
 
-    "destructor":
-        "destructors",
+    "smart pointer": "smart pointers",
 
-    "virtual function":
-        "virtual functions",
+    "bfs": "breadth first search",
 
-    "lambda":
-        "lambda expressions",
-
-    "cpp templates":
-        "templates",
-
-    "smart pointer":
-        "smart pointers",
-
-    "bfs":
-        "breadth first search",
-
-    "dfs":
-        "depth first search"
+    "dfs": "depth first search"
 
 };
 
 
 /* =========================================================
-   FIND TOPIC
+   GENERIC TOPIC GENERATOR
+========================================================= */
+
+function generateGenericContent(topic) {
+
+    const cleanTopic = topic.trim();
+
+    return {
+
+        description:
+            `${cleanTopic} is an important topic in C++ programming and is part of the broader C++ learning curriculum.`,
+
+        objective:
+            `Understand the meaning, purpose, syntax and practical use of ${cleanTopic} in C++ programs.`,
+
+        explanation:
+            `${cleanTopic} is used in C++ programming to help developers build programs, solve problems and work with the language's features and Standard Library. Study the concept carefully, understand its syntax, and practice it with small programs before using it in larger projects.`,
+
+        syntax:
+`#include <iostream>
+
+int main() {
+
+    // Example related to:
+    // ${cleanTopic}
+
+    std::cout << "Learning ${cleanTopic}";
+
+    return 0;
+}`,
+
+        output:
+            `Learning ${cleanTopic}`,
+
+        keyPoints: [
+
+            `${cleanTopic} is part of the C++ programming ecosystem.`,
+
+            "Understand the concept before memorizing syntax.",
+
+            "Practice the topic with small programs.",
+
+            "Pay attention to data types, scope and program behavior.",
+
+            "Use the Standard Library when an appropriate facility already exists.",
+
+            "Test your program with normal cases and edge cases."
+
+        ],
+
+        mistakes: [
+
+            `Memorizing ${cleanTopic} without understanding what it does.`,
+
+            "Ignoring compiler warnings and errors.",
+
+            "Using complicated code when a simpler solution is available.",
+
+            "Not testing the program with different inputs."
+
+        ]
+
+    };
+
+}
+
+
+/* =========================================================
+   FIND CONTENT
 ========================================================= */
 
 function getContent(topic) {
 
-    const normalized = normalizeTopic(topic);
+    const normalized =
+        normalizeTopic(topic);
 
     if (topicContent[normalized]) {
 
@@ -2999,15 +1907,106 @@ function getContent(topic) {
 
     }
 
-    const alias = topicAliases[normalized];
+    const alias =
+        topicAliases[normalized];
 
-    if (alias && topicContent[alias]) {
+    if (
+        alias &&
+        topicContent[alias]
+    ) {
 
         return topicContent[alias];
 
     }
 
-    return null;
+    return generateGenericContent(topic);
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHtml(text) {
+
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =========================================================
+   COMPLETION KEY
+========================================================= */
+
+function getCompletionKey() {
+
+    return "cppCompleted_" +
+        normalizeTopic(topicName);
+
+}
+
+
+/* =========================================================
+   MARK COMPLETE
+========================================================= */
+
+function markTopicComplete() {
+
+    localStorage.setItem(
+        getCompletionKey(),
+        "true"
+    );
+
+    updateCompletionButton();
+
+}
+
+
+/* =========================================================
+   UPDATE BUTTON
+========================================================= */
+
+function updateCompletionButton() {
+
+    const button =
+        document.getElementById(
+            "completeButton"
+        );
+
+    if (!button) return;
+
+
+    const completed =
+        localStorage.getItem(
+            getCompletionKey()
+        ) === "true";
+
+
+    if (completed) {
+
+        button.textContent =
+            "✓ Topic Completed";
+
+        button.classList.add(
+            "completed"
+        );
+
+    } else {
+
+        button.textContent =
+            "Mark Topic Complete";
+
+        button.classList.remove(
+            "completed"
+        );
+
+    }
 
 }
 
@@ -3019,12 +2018,12 @@ function getContent(topic) {
 function displayTopic() {
 
     const container =
-        document.getElementById("topicContainer");
+        document.getElementById(
+            "topicContainer"
+        );
 
-    const content = getContent(topicName);
 
-
-    if (!topicName || !content) {
+    if (!topicName) {
 
         container.innerHTML = `
 
@@ -3033,14 +2032,15 @@ function displayTopic() {
                 <h1>C++ Topic Not Found</h1>
 
                 <p>
-                    The topic
-                    <strong>${topicName || "requested topic"}</strong>
-                    does not have detailed content yet.
+                    No topic was selected.
                 </p>
 
                 <br>
 
-                <a href="cpp.html" class="back-btn">
+                <a
+                    href="cpp.html"
+                    class="back-btn"
+                >
                     Return to C++ Course
                 </a>
 
@@ -3053,6 +2053,10 @@ function displayTopic() {
     }
 
 
+    const content =
+        getContent(topicName);
+
+
     document.title =
         "EduLearn - " + topicName;
 
@@ -3061,25 +2065,29 @@ function displayTopic() {
 
         <div class="breadcrumb">
 
-            C++ Programming →
-            ${moduleName} →
-            ${topicName}
+            C++ Programming
+            →
+            ${escapeHtml(moduleName)}
+            →
+            ${escapeHtml(topicName)}
 
         </div>
 
 
         <section class="topic-header">
 
-            <h1>${topicName}</h1>
+            <h1>
+                ${escapeHtml(topicName)}
+            </h1>
 
             <p>
-                ${content.description}
+                ${escapeHtml(content.description)}
             </p>
 
             <div class="badges">
 
                 <span class="badge">
-                    ${level}
+                    ${escapeHtml(level)}
                 </span>
 
                 <span class="badge">
@@ -3096,7 +2104,7 @@ function displayTopic() {
             <h2>🎯 Learning Objective</h2>
 
             <p>
-                ${content.objective}
+                ${escapeHtml(content.objective)}
             </p>
 
         </section>
@@ -3107,7 +2115,7 @@ function displayTopic() {
             <h2>📖 Explanation</h2>
 
             <p>
-                ${content.explanation}
+                ${escapeHtml(content.explanation)}
             </p>
 
         </section>
@@ -3115,7 +2123,7 @@ function displayTopic() {
 
         <section class="card">
 
-            <h2>💻 Syntax / Example</h2>
+            <h2>💻 Syntax & Example</h2>
 
             <div class="code-box">
 
@@ -3127,9 +2135,12 @@ function displayTopic() {
 
             </div>
 
+
             <div class="example-output">
 
-                <strong>Output:</strong><br><br>
+                <strong>Expected Output:</strong>
+
+                <br><br>
 
                 ${escapeHtml(content.output)}
 
@@ -3142,10 +2153,13 @@ function displayTopic() {
 
             <h2>🔑 Key Points</h2>
 
-            <ul class="key-points">
+            <ul>
 
                 ${content.keyPoints
-                    .map(point => `<li>${point}</li>`)
+                    .map(
+                        point =>
+                        `<li>${escapeHtml(point)}</li>`
+                    )
                     .join("")
                 }
 
@@ -3163,8 +2177,9 @@ function displayTopic() {
                 <ul>
 
                     ${content.mistakes
-                        .map(mistake =>
-                            `<li>${mistake}</li>`
+                        .map(
+                            mistake =>
+                            `<li>${escapeHtml(mistake)}</li>`
                         )
                         .join("")
                     }
@@ -3178,14 +2193,31 @@ function displayTopic() {
 
         <section class="card">
 
+            <h2>🧪 Practice</h2>
+
+            <p>
+                Try changing the example program,
+                experiment with different values and
+                write your own small program using
+                <strong>
+                    ${escapeHtml(topicName)}
+                </strong>.
+            </p>
+
+        </section>
+
+
+        <section class="card">
+
             <h2>🧠 Remember</h2>
 
             <div class="success">
 
                 <p>
-                    Understanding the concept is more important
-                    than memorizing the code. Try modifying the
-                    example and run it yourself.
+                    Don't just read the code.
+                    Type it yourself, compile it,
+                    run it and experiment with it.
+                    Programming is learned by doing.
                 </p>
 
             </div>
@@ -3195,10 +2227,12 @@ function displayTopic() {
 
         <div class="complete-area">
 
-            <h2>Topic Progress</h2>
+            <h2>
+                Topic Progress
+            </h2>
 
             <p>
-                Mark this topic as completed after you finish
+                Mark this topic as completed after
                 studying and practicing it.
             </p>
 
@@ -3221,85 +2255,14 @@ function displayTopic() {
 
 
 /* =========================================================
-   HTML ESCAPE
-========================================================= */
-
-function escapeHtml(text) {
-
-    return text
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
-
-}
-
-
-/* =========================================================
-   COMPLETION SYSTEM
-========================================================= */
-
-function getCompletionKey() {
-
-    return "cppCompleted_" +
-        normalizeTopic(topicName);
-
-}
-
-
-function markTopicComplete() {
-
-    localStorage.setItem(
-        getCompletionKey(),
-        "true"
-    );
-
-    updateCompletionButton();
-
-}
-
-
-function updateCompletionButton() {
-
-    const button =
-        document.getElementById("completeButton");
-
-    if (!button)
-        return;
-
-
-    const completed =
-        localStorage.getItem(
-            getCompletionKey()
-        ) === "true";
-
-
-    if (completed) {
-
-        button.textContent =
-            "✓ Topic Completed";
-
-        button.classList.add("completed");
-
-    } else {
-
-        button.textContent =
-            "Mark Topic Complete";
-
-        button.classList.remove("completed");
-
-    }
-
-}
-
-
-/* =========================================================
    DARK MODE
 ========================================================= */
 
 function loadDarkMode() {
 
     if (
-        localStorage.getItem("darkMode") === "true"
+        localStorage.getItem("darkMode")
+        === "true"
     ) {
 
         document.body.classList.add("dark");
