@@ -1,323 +1,357 @@
 <!DOCTYPE html>
+
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>EduLearn - C++ Topic</title>
 
 <style>
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
-body {
-    background: #f4f6f8;
-    color: #222;
-    transition: 0.3s;
+body{
+    background:#f4f6f8;
+    color:#222;
+    transition:.3s;
 }
 
-body.dark {
-    background: #121212;
-    color: #eee;
+body.dark{
+    background:#121212;
+    color:#eee;
 }
 
-nav {
-    background: #1f2937;
-    color: white;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+.navbar{
+    background:#111827;
+    color:white;
+    padding:16px 30px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
 }
 
-nav h2 {
-    font-size: 24px;
+.logo{
+    font-size:24px;
+    font-weight:bold;
 }
 
-nav div {
-    display: flex;
-    gap: 18px;
-    flex-wrap: wrap;
+.nav-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 15px;
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    padding:8px 12px;
+    border-radius:6px;
 }
 
-nav a:hover {
-    color: #60a5fa;
+.nav-links a:hover{
+    background:#374151;
 }
 
-.container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 35px 20px;
+.container{
+    width:92%;
+    max-width:1100px;
+    margin:35px auto;
 }
 
-.back-btn {
-    display: inline-block;
-    text-decoration: none;
-    background: #374151;
-    color: white;
-    padding: 11px 18px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+.topic-header{
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    color:white;
+    padding:35px;
+    border-radius:18px;
+    margin-bottom:25px;
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
 }
 
-.breadcrumb {
-    margin-bottom: 20px;
-    color: #666;
-    font-size: 14px;
+.topic-header h1{
+    font-size:34px;
+    margin-bottom:12px;
 }
 
-body.dark .breadcrumb {
-    color: #aaa;
+.topic-header p{
+    opacity:.95;
+    line-height:1.7;
 }
 
-.topic-header {
-    background: linear-gradient(135deg, #2563eb, #7c3aed);
-    color: white;
-    padding: 40px 30px;
-    border-radius: 15px;
-    margin-bottom: 25px;
+.badges{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:18px;
 }
 
-.topic-header h1 {
-    font-size: 38px;
-    margin-bottom: 15px;
+.badge{
+    background:rgba(255,255,255,.18);
+    padding:7px 13px;
+    border-radius:20px;
+    font-size:14px;
 }
 
-.topic-header p {
-    font-size: 17px;
-    line-height: 1.7;
+.card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    margin-bottom:20px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
 }
 
-.badges {
-    margin-top: 20px;
+body.dark .card{
+    background:#1e1e1e;
+    box-shadow:0 5px 18px rgba(0,0,0,.35);
 }
 
-.badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.2);
-    padding: 7px 13px;
-    border-radius: 20px;
-    margin-right: 8px;
-    font-size: 13px;
+.card h2{
+    margin-bottom:15px;
+    color:#2563eb;
 }
 
-.card {
-    background: white;
-    padding: 28px;
-    border-radius: 14px;
-    margin-bottom: 22px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+body.dark .card h2{
+    color:#60a5fa;
 }
 
-body.dark .card {
-    background: #1e1e1e;
-}
-
-.card h2 {
-    color: #2563eb;
-    margin-bottom: 16px;
-}
-
-.card p {
-    line-height: 1.8;
-    margin-bottom: 12px;
+.card p{
+    line-height:1.8;
+    margin-bottom:12px;
 }
 
 .card ul,
-.card ol {
-    margin-left: 25px;
-    line-height: 1.9;
+.card ol{
+    margin-left:25px;
+    line-height:1.9;
 }
 
-.code-box {
-    background: #111827;
-    color: #e5e7eb;
-    padding: 20px;
-    border-radius: 10px;
-    overflow-x: auto;
-    margin-top: 15px;
+pre{
+    background:#111827;
+    color:#e5e7eb;
+    padding:20px;
+    border-radius:10px;
+    overflow-x:auto;
+    line-height:1.6;
+    margin-top:12px;
 }
 
-.code-title {
-    color: #93c5fd;
-    font-weight: bold;
-    margin-bottom: 10px;
+code{
+    font-family:Consolas,monospace;
 }
 
-pre {
-    white-space: pre-wrap;
-    font-family: Consolas, monospace;
-    line-height: 1.6;
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
 }
 
-.example-output {
-    background: #f1f5f9;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 15px;
-    font-family: Consolas, monospace;
+.info-box{
+    background:#f8fafc;
+    padding:18px;
+    border-left:5px solid #2563eb;
+    border-radius:8px;
 }
 
-body.dark .example-output {
-    background: #292929;
+body.dark .info-box{
+    background:#292929;
 }
 
-.warning {
-    background: #fff7ed;
-    border-left: 5px solid #f97316;
-    padding: 18px;
-    border-radius: 8px;
+.info-box strong{
+    display:block;
+    margin-bottom:7px;
 }
 
-body.dark .warning {
-    background: #2a211b;
+.complete-section{
+    text-align:center;
+    padding:25px;
 }
 
-.success {
-    background: #ecfdf5;
-    border-left: 5px solid #10b981;
-    padding: 18px;
-    border-radius: 8px;
+.complete-btn{
+    border:none;
+    background:#16a34a;
+    color:white;
+    padding:13px 24px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
 }
 
-body.dark .success {
-    background: #16261f;
+.complete-btn:hover{
+    background:#15803d;
 }
 
-.complete-area {
-    text-align: center;
-    padding: 30px;
-    background: white;
-    border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+.complete-btn.completed{
+    background:#6b7280;
 }
 
-body.dark .complete-area {
-    background: #1e1e1e;
+.back-btn{
+    display:inline-block;
+    margin-bottom:20px;
+    padding:10px 17px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    border-radius:7px;
 }
 
-.complete-btn {
-    border: none;
-    background: #2563eb;
-    color: white;
-    padding: 14px 25px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 15px;
+.note{
+    background:#eff6ff;
+    border-left:5px solid #2563eb;
+    padding:17px;
+    border-radius:7px;
+    margin-top:15px;
 }
 
-.complete-btn:hover {
-    background: #1d4ed8;
+body.dark .note{
+    background:#172554;
 }
 
-.complete-btn.completed {
-    background: #16a34a;
+.warning{
+    background:#fff7ed;
+    border-left:5px solid #f97316;
+    padding:17px;
+    border-radius:7px;
+    margin-top:15px;
 }
 
-.not-found {
-    text-align: center;
-    background: white;
-    padding: 60px 20px;
-    border-radius: 14px;
+body.dark .warning{
+    background:#431407;
 }
 
-body.dark .not-found {
-    background: #1e1e1e;
+footer{
+    text-align:center;
+    padding:30px;
+    color:#666;
 }
 
-.not-found h1 {
-    color: #dc2626;
-    margin-bottom: 15px;
+body.dark footer{
+    color:#aaa;
 }
 
-footer {
-    background: #1f2937;
-    color: white;
-    text-align: center;
-    padding: 25px;
-    margin-top: 40px;
-}
-
-@media (max-width: 600px) {
-
-    nav {
-        padding: 15px;
+@media(max-width:700px){
+    .navbar{
+        padding:15px;
     }
 
-    nav div {
-        margin-top: 12px;
-        gap: 12px;
+    .container{
+        width:94%;
+        margin:20px auto;
     }
 
-    .topic-header h1 {
-        font-size: 30px;
+    .topic-header{
+        padding:25px;
     }
 
-    .card {
-        padding: 20px;
+    .topic-header h1{
+        font-size:27px;
     }
 
+    .card{
+        padding:18px;
+    }
+
+    pre{
+        font-size:13px;
+    }
 }
-
 </style>
 
 </head>
 
-
 <body>
 
+<nav class="navbar">
+    <div class="logo">EduLearn</div>
 
-<nav>
-
-    <h2>EduLearn</h2>
-
-    <div>
-
-        <a href="index.html">Home</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="coding.html">Coding</a>
-        <a href="python.html">Python</a>
-        <a href="c.html">C</a>
-        <a href="cpp.html">C++</a>
-        <a href="settings.html">Settings</a>
-
-    </div>
+```
+<div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="coding.html">Coding</a>
+    <a href="cpp.html">C++</a>
+    <a href="python.html">Python</a>
+    <a href="settings.html">Settings</a>
+</div>
+```
 
 </nav>
 
+<main class="container">
 
-<div class="container">
+<a class="back-btn" href="cpp.html">← Back to C++ Course</a>
 
-    <a href="cpp.html" class="back-btn">
-        ← Back to C++ Course
-    </a>
+<section class="topic-header">
+    <h1 id="topicTitle">C++ Topic</h1>
+    <p id="topicDescription">
+        Learn C++ concepts with explanations, syntax, examples and practical guidance.
+    </p>
 
-    <div id="topicContainer"></div>
-
+```
+<div class="badges">
+    <span class="badge" id="moduleBadge">Module</span>
+    <span class="badge" id="levelBadge">Level</span>
+    <span class="badge" id="numberBadge">Topic</span>
 </div>
+```
 
+</section>
+
+<section class="card">
+    <h2>Learning Objective</h2>
+    <p id="objective"></p>
+</section>
+
+<section class="card">
+    <h2>Explanation</h2>
+    <div id="explanation"></div>
+</section>
+
+<section class="card">
+    <h2>Syntax</h2>
+    <pre><code id="syntaxExample"></code></pre>
+</section>
+
+<section class="card">
+    <h2>C++ Example</h2>
+    <pre><code id="codeExample"></code></pre>
+</section>
+
+<section class="card">
+    <h2>Key Points</h2>
+    <ul id="keyPoints"></ul>
+</section>
+
+<section class="card">
+    <h2>Common Mistakes</h2>
+    <ul id="mistakes"></ul>
+</section>
+
+<section class="card">
+    <h2>Practical Understanding</h2>
+    <p id="practical"></p>
+</section>
+
+<section class="complete-section card">
+    <h2>Topic Progress</h2>
+    <p id="progressText">Complete this topic when you finish studying it.</p>
+    <br>
+    <button class="complete-btn" id="completeButton" onclick="markTopicComplete()">
+        Mark Topic Complete
+    </button>
+</section>
+
+</main>
 
 <footer>
-
-    <p>© 2026 EduLearn — Learn. Practice. Grow.</p>
-
+    © 2026 EduLearn — College Learning Platform
 </footer>
-
 
 <script>
 
@@ -325,1085 +359,1356 @@ footer {
    URL INFORMATION
 ========================================================= */
 
-const params =
-    new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.search);
 
-const topicName =
-    params.get("topic") || "";
-
-const moduleName =
-    params.get("module") ||
-    "C++ Fundamentals";
-
-const level =
-    params.get("level") ||
-    "Foundation";
+const topicParam = params.get("topic") || "What is C++?";
+const moduleParam = params.get("module") || "C++ Fundamentals";
+const levelParam = params.get("level") || "Foundation";
+const numberParam = params.get("number") || "";
 
 
 /* =========================================================
-   NORMALIZE TOPIC
+   NORMALIZATION
+   FIXED FOR C++ / C# / SPECIAL CHARACTERS
 ========================================================= */
 
-function normalizeTopic(text) {
+function normalizeTopic(text){
 
-    return text
+    return String(text || "")
         .toLowerCase()
         .trim()
-        .replace(/\+/g, " plus ")
-        .replace(/#/g, " sharp ")
-        .replace(/&/g, " and ")
-        .replace(/[()]/g, "")
-        .replace(/[-]/g, " ")
-        .replace(/[.,]/g, "")
-        .replace(/\s+/g, " ");
-
+        .replace(/\+\+/g," plus plus ")
+        .replace(/#/g," sharp ")
+        .replace(/&/g," and ")
+        .replace(/[()]/g," ")
+        .replace(/[-]/g," ")
+        .replace(/[.,:;!?]/g," ")
+        .replace(/\//g," ")
+        .replace(/\s+/g," ")
+        .trim();
 }
 
 
 /* =========================================================
-   COMPLETE FUNDAMENTALS DATABASE
+   COMPLETE COURSE MODULE LIST
 ========================================================= */
 
-const topicContent = {
+const courseModules = [
+
+"C++ Fundamentals",
+"Basic Syntax",
+"Data Types",
+"Variables and Constants",
+"Input and Output",
+"Operators",
+"Type Conversion",
+"Conditional Statements",
+"Loops",
+"Functions",
+"Arrays",
+"Strings",
+"Pointers",
+"References",
+"Structures and Enumerations",
+"Object Oriented Programming",
+"Constructors and Destructors",
+"Inheritance",
+"Polymorphism",
+"Friend Functions and Classes",
+"Operator Overloading",
+"Templates",
+"Exception Handling",
+"File Handling",
+"STL Introduction",
+"STL Containers",
+"STL Container Adapters",
+"STL Iterators",
+"STL Algorithms",
+"Lambda and Functional Programming",
+"Modern C++",
+"Smart Pointers",
+"Memory Management",
+"Data Structures",
+"Algorithms",
+"Graph Algorithms",
+"Competitive Programming",
+"C++ Projects",
+"C++ Debugging and Best Practices",
+"C++ Interview Preparation"
+
+];
+
+
+/* =========================================================
+   DETAILED TOPIC DATABASE
+========================================================= */
+
+const topicContent = {};
 
 
 /* ---------------------------------------------------------
-   1. WHAT IS C++
+   MODULE 1 — C++ FUNDAMENTALS
 --------------------------------------------------------- */
 
-"what is c++": {
-
-description:
-"C++ is a general-purpose programming language designed for performance, abstraction and flexibility.",
-
-objective:
-"Understand what C++ is, how it relates to C, and why it is used for many different types of software.",
-
-explanation:
-`C++ is a compiled, general-purpose programming language.
-
-It supports several programming styles including procedural programming, object-oriented programming and generic programming.
-
-C++ provides direct access to many low-level programming facilities while also providing higher-level abstractions such as classes, templates, containers and algorithms.
-
-Because of this combination, C++ is used in areas such as systems software, game development, embedded systems, desktop applications, high-performance computing and competitive programming.`,
-
-syntax:
-`#include <iostream>
-
-int main() {
-
-    std::cout << "Hello, C++!";
-
-    return 0;
-}`,
-
-output:
-`Hello, C++!`,
-
-keyPoints: [
-"C++ is a compiled programming language.",
-"It evolved from C.",
-"It supports object-oriented programming.",
-"It supports generic programming.",
-"It provides the C++ Standard Library.",
-"It can be used for both high-level and low-level programming tasks."
-],
-
-mistakes: [
-"Thinking C++ is simply another name for C.",
-"Trying to learn advanced features before understanding the fundamentals.",
-"Using complicated language features when a simple solution is sufficient."
-]
-
-},
-
-
-/* ---------------------------------------------------------
-   2. HISTORY OF C++
---------------------------------------------------------- */
-
-"history of c++": {
-
-description:
-"C++ developed from the C language and introduced features for object-oriented and more structured programming.",
-
-objective:
-"Understand the origin and evolution of the C++ programming language.",
-
-explanation:
-`C++ was developed by Bjarne Stroustrup at Bell Labs.
-
-The early version was called "C with Classes" because it added class-based programming capabilities to C.
-
-The name C++ was later adopted.
-
-Over time, C++ developed into a large programming language supporting object-oriented programming, generic programming, exceptions, templates, the Standard Library and many modern programming features.
-
-The language is standardized internationally through ISO C++ standards.`,
-
-syntax:
-`#include <iostream>
-
-int main() {
-
-    std::cout << "Learning C++";
-
-    return 0;
-}`,
-
-output:
-`Learning C++`,
-
-keyPoints: [
-"Bjarne Stroustrup created C++.",
-"C++ originated at Bell Labs.",
-"Early C++ was known as C with Classes.",
-"C++ evolved from C.",
-"The language has continued to evolve through ISO standards."
-],
-
-mistakes: [
-"Assuming modern C++ has exactly the same features as early C++.",
-"Learning only old C++ practices and ignoring modern C++."
-]
-
-},
-
-
-/* ---------------------------------------------------------
-   3. FEATURES OF C++
---------------------------------------------------------- */
-
-"features of c++": {
-
-description:
-"C++ provides a wide range of programming features from basic procedural programming to advanced generic and object-oriented programming.",
-
-objective:
-"Identify the important features that make C++ a powerful programming language.",
-
-explanation:
-`Important C++ features include:
-
-1. Procedural programming
-2. Object-oriented programming
-3. Classes and objects
-4. Inheritance
-5. Polymorphism
-6. Encapsulation
-7. Templates
-8. Exception handling
-9. Operator overloading
-10. References
-11. Pointers
-12. Standard Template Library
-13. Lambda expressions
-14. Smart pointers
-15. Move semantics
-
-Modern C++ also emphasizes safer resource management and reusable abstractions.`,
-
-syntax:
-`class Student {
-
-public:
-
-    void display() {
-
-        std::cout
-            << "C++ Features";
-
-    }
-
-};`,
-
-output:
-`C++ Features`,
-
-keyPoints: [
-"Supports multiple programming paradigms.",
-"Provides classes and objects.",
-"Supports generic programming through templates.",
-"Provides a large Standard Library.",
-"Supports compile-time and runtime polymorphism.",
-"Provides modern resource-management tools."
-],
-
-mistakes: [
-"Trying to use every feature in every program.",
-"Choosing a complex feature when a simpler solution is better."
-]
-
-},
-
-
-/* ---------------------------------------------------------
-   4. ADVANTAGES
---------------------------------------------------------- */
-
-"advantages of c++": {
-
-description:
-"C++ offers performance, control and powerful abstractions.",
-
-objective:
-"Understand the practical strengths of C++.",
-
-explanation:
-`C++ is useful when developers need a combination of performance and abstraction.
-
-Programs can directly manage memory when necessary, while features such as RAII and smart pointers can provide safer resource management.
-
-The language also provides powerful compile-time facilities through templates and a large Standard Library.`,
-
-syntax:
-`#include <iostream>
-
-int main() {
-
-    int a = 10;
-    int b = 20;
-
-    std::cout << a + b;
-
-    return 0;
-}`,
-
-output:
-`30`,
-
-keyPoints: [
-"High performance.",
-"Fine-grained control.",
-"Object-oriented programming.",
-"Generic programming.",
-"Large Standard Library.",
-"Portable across many platforms."
-],
-
-mistakes: [
-"Assuming performance automatically makes a program well designed.",
-"Ignoring safety and maintainability."
-]
-
-},
-
-
-/* ---------------------------------------------------------
-   5. APPLICATIONS
---------------------------------------------------------- */
-
-"applications of c++": {
-
-description:
-"C++ is used in many areas where performance, control and efficient resource use are important.",
-
-objective:
-"Identify real-world areas where C++ is commonly used.",
-
-explanation:
-`C++ is used in many software domains.
-
-Examples include:
-
-• Operating-system and systems components
-• Game engines and games
-• Embedded systems
-• Desktop applications
-• Browsers and performance-sensitive components
-• Financial systems
-• Scientific computing
-• High-performance applications
-• Compilers
-• Databases
-• Competitive programming
-• Computer graphics`,
-
-syntax:
-`#include <iostream>
-
-int main() {
-
-    std::cout
-        << "C++ Applications";
-
-    return 0;
-}`,
-
-output:
-`C++ Applications`,
-
-keyPoints: [
-"C++ is used in systems programming.",
-"It is common in game development.",
-"It is used in embedded software.",
-"It is widely used for algorithmic programming."
-],
-
-mistakes: [
-"Assuming C++ is useful only for games.",
-"Choosing C++ without considering project requirements."
-]
-
-},
-
-
-/* ---------------------------------------------------------
-   6. C VS C++
---------------------------------------------------------- */
-
-"c vs c++": {
-
-description:
-"C and C++ are closely related programming languages, but C++ adds many language and library features.",
-
-objective:
-"Understand important differences between C and C++.",
-
-explanation:
-`C is primarily a procedural programming language.
-
-C++ retains many concepts from C but adds features such as:
-
-• Classes
-• Objects
-• Inheritance
-• Polymorphism
-• Function overloading
-• Templates
-• Exceptions
-• References
-• Namespaces
-• STL containers and algorithms
-• Lambda expressions
-• Smart pointers
-
-Although the languages are related, modern C and modern C++ are distinct languages with different language standards and idioms.`,
-
-syntax:
-`// C++ example
-
-#include <iostream>
-
-int main() {
-
-    std::cout << "C++";
-
-    return 0;
-}`,
-
-output:
-`C++`,
-
-keyPoints: [
-"C++ evolved from C.",
-"C++ adds object-oriented features.",
-"C++ provides templates.",
-"C++ has the Standard Template Library.",
-"Modern C and C++ have different best practices."
-],
-
-mistakes: [
-"Assuming every C program is automatically ideal C++.",
-"Mixing C and C++ styles without understanding the differences."
-]
-
-},
-
-
-/* ---------------------------------------------------------
-   7. C++ STANDARDS
---------------------------------------------------------- */
-
-"c++ standards": {
-
-description:
-"C++ standards define the language and library features provided by standardized versions of C++.",
-
-objective:
-"Understand why different C++ versions exist.",
-
-explanation:
-`C++ has evolved through a series of standardized versions.
-
-Commonly encountered standards include:
-
-C++98
-C++03
-C++11
-C++14
-C++17
-C++20
-C++23
-
-Newer standards introduce language and library improvements.
-
-For example, C++11 introduced major features such as auto, range-based for loops, lambda expressions, nullptr, smart-pointer facilities and move semantics.`,
-
-syntax:
-`auto number = 100;
-
-std::cout << number;`,
-
-output:
-`100`,
-
-keyPoints: [
-"C++ standards evolve over time.",
-"C++11 was a major modernization of the language.",
-"C++17 and C++20 introduced many important features.",
-"The compiler must support the standard features being used."
-],
-
-mistakes: [
-"Using a feature without checking compiler support.",
-"Assuming all C++ compilers support every language feature equally."
-]
-
-},
-
-
-/* ---------------------------------------------------------
-   8. COMPILER
---------------------------------------------------------- */
-
-"c++ compiler": {
-
-description:
-"A C++ compiler translates C++ source code into executable machine code or an intermediate representation.",
-
-objective:
-"Understand the basic role of a C++ compiler.",
-
-explanation:
-`A typical C++ development process involves:
-
-1. Writing source code.
-2. Preprocessing required directives.
-3. Compiling source code.
-4. Generating object code.
-5. Linking required libraries.
-6. Producing an executable program.
-
-Popular C++ compiler implementations include GCC, Clang and Microsoft Visual C++.`,
-
-syntax:
-`g++ main.cpp -o main
-
-./main`,
-
-output:
-`The compiled program executes and produces its program output.`,
-
-keyPoints: [
-"The compiler checks source code.",
-"Compilation can produce object code.",
-"The linker combines required program components.",
-"Compiler warnings can help detect problems."
-],
-
-mistakes: [
-"Ignoring compiler warnings.",
-"Confusing compilation errors with runtime errors.",
-"Using compiler options without understanding them."
-]
-
-},
-
-
-/* ---------------------------------------------------------
-   9. IDE
---------------------------------------------------------- */
-
-"c++ ide": {
-
-description:
-"An Integrated Development Environment provides tools for writing, building and debugging programs.",
-
-objective:
-"Understand what an IDE provides for C++ development.",
-
-explanation:
-`A C++ IDE may provide:
-
-• Code editor
-• Syntax highlighting
-• Code completion
-• Compiler integration
-• Build tools
-• Debugger
-• Project management
-• Search and navigation
-• Version-control integration
-
-Examples include Visual Studio, CLion, Code::Blocks and other development environments.`,
-
-syntax:
-`#include <iostream>
-
-int main() {
-
-    std::cout << "Using an IDE";
-
-    return 0;
-}`,
-
-output:
-`Using an IDE`,
-
-keyPoints: [
-"An IDE combines several development tools.",
-"Debuggers help inspect program execution.",
-"Build tools compile and link projects."
-],
-
-mistakes: [
-"Depending entirely on IDE features without learning the language.",
-"Confusing IDE errors with C++ language rules."
-]
-
-},
-
-
-/* ---------------------------------------------------------
-   10. FIRST PROGRAM
---------------------------------------------------------- */
-
-"writing your first c++ program": {
-
-description:
-"Your first C++ program introduces headers, main(), statements and standard output.",
-
-objective:
-"Write, compile and execute a basic C++ program.",
-
-explanation:
-`Every executable C++ program needs an entry point.
-
-The standard main function is where execution begins.
-
-The iostream header provides facilities for standard input and output.
-
-std::cout can be used to send text to standard output.`,
-
-syntax:
-`#include <iostream>
-
-int main() {
-
-    std::cout << "Welcome to EduLearn!";
-
-    return 0;
-}`,
-
-output:
-`Welcome to EduLearn!`,
-
-keyPoints: [
-"#include includes a header.",
-"main() is the program entry point.",
-"std::cout prints to standard output.",
-"return 0 indicates successful completion from main."
-],
-
-mistakes: [
-"Forgetting #include <iostream>.",
-"Writing std::cout incorrectly.",
-"Forgetting semicolons."
-]
-
-},
-
-
-/* ---------------------------------------------------------
-   11. HELLO WORLD
---------------------------------------------------------- */
-
-"hello world program": {
-
-description:
-"The Hello World program is the traditional first program used to demonstrate basic C++ output.",
-
-objective:
-"Understand the smallest useful structure of a C++ console program.",
-
-explanation:
-`The program includes the input/output stream header and defines main().
-
-Inside main(), std::cout sends text to the console.
-
-The statement ends with a semicolon.`,
-
-syntax:
-`#include <iostream>
-
-int main() {
-
-    std::cout << "Hello World!";
-
-    return 0;
-}`,
-
-output:
-`Hello World!`,
-
-keyPoints: [
-"Use #include <iostream>.",
-"Use std::cout for standard output.",
-"main() controls program execution.",
-"Statements normally end with semicolons."
-],
-
-mistakes: [
-"Missing semicolon.",
-"Incorrect capitalization.",
-"Forgetting std:: before cout."
-]
-
-},
-
-
-/* ---------------------------------------------------------
-   12. COMPILATION AND EXECUTION
---------------------------------------------------------- */
-
-"compilation and execution": {
-
-description:
-"Compilation converts C++ source code into a form that can be executed by the computer.",
-
-objective:
-"Understand the basic process from source code to running program.",
-
-explanation:
-`Suppose your source file is named main.cpp.
-
-A compiler can compile it using:
-
-g++ main.cpp -o main
-
-The resulting executable can then be run.
-
-On a Unix-like system:
-
-./main
-
-On Windows, the executable can normally be started as:
-
-main.exe
-
-The exact commands depend on the compiler and operating system.`,
-
-syntax:
-`g++ main.cpp -o main
-
-./main`,
-
-output:
-`The executable runs and displays the output produced by main().`,
-
-keyPoints: [
-"Source files commonly use the .cpp extension.",
-"Compilation detects many syntax and type errors.",
-"Linking connects program components.",
-"Runtime behavior happens after successful compilation."
-],
-
-mistakes: [
-"Trying to run code that failed to compile.",
-"Confusing compile-time errors with runtime errors.",
-"Using a compiler that does not support the required standard."
-]
-
-},
-
-
-/* ---------------------------------------------------------
-   13. COMMENTS
---------------------------------------------------------- */
-
-"comments in c++": {
-
-description:
-"Comments are notes written in source code that are ignored by the compiler.",
-
-objective:
-"Learn single-line and multi-line comments.",
-
-explanation:
-`C++ supports two main comment styles.
-
-Single-line comments begin with //.
-
-Multi-line comments begin with /* and end with */.
-
-Comments should explain useful information rather than repeat obvious code.`,
-
-syntax:
-`#include <iostream>
-
-int main() {
-
-    // This is a single-line comment
-
-    /*
-       This is a
-       multi-line comment
-    */
-
-    std::cout << "Hello";
-
-    return 0;
-}`,
-
-output:
-`Hello`,
-
-keyPoints: [
-"// creates a single-line comment.",
-"/* ... */ creates a multi-line comment.",
-"Comments do not normally affect program execution.",
-"Good comments explain intent and important decisions."
-],
-
-mistakes: [
-"Writing comments that become outdated.",
-"Using huge comments instead of making code clearer."
-]
-
-},
-
-
-/* ---------------------------------------------------------
-   14. PROGRAM STRUCTURE
---------------------------------------------------------- */
-
-"c++ program structure": {
-
-description:
-"A C++ program is commonly organized into headers, declarations, functions, classes and the main entry point.",
-
-objective:
-"Understand the major structural parts of a C++ program.",
-
-explanation:
-`A small C++ program may contain:
-
-• Header inclusions
-• Namespace or qualified names
-• Function declarations
-• Function definitions
-• Classes
-• main()
-
-Larger programs are usually split across multiple source and header files.`,
-
-syntax:
-`#include <iostream>
-
-void greet();
-
-int main() {
-
-    greet();
-
-    return 0;
-}
-
-void greet() {
-
-    std::cout << "Hello";
-
-}`,
-
-output:
-`Hello`,
-
-keyPoints: [
-"Headers provide declarations and library facilities.",
-"Functions organize reusable behavior.",
-"main() is the entry point.",
-"Larger applications should be divided into logical components."
-],
-
-mistakes: [
-"Putting all program logic into main().",
-"Creating unnecessary global variables.",
-"Making large files difficult to maintain."
-]
-
-},
-
-
-/* ---------------------------------------------------------
-   15. NAMESPACE
---------------------------------------------------------- */
-
-"namespace": {
-
-description:
-"Namespaces organize names and help prevent naming conflicts.",
-
-objective:
-"Understand why namespaces are used in C++.",
-
-explanation:
-`The Standard Library places its names in the std namespace.
-
-Instead of writing:
-
-cout
-
-we normally write:
-
-std::cout
-
-A namespace can also be created for your own application code.`,
-
-syntax:
-`#include <iostream>
-
-namespace College {
-
-    void display() {
-
-        std::cout << "EduLearn";
-
-    }
-
-}
-
-int main() {
-
-    College::display();
-
-}`,
-
-output:
-`EduLearn`,
-
-keyPoints: [
-"Namespaces prevent name collisions.",
-"The Standard Library uses std.",
-"The :: operator accesses a namespace member.",
-"Namespaces can contain functions, classes and variables."
-],
-
-mistakes: [
-"Creating unnecessary namespace complexity.",
-"Using using namespace std; blindly in large codebases."
-]
-
-}
-
+topicContent["what is c plus plus"] = {
+    objective:"Understand what C++ is, why it was created, and where it is used.",
+    explanation:"C++ is a general-purpose programming language developed by Bjarne Stroustrup. It began as an extension of the C programming language and added features such as classes, object-oriented programming, templates and stronger abstraction mechanisms. C++ supports procedural, object-oriented and generic programming styles.",
+    syntax:"#include <iostream>\nusing namespace std;\n\nint main(){\n    cout << \"Hello C++\";\n    return 0;\n}",
+    code:"#include <iostream>\nusing namespace std;\n\nint main(){\n    cout << \"Hello, World!\";\n    return 0;\n}",
+    points:[
+        "C++ is a compiled general-purpose programming language.",
+        "It supports procedural and object-oriented programming.",
+        "It supports generic programming through templates.",
+        "C++ is widely used when performance and control are important."
+    ],
+    mistakes:[
+        "Confusing C++ with only an object-oriented language.",
+        "Forgetting that C++ programs normally need compilation.",
+        "Using outdated syntax when modern C++ features are available."
+    ],
+    practical:"C++ is commonly encountered in software systems, games, embedded systems, high-performance applications, competitive programming and many technical interviews."
 };
+
+topicContent["history of c plus plus"] = {
+    objective:"Learn the origin and evolution of C++.",
+    explanation:"C++ was developed by Bjarne Stroustrup at Bell Labs. The language began as 'C with Classes' and evolved into C++. Over time, standardized versions added features such as templates, standard libraries, modern memory management facilities, lambdas, concurrency support and many other improvements.",
+    syntax:"C++ source file → Compiler → Object code → Linker → Executable",
+    code:"#include <iostream>\n\nint main(){\n    std::cout << \"C++ evolved from C\";\n    return 0;\n}",
+    points:[
+        "Bjarne Stroustrup created C++.",
+        "C++ originated from work on C with Classes.",
+        "The language is standardized internationally.",
+        "Modern C++ continues to evolve."
+    ],
+    mistakes:[
+        "Assuming C++ is simply C with a few additions.",
+        "Ignoring modern C++ standards."
+    ],
+    practical:"Knowing the history helps explain why C++ contains several programming paradigms and both low-level and high-level facilities."
+};
+
+topicContent["features of c plus plus"] = {
+    objective:"Identify the major features of C++.",
+    explanation:"C++ provides classes and objects, inheritance, polymorphism, templates, exception handling, function overloading, operator overloading, namespaces, references, pointers and a large standard library.",
+    syntax:"class ClassName {\npublic:\n    // members\n};",
+    code:"#include <iostream>\n\nclass Student{\npublic:\n    void show(){\n        std::cout << \"Student\";\n    }\n};\n\nint main(){\n    Student s;\n    s.show();\n    return 0;\n}",
+    points:[
+        "Object-oriented programming",
+        "Generic programming",
+        "Function and operator overloading",
+        "Templates",
+        "Exception handling",
+        "Standard Template Library",
+        "Direct memory manipulation"
+    ],
+    mistakes:[
+        "Trying to use every advanced feature immediately.",
+        "Ignoring simpler language constructs."
+    ],
+    practical:"These features allow C++ to be used for both low-level control and large software architectures."
+};
+
+topicContent["advantages of c plus plus"] = {
+    objective:"Understand why C++ is used for performance-oriented software.",
+    explanation:"C++ provides fine-grained control over memory and execution while also supporting abstraction. It can produce efficient native executables and offers a mature ecosystem of libraries and tools.",
+    syntax:"Source Code → Compilation → Native Executable",
+    code:"#include <iostream>\n\nint main(){\n    int value = 100;\n    std::cout << value;\n    return 0;\n}",
+    points:[
+        "High performance",
+        "Native compilation",
+        "Memory control",
+        "Object-oriented programming",
+        "Generic programming",
+        "Large standard library"
+    ],
+    mistakes:[
+        "Assuming performance is automatic.",
+        "Using unsafe memory operations without understanding them."
+    ],
+    practical:"Good C++ performance still depends on algorithm choice, memory access patterns, compiler settings and program design."
+};
+
+topicContent["applications of c plus plus"] = {
+    objective:"Understand major areas where C++ can be applied.",
+    explanation:"C++ is used in operating-system components, game engines, graphics software, embedded systems, desktop applications, financial systems, browsers, scientific software and competitive programming.",
+    syntax:"Application → C++ source → Compiler → Executable",
+    code:"#include <iostream>\n\nint main(){\n    std::cout << \"Performance-oriented software\";\n    return 0;\n}",
+    points:[
+        "Game development",
+        "Embedded systems",
+        "System software",
+        "Graphics",
+        "Desktop applications",
+        "Scientific computing",
+        "Competitive programming"
+    ],
+    mistakes:[
+        "Thinking C++ is suitable only for games.",
+        "Ignoring the importance of libraries and tooling."
+    ],
+    practical:"The language is especially useful when an application needs high performance, predictable resource usage or close interaction with system resources."
+};
+
+topicContent["c vs c plus plus"] = {
+    objective:"Understand important differences between C and C++.",
+    explanation:"C is primarily procedural, while C++ supports procedural, object-oriented and generic programming. C++ adds classes, references, templates, function overloading, namespaces, exceptions and the C++ Standard Library.",
+    syntax:"C: procedural programming\nC++: procedural + object-oriented + generic programming",
+    code:"// C++\n#include <iostream>\n\nclass Car{\npublic:\n    void start(){\n        std::cout << \"Car started\";\n    }\n};",
+    points:[
+        "C++ supports classes and objects.",
+        "C++ supports function overloading.",
+        "C++ provides references.",
+        "C++ provides templates.",
+        "C++ has the Standard Template Library."
+    ],
+    mistakes:[
+        "Assuming every C program automatically becomes good C++.",
+        "Mixing C and C++ features without understanding their differences."
+    ],
+    practical:"Learning C first can help with low-level concepts, but C++ has its own language and design practices."
+};
+
+topicContent["c plus plus standards"] = {
+    objective:"Understand the idea of C++ language standards.",
+    explanation:"C++ is standardized and has evolved through multiple editions. Modern C++ development commonly refers to standards such as C++11, C++14, C++17, C++20 and C++23. Each standard adds or improves language and library features.",
+    syntax:"Compiler → Selected C++ Standard → Program",
+    code:"#include <iostream>\n#include <vector>\n\nint main(){\n    std::vector<int> values{1,2,3};\n    std::cout << values.size();\n}",
+    points:[
+        "Standards define language and library behavior.",
+        "Compilers support standards at different levels.",
+        "Modern C++ commonly uses C++11 and later features."
+    ],
+    mistakes:[
+        "Assuming every compiler supports every feature equally.",
+        "Using features without checking the selected language standard."
+    ],
+    practical:"When compiling a project, choose an appropriate C++ standard and make sure the compiler supports the features you use."
+};
+
+topicContent["c plus plus compiler"] = {
+    objective:"Understand what a C++ compiler does.",
+    explanation:"A C++ compiler translates source code into machine-oriented object code. The build process can involve preprocessing, compilation, assembly and linking.",
+    syntax:"Source → Preprocessor → Compiler → Object File → Linker → Executable",
+    code:"#include <iostream>\n\nint main(){\n    std::cout << \"Compiled program\";\n    return 0;\n}",
+    points:[
+        "The compiler detects many syntax and type errors.",
+        "Compilation creates machine-oriented output.",
+        "The linker combines object files and libraries."
+    ],
+    mistakes:[
+        "Confusing compilation errors with runtime errors.",
+        "Ignoring compiler warnings."
+    ],
+    practical:"Compiler warnings are valuable because they can identify suspicious code before a program runs."
+};
+
+topicContent["c plus plus ide"] = {
+    objective:"Understand the role of an Integrated Development Environment.",
+    explanation:"An IDE combines source editing, project management, building, debugging and other development features. Examples include Visual Studio, Code::Blocks, CLion and other environments capable of supporting C++.",
+    syntax:"Editor + Compiler + Build System + Debugger",
+    code:"int main(){\n    return 0;\n}",
+    points:[
+        "IDE means Integrated Development Environment.",
+        "A compiler is still required to build C++ code.",
+        "A debugger helps investigate program execution."
+    ],
+    mistakes:[
+        "Thinking the IDE itself is the C++ language.",
+        "Not learning basic compiler concepts."
+    ],
+    practical:"Understanding both IDEs and command-line compilation makes troubleshooting easier."
+};
+
+topicContent["writing your first c plus plus program"] = {
+    objective:"Create and understand a minimal C++ program.",
+    explanation:"A simple C++ program commonly contains a main function. Execution begins from main.",
+    syntax:"int main(){\n    // statements\n    return 0;\n}",
+    code:"#include <iostream>\n\nint main(){\n    std::cout << \"My first C++ program\";\n    return 0;\n}",
+    points:[
+        "main is the normal entry point of a C++ program.",
+        "Statements are commonly terminated by semicolons.",
+        "iostream provides standard input/output facilities."
+    ],
+    mistakes:[
+        "Forgetting the closing brace.",
+        "Writing statements outside appropriate functions or declarations."
+    ],
+    practical:"Start with small programs and gradually introduce variables, conditions, loops and functions."
+};
+
+topicContent["hello world program"] = {
+    objective:"Print text to the console using C++.",
+    explanation:"The standard output stream std::cout can display text and values in a console.",
+    syntax:"std::cout << \"text\";",
+    code:"#include <iostream>\n\nint main(){\n    std::cout << \"Hello, World!\";\n    return 0;\n}",
+    points:[
+        "iostream provides cout.",
+        "The insertion operator << sends data to the output stream.",
+        "std:: is the standard namespace qualifier."
+    ],
+    mistakes:[
+        "Writing cout without including iostream when needed.",
+        "Forgetting the semicolon."
+    ],
+    practical:"Change the text and experiment with printing numbers and multiple values."
+};
+
+topicContent["compilation and execution"] = {
+    objective:"Understand how C++ source code becomes a running program.",
+    explanation:"A C++ source file is compiled and linked to produce an executable program. Running the executable starts the program and invokes main.",
+    syntax:"cpp source → compile → link → executable → run",
+    code:"g++ main.cpp -o main\n./main",
+    points:[
+        "Compilation checks and translates source code.",
+        "Linking resolves required program components.",
+        "Execution runs the resulting program."
+    ],
+    mistakes:[
+        "Trying to run source code as though it were already an executable.",
+        "Ignoring compiler error messages."
+    ],
+    practical:"Learn to read the first useful compiler error instead of trying random changes."
+};
+
+topicContent["comments in c plus plus"] = {
+    objective:"Use comments to document C++ code.",
+    explanation:"C++ supports single-line comments using // and multi-line comments using /* and */. Comments are ignored by the compiler as program instructions.",
+    syntax:"// Single-line comment\n\n/*\n   Multi-line comment\n*/",
+    code:"#include <iostream>\n\nint main(){\n    // Display a message\n    std::cout << \"Hello\";\n    return 0;\n}",
+    points:[
+        "Comments explain intent.",
+        "Comments do not execute.",
+        "Use comments where they add useful information."
+    ],
+    mistakes:[
+        "Writing comments that become outdated.",
+        "Using comments instead of clear code."
+    ],
+    practical:"Prefer meaningful names and clear structure, then use comments for important reasoning or non-obvious behavior."
+};
+
+topicContent["program structure"] = {
+    objective:"Understand the common structure of a C++ program.",
+    explanation:"A program can contain preprocessor directives, declarations, functions, classes and the main function. Larger projects divide these responsibilities across multiple source and header files.",
+    syntax:"#include <iostream>\n\nint main(){\n    // statements\n    return 0;\n}",
+    code:"#include <iostream>\n\nint add(int a,int b){\n    return a+b;\n}\n\nint main(){\n    std::cout << add(2,3);\n    return 0;\n}",
+    points:[
+        "Programs can contain multiple functions.",
+        "Classes can organize related data and behavior.",
+        "Headers provide declarations and reusable interfaces."
+    ],
+    mistakes:[
+        "Putting all program logic into main.",
+        "Ignoring useful separation of responsibilities."
+    ],
+    practical:"As programs grow, separate functionality into functions, classes and files."
+};
+
+topicContent["namespace"] = {
+    objective:"Understand namespaces and why they are useful.",
+    explanation:"A namespace groups identifiers and helps prevent naming conflicts. The standard library uses the std namespace.",
+    syntax:"namespace Name {\n    int value;\n}\n\nName::value",
+    code:"#include <iostream>\n\nnamespace College{\n    int students = 100;\n}\n\nint main(){\n    std::cout << College::students;\n    return 0;\n}",
+    points:[
+        "Namespaces help organize names.",
+        ":: is the scope resolution operator.",
+        "std contains the C++ standard library."
+    ],
+    mistakes:[
+        "Creating unnecessary global names.",
+        "Using using namespace std everywhere in large projects without considering name collisions."
+    ],
+    practical:"Using std:: explicitly is often clear and safe, especially in headers."
+};
+
+topicContent["c plus plus syntax"] = {
+    objective:"Understand the rules used to write valid C++ statements and declarations.",
+    explanation:"C++ syntax defines how keywords, identifiers, operators, expressions, statements, functions and blocks are written. Correct syntax allows the compiler to parse the program.",
+    syntax:"statement;\n\nif(condition){\n    statement;\n}",
+    code:"#include <iostream>\n\nint main(){\n    int number = 10;\n\n    if(number > 5){\n        std::cout << \"Greater\";\n    }\n\n    return 0;\n}",
+    points:[
+        "Statements commonly end with semicolons.",
+        "Blocks are enclosed in braces.",
+        "C++ is case-sensitive.",
+        "Expressions can be combined using operators."
+    ],
+    mistakes:[
+        "Incorrect capitalization.",
+        "Missing semicolons.",
+        "Mismatched braces."
+    ],
+    practical:"Compiler errors usually point near where parsing failed; inspect the surrounding lines too."
+};
+
+topicContent["semicolon"] = {
+    objective:"Understand the role of the semicolon.",
+    explanation:"The semicolon commonly marks the end of a C++ statement or declaration.",
+    syntax:"int age = 20;",
+    code:"#include <iostream>\n\nint main(){\n    int age = 20;\n    std::cout << age;\n    return 0;\n}",
+    points:[
+        "Declarations usually end with semicolons.",
+        "Expression statements usually end with semicolons."
+    ],
+    mistakes:[
+        "Forgetting a semicolon.",
+        "Adding a semicolon after a class definition incorrectly."
+    ],
+    practical:"If the compiler reports an unexpected token, check the statement immediately before it for a missing semicolon."
+};
+
+topicContent["curly braces"] = {
+    objective:"Understand how braces define blocks.",
+    explanation:"Curly braces { and } group statements into blocks. They are used with functions, classes, conditions, loops and namespaces.",
+    syntax:"if(condition){\n    statement;\n}",
+    code:"#include <iostream>\n\nint main(){\n    int x = 10;\n\n    if(x > 5){\n        std::cout << \"Inside block\";\n    }\n\n    return 0;\n}",
+    points:[
+        "Braces define scope and blocks.",
+        "Matching braces are essential.",
+        "Indentation makes nesting easier to read."
+    ],
+    mistakes:[
+        "Missing closing braces.",
+        "Incorrect nesting."
+    ],
+    practical:"Use consistent indentation and let your editor highlight matching braces."
+};
+
+topicContent["identifiers"] = {
+    objective:"Learn how names are created for variables, functions, classes and other entities.",
+    explanation:"Identifiers are programmer-defined names. They generally use letters, digits and underscores, cannot begin with a digit and cannot be reserved keywords.",
+    syntax:"int studentAge;\n\nvoid calculateTotal();",
+    code:"#include <iostream>\n\nint main(){\n    int studentAge = 20;\n    std::cout << studentAge;\n    return 0;\n}",
+    points:[
+        "Identifiers are case-sensitive.",
+        "Do not begin an identifier with a digit.",
+        "Keywords cannot be used as ordinary identifiers."
+    ],
+    mistakes:[
+        "Using spaces in identifiers.",
+        "Using reserved keywords.",
+        "Using unclear names."
+    ],
+    practical:"Use descriptive names such as totalMarks instead of vague names such as x when clarity matters."
+};
+
+topicContent["keywords"] = {
+    objective:"Understand reserved words in C++.",
+    explanation:"Keywords have predefined meanings in the language and cannot normally be used as ordinary identifiers.",
+    syntax:"int\nclass\nif\nelse\nfor\nwhile\nreturn",
+    code:"int main(){\n    int number = 10;\n    return 0;\n}",
+    points:[
+        "Keywords are reserved by the language.",
+        "Their meanings are defined by C++.",
+        "Modern standards introduce additional keywords."
+    ],
+    mistakes:[
+        "Trying to name a variable class or return.",
+        "Assuming keywords are case-insensitive."
+    ],
+    practical:"An IDE usually highlights keywords, making them easy to identify."
+};
+
+topicContent["whitespace"] = {
+    objective:"Understand spaces, tabs and line breaks in C++ source code.",
+    explanation:"Whitespace generally separates tokens and improves readability. C++ does not normally require a particular indentation style for syntax, although indentation is extremely important for human readability.",
+    syntax:"int x=10;\n\nint x = 10;",
+    code:"#include <iostream>\n\nint main(){\n    int x = 10;\n    std::cout << x;\n    return 0;\n}",
+    points:[
+        "Whitespace can improve readability.",
+        "Indentation is mainly a style concern.",
+        "Whitespace can separate tokens when necessary."
+    ],
+    mistakes:[
+        "Thinking indentation alone creates blocks.",
+        "Writing unreadable one-line programs."
+    ],
+    practical:"Use a consistent indentation style throughout a project."
+};
+
+topicContent["escape sequences"] = {
+    objective:"Use special character sequences inside C++ character and string literals.",
+    explanation:"Escape sequences represent characters that may be difficult or inconvenient to type directly. Common examples include newline, tab, backslash and quotation marks.",
+    syntax:"\\n  newline\n\\t  tab\n\\\\  backslash\n\\\"  quotation mark",
+    code:"#include <iostream>\n\nint main(){\n    std::cout << \"Name:\\tDeepu\\n\";\n    std::cout << \"C++\\\"Programming\\\"\";\n    return 0;\n}",
+    points:[
+        "\\n creates a newline.",
+        "\\t creates a horizontal tab.",
+        "\\\\ represents a backslash.",
+        "\\\" represents a double quotation mark."
+    ],
+    mistakes:[
+        "Forgetting the escape character.",
+        "Using an invalid escape sequence."
+    ],
+    practical:"Escape sequences are useful when formatting console output."
+};
+
+topicContent["character literals"] = {
+    objective:"Understand character literals in C++.",
+    explanation:"A character literal represents a single character and is commonly written inside single quotation marks.",
+    syntax:"char grade = 'A';",
+    code:"#include <iostream>\n\nint main(){\n    char grade = 'A';\n    std::cout << grade;\n    return 0;\n}",
+    points:[
+        "Character literals commonly use single quotes.",
+        "char can store a character value.",
+        "A string and a character are different types."
+    ],
+    mistakes:[
+        "Using double quotes for a char.",
+        "Assuming char can directly represent every Unicode character."
+    ],
+    practical:"Character types and encodings become especially important when handling international text."
+};
+
+topicContent["string literals"] = {
+    objective:"Understand text literals in C++.",
+    explanation:"A string literal represents a sequence of characters and is normally written using double quotation marks.",
+    syntax:"\"Hello C++\"",
+    code:"#include <iostream>\n\nint main(){\n    std::cout << \"Hello C++\";\n    return 0;\n}",
+    points:[
+        "String literals use double quotation marks.",
+        "They can contain escape sequences.",
+        "std::string is used for mutable string objects."
+    ],
+    mistakes:[
+        "Confusing 'A' with \"A\".",
+        "Assuming a string literal is automatically a std::string object."
+    ],
+    practical:"For everyday text processing, std::string is usually the starting point."
+};
+
+topicContent["cout"] = {
+    objective:"Display output using std::cout.",
+    explanation:"std::cout is the standard output stream provided by the C++ standard library. The << operator inserts values into the stream.",
+    syntax:"std::cout << value;",
+    code:"#include <iostream>\n\nint main(){\n    int age = 20;\n    std::cout << \"Age = \" << age << '\\n';\n    return 0;\n}",
+    points:[
+        "cout belongs to the std namespace.",
+        "The << operator inserts data.",
+        "Multiple values can be chained."
+    ],
+    mistakes:[
+        "Forgetting #include <iostream>.",
+        "Using the wrong operator."
+    ],
+    practical:"cout is useful for console output and debugging small programs."
+};
+
+topicContent["cin"] = {
+    objective:"Read input using std::cin.",
+    explanation:"std::cin is the standard input stream. The >> operator extracts formatted input into variables.",
+    syntax:"std::cin >> variable;",
+    code:"#include <iostream>\n\nint main(){\n    int age;\n\n    std::cout << \"Enter age: \";\n    std::cin >> age;\n\n    std::cout << \"Age = \" << age;\n    return 0;\n}",
+    points:[
+        "cin reads formatted input.",
+        "The >> operator extracts input.",
+        "Input should be validated in robust programs."
+    ],
+    mistakes:[
+        "Not checking failed input.",
+        "Expecting cin >> string to read an entire line containing spaces."
+    ],
+    practical:"Use std::getline when a complete line of text is required."
+};
+
+topicContent["return statement"] = {
+    objective:"Understand return statements.",
+    explanation:"The return statement ends a function and can provide a value to its caller. In main, returning zero traditionally indicates successful completion.",
+    syntax:"return expression;",
+    code:"#include <iostream>\n\nint add(int a,int b){\n    return a+b;\n}\n\nint main(){\n    std::cout << add(4,5);\n    return 0;\n}",
+    points:[
+        "return can send a value back to the caller.",
+        "return exits the current function.",
+        "main returning zero commonly indicates success."
+    ],
+    mistakes:[
+        "Returning a value from a void function.",
+        "Forgetting required return values in non-void functions."
+    ],
+    practical:"Return values are central to building reusable functions."
+};
+
+topicContent["code blocks"] = {
+    objective:"Understand blocks and scope.",
+    explanation:"A code block is a group of statements surrounded by braces. Variables declared inside a block generally have local scope within that block.",
+    syntax:"{\n    int value = 10;\n}",
+    code:"#include <iostream>\n\nint main(){\n    int outer = 10;\n\n    {\n        int inner = 20;\n        std::cout << outer + inner;\n    }\n\n    return 0;\n}",
+    points:[
+        "Blocks group statements.",
+        "Blocks can create local scope.",
+        "Nested blocks are allowed."
+    ],
+    mistakes:[
+        "Trying to use a local variable after its scope ends.",
+        "Creating unnecessarily deep nesting."
+    ],
+    practical:"Understanding scope is essential when working with functions, loops, classes and resource management."
+};
+
+
+/* ---------------------------------------------------------
+   MODULE 3 — DATA TYPES
+--------------------------------------------------------- */
+
+topicContent["data types"] = {
+    objective:"Understand the fundamental types used to represent data in C++.",
+    explanation:"A data type tells the compiler what kind of value an object can represent and influences storage, operations and valid conversions. Fundamental types include integral types, floating-point types, bool, character types and void.",
+    syntax:"int age = 20;\ndouble price = 99.50;\nchar grade = 'A';\nbool passed = true;",
+    code:"#include <iostream>\n\nint main(){\n    int age = 20;\n    double price = 99.50;\n    char grade = 'A';\n    bool passed = true;\n\n    std::cout << age << '\\n';\n    std::cout << price << '\\n';\n    std::cout << grade << '\\n';\n    std::cout << passed << '\\n';\n\n    return 0;\n}",
+    points:[
+        "Data types describe the kind of data being represented.",
+        "Different types have different ranges and representations.",
+        "Choosing appropriate types improves correctness and clarity."
+    ],
+    mistakes:[
+        "Assuming every integer type has the same range.",
+        "Using floating-point types when exact integer arithmetic is required.",
+        "Ignoring signedness."
+    ],
+    practical:"Choose a type according to the meaning of the data rather than simply choosing the type that happens to work for one test."
+};
+
+topicContent["integer data types"] = {
+    objective:"Learn the integer types used for whole-number values.",
+    explanation:"C++ provides several integer types including short, int, long, long long and their signed or unsigned forms. Exact sizes can depend on the implementation, although minimum ranges are specified by the language standard.",
+    syntax:"int count = 100;\nlong long population = 8000000000LL;",
+    code:"#include <iostream>\n\nint main(){\n    int count = 100;\n    long long largeNumber = 9000000000LL;\n\n    std::cout << count << '\\n';\n    std::cout << largeNumber << '\\n';\n\n    return 0;\n}",
+    points:[
+        "Integer types represent whole numbers.",
+        "long long provides at least 64 bits on standard-conforming implementations.",
+        "The exact size of some integer types is implementation-dependent."
+    ],
+    mistakes:[
+        "Assuming int always has a particular size on every platform.",
+        "Overflowing a signed integer."
+    ],
+    practical:"For portable code, use types such as std::int32_t or std::int64_t when an exact width is specifically required and available."
+};
+
+topicContent["floating point data types"] = {
+    objective:"Understand floating-point types for fractional numeric values.",
+    explanation:"C++ provides float, double and long double. These types represent real-number approximations and can introduce rounding effects.",
+    syntax:"float temperature = 36.5f;\ndouble price = 99.99;",
+    code:"#include <iostream>\n\nint main(){\n    float temperature = 36.5f;\n    double price = 99.99;\n\n    std::cout << temperature << '\\n';\n    std::cout << price << '\\n';\n\n    return 0;\n}",
+    points:[
+        "double is commonly preferred for general floating-point calculations.",
+        "Floating-point values are approximations.",
+        "The suffix f can indicate a float literal."
+    ],
+    mistakes:[
+        "Expecting exact decimal arithmetic from binary floating point.",
+        "Comparing floating-point values using exact equality without considering the problem."
+    ],
+    practical:"For money calculations, integer smallest units or suitable decimal arithmetic techniques may be preferable depending on the application."
+};
+
+topicContent["character data type"] = {
+    objective:"Understand char and character representation.",
+    explanation:"char is a distinct fundamental type commonly used for character data and small integer values. C++ also provides signed char and unsigned char.",
+    syntax:"char letter = 'A';",
+    code:"#include <iostream>\n\nint main(){\n    char letter = 'A';\n    std::cout << letter << '\\n';\n    std::cout << static_cast<int>(letter);\n    return 0;\n}",
+    points:[
+        "char is an integral type.",
+        "Character representation depends on the execution character set.",
+        "signed char and unsigned char are distinct types."
+    ],
+    mistakes:[
+        "Assuming char always has a specific signedness.",
+        "Treating char as a complete Unicode text solution."
+    ],
+    practical:"For modern text handling, understand encodings and the appropriate string or character types for the application."
+};
+
+topicContent["boolean data type"] = {
+    objective:"Use bool for true and false values.",
+    explanation:"The bool type represents logical values: true and false. It is commonly used in conditions and state flags.",
+    syntax:"bool isLoggedIn = true;",
+    code:"#include <iostream>\n\nint main(){\n    bool passed = true;\n\n    if(passed){\n        std::cout << \"Passed\";\n    }\n\n    return 0;\n}",
+    points:[
+        "bool represents logical state.",
+        "true and false are boolean literals.",
+        "Conditions commonly evaluate to bool."
+    ],
+    mistakes:[
+        "Using magic numbers instead of clear boolean values.",
+        "Confusing equality == with assignment =."
+    ],
+    practical:"Boolean values make program decisions easier to read and reason about."
+};
+
+topicContent["void data type"] = {
+    objective:"Understand void and where it is used.",
+    explanation:"void represents the absence of a value. It is commonly used for functions that do not return a value and for certain pointer-related declarations.",
+    syntax:"void showMessage(){\n    // no return value\n}",
+    code:"#include <iostream>\n\nvoid showMessage(){\n    std::cout << \"Hello\";\n}\n\nint main(){\n    showMessage();\n    return 0;\n}",
+    points:[
+        "void functions do not return a value.",
+        "void is also used in generic pointer syntax such as void*."
+    ],
+    mistakes:[
+        "Trying to assign the result of a void function to a normal value."
+    ],
+    practical:"Void functions are useful when an operation performs an action without producing a return value."
+};
+
+topicContent["wchar t"] = {
+    objective:"Understand the wide character type wchar_t.",
+    explanation:"wchar_t is a wide character type whose size and encoding interpretation are implementation-defined. It exists for wide-character facilities but should not automatically be assumed to mean Unicode in a particular encoding.",
+    syntax:"wchar_t letter = L'A';",
+    code:"#include <iostream>\n\nint main(){\n    wchar_t letter = L'A';\n    std::wcout << letter;\n    return 0;\n}",
+    points:[
+        "wchar_t is a distinct integral type.",
+        "Its size is implementation-defined.",
+        "Wide-character handling depends on the platform and locale."
+    ],
+    mistakes:[
+        "Assuming wchar_t has identical behavior on every operating system."
+    ],
+    practical:"Modern applications should understand Unicode encodings and choose text facilities deliberately."
+};
+
+topicContent["char16 t"] = {
+    objective:"Understand char16_t.",
+    explanation:"char16_t is a distinct integer type intended to hold UTF-16 code units.",
+    syntax:"char16_t value = u'A';",
+    code:"#include <iostream>\n\nint main(){\n    char16_t value = u'A';\n    std::cout << static_cast<int>(value);\n    return 0;\n}",
+    points:[
+        "char16_t represents UTF-16 code units.",
+        "A code unit is not necessarily a complete Unicode code point."
+    ],
+    mistakes:[
+        "Assuming every char16_t value is a complete character."
+    ],
+    practical:"Unicode requires understanding code points, code units and encoding."
+};
+
+topicContent["char32 t"] = {
+    objective:"Understand char32_t.",
+    explanation:"char32_t is a distinct integer type intended to represent UTF-32 code units, commonly allowing one code unit to represent a Unicode code point.",
+    syntax:"char32_t value = U'A';",
+    code:"#include <iostream>\n\nint main(){\n    char32_t value = U'A';\n    std::cout << static_cast<unsigned int>(value);\n    return 0;\n}",
+    points:[
+        "char32_t is intended for UTF-32 code units.",
+        "Unicode text processing still involves encoding considerations."
+    ],
+    mistakes:[
+        "Treating a Unicode code point as equivalent to a user-perceived character."
+    ],
+    practical:"Text processing can be more complex than storing one character value."
+};
+
+topicContent["sizeof operator"] = {
+    objective:"Use sizeof to determine the size of a type or object in bytes.",
+    explanation:"The sizeof operator produces the size, in bytes, of a type or expression's type. The result type is std::size_t.",
+    syntax:"sizeof(type)\nsizeof(expression)",
+    code:"#include <iostream>\n\nint main(){\n    std::cout << sizeof(int) << '\\n';\n    std::cout << sizeof(double) << '\\n';\n    return 0;\n}",
+    points:[
+        "sizeof reports size in bytes.",
+        "Sizes are implementation-dependent for many types.",
+        "sizeof does not execute its operand when the operand is an unevaluated expression."
+    ],
+    mistakes:[
+        "Assuming sizeof(int) is identical on every platform.",
+        "Confusing bytes with bits."
+    ],
+    practical:"sizeof is useful for understanding memory layout and writing portable low-level code."
+};
+
+topicContent["signed and unsigned"] = {
+    objective:"Understand signed and unsigned integer types.",
+    explanation:"Signed integer types can represent negative and non-negative values. Unsigned integer types represent non-negative values and provide a larger non-negative range for the same storage width.",
+    syntax:"int temperature = -5;\nunsigned int count = 10;",
+    code:"#include <iostream>\n\nint main(){\n    int temperature = -5;\n    unsigned int count = 10;\n\n    std::cout << temperature << '\\n';\n    std::cout << count << '\\n';\n\n    return 0;\n}",
+    points:[
+        "Signed integers can represent negative values.",
+        "Unsigned integers cannot represent negative values.",
+        "Mixing signed and unsigned values can cause surprising comparisons."
+    ],
+    mistakes:[
+        "Using unsigned merely because a value 'should not be negative' without considering arithmetic behavior.",
+        "Ignoring signed/unsigned conversion rules."
+    ],
+    practical:"Use unsigned types when their semantics are genuinely useful, not as a universal replacement for int."
+};
+
+topicContent["short and long"] = {
+    objective:"Understand integer type modifiers.",
+    explanation:"short, long and long long modify integer types and affect their minimum ranges and often their storage size. Exact sizes are implementation-dependent within standard limits.",
+    syntax:"short int a = 10;\nlong int b = 1000;\nlong long int c = 1000000;",
+    code:"#include <iostream>\n\nint main(){\n    short a = 10;\n    long b = 1000;\n    long long c = 1000000;\n\n    std::cout << a << ' ' << b << ' ' << c;\n    return 0;\n}",
+    points:[
+        "short and long modify integer types.",
+        "long long is useful for large integer ranges.",
+        "Use fixed-width types when exact width matters."
+    ],
+    mistakes:[
+        "Assuming long has the same size on Windows and Linux."
+    ],
+    practical:"Platform differences are important when writing portable systems-level programs."
+};
+
+
+/* =========================================================
+   AUTOMATIC TOPIC GENERATOR
+   ========================================================= */
+
+function generateGenericContent(topic){
+
+    const lower = topic.toLowerCase();
+
+    let explanation =
+        "This topic is part of the C++ curriculum and is important for building a complete understanding of the language. " +
+        topic +
+        " should be studied together with its syntax, behavior, common use cases and practical examples.";
+
+    let syntax =
+        "// General C++ structure\n" +
+        "#include <iostream>\n\n" +
+        "int main(){\n" +
+        "    // Study " + topic + " here\n" +
+        "    return 0;\n" +
+        "}";
+
+    let code =
+        "#include <iostream>\n\n" +
+        "int main(){\n" +
+        "    std::cout << \"Learning: " + topic.replace(/"/g,"") + "\" << '\\n';\n" +
+        "    return 0;\n" +
+        "}";
+
+    let points = [
+        topic + " is an important C++ concept.",
+        "Understand the purpose of the concept before memorizing syntax.",
+        "Practice the concept with small programs.",
+        "Combine the concept with previously learned C++ features.",
+        "Use compiler warnings and debugging tools while practicing."
+    ];
+
+    let mistakes = [
+        "Memorizing syntax without understanding what the feature does.",
+        "Ignoring compiler warnings and error messages.",
+        "Testing only one simple example.",
+        "Not considering edge cases.",
+        "Using the feature without understanding its limitations."
+    ];
+
+    if(lower.includes("pointer")){
+        explanation =
+            topic +
+            " deals with pointers or pointer-related programming. " +
+            "Pointers store addresses and are an important part of C++ memory management. " +
+            "They require careful handling because invalid or dangling pointers can cause undefined behavior.";
+
+        syntax =
+            "int value = 10;\n" +
+            "int* ptr = &value;\n" +
+            "std::cout << *ptr;";
+
+        code =
+            "#include <iostream>\n\n" +
+            "int main(){\n" +
+            "    int value = 10;\n" +
+            "    int* ptr = &value;\n\n" +
+            "    std::cout << *ptr;\n" +
+            "    return 0;\n" +
+            "}";
+
+        points = [
+            "A pointer can store an address.",
+            "& can obtain an object's address.",
+            "* can dereference a pointer.",
+            "Pointers must be used carefully.",
+            "Prefer safer abstractions when raw pointers are not required."
+        ];
+    }
+
+    else if(lower.includes("array")){
+        explanation =
+            topic +
+            " involves collections of elements stored in a sequence. " +
+            "C++ provides built-in arrays and safer standard-library containers such as std::array and std::vector.";
+
+        syntax =
+            "int values[5] = {1,2,3,4,5};";
+
+        code =
+            "#include <iostream>\n\n" +
+            "int main(){\n" +
+            "    int values[5] = {1,2,3,4,5};\n\n" +
+            "    for(int value : values){\n" +
+            "        std::cout << value << ' ';\n" +
+            "    }\n\n" +
+            "    return 0;\n" +
+            "}";
+
+        points = [
+            "Array elements are stored sequentially.",
+            "Indexing starts at zero.",
+            "Built-in arrays have fixed size.",
+            "std::array provides a standard-library fixed-size container.",
+            "std::vector is useful when a dynamic-size sequence is required."
+        ];
+    }
+
+    else if(lower.includes("string")){
+        explanation =
+            topic +
+            " concerns text and string processing in C++. " +
+            "std::string is the standard starting point for ordinary string manipulation.";
+
+        syntax =
+            "std::string name = \"EduLearn\";";
+
+        code =
+            "#include <iostream>\n" +
+            "#include <string>\n\n" +
+            "int main(){\n" +
+            "    std::string name = \"EduLearn\";\n" +
+            "    std::cout << name;\n" +
+            "    return 0;\n" +
+            "}";
+
+        points = [
+            "std::string is a standard string class.",
+            "Strings can be concatenated and modified.",
+            "Use std::getline when complete lines are required.",
+            "String indexing should respect valid bounds."
+        ];
+    }
+
+    else if(lower.includes("function")){
+        explanation =
+            topic +
+            " is related to functions, which allow programs to divide work into reusable units. " +
+            "Functions can accept parameters and return values.";
+
+        syntax =
+            "return_type functionName(parameters){\n" +
+            "    // statements\n" +
+            "}";
+
+        code =
+            "#include <iostream>\n\n" +
+            "int add(int a,int b){\n" +
+            "    return a+b;\n" +
+            "}\n\n" +
+            "int main(){\n" +
+            "    std::cout << add(5,3);\n" +
+            "    return 0;\n" +
+            "}";
+
+        points = [
+            "Functions reduce repeated code.",
+            "Parameters provide input.",
+            "Return values provide output.",
+            "Functions improve program organization.",
+            "Functions can be overloaded."
+        ];
+    }
+
+    else if(lower.includes("class") || lower.includes("object oriented")){
+        explanation =
+            topic +
+            " is connected with object-oriented programming in C++. " +
+            "Classes combine data and behavior and allow programmers to model entities and abstractions.";
+
+        syntax =
+            "class Student{\n" +
+            "public:\n" +
+            "    void study(){ }\n" +
+            "};";
+
+        code =
+            "#include <iostream>\n\n" +
+            "class Student{\n" +
+            "public:\n" +
+            "    void study(){\n" +
+            "        std::cout << \"Studying C++\";\n" +
+            "    }\n" +
+            "};\n\n" +
+            "int main(){\n" +
+            "    Student student;\n" +
+            "    student.study();\n" +
+            "    return 0;\n" +
+            "}";
+
+        points = [
+            "Classes define types.",
+            "Objects are instances of classes.",
+            "Classes can contain data and functions.",
+            "Access control supports encapsulation.",
+            "Good class design keeps responsibilities clear."
+        ];
+    }
+
+    else if(lower.includes("inheritance")){
+        explanation =
+            topic +
+            " is related to inheritance, where a derived class can be based on a base class. " +
+            "Inheritance is one of the major object-oriented mechanisms in C++.";
+
+        syntax =
+            "class Derived : public Base{\n" +
+            "};";
+
+        code =
+            "#include <iostream>\n\n" +
+            "class Animal{\n" +
+            "public:\n" +
+            "    void eat(){\n" +
+            "        std::cout << \"Eating\";\n" +
+            "    }\n" +
+            "};\n\n" +
+            "class Dog : public Animal{\n" +
+            "};\n\n" +
+            "int main(){\n" +
+            "    Dog dog;\n" +
+            "    dog.eat();\n" +
+            "    return 0;\n" +
+            "}";
+
+        points = [
+            "Inheritance creates relationships between classes.",
+            "A derived class can inherit accessible members.",
+            "Public, protected and private inheritance have different effects.",
+            "Composition is often an alternative to inheritance."
+        ];
+    }
+
+    else if(lower.includes("template")){
+        explanation =
+            topic +
+            " is related to templates and generic programming. " +
+            "Templates allow code to work with different types while retaining compile-time type checking.";
+
+        syntax =
+            "template <typename T>\n" +
+            "T maximum(T a,T b){\n" +
+            "    return a > b ? a : b;\n" +
+            "}";
+
+        code =
+            "#include <iostream>\n\n" +
+            "template <typename T>\n" +
+            "T maximum(T a,T b){\n" +
+            "    return a > b ? a : b;\n" +
+            "}\n\n" +
+            "int main(){\n" +
+            "    std::cout << maximum(10,20);\n" +
+            "    return 0;\n" +
+            "}";
+
+        points = [
+            "Templates support generic programming.",
+            "Types can be supplied as template arguments.",
+            "Templates are heavily used by the standard library.",
+            "Compiler errors involving templates can be detailed."
+        ];
+    }
+
+    else if(lower.includes("exception")){
+        explanation =
+            topic +
+            " concerns exception handling, which provides a mechanism for transferring control when an exceptional condition occurs.";
+
+        syntax =
+            "try{\n" +
+            "    // risky operation\n" +
+            "}\n" +
+            "catch(const std::exception& e){\n" +
+            "    // handle error\n" +
+            "}";
+
+        code =
+            "#include <iostream>\n" +
+            "#include <stdexcept>\n\n" +
+            "int main(){\n" +
+            "    try{\n" +
+            "        throw std::runtime_error(\"Something went wrong\");\n" +
+            "    }\n" +
+            "    catch(const std::exception& e){\n" +
+            "        std::cout << e.what();\n" +
+            "    }\n\n" +
+            "    return 0;\n" +
+            "}";
+
+        points = [
+            "Exceptions transfer control to a handler.",
+            "try contains code that may throw.",
+            "catch handles matching exceptions.",
+            "Exceptions should be used deliberately."
+        ];
+    }
+
+    else if(lower.includes("vector") || lower.includes("stl") || lower.includes("container")){
+        explanation =
+            topic +
+            " is connected to the C++ Standard Library and its reusable containers and algorithms. " +
+            "The STL provides powerful tools that reduce the need to implement common data structures and operations manually.";
+
+        syntax =
+            "#include <vector>\n\n" +
+            "std::vector<int> values{1,2,3};";
+
+        code =
+            "#include <iostream>\n" +
+            "#include <vector>\n\n" +
+            "int main(){\n" +
+            "    std::vector<int> values{10,20,30};\n\n" +
+            "    for(int value : values){\n" +
+            "        std::cout << value << ' ';\n" +
+            "    }\n\n" +
+            "    return 0;\n" +
+            "}";
+
+        points = [
+            "The standard library provides reusable components.",
+            "Containers store collections of values.",
+            "Iterators and algorithms work together.",
+            "Using standard components can reduce bugs and development time."
+        ];
+    }
+
+    else if(lower.includes("algorithm")){
+        explanation =
+            topic +
+            " deals with algorithms and systematic methods for solving computational problems. " +
+            "C++ provides many reusable algorithms through the standard library.";
+
+        syntax =
+            "std::sort(values.begin(), values.end());";
+
+        code =
+            "#include <iostream>\n" +
+            "#include <vector>\n" +
+            "#include <algorithm>\n\n" +
+            "int main(){\n" +
+            "    std::vector<int> values{4,1,3,2};\n\n" +
+            "    std::sort(values.begin(), values.end());\n\n" +
+            "    for(int x : values){\n" +
+            "        std::cout << x << ' ';\n" +
+            "    }\n\n" +
+            "    return 0;\n" +
+            "}";
+
+        points = [
+            "Algorithms solve recurring computational tasks.",
+            "Complexity matters when input becomes large.",
+            "The standard library contains many tested algorithms.",
+            "Choosing an appropriate algorithm can matter more than micro-optimizations."
+        ];
+    }
+
+    else if(lower.includes("lambda")){
+        explanation =
+            topic +
+            " concerns lambda expressions, which allow small callable objects to be written directly where they are needed.";
+
+        syntax =
+            "auto square = [](int x){\n" +
+            "    return x*x;\n" +
+            "};";
+
+        code =
+            "#include <iostream>\n\n" +
+            "int main(){\n" +
+            "    auto square = [](int x){ return x*x; };\n\n" +
+            "    std::cout << square(5);\n" +
+            "    return 0;\n" +
+            "}";
+
+        points = [
+            "Lambdas create callable objects.",
+            "They can capture variables.",
+            "They are commonly used with STL algorithms.",
+            "Keep complex lambdas readable."
+        ];
+    }
+
+    else if(lower.includes("smart pointer")){
+        explanation =
+            topic +
+            " concerns smart pointers, which automate ownership and lifetime management for dynamically allocated objects.";
+
+        syntax =
+            "auto ptr = std::make_unique<int>(10);";
+
+        code =
+            "#include <iostream>\n" +
+            "#include <memory>\n\n" +
+            "int main(){\n" +
+            "    auto ptr = std::make_unique<int>(10);\n\n" +
+            "    std::cout << *ptr;\n" +
+            "    return 0;\n" +
+            "}";
+
+        points = [
+            "std::unique_ptr represents exclusive ownership.",
+            "std::shared_ptr represents shared ownership.",
+            "std::weak_ptr can observe shared ownership without extending the lifetime.",
+            "make_unique and make_shared are preferred construction helpers."
+        ];
+    }
+
+    return {
+        objective:"Understand the purpose and practical use of " + topic + " in C++.",
+        explanation:explanation,
+        syntax:syntax,
+        code:code,
+        points:points,
+        mistakes:mistakes,
+        practical:"Practice this concept by changing the example, testing different inputs and combining it with concepts from earlier modules."
+    };
+}
 
 
 /* =========================================================
    ALIASES
 ========================================================= */
 
-const topicAliases = {
+const aliases = {
 
-    "what is cpp":
-        "what is c++",
+    "what is cpp":"what is c plus plus",
+    "cpp":"what is c plus plus",
+    "c plus plus":"what is c plus plus",
 
-    "cpp":
-        "what is c++",
+    "cpp history":"history of c plus plus",
+    "history of cpp":"history of c plus plus",
 
-    "history of cpp":
-        "history of c++",
+    "cpp features":"features of c plus plus",
+    "features of cpp":"features of c plus plus",
 
-    "features of cpp":
-        "features of c++",
+    "cpp advantages":"advantages of c plus plus",
+    "advantages of cpp":"advantages of c plus plus",
 
-    "advantages of cpp":
-        "advantages of c++",
+    "cpp applications":"applications of c plus plus",
+    "applications of cpp":"applications of c plus plus",
 
-    "applications of cpp":
-        "applications of c++",
+    "c versus cpp":"c vs c plus plus",
+    "c vs cpp":"c vs c plus plus",
 
-    "c vs cpp":
-        "c vs c++",
+    "cpp standards":"c plus plus standards",
+    "cpp compiler":"c plus plus compiler",
+    "cpp ide":"c plus plus ide",
 
-    "cpp standards":
-        "c++ standards",
+    "first cpp program":"writing your first c plus plus program",
+    "first c plus plus program":"writing your first c plus plus program",
 
-    "cpp compiler":
-        "c++ compiler",
+    "hello world cpp":"hello world program",
 
-    "cpp ide":
-        "c++ ide",
+    "cpp syntax":"c plus plus syntax",
+    "syntax of cpp":"c plus plus syntax",
 
-    "hello world":
-        "hello world program",
+    "cpp comments":"comments in c plus plus",
+    "cpp namespace":"namespace",
 
-    "comments":
-        "comments in c++"
+    "integer":"integer data types",
+    "integers":"integer data types",
+    "integer data type":"integer data types",
+
+    "float":"floating point data types",
+    "floating point":"floating point data types",
+    "floating point type":"floating point data types",
+
+    "bool":"boolean data type",
+    "boolean":"boolean data type",
+    "boolean type":"boolean data type",
+
+    "character":"character data type",
+    "char":"character data type",
+
+    "sizeof":"sizeof operator",
+    "size of":"sizeof operator",
+
+    "signed unsigned":"signed and unsigned",
+    "unsigned":"signed and unsigned",
+
+    "short long":"short and long",
+
+    "wide character":"wchar t",
+    "wchar":"wchar t",
+
+    "utf 16 character":"char16 t",
+    "utf 32 character":"char32 t"
 
 };
 
 
 /* =========================================================
-   GENERIC FALLBACK
+   FIND CONTENT ROBUSTLY
 ========================================================= */
 
-function generateGenericContent(topic) {
+function getContent(topic){
 
-    return {
+    const raw = String(topic || "").toLowerCase().trim();
 
-        description:
-            `${topic} is an important topic in C++ programming.`,
+    const normalized = normalizeTopic(topic);
 
-        objective:
-            `Understand the concept, syntax and practical use of ${topic}.`,
+    /* Exact raw lookup */
+    if(topicContent[raw]){
+        return topicContent[raw];
+    }
 
-        explanation:
-            `${topic} is part of the C++ programming curriculum. Start by understanding what the concept does, where it is useful, and how it behaves in a real program. Then practice it with small examples before combining it with other C++ concepts.`,
-
-        syntax:
-`#include <iostream>
-
-int main() {
-
-    // Example related to:
-    // ${topic}
-
-    std::cout << "Learning ${topic}";
-
-    return 0;
-}`,
-
-        output:
-            `Learning ${topic}`,
-
-        keyPoints: [
-            `${topic} is part of the C++ language or ecosystem.`,
-            "Understand the concept before memorizing syntax.",
-            "Practice with small programs.",
-            "Test normal and edge cases.",
-            "Use clear and readable code."
-        ],
-
-        mistakes: [
-            `Memorizing ${topic} without understanding it.`,
-            "Ignoring compiler warnings.",
-            "Not testing the program.",
-            "Using unnecessarily complicated code."
-        ]
-
-    };
-
-}
-
-
-/* =========================================================
-   GET CONTENT
-========================================================= */
-
-function getContent(topic) {
-
-    const normalized =
-        normalizeTopic(topic);
-
-    if (topicContent[normalized]) {
-
+    /* Normalized direct lookup */
+    if(topicContent[normalized]){
         return topicContent[normalized];
-
     }
 
-    const alias =
-        topicAliases[normalized];
+    /* Alias lookup */
+    if(aliases[raw]){
+        const aliasTarget = aliases[raw];
 
-    if (
-        alias &&
-        topicContent[alias]
-    ) {
-
-        return topicContent[alias];
-
+        if(topicContent[aliasTarget]){
+            return topicContent[aliasTarget];
+        }
     }
 
+    if(aliases[normalized]){
+        const aliasTarget = aliases[normalized];
+
+        if(topicContent[aliasTarget]){
+            return topicContent[aliasTarget];
+        }
+    }
+
+    /* Normalized alias comparison */
+    for(const alias in aliases){
+
+        if(normalizeTopic(alias) === normalized){
+
+            const target = aliases[alias];
+
+            if(topicContent[target]){
+                return topicContent[target];
+            }
+        }
+    }
+
+    /* Compare every detailed topic after normalization */
+    for(const key in topicContent){
+
+        if(normalizeTopic(key) === normalized){
+            return topicContent[key];
+        }
+    }
+
+    /* Never show Topic Not Found */
     return generateGenericContent(topic);
-
 }
 
 
 /* =========================================================
-   HTML ESCAPE
+   HTML ESCAPING
 ========================================================= */
 
-function escapeHtml(text) {
+function escapeHtml(text){
 
     return String(text)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-
-}
-
-
-/* =========================================================
-   COMPLETION
-========================================================= */
-
-function completionKey() {
-
-    return "cppCompleted_" +
-        normalizeTopic(topicName);
-
-}
-
-
-function markTopicComplete() {
-
-    localStorage.setItem(
-        completionKey(),
-        "true"
-    );
-
-    updateCompletionButton();
-
-}
-
-
-function updateCompletionButton() {
-
-    const button =
-        document.getElementById(
-            "completeButton"
-        );
-
-    if (!button) return;
-
-    const completed =
-        localStorage.getItem(
-            completionKey()
-        ) === "true";
-
-    if (completed) {
-
-        button.textContent =
-            "✓ Topic Completed";
-
-        button.classList.add(
-            "completed"
-        );
-
-    } else {
-
-        button.textContent =
-            "Mark Topic Complete";
-
-        button.classList.remove(
-            "completed"
-        );
-
-    }
-
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 }
 
 
@@ -1411,293 +1716,120 @@ function updateCompletionButton() {
    DISPLAY TOPIC
 ========================================================= */
 
-function displayTopic() {
+function displayTopic(){
 
-    const container =
-        document.getElementById(
-            "topicContainer"
-        );
+    const content = getContent(topicParam);
 
-    if (!topicName) {
+    document.getElementById("topicTitle").textContent = topicParam;
 
-        container.innerHTML = `
+    document.getElementById("topicDescription").textContent =
+        "Learn " + topicParam + " with clear explanations, syntax, examples and practical understanding.";
 
-            <div class="not-found">
+    document.getElementById("moduleBadge").textContent =
+        "Module: " + moduleParam;
 
-                <h1>
-                    C++ Topic Not Found
-                </h1>
+    document.getElementById("levelBadge").textContent =
+        "Level: " + levelParam;
 
-                <p>
-                    No topic was selected.
-                </p>
+    document.getElementById("numberBadge").textContent =
+        numberParam ? "Topic " + numberParam : "C++ Topic";
 
-                <br>
+    document.getElementById("objective").textContent =
+        content.objective;
 
-                <a
-                    href="cpp.html"
-                    class="back-btn"
-                >
-                    Return to C++ Course
-                </a>
+    document.getElementById("explanation").innerHTML =
+        "<p>" + escapeHtml(content.explanation).replace(/\n/g,"<br>") + "</p>";
 
-            </div>
+    document.getElementById("syntaxExample").textContent =
+        content.syntax;
 
-        `;
+    document.getElementById("codeExample").textContent =
+        content.code;
 
-        return;
+    const keyPoints =
+        document.getElementById("keyPoints");
 
-    }
+    keyPoints.innerHTML = "";
 
+    content.points.forEach(point => {
 
-    const content =
-        getContent(topicName);
+        const li = document.createElement("li");
 
+        li.textContent = point;
 
-    document.title =
-        "EduLearn - " +
-        topicName;
+        keyPoints.appendChild(li);
+    });
 
+    const mistakes =
+        document.getElementById("mistakes");
 
-    container.innerHTML = `
+    mistakes.innerHTML = "";
 
-        <div class="breadcrumb">
+    content.mistakes.forEach(mistake => {
 
-            C++ Programming
-            →
-            ${escapeHtml(moduleName)}
-            →
-            ${escapeHtml(topicName)}
+        const li = document.createElement("li");
 
-        </div>
+        li.textContent = mistake;
 
+        mistakes.appendChild(li);
+    });
 
-        <section class="topic-header">
-
-            <h1>
-                ${escapeHtml(topicName)}
-            </h1>
-
-            <p>
-                ${escapeHtml(
-                    content.description
-                )}
-            </p>
-
-            <div class="badges">
-
-                <span class="badge">
-
-                    ${escapeHtml(level)}
-
-                </span>
-
-                <span class="badge">
-
-                    C++ Programming
-
-                </span>
-
-            </div>
-
-        </section>
-
-
-        <section class="card">
-
-            <h2>
-                🎯 Learning Objective
-            </h2>
-
-            <p>
-                ${escapeHtml(
-                    content.objective
-                )}
-            </p>
-
-        </section>
-
-
-        <section class="card">
-
-            <h2>
-                📖 Explanation
-            </h2>
-
-            ${content.explanation
-                .split("\n")
-                .map(line =>
-                    line.trim()
-                    ?
-                    `<p>${escapeHtml(line)}</p>`
-                    :
-                    ""
-                )
-                .join("")
-            }
-
-        </section>
-
-
-        <section class="card">
-
-            <h2>
-                💻 Syntax & Example
-            </h2>
-
-            <div class="code-box">
-
-                <div class="code-title">
-                    C++ Code
-                </div>
-
-                <pre>${escapeHtml(
-                    content.syntax
-                )}</pre>
-
-            </div>
-
-
-            <div class="example-output">
-
-                <strong>
-                    Expected Output:
-                </strong>
-
-                <br><br>
-
-                ${escapeHtml(
-                    content.output
-                )}
-
-            </div>
-
-        </section>
-
-
-        <section class="card">
-
-            <h2>
-                🔑 Key Points
-            </h2>
-
-            <ul>
-
-                ${content.keyPoints
-                    .map(point =>
-                        `<li>
-                            ${escapeHtml(point)}
-                        </li>`
-                    )
-                    .join("")
-                }
-
-            </ul>
-
-        </section>
-
-
-        <section class="card">
-
-            <h2>
-                ⚠️ Common Mistakes
-            </h2>
-
-            <div class="warning">
-
-                <ul>
-
-                    ${content.mistakes
-                        .map(mistake =>
-                            `<li>
-                                ${escapeHtml(mistake)}
-                            </li>`
-                        )
-                        .join("")
-                    }
-
-                </ul>
-
-            </div>
-
-        </section>
-
-
-        <section class="card">
-
-            <h2>
-                🧪 Practice
-            </h2>
-
-            <p>
-
-                Create a small C++ program using
-                <strong>
-                    ${escapeHtml(topicName)}
-                </strong>.
-
-            </p>
-
-            <p>
-
-                Try changing the values,
-                modifying the code and testing
-                different cases.
-
-            </p>
-
-        </section>
-
-
-        <section class="card">
-
-            <h2>
-                🧠 Remember
-            </h2>
-
-            <div class="success">
-
-                <p>
-
-                    Don't just read the example.
-                    Type it yourself, compile it,
-                    run it and experiment with it.
-
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <div class="complete-area">
-
-            <h2>
-                Topic Progress
-            </h2>
-
-            <p>
-
-                Mark this topic as completed
-                after studying and practicing it.
-
-            </p>
-
-            <button
-                id="completeButton"
-                class="complete-btn"
-                onclick="markTopicComplete()"
-            >
-                Mark Topic Complete
-            </button>
-
-        </div>
-
-    `;
-
+    document.getElementById("practical").textContent =
+        content.practical;
 
     updateCompletionButton();
+}
 
+
+/* =========================================================
+   COMPLETION SYSTEM
+========================================================= */
+
+function completionKey(){
+
+    return "cppCompleted_" + normalizeTopic(topicParam);
+}
+
+
+function markTopicComplete(){
+
+    localStorage.setItem(
+        completionKey(),
+        "true"
+    );
+
+    updateCompletionButton();
+}
+
+
+function updateCompletionButton(){
+
+    const button =
+        document.getElementById("completeButton");
+
+    const progress =
+        document.getElementById("progressText");
+
+    if(localStorage.getItem(completionKey()) === "true"){
+
+        button.textContent = "✓ Topic Completed";
+
+        button.classList.add("completed");
+
+        progress.textContent =
+            "You have completed this C++ topic.";
+    }
+
+    else{
+
+        button.textContent =
+            "Mark Topic Complete";
+
+        button.classList.remove("completed");
+
+        progress.textContent =
+            "Complete this topic when you finish studying it.";
+    }
 }
 
 
@@ -1705,24 +1837,17 @@ function displayTopic() {
    DARK MODE
 ========================================================= */
 
-function loadDarkMode() {
+function loadDarkMode(){
 
-    if (
-        localStorage.getItem("darkMode")
-        === "true"
-    ) {
+    if(localStorage.getItem("darkMode") === "true"){
 
-        document.body.classList.add(
-            "dark"
-        );
-
+        document.body.classList.add("dark");
     }
-
 }
 
 
 /* =========================================================
-   START
+   START PAGE
 ========================================================= */
 
 loadDarkMode();
@@ -1732,5 +1857,4 @@ displayTopic();
 </script>
 
 </body>
-
 </html>
