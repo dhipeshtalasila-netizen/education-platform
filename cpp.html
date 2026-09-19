@@ -1,1936 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="description" content="Learn C++ from fundamentals to advanced programming, STL, algorithms, projects, and interview preparation.">
 <title>EduLearn - C++ Programming</title>
-
 <style>
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    background: #f4f6f8;
-    color: #222;
-    transition: 0.3s;
+:root {
+    --page-bg: #f4f6f8;
+    --surface: #fff;
+    --surface-alt: #f9fafb;
+    --text: #222;
+    --muted: #667085;
+    --border: #e5e7eb;
+    --nav: #111827;
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --success: #15803d;
+    --success-bg: #f0fdf4;
+    --focus: #fbbf24;
 }
 
 body.dark {
-    background: #121212;
-    color: #f1f1f1;
+    --page-bg: #121212;
+    --surface: #1e1e1e;
+    --surface-alt: #181818;
+    --text: #f1f1f1;
+    --muted: #b8b8b8;
+    --border: #333;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    transition: background .2s, color .2s;
 }
 
 .navbar {
-    background: #111827;
-    color: white;
-    padding: 15px 30px;
+    background: var(--nav);
+    color: #fff;
+    padding: 15px clamp(15px, 4vw, 40px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
     gap: 15px;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.nav-links {
-    display: flex;
     flex-wrap: wrap;
-    gap: 5px;
 }
-
-.nav-links a {
-    color: white;
+.logo { color: #fff; font-size: 24px; font-weight: 700; text-decoration: none; }
+.nav-links { display: flex; flex-wrap: wrap; gap: 5px; list-style: none; padding: 0; margin: 0; }
+.nav-links a, .theme-toggle {
+    color: #fff;
+    background: transparent;
+    border: 0;
     text-decoration: none;
     padding: 8px 11px;
     border-radius: 6px;
+    font: inherit;
+    cursor: pointer;
 }
+.nav-links a:hover, .nav-links a[aria-current="page"], .theme-toggle:hover { background: #374151; }
 
-.nav-links a:hover {
-    background: #374151;
-}
-
-.container {
-    width: 92%;
-    max-width: 1200px;
-    margin: auto;
-}
-
+.container { width: min(1200px, 92%); margin: auto; }
 .hero {
     margin-top: 30px;
-    padding: 50px 35px;
+    padding: clamp(35px, 6vw, 55px) clamp(22px, 5vw, 40px);
     border-radius: 20px;
-    color: white;
+    color: #fff;
     background: linear-gradient(135deg, #1d4ed8, #7c3aed);
 }
-
-.hero h1 {
-    font-size: 42px;
-    margin-bottom: 15px;
-}
-
-.hero p {
-    max-width: 850px;
-    font-size: 18px;
-    line-height: 1.7;
-}
-
+.hero h1 { font-size: clamp(30px, 5vw, 42px); margin: 0 0 15px; }
+.hero p { max-width: 850px; font-size: 18px; margin: 0; }
 .hero-btn {
     display: inline-block;
     margin-top: 25px;
     padding: 12px 20px;
-    background: white;
-    color: #1d4ed8;
+    background: #fff;
+    color: var(--primary-dark);
     text-decoration: none;
     border-radius: 8px;
-    font-weight: bold;
+    font-weight: 700;
 }
 
-.stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    margin: 25px 0;
-}
-
-.stat {
-    background: white;
-    padding: 22px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-}
-
-body.dark .stat {
-    background: #1e1e1e;
-}
-
-.stat h2 {
-    color: #2563eb;
-    font-size: 28px;
-    margin-bottom: 7px;
-}
-
-body.dark .stat h2 {
-    color: #60a5fa;
-}
-
-.stat p {
-    color: #666;
-}
-
-body.dark .stat p {
-    color: #bbb;
-}
-
-.about {
-    background: white;
-    padding: 28px;
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin: 25px 0; }
+.stat, .about, .search-box, .module, .no-results {
+    background: var(--surface);
     border-radius: 14px;
-    margin-bottom: 25px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 3px 12px rgba(0,0,0,.08);
 }
-
-body.dark .about {
-    background: #1e1e1e;
-}
-
-.about h2 {
-    color: #2563eb;
-    margin-bottom: 15px;
-}
-
-.about p {
-    line-height: 1.8;
-}
-
-.search-box {
-    background: white;
-    padding: 22px;
-    border-radius: 14px;
-    margin-bottom: 25px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-}
-
-body.dark .search-box {
-    background: #1e1e1e;
-}
-
-.search-box h2 {
-    color: #2563eb;
-    margin-bottom: 12px;
-}
+.stat { padding: 22px; text-align: center; }
+.stat h2 { color: var(--primary); font-size: 28px; margin: 0 0 7px; }
+.stat p { color: var(--muted); margin: 0; }
+.about, .search-box { padding: 28px; margin-bottom: 25px; }
+.about h2, .search-box h2 { color: var(--primary); margin: 0 0 15px; }
+.about p { margin: 0 0 14px; }
 
 .search-box input {
     width: 100%;
     padding: 14px;
-    border: 1px solid #d1d5db;
+    color: var(--text);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
     border-radius: 8px;
     font-size: 16px;
-    outline: none;
 }
-
-body.dark .search-box input {
-    background: #111827;
-    color: white;
-    border-color: #374151;
-}
-
-.module {
-    background: white;
-    margin-bottom: 20px;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-}
-
-body.dark .module {
-    background: #1e1e1e;
-}
-
-.module-header {
-    background: #111827;
-    color: white;
-    padding: 20px;
-}
-
-.module-header h2 {
-    font-size: 21px;
-}
-
-.module-header p {
-    margin-top: 7px;
-    color: #d1d5db;
-}
-
-.topic-grid {
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-}
-
+.search-summary { color: var(--muted); min-height: 24px; margin: 10px 0 0; }
+.module { margin-bottom: 20px; overflow: hidden; }
+.module-header { background: var(--nav); color: #fff; padding: 20px; }
+.module-header h2 { font-size: 21px; margin: 0; }
+.module-header p { color: #d1d5db; margin: 7px 0 0; }
+.topic-grid { padding: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
 .topic-card {
-    text-decoration: none;
+    position: relative;
     color: inherit;
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
     border-radius: 10px;
     padding: 15px;
-    transition: 0.2s;
+    text-decoration: none;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
 }
+.topic-card:hover { transform: translateY(-2px); border-color: var(--primary); box-shadow: 0 4px 12px rgba(37,99,235,.15); }
+.topic-card.completed { border-color: var(--success); background: var(--success-bg); }
+.topic-number { color: var(--primary); font-size: 12px; font-weight: 700; margin-bottom: 7px; }
+.topic-name { font-weight: 700; line-height: 1.4; }
+.topic-level { display: inline-block; margin-top: 9px; padding: 4px 8px; border-radius: 20px; background: #e0e7ff; color: #3730a3; font-size: 11px; }
+.completed-label { display: block; margin-top: 8px; color: var(--success); font-size: 12px; font-weight: 700; }
+.no-results { padding: 30px; text-align: center; }
+footer { margin-top: 40px; padding: 30px; text-align: center; background: var(--nav); color: #fff; }
 
-body.dark .topic-card {
-    background: #181818;
-    border-color: #333;
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    .topic-card:hover { transform: none; }
 }
-
-.topic-card:hover {
-    transform: translateY(-2px);
-    border-color: #2563eb;
-    box-shadow: 0 4px 12px rgba(37,99,235,0.15);
-}
-
-.topic-number {
-    color: #2563eb;
-    font-size: 12px;
-    font-weight: bold;
-    margin-bottom: 7px;
-}
-
-.topic-name {
-    font-weight: bold;
-    line-height: 1.4;
-}
-
-.topic-level {
-    display: inline-block;
-    margin-top: 9px;
-    padding: 4px 8px;
-    border-radius: 20px;
-    background: #e0e7ff;
-    color: #3730a3;
-    font-size: 11px;
-}
-
-body.dark .topic-level {
-    background: #312e81;
-    color: #e0e7ff;
-}
-
-.no-results {
-    background: white;
-    padding: 30px;
-    text-align: center;
-    border-radius: 12px;
-}
-
-body.dark .no-results {
-    background: #1e1e1e;
-}
-
-footer {
-    margin-top: 40px;
-    padding: 30px;
-    text-align: center;
-    background: #111827;
-    color: white;
-}
-
-@media(max-width: 900px) {
-
-    .stats {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .topic-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-}
-
-@media(max-width: 600px) {
-
-    .navbar {
-        padding: 15px;
-    }
-
-    .container {
-        width: 95%;
-    }
-
-    .hero {
-        padding: 35px 22px;
-    }
-
-    .hero h1 {
-        font-size: 30px;
-    }
-
-    .topic-grid {
-        grid-template-columns: 1fr;
-    }
-
-}
-
 </style>
-
 </head>
-
-
 <body>
-
-
-<nav class="navbar">
-
-    <div class="logo">
-        EduLearn
-    </div>
-
-    <div class="nav-links">
-
-        <a href="index.html">Home</a>
-
-        <a href="dashboard.html">Dashboard</a>
-
-        <a href="coding.html">Coding</a>
-
-        <a href="python.html">Python</a>
-
-        <a href="c.html">C</a>
-
-        <a href="cpp.html">C++</a>
-
-        <a href="settings.html">Settings</a>
-
-    </div>
-
+<nav class="navbar" aria-label="Primary navigation">
+    <a class="logo" href="index.html">EduLearn</a>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="coding.html">Coding</a></li>
+        <li><a href="python.html">Python</a></li>
+        <li><a href="c.html">C</a></li>
+        <li><a href="cpp.html" aria-current="page">C++</a></li>
+        <li><a href="settings.html">Settings</a></li>
+        <li><button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">🌙</button></li>
+    </ul>
 </nav>
 
+<main class="container">
+    <section class="hero" aria-labelledby="pageTitle">
+        <h1 id="pageTitle">🚀 C++ Programming</h1>
+        <p>Learn C++ from the fundamentals to advanced programming, object-oriented programming, STL, modern C++, data structures, algorithms, competitive programming, projects, debugging, and interview preparation.</p>
+        <a class="hero-btn" href="#courseContent">Start Learning</a>
+    </section>
 
-<div class="container">
+    <section class="stats" aria-label="Course statistics">
+        <div class="stat"><h2 id="moduleCount">0</h2><p>Modules</p></div>
+        <div class="stat"><h2 id="topicCount">0</h2><p>Topics</p></div>
+        <div class="stat"><h2 id="foundationCount">0</h2><p>Foundation Topics</p></div>
+        <div class="stat"><h2 id="advancedCount">0</h2><p>Advanced Topics</p></div>
+    </section>
 
+    <section class="about" aria-labelledby="aboutTitle">
+        <h2 id="aboutTitle">📘 About C++</h2>
+        <p>C++ is a powerful general-purpose programming language widely used for software development, systems programming, game development, embedded systems, competitive programming, and high-performance applications.</p>
+        <p>This course covers fundamentals, object-oriented programming, memory management, templates, STL, modern C++, data structures, algorithms, graph algorithms, projects, debugging, and interview preparation.</p>
+    </section>
 
-<section class="hero">
+    <section class="search-box" aria-labelledby="searchTitle">
+        <h2 id="searchTitle">🔎 Search C++ Topics</h2>
+        <label for="searchInput" class="sr-only">Search C++ topics</label>
+        <input type="search" id="searchInput" placeholder="Search any C++ topic..." autocomplete="off">
+        <p id="searchSummary" class="search-summary" aria-live="polite"></p>
+    </section>
 
-    <h1>🚀 C++ Programming</h1>
+    <div id="courseContent"></div>
+</main>
 
-    <p>
-        Learn C++ from the fundamentals to advanced programming,
-        object-oriented programming, STL, modern C++, data structures,
-        algorithms, competitive programming, projects, debugging and
-        interview preparation.
-    </p>
-
-    <a class="hero-btn" href="#courseContent">
-        Start Learning
-    </a>
-
-</section>
-
-
-<section class="stats">
-
-    <div class="stat">
-
-        <h2 id="moduleCount">
-            40
-        </h2>
-
-        <p>
-            Modules
-        </p>
-
-    </div>
-
-
-    <div class="stat">
-
-        <h2 id="topicCount">
-            0
-        </h2>
-
-        <p>
-            Topics
-        </p>
-
-    </div>
-
-
-    <div class="stat">
-
-        <h2 id="foundationCount">
-            0
-        </h2>
-
-        <p>
-            Foundation Topics
-        </p>
-
-    </div>
-
-
-    <div class="stat">
-
-        <h2 id="advancedCount">
-            0
-        </h2>
-
-        <p>
-            Advanced Topics
-        </p>
-
-    </div>
-
-</section>
-
-
-<section class="about">
-
-    <h2>
-        📘 About C++
-    </h2>
-
-    <p>
-        C++ is a powerful general-purpose programming language widely
-        used for software development, systems programming, game
-        development, embedded systems, competitive programming and
-        high-performance applications.
-    </p>
-
-    <br>
-
-    <p>
-        This complete EduLearn C++ course covers fundamentals,
-        object-oriented programming, memory management, templates,
-        STL, modern C++, data structures, algorithms, graph algorithms,
-        competitive programming, projects, debugging and interview
-        preparation.
-    </p>
-
-</section>
-
-
-<section class="search-box">
-
-    <h2>
-        🔎 Search C++ Topics
-    </h2>
-
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="Search any C++ topic..."
-        oninput="searchTopics()"
-    >
-
-</section>
-
-
-<div id="courseContent"></div>
-
-
-</div>
-
-
-<footer>
-
-    <p>
-        © 2026 EduLearn | C++ Programming
-    </p>
-
-</footer>
-
+<footer><p>© 2026 EduLearn | C++ Programming</p></footer>
 
 <script>
-
-
-/* =========================================================
-   C++ COMPLETE CURRICULUM
-   ========================================================= */
-
-
 const modules = [
-
-{
-name: "C++ Fundamentals",
-topics: [
-"What is C++?",
-"History of C++",
-"Features of C++",
-"Advantages of C++",
-"Applications of C++",
-"C vs C++",
-"C++ Standards",
-"C++ Compiler",
-"C++ IDE",
-"Writing Your First C++ Program",
-"Hello World Program",
-"Compilation and Execution",
-"Comments in C++",
-"Program Structure",
-"Namespace",
-"C++ Syntax",
-"Semicolon",
-"Curly Braces",
-"Identifiers",
-"Keywords",
-"Whitespace",
-"Escape Sequences",
-"Character Literals",
-"String Literals",
-"cout",
-"cin",
-"return Statement",
-"Code Blocks"
-]
-},
-
-
-{
-name: "Basic Syntax",
-topics: [
-"C++ Program Syntax",
-"Statements",
-"Expressions",
-"Blocks",
-"Identifiers",
-"Keywords",
-"Comments",
-"Semicolons",
-"Braces",
-"Parentheses",
-"Scope Resolution Operator",
-"Namespaces",
-"Using Declaration",
-"Using Directive",
-"Main Function",
-"Header Files",
-"Preprocessor Directives",
-"Include Directive",
-"Constants",
-"Literals",
-"Basic Program Structure"
-]
-},
-
-
-{
-name: "Data Types",
-topics: [
-"Data Types",
-"Integer Data Types",
-"Floating Point Data Types",
-"Character Data Type",
-"Boolean Data Type",
-"Void Data Type",
-"wchar_t",
-"char16_t",
-"char32_t",
-"sizeof Operator",
-"Signed and Unsigned",
-"short and long",
-"Integer Literals",
-"Floating Point Literals",
-"Boolean Literals",
-"Character Literals",
-"String Literals",
-"Type Modifiers",
-"Fundamental Types",
-"Data Type Selection"
-]
-},
-
-
-{
-name: "Variables and Constants",
-topics: [
-"Variables",
-"Variable Declaration",
-"Variable Initialization",
-"Variable Assignment",
-"Naming Variables",
-"Local Variables",
-"Global Variables",
-"Scope of Variables",
-"Lifetime of Variables",
-"Constants",
-"const Variables",
-"constexpr",
-"const vs constexpr",
-"Literals",
-"Integer Literals",
-"Floating Point Literals",
-"Type Deduction with auto",
-"decltype",
-"Static Variables",
-"extern Variables",
-"mutable",
-"volatile",
-"Initialization Styles",
-"Uniform Initialization",
-"Initializer Lists",
-"Default Initialization",
-"Value Initialization",
-"Zero Initialization",
-"Copy Initialization",
-"Direct Initialization"
-]
-},
-
-
-{
-name: "Input and Output",
-topics: [
-"Input and Output",
-"iostream",
-"cin",
-"cout",
-"cerr",
-"clog",
-"endl",
-"Newline",
-"Formatted Output",
-"Input Extraction",
-"Output Insertion",
-"Multiple Input",
-"Multiple Output",
-"getline",
-"get",
-"ignore",
-"peek",
-"putback",
-"Character Input Output",
-"String Input",
-"Numeric Input",
-"Input Validation",
-"Stream States",
-"eof",
-"fail",
-"bad",
-"good",
-"clear",
-"precision",
-"setw",
-"setprecision",
-"fixed",
-"scientific",
-"boolalpha",
-"showpoint",
-"left and right",
-"fill",
-"flush"
-]
-},
-
-
-{
-name: "Operators",
-topics: [
-"Operators",
-"Arithmetic Operators",
-"Relational Operators",
-"Comparison Operators",
-"Logical Operators",
-"Assignment Operators",
-"Compound Assignment",
-"Increment Operator",
-"Decrement Operator",
-"Unary Operators",
-"Binary Operators",
-"Ternary Operator",
-"Conditional Operator",
-"Bitwise Operators",
-"Bitwise AND",
-"Bitwise OR",
-"Bitwise XOR",
-"Bitwise NOT",
-"Left Shift",
-"Right Shift",
-"Comma Operator",
-"Scope Resolution",
-"Member Access Operator",
-"Arrow Operator",
-"Subscript Operator",
-"Function Call Operator",
-"Operator Precedence",
-"Operator Associativity",
-"Short Circuit Evaluation",
-"Equality vs Assignment"
-]
-},
-
-
-{
-name: "Type Conversion",
-topics: [
-"Type Conversion",
-"Implicit Conversion",
-"Explicit Conversion",
-"C Style Cast",
-"static_cast",
-"dynamic_cast",
-"const_cast",
-"reinterpret_cast",
-"Numeric Conversion",
-"Integer Conversion",
-"Floating Point Conversion",
-"Character Conversion",
-"Boolean Conversion",
-"Type Promotion",
-"Integral Promotion",
-"Usual Arithmetic Conversions",
-"Narrowing Conversion",
-"Conversion in Assignment",
-"Conversion in Expressions",
-"Conversion in Function Calls",
-"Signed and Unsigned Conversion",
-"Safe Type Conversion"
-]
-},
-
-
-{
-name: "Conditional Statements",
-topics: [
-"Conditional Statements",
-"if Statement",
-"if else Statement",
-"else if",
-"Nested if",
-"Multiple Conditions",
-"Logical Conditions",
-"switch Statement",
-"case",
-"default",
-"break in switch",
-"Fallthrough",
-"switch with char",
-"switch with enum",
-"switch vs if else",
-"Ternary Conditions",
-"Boolean Conditions",
-"Conditional Initialization",
-"if constexpr"
-]
-},
-
-
-{
-name: "Loops",
-topics: [
-"Loops",
-"while Loop",
-"do while Loop",
-"for Loop",
-"Range Based for Loop",
-"Nested Loops",
-"Infinite Loop",
-"break Statement",
-"continue Statement",
-"Loop Control",
-"Loop Counter",
-"Multiple Variables in for",
-"Comma in for Loop",
-"Iterating Arrays",
-"Iterating Vectors",
-"Reverse Iteration",
-"Loop Off By One",
-"Sentinel Loops",
-"while vs for",
-"do while vs while",
-"Range Based Loop with auto",
-"Breaking Nested Loops"
-]
-},
-
-
-{
-name: "Functions",
-topics: [
-"Functions",
-"Function Declaration",
-"Function Definition",
-"Function Call",
-"Parameters",
-"Arguments",
-"Return Type",
-"Return Value",
-"void Functions",
-"Pass by Value",
-"Pass by Reference",
-"Pass by const Reference",
-"Pointer Parameters",
-"Default Arguments",
-"Function Overloading",
-"Inline Functions",
-"constexpr Functions",
-"Recursive Functions",
-"Function Scope",
-"Function Prototype",
-"main Function",
-"Call Stack",
-"Recursion Base Case"
-]
-},
-
-
-{
-name: "Arrays",
-topics: [
-"Arrays",
-"Array Declaration",
-"Array Initialization",
-"Array Indexing",
-"Array Size",
-"One Dimensional Arrays",
-"Two Dimensional Arrays",
-"Multidimensional Arrays",
-"Array Traversal",
-"Array Input",
-"Array Output",
-"Array as Function Argument",
-"Character Arrays",
-"Array of Strings",
-"Arrays and Pointers",
-"Arrays and sizeof",
-"Sorting Arrays",
-"Searching Arrays",
-"Copying Arrays",
-"Common Array Errors"
-]
-},
-
-
-{
-name: "Strings",
-topics: [
-"Strings",
-"C Style Strings",
-"std::string",
-"String Declaration",
-"String Initialization",
-"String Input",
-"String Output",
-"String Length",
-"String Concatenation",
-"String Comparison",
-"String Access",
-"String Modification",
-"Substring",
-"find",
-"replace",
-"insert",
-"erase",
-"append",
-"String Conversion",
-"String Streams",
-"String Iteration",
-"String Algorithms"
-]
-},
-
-
-{
-name: "Pointers",
-topics: [
-"Pointers",
-"Pointer Declaration",
-"Address Operator",
-"Dereference Operator",
-"Pointer Initialization",
-"Null Pointer",
-"nullptr",
-"Pointer Arithmetic",
-"Pointer Comparison",
-"Pointer to Pointer",
-"Pointers and Arrays",
-"Pointers and Functions",
-"Pointer Parameters",
-"Pointer Return Values",
-"Function Pointers",
-"Pointer to Object",
-"this Pointer",
-"Const Pointer",
-"Pointer to Const",
-"Void Pointer",
-"Dangling Pointer",
-"Wild Pointer",
-"Pointer Safety"
-]
-},
-
-
-{
-name: "References",
-topics: [
-"References",
-"Reference Declaration",
-"Reference Initialization",
-"Reference Parameters",
-"Pass by Reference",
-"const Reference",
-"Reference vs Pointer",
-"Reference Return",
-"Reference to Array",
-"Reference to Object",
-"Reference Lifetime",
-"Lvalue Reference",
-"Rvalue Reference",
-"Reference Collapsing",
-"Universal References",
-"Reference Safety"
-]
-},
-
-
-{
-name: "Structures and Enumerations",
-topics: [
-"Structures",
-"struct Declaration",
-"Structure Members",
-"Structure Initialization",
-"Structure Objects",
-"Nested Structures",
-"Structure Functions",
-"Structure Pointers",
-"Structure References",
-"Structures as Parameters",
-"Structures as Return Values",
-"Enumerations",
-"enum",
-"enum class",
-"Enumeration Values",
-"Scoped Enumerations",
-"Structures vs Classes"
-]
-},
-
-
-{
-name: "Object Oriented Programming",
-topics: [
-"Object Oriented Programming",
-"Classes",
-"Objects",
-"Class Declaration",
-"Class Members",
-"Data Members",
-"Member Functions",
-"Access Specifiers",
-"public",
-"private",
-"protected",
-"Encapsulation",
-"Abstraction",
-"Inheritance Introduction",
-"Polymorphism Introduction",
-"Class Scope",
-"Static Class Members",
-"this Pointer",
-"Nested Classes",
-"Class Design"
-]
-},
-
-
-{
-name: "Constructors and Destructors",
-topics: [
-"Constructors",
-"Default Constructor",
-"Parameterized Constructor",
-"Constructor Overloading",
-"Copy Constructor",
-"Move Constructor",
-"Constructor Initialization List",
-"Delegating Constructors",
-"explicit Constructor",
-"Destructor",
-"Destructor Syntax",
-"Constructor and Destructor Order",
-"RAII",
-"Constructor Exceptions",
-"Object Lifetime",
-"Temporary Objects"
-]
-},
-
-
-{
-name: "Inheritance",
-topics: [
-"Inheritance",
-"Base Class",
-"Derived Class",
-"Single Inheritance",
-"Multiple Inheritance",
-"Multilevel Inheritance",
-"Hierarchical Inheritance",
-"Hybrid Inheritance",
-"public Inheritance",
-"protected Inheritance",
-"private Inheritance",
-"Base Class Constructor",
-"Derived Class Constructor",
-"Base Class Destructor",
-"Virtual Base Class",
-"Diamond Problem",
-"Inheritance Access",
-"Composition vs Inheritance"
-]
-},
-
-
-{
-name: "Polymorphism",
-topics: [
-"Polymorphism",
-"Compile Time Polymorphism",
-"Runtime Polymorphism",
-"Function Overloading",
-"Operator Overloading",
-"Virtual Functions",
-"Function Overriding",
-"Pure Virtual Functions",
-"Abstract Classes",
-"Virtual Destructor",
-"Override Keyword",
-"Final Keyword",
-"Dynamic Binding",
-"Static Binding",
-"Interface Design",
-"Polymorphism Example"
-]
-},
-
-
-{
-name: "Friend Functions and Classes",
-topics: [
-"Friend Functions",
-"Friend Function Declaration",
-"Friend Function Definition",
-"Friend Class",
-"Friendship Between Classes",
-"Friend and Encapsulation",
-"Friend Operator Overloading",
-"Friend Function Example",
-"Advantages of Friend Functions",
-"Disadvantages of Friend Functions"
-]
-},
-
-
-{
-name: "Operator Overloading",
-topics: [
-"Operator Overloading",
-"Overloading Unary Operators",
-"Overloading Binary Operators",
-"Overloading Arithmetic Operators",
-"Overloading Comparison Operators",
-"Overloading Assignment",
-"Overloading Increment",
-"Overloading Subscript",
-"Overloading Function Call",
-"Stream Insertion Operator",
-"Stream Extraction Operator",
-"Member Operator Overloading",
-"Non Member Operator Overloading",
-"Rules of Operator Overloading",
-"Operators That Cannot Be Overloaded",
-"Best Practices"
-]
-},
-
-
-{
-name: "Templates",
-topics: [
-"Templates",
-"Function Templates",
-"Class Templates",
-"Template Parameters",
-"Multiple Template Parameters",
-"Template Specialization",
-"Full Specialization",
-"Partial Specialization",
-"Template Type Deduction",
-"Non Type Template Parameters",
-"Variadic Templates",
-"Template Instantiation",
-"Template Errors",
-"Generic Programming",
-"Template Best Practices"
-]
-},
-
-
-{
-name: "Exception Handling",
-topics: [
-"Exception Handling",
-"Exceptions",
-"try Block",
-"throw Statement",
-"catch Block",
-"Multiple catch Blocks",
-"Catch All",
-"Exception Objects",
-"Standard Exceptions",
-"runtime_error",
-"logic_error",
-"Custom Exceptions",
-"Exception Specifications",
-"noexcept",
-"Exception Propagation",
-"Stack Unwinding",
-"Exception Safety",
-"RAII and Exceptions"
-]
-},
-
-
-{
-name: "File Handling",
-topics: [
-"File Handling",
-"fstream",
-"ifstream",
-"ofstream",
-"Opening Files",
-"Closing Files",
-"Writing to Files",
-"Reading Files",
-"Appending Files",
-"Text Files",
-"Binary Files",
-"File Modes",
-"File Position",
-"seekg",
-"seekp",
-"tellg",
-"tellp",
-"File Errors",
-"Checking File Open",
-"CSV File Processing"
-]
-},
-
-
-{
-name: "STL Introduction",
-topics: [
-"Standard Template Library",
-"STL Components",
-"Containers",
-"Iterators",
-"Algorithms",
-"Function Objects",
-"Allocators",
-"STL Benefits",
-"Generic Programming",
-"STL Workflow",
-"Container Iterator Algorithm Model"
-]
-},
-
-
-{
-name: "STL Containers",
-topics: [
-"vector",
-"array",
-"deque",
-"list",
-"forward_list",
-"set",
-"multiset",
-"map",
-"multimap",
-"unordered_set",
-"unordered_map",
-"unordered_multiset",
-"unordered_multimap",
-"Container Size",
-"Container Capacity",
-"Container Insertion",
-"Container Erasure",
-"Container Search",
-"Container Traversal",
-"Container Comparison",
-"Choosing a Container"
-]
-},
-
-
-{
-name: "STL Container Adapters",
-topics: [
-"Container Adapters",
-"stack",
-"queue",
-"priority_queue",
-"Stack Operations",
-"Queue Operations",
-"Priority Queue Operations",
-"Adapter Underlying Container",
-"Stack Example",
-"Queue Example",
-"Priority Queue Example",
-"Choosing an Adapter"
-]
-},
-
-
-{
-name: "STL Iterators",
-topics: [
-"Iterators",
-"Iterator Basics",
-"begin and end",
-"cbegin and cend",
-"Reverse Iterators",
-"rbegin and rend",
-"Constant Iterators",
-"Input Iterators",
-"Output Iterators",
-"Forward Iterators",
-"Bidirectional Iterators",
-"Random Access Iterators",
-"Iterator Arithmetic",
-"Iterator Invalidation",
-"Iterator Comparison",
-"Iterator with Algorithms"
-]
-},
-
-
-{
-name: "STL Algorithms",
-topics: [
-"STL Algorithms",
-"sort",
-"stable_sort",
-"find",
-"find_if",
-"count",
-"count_if",
-"binary_search",
-"lower_bound",
-"upper_bound",
-"reverse",
-"rotate",
-"copy",
-"move",
-"fill",
-"replace",
-"remove",
-"unique",
-"min and max",
-"accumulate",
-"transform",
-"for_each",
-"partition",
-"shuffle"
-]
-},
-
-
-{
-name: "Lambda and Functional Programming",
-topics: [
-"Lambda Expressions",
-"Lambda Syntax",
-"Lambda Parameters",
-"Lambda Return Type",
-"Lambda Capture",
-"Capture by Value",
-"Capture by Reference",
-"Default Capture",
-"Mutable Lambda",
-"Generic Lambda",
-"Lambda with Algorithms",
-"Function Objects",
-"std::function",
-"Functional Programming",
-"Higher Order Functions"
-]
-},
-
-
-{
-name: "Modern C++",
-topics: [
-"Modern C++",
-"C++11",
-"C++14",
-"C++17",
-"C++20",
-"C++23",
-"auto",
-"decltype",
-"Range Based for",
-"nullptr",
-"enum class",
-"Structured Bindings",
-"if constexpr",
-"std::optional",
-"std::variant",
-"std::any",
-"std::string_view",
-"Ranges",
-"Concepts",
-"Coroutines",
-"Three Way Comparison"
-]
-},
-
-
-{
-name: "Smart Pointers",
-topics: [
-"Smart Pointers",
-"unique_ptr",
-"make_unique",
-"shared_ptr",
-"make_shared",
-"weak_ptr",
-"Shared Ownership",
-"Unique Ownership",
-"Weak References",
-"Reference Counting",
-"Smart Pointer Custom Deleter",
-"Smart Pointer and Arrays",
-"Smart Pointer Cycles",
-"Breaking Cycles",
-"RAII and Smart Pointers",
-"Smart Pointer Best Practices"
-]
-},
-
-
-{
-name: "Memory Management",
-topics: [
-"Memory Management",
-"Stack Memory",
-"Heap Memory",
-"Dynamic Memory",
-"new Operator",
-"delete Operator",
-"new Array",
-"delete Array",
-"Memory Leak",
-"Dangling Memory",
-"Double Delete",
-"Memory Ownership",
-"RAII",
-"Allocation Failure",
-"std::bad_alloc",
-"Memory Fragmentation",
-"Object Lifetime",
-"Memory Management Best Practices"
-]
-},
-
-
-{
-name: "Data Structures",
-topics: [
-"Data Structures",
-"Arrays",
-"Linked Lists",
-"Singly Linked List",
-"Doubly Linked List",
-"Circular Linked List",
-"Stacks",
-"Queues",
-"Deque",
-"Hash Tables",
-"Trees",
-"Binary Trees",
-"Binary Search Trees",
-"Heaps",
-"Priority Queues",
-"Graphs",
-"Trie",
-"Disjoint Set",
-"Choosing Data Structures"
-]
-},
-
-
-{
-name: "Algorithms",
-topics: [
-"Algorithms",
-"Algorithm Complexity",
-"Big O Notation",
-"Time Complexity",
-"Space Complexity",
-"Linear Search",
-"Binary Search",
-"Bubble Sort",
-"Selection Sort",
-"Insertion Sort",
-"Merge Sort",
-"Quick Sort",
-"Heap Sort",
-"Counting Sort",
-"Recursion",
-"Divide and Conquer",
-"Greedy Algorithms",
-"Dynamic Programming",
-"Backtracking",
-"Two Pointer Technique",
-"Sliding Window",
-"Prefix Sum"
-]
-},
-
-
-{
-name: "Graph Algorithms",
-topics: [
-"Graph Algorithms",
-"Graph Representation",
-"Adjacency Matrix",
-"Adjacency List",
-"Breadth First Search",
-"Depth First Search",
-"Cycle Detection",
-"Topological Sort",
-"Shortest Path",
-"Dijkstra Algorithm",
-"Bellman Ford Algorithm",
-"Floyd Warshall Algorithm",
-"Minimum Spanning Tree",
-"Kruskal Algorithm",
-"Prim Algorithm",
-"Disjoint Set Union",
-"Connected Components",
-"Strongly Connected Components",
-"Bipartite Graph",
-"Graph Coloring"
-]
-},
-
-
-{
-name: "Competitive Programming",
-topics: [
-"Competitive Programming",
-"Fast Input Output",
-"Complexity Analysis",
-"STL for Competitive Programming",
-"Sorting Techniques",
-"Binary Search Techniques",
-"Prefix Sums",
-"Difference Arrays",
-"Two Pointers",
-"Sliding Window",
-"Greedy Techniques",
-"Recursion",
-"Backtracking",
-"Dynamic Programming",
-"Bit Manipulation",
-"Number Theory",
-"Prime Numbers",
-"GCD and LCM",
-"Modular Arithmetic",
-"Graph Problems",
-"Contest Strategy"
-]
-},
-
-
-{
-name: "C++ Projects",
-topics: [
-"C++ Projects",
-"Calculator Project",
-"Student Management System",
-"Library Management System",
-"Bank Management System",
-"Employee Management System",
-"Contact Management System",
-"Quiz Application",
-"Number Guessing Game",
-"Tic Tac Toe",
-"To Do List",
-"Expense Tracker",
-"Inventory Management System",
-"File Based Database",
-"Mini Banking Application",
-"Console Game Project",
-"Project Planning",
-"Project Structure",
-"Project Testing",
-"Project Documentation"
-]
-},
-
-
-{
-name: "C++ Debugging and Best Practices",
-topics: [
-"Debugging",
-"Compiler Errors",
-"Warnings",
-"Runtime Errors",
-"Logic Errors",
-"Syntax Errors",
-"Debugger",
-"Breakpoints",
-"Step Into",
-"Step Over",
-"Step Out",
-"Watch Variables",
-"Call Stack",
-"Assertions",
-"Defensive Programming",
-"Code Formatting",
-"Naming Conventions",
-"Const Correctness",
-"RAII Best Practices",
-"Resource Management",
-"Clean Code",
-"Code Review",
-"Testing Best Practices"
-]
-},
-
-
-{
-name: "C++ Interview Preparation",
-topics: [
-"C++ Interview Preparation",
-"C++ Basic Questions",
-"C++ OOP Questions",
-"C++ Data Type Questions",
-"C++ Pointer Questions",
-"C++ Reference Questions",
-"C++ Memory Questions",
-"C++ STL Questions",
-"C++ Template Questions",
-"C++ Exception Questions",
-"C++ Constructor Questions",
-"C++ Destructor Questions",
-"Inheritance Questions",
-"Polymorphism Questions",
-"Virtual Function Questions",
-"Operator Overloading Questions",
-"Modern C++ Questions",
-"Smart Pointer Questions",
-"Coding Interview Problems",
-"C++ Output Questions",
-"C++ Debugging Questions",
-"Interview Coding Practice"
-]
-}
-
+    { name: "C++ Fundamentals", topics: ["What is C++?", "History of C++", "Features of C++", "Advantages of C++", "Applications of C++", "C vs C++", "C++ Standards", "C++ Compiler", "C++ IDE", "Writing Your First C++ Program", "Hello World Program", "Compilation and Execution", "Comments in C++", "Program Structure", "Namespace", "C++ Syntax", "Identifiers", "Keywords", "Escape Sequences", "Code Blocks"] },
+    { name: "Basic Syntax", topics: ["C++ Program Syntax", "Statements", "Expressions", "Blocks", "Comments", "Semicolons", "Braces", "Parentheses", "Scope Resolution Operator", "Namespaces", "Using Declaration", "Main Function", "Header Files", "Preprocessor Directives", "Include Directive", "Constants", "Literals", "Basic Program Structure"] },
+    { name: "Data Types", topics: ["Data Types", "Integer Data Types", "Floating Point Data Types", "Character Data Type", "Boolean Data Type", "Void Data Type", "wchar_t", "char16_t", "char32_t", "sizeof Operator", "Signed and Unsigned", "Type Modifiers", "Fundamental Types", "Data Type Selection"] },
+    { name: "Variables and Constants", topics: ["Variables", "Variable Declaration", "Variable Initialization", "Variable Assignment", "Naming Variables", "Local Variables", "Global Variables", "Scope of Variables", "Constants", "const Variables", "constexpr", "const vs constexpr", "Type Deduction with auto", "decltype", "Static Variables", "Initialization Styles", "Uniform Initialization"] },
+    { name: "Input and Output", topics: ["Input and Output", "iostream", "cin", "cout", "cerr", "clog", "endl", "Formatted Output", "Input Extraction", "Output Insertion", "Multiple Input", "getline", "Input Validation", "Stream States", "precision", "setw", "setprecision", "fixed"] },
+    { name: "Operators", topics: ["Operators", "Arithmetic Operators", "Relational Operators", "Comparison Operators", "Logical Operators", "Assignment Operators", "Compound Assignment", "Increment Operator", "Decrement Operator", "Unary Operators", "Binary Operators", "Ternary Operator", "Bitwise Operators", "Scope Resolution", "Member Access Operator", "Subscript Operator", "Operator Precedence", "Short Circuit Evaluation"] },
+    { name: "Type Conversion", topics: ["Type Conversion", "Implicit Conversion", "Explicit Conversion", "C Style Cast", "static_cast", "dynamic_cast", "const_cast", "reinterpret_cast", "Numeric Conversion", "Type Promotion", "Narrowing Conversion", "Safe Type Conversion"] },
+    { name: "Conditional Statements", topics: ["Conditional Statements", "if Statement", "if else Statement", "else if", "Nested if", "Multiple Conditions", "Logical Conditions", "switch Statement", "case", "default", "break in switch", "Fallthrough", "Ternary Conditions", "if constexpr"] },
+    { name: "Loops", topics: ["Loops", "while Loop", "do while Loop", "for Loop", "Range Based for Loop", "Nested Loops", "Infinite Loop", "break Statement", "continue Statement", "Loop Control", "Iterating Arrays", "Iterating Vectors", "Reverse Iteration", "Loop Off By One", "Sentinel Loops"] },
+    { name: "Functions", topics: ["Functions", "Function Declaration", "Function Definition", "Function Call", "Parameters", "Arguments", "Return Type", "Return Value", "void Functions", "Pass by Value", "Pass by Reference", "Default Arguments", "Function Overloading", "Inline Functions", "constexpr Functions", "Recursive Functions", "Call Stack"] },
+    { name: "Arrays", topics: ["Arrays", "Array Declaration", "Array Initialization", "Array Indexing", "Array Size", "One Dimensional Arrays", "Two Dimensional Arrays", "Array Traversal", "Array Input", "Array Output", "Arrays and Pointers", "Sorting Arrays", "Searching Arrays", "Common Array Errors"] },
+    { name: "Strings", topics: ["Strings", "C Style Strings", "std::string", "String Declaration", "String Initialization", "String Input", "String Output", "String Length", "String Concatenation", "String Comparison", "Substring", "find", "replace", "insert", "erase", "append", "String Iteration"] },
+    { name: "Pointers", topics: ["Pointers", "Pointer Declaration", "Address Operator", "Dereference Operator", "Pointer Initialization", "Null Pointer", "nullptr", "Pointer Arithmetic", "Pointer to Pointer", "Pointers and Arrays", "Pointers and Functions", "Function Pointers", "this Pointer", "Const Pointer", "Dangling Pointer", "Pointer Safety"] },
+    { name: "References", topics: ["References", "Reference Declaration", "Reference Initialization", "Reference Parameters", "Pass by Reference", "const Reference", "Reference vs Pointer", "Reference Return", "Reference to Array", "Reference to Object", "Lvalue Reference", "Rvalue Reference", "Reference Safety"] },
+    { name: "Structures and Enumerations", topics: ["Structures", "struct Declaration", "Structure Members", "Structure Initialization", "Structure Objects", "Nested Structures", "Structure Functions", "Structure Pointers", "Enumerations", "enum", "enum class", "Enumeration Values", "Scoped Enumerations", "Structures vs Classes"] },
+    { name: "Object Oriented Programming", topics: ["Object Oriented Programming", "Classes", "Objects", "Class Declaration", "Class Members", "Data Members", "Member Functions", "Access Specifiers", "public", "private", "protected", "Encapsulation", "Abstraction", "Inheritance Introduction", "Polymorphism Introduction", "Class Design"] },
+    { name: "Constructors and Destructors", topics: ["Constructors", "Default Constructor", "Parameterized Constructor", "Constructor Overloading", "Copy Constructor", "Move Constructor", "Constructor Initialization List", "Delegating Constructors", "explicit Constructor", "Destructor", "RAII", "Object Lifetime", "Temporary Objects"] },
+    { name: "Inheritance", topics: ["Inheritance", "Base Class", "Derived Class", "Single Inheritance", "Multiple Inheritance", "Multilevel Inheritance", "Hierarchical Inheritance", "public Inheritance", "protected Inheritance", "private Inheritance", "Base Class Constructor", "Derived Class Constructor", "Diamond Problem", "Composition vs Inheritance"] },
+    { name: "Polymorphism", topics: ["Polymorphism", "Compile Time Polymorphism", "Runtime Polymorphism", "Function Overloading", "Operator Overloading", "Virtual Functions", "Function Overriding", "Pure Virtual Functions", "Abstract Classes", "Virtual Destructor", "Override Keyword", "Final Keyword", "Dynamic Binding", "Interface Design"] },
+    { name: "Friend Functions and Classes", topics: ["Friend Functions", "Friend Function Declaration", "Friend Function Definition", "Friend Class", "Friendship Between Classes", "Friend and Encapsulation", "Friend Operator Overloading", "Advantages of Friend Functions", "Disadvantages of Friend Functions"] },
+    { name: "Operator Overloading", topics: ["Operator Overloading", "Overloading Unary Operators", "Overloading Binary Operators", "Overloading Arithmetic Operators", "Overloading Comparison Operators", "Overloading Assignment", "Overloading Increment", "Overloading Subscript", "Stream Insertion Operator", "Stream Extraction Operator", "Rules of Operator Overloading", "Best Practices"] },
+    { name: "Templates", topics: ["Templates", "Function Templates", "Class Templates", "Template Parameters", "Multiple Template Parameters", "Template Specialization", "Full Specialization", "Partial Specialization", "Template Type Deduction", "Variadic Templates", "Generic Programming", "Template Best Practices"] },
+    { name: "Exception Handling", topics: ["Exception Handling", "Exceptions", "try Block", "throw Statement", "catch Block", "Multiple catch Blocks", "Standard Exceptions", "Custom Exceptions", "Exception Specifications", "noexcept", "Exception Safety", "RAII and Exceptions"] },
+    { name: "File Handling", topics: ["File Handling", "fstream", "ifstream", "ofstream", "Opening Files", "Closing Files", "Reading Files", "Writing Files", "File Modes", "Binary Files", "File Positioning", "File Error Handling"] },
+    { name: "STL Introduction", topics: ["Standard Template Library", "STL Components", "Containers", "Iterators", "Algorithms", "Function Objects", "Pairs", "Tuples", "STL Naming Conventions", "Choosing an STL Component"] },
+    { name: "STL Containers", topics: ["vector", "list", "deque", "array", "set", "multiset", "map", "multimap", "unordered_set", "unordered_map", "Container Comparison", "Container Operations"] },
+    { name: "STL Container Adapters", topics: ["Container Adapters", "stack", "queue", "priority_queue", "Stack Operations", "Queue Operations", "Priority Queue Comparison", "Adapter Use Cases"] },
+    { name: "STL Iterators", topics: ["Iterators", "begin and end", "Iterator Categories", "Input Iterators", "Output Iterators", "Forward Iterators", "Bidirectional Iterators", "Random Access Iterators", "Iterator Invalidation", "Reverse Iterators", "const_iterator"] },
+    { name: "STL Algorithms", topics: ["STL Algorithms", "sort", "find", "count", "for_each", "copy", "reverse", "max and min", "accumulate", "binary_search", "lower_bound", "upper_bound", "remove and erase", "Algorithm Complexity"] },
+    { name: "Lambda and Functional Programming", topics: ["Lambda Expressions", "Lambda Syntax", "Lambda Parameters", "Lambda Return Types", "Lambda Capture", "Capture by Value", "Capture by Reference", "Generic Lambdas", "std::function", "Function Objects", "Predicates", "Higher Order Functions"] },
+    { name: "Modern C++", topics: ["Modern C++", "C++11", "C++14", "C++17", "C++20", "auto", "Range Based for", "Structured Bindings", "if constexpr", "Optional", "Variant", "String View", "Modules Overview"] },
+    { name: "Smart Pointers", topics: ["Smart Pointers", "unique_ptr", "shared_ptr", "weak_ptr", "make_unique", "make_shared", "Ownership", "Reference Counting", "Circular References", "Custom Deleters", "Smart Pointer Best Practices"] },
+    { name: "Memory Management", topics: ["Memory Management", "Stack and Heap", "new Operator", "delete Operator", "Dynamic Arrays", "Memory Leaks", "Dangling Pointers", "Rule of Three", "Rule of Five", "Rule of Zero", "Alignment", "Memory Safety"] },
+    { name: "Data Structures", topics: ["Data Structures", "Linked Lists", "Doubly Linked Lists", "Stacks", "Queues", "Hash Tables", "Binary Trees", "Binary Search Trees", "Heaps", "Tries", "Disjoint Set Union"] },
+    { name: "Algorithms", topics: ["Algorithms", "Time Complexity", "Space Complexity", "Searching Algorithms", "Sorting Algorithms", "Recursion", "Backtracking", "Greedy Algorithms", "Dynamic Programming", "Divide and Conquer", "Two Pointer Technique", "Sliding Window"] },
+    { name: "Graph Algorithms", topics: ["Graphs", "Graph Representation", "Breadth First Search", "Depth First Search", "Topological Sort", "Cycle Detection", "Shortest Path", "Dijkstra Algorithm", "Bellman Ford Algorithm", "Minimum Spanning Tree", "Kruskal Algorithm", "Prim Algorithm"] },
+    { name: "Competitive Programming", topics: ["Competitive Programming", "Fast Input Output", "Problem Solving Strategy", "Number Theory", "Modular Arithmetic", "Sieve of Eratosthenes", "Bit Manipulation", "Prefix Sums", "Binary Search on Answer", "Coordinate Compression", "Contest Debugging"] },
+    { name: "C++ Projects", topics: ["Project Planning", "Calculator Project", "Student Management System", "Banking System", "Library Management System", "To Do Application", "Tic Tac Toe", "Quiz Application", "File Based Project", "Console Game"] },
+    { name: "C++ Debugging and Best Practices", topics: ["Debugging C++", "Compiler Errors", "Runtime Errors", "Logic Errors", "Assertions", "Debugger Breakpoints", "Logging", "Naming Conventions", "Const Correctness", "Code Formatting", "Testing", "Performance Profiling"] },
+    { name: "C++ Interview Preparation", topics: ["C++ Interview Preparation", "Common C++ Questions", "OOP Interview Questions", "STL Interview Questions", "Pointer Questions", "Memory Management Questions", "Virtual Functions", "Templates Questions", "Modern C++ Questions", "Coding Interview Practice"] }
 ];
 
+const foundationModules = new Set([
+    "C++ Fundamentals", "Basic Syntax", "Data Types", "Variables and Constants", "Input and Output",
+    "Operators", "Type Conversion", "Conditional Statements", "Loops", "Functions", "Arrays", "Strings",
+    "Pointers", "References", "Structures and Enumerations"
+]);
 
-/* =========================================================
-   LEVELS
-   ========================================================= */
+const advancedModules = new Set([
+    "Templates", "Exception Handling", "File Handling", "STL Introduction", "STL Containers", "STL Container Adapters",
+    "STL Iterators", "STL Algorithms", "Lambda and Functional Programming", "Modern C++", "Smart Pointers",
+    "Memory Management", "Data Structures", "Algorithms", "Graph Algorithms", "Competitive Programming",
+    "C++ Projects", "C++ Debugging and Best Practices", "C++ Interview Preparation"
+]);
 
-function getLevel(moduleIndex) {
+const courseContent = document.getElementById("courseContent");
+const searchInput = document.getElementById("searchInput");
+const searchSummary = document.getElementById("searchSummary");
+let searchTimer;
 
-    if (moduleIndex <= 9) {
-        return "Foundation";
-    }
-
-    if (moduleIndex <= 20) {
-        return "Core";
-    }
-
-    if (moduleIndex <= 30) {
-        return "Advanced";
-    }
-
-    if (moduleIndex <= 35) {
-        return "Professional";
-    }
-
-    if (moduleIndex <= 38) {
-        return "Practical";
-    }
-
-    return "Career";
+function topicKey(moduleName, topic) {
+    return `cpp-progress:${moduleName}:${topic}`;
 }
 
-
-/* =========================================================
-   HTML ESCAPE
-   ========================================================= */
-
-function escapeHtml(text) {
-
-    return String(text)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-
+function isCompleted(moduleName, topic) {
+    return localStorage.getItem(topicKey(moduleName, topic)) === "completed";
 }
 
-
-/* =========================================================
-   TOPIC URL
-   ========================================================= */
-
-function createTopicURL(
-    topic,
-    moduleName,
-    level,
-    number
-) {
-
-    return (
-        "cpp-topic.html?" +
-        "topic=" + encodeURIComponent(topic) +
-        "&module=" + encodeURIComponent(moduleName) +
-        "&level=" + encodeURIComponent(level) +
-        "&number=" + encodeURIComponent(number)
-    );
-
+function levelFor(moduleIndex) {
+    const moduleName = modules[moduleIndex].name;
+    if (foundationModules.has(moduleName)) return "Foundation";
+    if (advancedModules.has(moduleName)) return "Advanced";
+    return moduleIndex < 24 ? "Intermediate" : "Professional";
 }
 
+function topicUrl(topic, moduleName, level, number) {
+    const params = new URLSearchParams({ topic, module: moduleName, level, number: String(number) });
+    return `cpp-topic.html?${params.toString()}`;
+}
 
-/* =========================================================
-   RENDER COURSE
-   ========================================================= */
+function createTopicCard(topic, moduleName, level, number) {
+    const card = document.createElement("a");
+    card.className = "topic-card";
+    card.href = topicUrl(topic, moduleName, level, number);
 
-function renderCourse(searchTerm = "") {
+    const numberElement = document.createElement("div");
+    numberElement.className = "topic-number";
+    numberElement.textContent = `Topic ${number}`;
 
-    const courseContent =
-        document.getElementById("courseContent");
+    const nameElement = document.createElement("div");
+    nameElement.className = "topic-name";
+    nameElement.textContent = topic;
 
-    courseContent.innerHTML = "";
+    const levelElement = document.createElement("span");
+    levelElement.className = "topic-level";
+    levelElement.textContent = level;
 
-    let totalTopics = 0;
+    card.append(numberElement, nameElement, levelElement);
 
-    let foundationTopics = 0;
+    if (isCompleted(moduleName, topic)) {
+        card.classList.add("completed");
+        const completed = document.createElement("span");
+        completed.className = "completed-label";
+        completed.textContent = "✓ Completed";
+        card.appendChild(completed);
+    }
 
-    let advancedTopics = 0;
+    return card;
+}
 
+function renderCourse(rawSearch = "") {
+    const searchTerm = rawSearch.trim().toLowerCase();
+    courseContent.replaceChildren();
+    let resultCount = 0;
 
-    modules.forEach(function(module, moduleIndex) {
+    modules.forEach((module, moduleIndex) => {
+        const level = levelFor(moduleIndex);
+        const matchingTopics = module.topics
+            .map((topic, index) => ({ topic, index }))
+            .filter(({ topic }) => !searchTerm || topic.toLowerCase().includes(searchTerm) || module.name.toLowerCase().includes(searchTerm));
 
-        totalTopics += module.topics.length;
+        if (!matchingTopics.length) return;
+        resultCount += matchingTopics.length;
 
-        const level =
-            getLevel(moduleIndex);
+        const moduleSection = document.createElement("section");
+        moduleSection.className = "module";
+        moduleSection.setAttribute("aria-labelledby", `module-${moduleIndex}`);
 
+        const header = document.createElement("div");
+        header.className = "module-header";
+        const title = document.createElement("h2");
+        title.id = `module-${moduleIndex}`;
+        title.textContent = `Module ${moduleIndex + 1}: ${module.name}`;
+        const count = document.createElement("p");
+        count.textContent = searchTerm
+            ? `${matchingTopics.length} of ${module.topics.length} topics • ${level}`
+            : `${module.topics.length} topics • ${level}`;
+        header.append(title, count);
 
-        if (level === "Foundation") {
-
-            foundationTopics +=
-                module.topics.length;
-
-        }
-
-
-        if (
-            level === "Advanced" ||
-            level === "Professional"
-        ) {
-
-            advancedTopics +=
-                module.topics.length;
-
-        }
-
+        const grid = document.createElement("div");
+        grid.className = "topic-grid";
+        matchingTopics.forEach(({ topic, index }) => grid.appendChild(createTopicCard(topic, module.name, level, index + 1)));
+        moduleSection.append(header, grid);
+        courseContent.appendChild(moduleSection);
     });
 
-
-    modules.forEach(function(module, moduleIndex) {
-
-        const level =
-            getLevel(moduleIndex);
-
-
-        const matchingTopics =
-            module.topics.filter(function(topic) {
-
-                if (!searchTerm) {
-                    return true;
-                }
-
-                return (
-                    topic
-                        .toLowerCase()
-                        .includes(
-                            searchTerm.toLowerCase()
-                        ) ||
-
-                    module.name
-                        .toLowerCase()
-                        .includes(
-                            searchTerm.toLowerCase()
-                        )
-                );
-
-            });
-
-
-        if (
-            searchTerm &&
-            matchingTopics.length === 0
-        ) {
-            return;
-        }
-
-
-        const moduleDiv =
-            document.createElement("section");
-
-        moduleDiv.className = "module";
-
-
-        const header =
-            document.createElement("div");
-
-        header.className =
-            "module-header";
-
-
-        header.innerHTML =
-
-            "<h2>" +
-
-            "Module " +
-            (moduleIndex + 1) +
-            ": " +
-
-            escapeHtml(module.name) +
-
-            "</h2>" +
-
-            "<p>" +
-
-            module.topics.length +
-            " topics • " +
-            level +
-
-            "</p>";
-
-
-        moduleDiv.appendChild(header);
-
-
-        const grid =
-            document.createElement("div");
-
-        grid.className =
-            "topic-grid";
-
-
-        matchingTopics.forEach(function(topic) {
-
-            const originalIndex =
-                module.topics.indexOf(topic);
-
-
-            const card =
-                document.createElement("a");
-
-            card.className =
-                "topic-card";
-
-
-            card.href =
-                createTopicURL(
-                    topic,
-                    module.name,
-                    level,
-                    originalIndex + 1
-                );
-
-
-            card.innerHTML =
-
-                '<div class="topic-number">' +
-
-                "Topic " +
-                (originalIndex + 1) +
-
-                "</div>" +
-
-                '<div class="topic-name">' +
-
-                escapeHtml(topic) +
-
-                "</div>" +
-
-                '<span class="topic-level">' +
-
-                level +
-
-                "</span>";
-
-
-            grid.appendChild(card);
-
-        });
-
-
-        moduleDiv.appendChild(grid);
-
-        courseContent.appendChild(moduleDiv);
-
-    });
-
-
-    document.getElementById(
-        "moduleCount"
-    ).textContent =
-        modules.length;
-
-
-    document.getElementById(
-        "topicCount"
-    ).textContent =
-        totalTopics;
-
-
-    document.getElementById(
-        "foundationCount"
-    ).textContent =
-        foundationTopics;
-
-
-    document.getElementById(
-        "advancedCount"
-    ).textContent =
-        advancedTopics;
-
-
-    if (
-        courseContent.children.length === 0
-    ) {
-
-        courseContent.innerHTML =
-
-            '<div class="no-results">' +
-
-            "<h2>No topics found</h2>" +
-
-            "<p>" +
-
-            "Try another C++ topic or keyword." +
-
-            "</p>" +
-
-            "</div>";
-
+    if (!resultCount) {
+        const empty = document.createElement("div");
+        empty.className = "no-results";
+        empty.innerHTML = "<h2>No topics found</h2><p>Try another C++ topic or keyword.</p>";
+        courseContent.appendChild(empty);
     }
 
+    const totalTopics = modules.reduce((total, module) => total + module.topics.length, 0);
+    document.getElementById("moduleCount").textContent = modules.length;
+    document.getElementById("topicCount").textContent = totalTopics;
+    document.getElementById("foundationCount").textContent = modules.filter(module => foundationModules.has(module.name)).reduce((total, module) => total + module.topics.length, 0);
+    document.getElementById("advancedCount").textContent = modules.filter(module => advancedModules.has(module.name)).reduce((total, module) => total + module.topics.length, 0);
+    searchSummary.textContent = searchTerm ? `${resultCount} matching topic${resultCount === 1 ? "" : "s"} found` : "";
 }
 
+searchInput.addEventListener("input", () => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => renderCourse(searchInput.value), 120);
+});
 
-/* =========================================================
-   SEARCH
-   ========================================================= */
-
-function searchTopics() {
-
-    const input =
-        document.getElementById("searchInput");
-
-    renderCourse(
-        input.value.trim()
-    );
-
+const themeToggle = document.getElementById("themeToggle");
+function applyTheme(isDark) {
+    document.body.classList.toggle("dark", isDark);
+    localStorage.setItem("darkMode", String(isDark));
+    themeToggle.setAttribute("aria-pressed", String(isDark));
+    themeToggle.textContent = isDark ? "☀️" : "🌙";
 }
 
-
-/* =========================================================
-   DARK MODE
-   ========================================================= */
-
-function loadDarkMode() {
-
-    if (
-        localStorage.getItem("darkMode") === "true"
-    ) {
-
-        document.body.classList.add("dark");
-
-    }
-
-}
-
-
-/* =========================================================
-   INITIALIZE
-   ========================================================= */
-
-loadDarkMode();
-
+themeToggle.addEventListener("click", () => applyTheme(!document.body.classList.contains("dark")));
+const savedTheme = localStorage.getItem("darkMode");
+applyTheme(savedTheme === null ? window.matchMedia("(prefers-color-scheme: dark)").matches : savedTheme === "true");
 renderCourse();
-
-
 </script>
-
-
 </body>
-
 </html>
