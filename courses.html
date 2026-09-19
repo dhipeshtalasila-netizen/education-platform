@@ -3,402 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>EduLearn - Courses</title>
-
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background: #f4f6f9;
-            color: #222;
-        }
-
-        /* NAVBAR */
-
-        .navbar {
-            background: #1e3a8a;
-            color: white;
-            padding: 18px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 15px;
-        }
-
-        .nav-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* MAIN */
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 40px auto;
-        }
-
-        .page-header {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-
-        .page-header h1 {
-            color: #1e3a8a;
-            margin-bottom: 8px;
-        }
-
-        .page-header p {
-            color: #666;
-        }
-
-        /* COURSES */
-
-        .courses {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-        }
-
-        .course-card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-        }
-
-        .course-icon {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
-
-        .course-card h2 {
-            color: #1e3a8a;
-            margin-bottom: 10px;
-        }
-
-        .course-card p {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .course-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background: #e5e7eb;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-
-        .progress {
-            height: 100%;
-            width: 0%;
-            background: #1e3a8a;
-        }
-
-        .course-button {
-            display: inline-block;
-            padding: 11px 20px;
-            background: #1e3a8a;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 14px;
-        }
-
-        .course-button:hover {
-            background: #162d6b;
-        }
-
-        /* COMING SOON */
-
-        .coming-soon {
-            opacity: 0.8;
-        }
-
-        .coming-soon .course-button {
-            background: #9ca3af;
-            cursor: default;
-        }
-
-        .coming-soon .course-button:hover {
-            background: #9ca3af;
-        }
-
-        /* RESPONSIVE */
-
-        @media (max-width: 800px) {
-
-            .courses {
-                grid-template-columns: 1fr;
-            }
-
-            .navbar {
-                padding: 15px 20px;
-            }
-
-            .nav-links {
-                gap: 12px;
-            }
-        }
-
-        @media (max-width: 500px) {
-
-            .navbar {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-            }
-
-            .nav-links {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-
-            .container {
-                width: 94%;
-            }
-
-        }
-
+        body { background: #f4f6f9; color: #222; }
+        .navbar { background: #1e3a8a; color: white; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: bold; }
+        .nav-links { display: flex; gap: 25px; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; font-size: 15px; }
+        .nav-links a:hover { text-decoration: underline; }
+        .container { width: 90%; max-width: 1200px; margin: 40px auto; }
+        .page-header { background: white; padding: 30px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
+        .page-header h1 { color: #1e3a8a; margin-bottom: 8px; }
+        .page-header p { color: #666; }
+        .courses { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; }
+        .course-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); }
+        .course-icon { font-size: 45px; margin-bottom: 15px; }
+        .course-card h2 { color: #1e3a8a; margin-bottom: 10px; }
+        .course-card p { color: #666; line-height: 1.6; margin-bottom: 20px; }
+        .course-info { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; }
+        .progress-bar { width: 100%; height: 10px; background: #e5e7eb; border-radius: 10px; overflow: hidden; margin-bottom: 20px; }
+        .progress { height: 100%; width: 0%; background: #1e3a8a; }
+        .course-button { display: inline-block; padding: 11px 20px; background: #1e3a8a; color: white; text-decoration: none; border-radius: 6px; font-size: 14px; }
+        .course-button:hover { background: #162d6b; }
+        .coming-soon { opacity: 0.8; }
+        .coming-soon .course-button { background: #9ca3af; cursor: default; }
+        @media (max-width: 800px) { .courses { grid-template-columns: 1fr; } .navbar { padding: 15px 20px; } .nav-links { gap: 12px; } }
+        @media (max-width: 500px) { .navbar { flex-direction: column; gap: 12px; text-align: center; } .nav-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; } .container { width: 94%; } }
     </style>
 </head>
-
 <body>
-
-    <!-- NAVIGATION -->
-
     <nav class="navbar">
-
-        <div class="logo">
-            EduLearn
-        </div>
-
+        <div class="logo">EduLearn</div>
         <div class="nav-links">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="dashboard.html">
-                Dashboard
-            </a>
-
-            <a href="courses.html">
-                Courses
-            </a>
-
-            <a href="quiz.html">
-                Assessment
-            </a>
-
+            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="courses.html">Courses</a>
+            <a href="quiz.html">Assessment</a>
+            <a href="contact.html">Contact</a>
         </div>
-
     </nav>
 
-
-    <!-- MAIN CONTENT -->
-
     <main class="container">
-
-        <!-- PAGE HEADER -->
-
         <section class="page-header">
-
-            <h1>
-                My Courses
-            </h1>
-
-            <p>
-                Explore college-level courses and continue your learning journey.
-            </p>
-
+            <h1>My Courses</h1>
+            <p>Explore college-level courses and continue your learning journey.</p>
         </section>
-
-
-        <!-- COURSE CARDS -->
 
         <section class="courses">
-
-
-            <!-- MATHEMATICS -->
-
             <div class="course-card">
-
-                <div class="course-icon">
-                    📐
-                </div>
-
-                <h2>
-                    Mathematics
-                </h2>
-
-                <p>
-                    Build strong mathematical foundations through
-                    functions, calculus, linear algebra and other
-                    important concepts for undergraduate students.
-                </p>
-
-                <div class="course-info">
-
-                    <span>
-                        5 Lessons
-                    </span>
-
-                    <span id="mathPercentage">
-                        0%
-                    </span>
-
-                </div>
-
-                <div class="progress-bar">
-
-                    <div
-                        class="progress"
-                        id="mathProgress">
-                    </div>
-
-                </div>
-
-                <a
-                    href="math.html"
-                    class="course-button">
-
-                    Start / Continue
-
-                </a>
-
+                <div class="course-icon">📐</div>
+                <h2>Mathematics</h2>
+                <p>Build strong mathematical foundations through functions, calculus, linear algebra and other important concepts for undergraduate students.</p>
+                <div class="course-info"><span>5 Lessons</span><span id="mathPercentage">0%</span></div>
+                <div class="progress-bar"><div class="progress" id="mathProgress"></div></div>
+                <a href="math.html" class="course-button">Start / Continue</a>
             </div>
-
-
-            <!-- COMING SOON -->
 
             <div class="course-card coming-soon">
-
-                <div class="course-icon">
-                    📚
-                </div>
-
-                <h2>
-                    More Courses
-                </h2>
-
-                <p>
-                    Additional college-level subjects will be
-                    added to EduLearn as the platform grows.
-                </p>
-
-                <div class="course-info">
-
-                    <span>
-                        Coming Soon
-                    </span>
-
-                    <span>
-                        —
-                    </span>
-
-                </div>
-
-                <div class="progress-bar">
-
-                    <div class="progress">
-                    </div>
-
-                </div>
-
-                <a
-                    href="#"
-                    class="course-button">
-
-                    Coming Soon
-
-                </a>
-
+                <div class="course-icon">📚</div>
+                <h2>More Courses</h2>
+                <p>Additional college-level subjects will be added to EduLearn as the platform grows.</p>
+                <div class="course-info"><span>Coming Soon</span><span>—</span></div>
+                <div class="progress-bar"><div class="progress"></div></div>
+                <a href="#" class="course-button">Coming Soon</a>
             </div>
-
-
         </section>
-
     </main>
 
-
-    <!-- PROGRESS SCRIPT -->
-
     <script>
-
         const totalLessons = 5;
-
         let completedLessons = 0;
 
-
         for (let i = 1; i <= totalLessons; i++) {
-
-            if (
-                localStorage.getItem(
-                    "lesson" + i + "Completed"
-                ) === "true"
-            ) {
-
+            if (localStorage.getItem('lesson' + i + 'Completed') === 'true') {
                 completedLessons++;
-
             }
-
         }
 
-
-        const progress =
-            Math.round(
-                (completedLessons / totalLessons) * 100
-            );
-
-
-        document.getElementById(
-            "mathPercentage"
-        ).textContent = progress + "%";
-
-
-        document.getElementById(
-            "mathProgress"
-        ).style.width = progress + "%";
-
+        const progress = Math.round((completedLessons / totalLessons) * 100);
+        document.getElementById('mathPercentage').textContent = progress + '%';
+        document.getElementById('mathProgress').style.width = progress + '%';
     </script>
-
 </body>
 </html>
