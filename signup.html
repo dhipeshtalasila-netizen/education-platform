@@ -2,686 +2,150 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>EduLearn - Create Account</title>
-
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
         body {
             min-height: 100vh;
             background: #f4f6f9;
-
             display: flex;
             flex-direction: column;
         }
-
-
-        /* NAVBAR */
-
         .navbar {
             background: #1e3a8a;
             color: white;
-
             padding: 18px 40px;
-
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .home-link {
-            color: white;
-            text-decoration: none;
-            font-size: 15px;
-        }
-
-        .home-link:hover {
-            text-decoration: underline;
-        }
-
-
-        /* MAIN */
-
-        .main {
-            flex: 1;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            padding: 40px 20px;
-        }
-
-
-        /* SIGNUP CARD */
-
+        .logo { font-size: 24px; font-weight: bold; }
+        .home-link { color: white; text-decoration: none; font-size: 15px; }
+        .main { flex: 1; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
         .signup-card {
             width: 100%;
             max-width: 460px;
-
             background: white;
-
             padding: 35px;
-
             border-radius: 12px;
-
-            box-shadow:
-                0 5px 20px rgba(0,0,0,0.10);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.10);
         }
-
-
-        .signup-header {
-            text-align: center;
-
-            margin-bottom: 28px;
-        }
-
-
+        .signup-header { text-align: center; margin-bottom: 28px; }
         .signup-icon {
-
-            width: 65px;
-            height: 65px;
-
-            margin: 0 auto 15px;
-
-            border-radius: 50%;
-
-            background: #e8eefc;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 30px;
+            width: 65px; height: 65px; margin: 0 auto 15px; border-radius: 50%; background: #e8eefc; display: flex; align-items: center; justify-content: center; font-size: 30px;
         }
-
-
-        .signup-header h1 {
-
-            color: #1e3a8a;
-
-            margin-bottom: 8px;
-        }
-
-
-        .signup-header p {
-
-            color: #777;
-
-            font-size: 14px;
-        }
-
-
-        /* FORM */
-
-        .form-group {
-
-            margin-bottom: 17px;
-        }
-
-
-        .form-group label {
-
-            display: block;
-
-            margin-bottom: 7px;
-
-            font-size: 14px;
-
-            font-weight: bold;
-        }
-
-
-        .form-group input,
-        .form-group select {
-
-            width: 100%;
-
-            padding: 12px;
-
-            border: 1px solid #ccc;
-
-            border-radius: 6px;
-
-            font-size: 14px;
-
-            outline: none;
-
-            background: white;
-        }
-
-
-        .form-group input:focus,
-        .form-group select:focus {
-
-            border-color: #1e3a8a;
-
-        }
-
-
-        /* TERMS */
-
-        .terms {
-
-            display: flex;
-
-            align-items: flex-start;
-
-            gap: 8px;
-
-            margin: 18px 0;
-
-            color: #666;
-
-            font-size: 13px;
-
-            line-height: 1.5;
-        }
-
-
-        .terms input {
-
-            margin-top: 3px;
-        }
-
-
-        .terms a {
-
-            color: #1e3a8a;
-
-            text-decoration: none;
-        }
-
-
-        .terms a:hover {
-
-            text-decoration: underline;
-
-        }
-
-
-        /* BUTTON */
-
-        .signup-button {
-
-            width: 100%;
-
-            padding: 12px;
-
-            border: none;
-
-            border-radius: 6px;
-
-            background: #1e3a8a;
-
-            color: white;
-
-            font-size: 15px;
-
-            cursor: pointer;
-        }
-
-
-        .signup-button:hover {
-
-            background: #162d6b;
-
-        }
-
-
-        /* MESSAGE */
-
-        #signupMessage {
-
-            display: none;
-
-            margin-top: 15px;
-
-            padding: 12px;
-
-            background: #e8eefc;
-
-            color: #1e3a8a;
-
-            border-radius: 6px;
-
-            text-align: center;
-
-            font-size: 14px;
-        }
-
-
-        /* LOGIN */
-
-        .login-link {
-
-            text-align: center;
-
-            margin-top: 22px;
-
-            color: #666;
-
-            font-size: 14px;
-        }
-
-
-        .login-link a {
-
-            color: #1e3a8a;
-
-            font-weight: bold;
-
-            text-decoration: none;
-        }
-
-
-        .login-link a:hover {
-
-            text-decoration: underline;
-
-        }
-
-
-        /* FOOTER */
-
-        .footer {
-
-            background: #1e3a8a;
-
-            color: white;
-
-            text-align: center;
-
-            padding: 20px;
-
-            font-size: 13px;
-        }
-
-
-        /* RESPONSIVE */
-
-        @media (max-width: 500px) {
-
-            .navbar {
-
-                padding: 15px 20px;
-
-            }
-
-            .signup-card {
-
-                padding: 25px;
-
-            }
-
-        }
-
+        .signup-header h1 { color: #1e3a8a; margin-bottom: 8px; }
+        .signup-header p { color: #777; font-size: 14px; }
+        .form-group { margin-bottom: 17px; }
+        .form-group label { display: block; margin-bottom:7px; font-size:14px; font-weight:bold; }
+        .form-group input, .form-group select { width:100%; padding:12px; border:1px solid #ccc; border-radius:6px; font-size:14px; outline:none; background:white; }
+        .form-group input:focus, .form-group select:focus { border-color: #1e3a8a; }
+        .terms { display:flex; align-items:flex-start; gap:8px; margin:18px 0; color:#666; font-size:13px; line-height:1.5; }
+        .terms input { margin-top:3px; }
+        .terms a { color:#1e3a8a; text-decoration:none; }
+        .terms a:hover { text-decoration: underline; }
+        .signup-button { width:100%; padding:12px; border:none; border-radius:6px; background: #1e3a8a; color:white; font-size:15px; cursor:pointer; }
+        .signup-button:hover { background: #162d6b; }
+        #signupMessage { display:none; margin-top:15px; padding:12px; background:#e8eefc; color:#1e3a8a; border-radius:6px; text-align:center; font-size:14px; }
+        .login-link { text-align:center; margin-top:22px; color:#666; font-size:14px; }
+        .login-link a { color:#1e3a8a; font-weight:bold; text-decoration:none; }
+        .login-link a:hover { text-decoration:underline; }
+        .footer { background:#1e3a8a; color:white; text-align:center; padding:20px; font-size:13px; }
+        @media (max-width:500px) { .navbar { padding:15px 20px; } .signup-card { padding:25px; } }
     </style>
-
 </head>
 
-
 <body>
-
-
-    <!-- NAVBAR -->
-
     <nav class="navbar">
-
-        <div class="logo">
-            EduLearn
-        </div>
-
-
-        <a
-            href="index.html"
-            class="home-link">
-
-            Home
-
-        </a>
-
+        <div class="logo">EduLearn</div>
+        <a href="index.html" class="home-link">Home</a>
     </nav>
 
-
-
-    <!-- MAIN -->
-
     <main class="main">
-
-
         <section class="signup-card">
-
-
-            <!-- HEADER -->
-
             <div class="signup-header">
-
-                <div class="signup-icon">
-                    🎓
-                </div>
-
-                <h1>
-                    Create Your Account
-                </h1>
-
-                <p>
-                    Join EduLearn and start your learning journey.
-                </p>
-
+                <div class="signup-icon">🎓</div>
+                <h1>Create Your Account</h1>
+                <p>Join EduLearn and start your learning journey.</p>
             </div>
-
-
-
-            <!-- FORM -->
 
             <form id="signupForm">
-
-
-                <!-- NAME -->
-
                 <div class="form-group">
-
-                    <label for="name">
-                        Full Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="name"
-                        placeholder="Enter your full name"
-                        required>
-
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name" required>
                 </div>
 
-
-
-                <!-- EMAIL -->
-
                 <div class="form-group">
-
-                    <label for="email">
-                        Email Address
-                    </label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="Enter your email"
-                        required>
-
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
                 </div>
 
-
-
-                <!-- PROGRAM -->
-
                 <div class="form-group">
-
-                    <label for="program">
-                        Program
-                    </label>
-
-                    <select
-                        id="program"
-                        required>
-
-                        <option value="">
-                            Select your program
-                        </option>
-
-                        <option value="undergraduate">
-                            Undergraduate
-                        </option>
-
-                        <option value="postgraduate">
-                            Postgraduate
-                        </option>
-
-                        <option value="other">
-                            Other
-                        </option>
-
+                    <label for="program">Program</label>
+                    <select id="program" required>
+                        <option value="">Select your program</option>
+                        <option value="undergraduate">Undergraduate</option>
+                        <option value="postgraduate">Postgraduate</option>
+                        <option value="other">Other</option>
                     </select>
-
                 </div>
-
-
-
-                <!-- PASSWORD -->
 
                 <div class="form-group">
-
-                    <label for="password">
-                        Password
-                    </label>
-
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="Create a password"
-                        required>
-
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Create a password" required>
                 </div>
-
-
-
-                <!-- CONFIRM PASSWORD -->
 
                 <div class="form-group">
-
-                    <label for="confirmPassword">
-                        Confirm Password
-                    </label>
-
-                    <input
-                        type="password"
-                        id="confirmPassword"
-                        placeholder="Confirm your password"
-                        required>
-
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
                 </div>
-
-
-
-                <!-- TERMS -->
 
                 <label class="terms">
-
-                    <input
-                        type="checkbox"
-                        id="terms"
-                        required>
-
-                    <span>
-                        I agree to the EduLearn terms and
-                        conditions.
-                    </span>
-
+                    <input type="checkbox" id="terms" required>
+                    <span>I agree to the EduLearn terms and conditions.</span>
                 </label>
 
-
-
-                <!-- BUTTON -->
-
-                <button
-                    type="submit"
-                    class="signup-button">
-
-                    Create Account
-
-                </button>
-
-
+                <button type="submit" class="signup-button">Create Account</button>
             </form>
 
+            <div id="signupMessage">Account created successfully. Redirecting to dashboard...</div>
 
-
-            <!-- MESSAGE -->
-
-            <div id="signupMessage">
-
-                Account created successfully.
-                Redirecting to dashboard...
-
-            </div>
-
-
-
-            <!-- LOGIN -->
-
-            <div class="login-link">
-
-                Already have an account?
-
-                <a href="login.html">
-                    Sign In
-                </a>
-
-            </div>
-
-
+            <div class="login-link">Already have an account? <a href="login.html">Sign In</a></div>
         </section>
-
-
     </main>
 
+    <footer class="footer">© <span data-current-year></span> EduLearn. All rights reserved.</footer>
 
-
-    <!-- FOOTER -->
-
-    <footer class="footer">
-
-        © 2026 EduLearn. All rights reserved.
-
-    </footer>
-
-
-
-    <!-- JAVASCRIPT -->
-
+    <script src="assets/js/main.js"></script>
     <script>
+        const signupForm = document.getElementById('signupForm');
+        signupForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
 
-        const signupForm =
-            document.getElementById(
-                "signupForm"
-            );
-
-
-        signupForm.addEventListener(
-            "submit",
-            function(event) {
-
-                event.preventDefault();
-
-
-                const password =
-                    document.getElementById(
-                        "password"
-                    ).value;
-
-
-                const confirmPassword =
-                    document.getElementById(
-                        "confirmPassword"
-                    ).value;
-
-
-                if (
-                    password !== confirmPassword
-                ) {
-
-                    alert(
-                        "Passwords do not match."
-                    );
-
-                    return;
-
-                }
-
-
-                const name =
-                    document.getElementById(
-                        "name"
-                    ).value;
-
-
-                const email =
-                    document.getElementById(
-                        "email"
-                    ).value;
-
-
-                const program =
-                    document.getElementById(
-                        "program"
-                    ).value;
-
-
-                /*
-                Save basic demo profile information.
-                This is NOT real authentication.
-                */
-
-                localStorage.setItem(
-                    "studentName",
-                    name
-                );
-
-
-                localStorage.setItem(
-                    "studentEmail",
-                    email
-                );
-
-
-                localStorage.setItem(
-                    "studentProgram",
-                    program
-                );
-
-
-                document.getElementById(
-                    "signupMessage"
-                ).style.display =
-                    "block";
-
-
-                signupForm.style.display =
-                    "none";
-
-
-                setTimeout(
-                    function() {
-
-                        window.location.href =
-                            "dashboard.html";
-
-                    },
-                    1200
-                );
-
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
             }
-        );
 
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const program = document.getElementById('program').value;
+
+            localStorage.setItem('studentName', name);
+            localStorage.setItem('studentEmail', email);
+            localStorage.setItem('studentProgram', program);
+
+            document.getElementById('signupMessage').style.display = 'block';
+            signupForm.style.display = 'none';
+
+            setTimeout(function() {
+                window.location.href = 'dashboard.html';
+            }, 1200);
+        });
     </script>
-
-
 </body>
-
 </html>
