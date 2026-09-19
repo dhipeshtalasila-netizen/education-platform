@@ -1,91 +1,35 @@
 # EduLearn
 
-EduLearn is a static front-end education platform for college students. It includes landing pages, course exploration, dashboard views, login/signup screens, and settings pages focused on coding, B.Tech, BBA, and B.Com learning tracks.
+EduLearn is a static HTML/CSS/JavaScript education-platform prototype for college students. It provides learning-track pages, course navigation, lesson pages, quizzes, a dashboard, profile/settings screens, and demo browser-based progress.
 
-## Current status
+## Phase 1 status
 
-This project is currently a prototype/front-end demo. The main goal of this phase is cleanup and structure improvement before moving to a real data-backed learning platform.
+The `phase-1-frontend-cleanup` branch currently includes:
 
-## Tech stack
+- A canonical `contact.html` page
+- A legacy `contact.hmtl` redirect
+- Shared assets in `assets/css/style.css` and `assets/js/main.js`
+- Basic project documentation and `.gitignore`
+- Improved contact form semantics and shared script handling
 
-- HTML
-- CSS
-- JavaScript
-- Local browser storage for demo state
-
-## Key features
-
-- Landing page with learning categories
-- Dashboard view
-- Login and signup pages
-- Course pages for multiple learning tracks
-- Settings page with theme and preference toggles
-- Demo progress tracking using browser storage
-
-## Repo structure
-
-```text
-.
-├── about.html
-├── bba.html
-├── bcom.html
-├── btech.html
-├── coding.html
-├── contact.html
-├── contact.hmtl
-├── courses.html
-├── dashboard.html
-├── forgot-password.html
-├── index.html
-├── lesson1.html
-├── lesson2.html
-├── lesson3.html
-├── lesson4.html
-├── lesson5.html
-├── login.html
-├── math.html
-├── profile.html
-├── python-*.html
-├── quiz.html
-├── settings.html
-├── signup.html
-├── assets/
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       └── main.js
-├── README.md
-└── .gitignore
-```
+Existing pages are being migrated incrementally. Until that migration is complete, some pages still contain legacy inline CSS and scripts.
 
 ## Run locally
-
-Because this is a static HTML project, you can open the files directly in a browser or run a local web server:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Then open:
+Open [http://localhost:8000](http://localhost:8000) in a browser.
 
-```text
-http://localhost:8000
-```
+## Important limitation
 
-## Notes
+Login, signup, contact submission, and progress tracking are demo features. They use browser storage or display local confirmation messages; they do not provide secure authentication, server-side persistence, or email delivery.
 
-- `contact.hmtl` is kept for backward compatibility while `contact.html` is the canonical file.
-- The project is intentionally simple at this stage and is designed to be upgraded into a full-stack education platform in future phases.
+## Roadmap
 
-## Planned improvements
-
-1. Fix all broken and inconsistent page links
-2. Standardize shared layout and styles
-3. Add real authentication and data persistence
-4. Replace static demo progress with a real backend
-5. Add quizzes, assessments, and admin tools
-6. Move to a production-ready full-stack architecture
-
-## Contributing
-
-Use a feature branch and keep changes focused. This repo is set up for incremental improvement.
+1. Migrate remaining pages to shared styles and scripts.
+2. Add automated link and HTML validation.
+3. Introduce real authentication and a database.
+4. Persist courses, lessons, quiz attempts, and progress per user.
+5. Add an admin content-management workflow.
