@@ -2,28 +2,12 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>EduLearn - Dashboard</title>
-
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background: #f4f7fb;
-            color: #1f2937;
-        }
-
-        /* ================= NAVBAR ================= */
-
+        body { background: #f4f7fb; color: #1f2937; }
         .navbar {
             background: white;
             height: 70px;
@@ -36,41 +20,11 @@
             top: 0;
             z-index: 1000;
         }
-
-        .logo {
-            font-size: 26px;
-            font-weight: bold;
-            color: #2563eb;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #374151;
-            font-size: 15px;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: #2563eb;
-        }
-
-        /* ================= CONTAINER ================= */
-
-        .container {
-            width: 86%;
-            max-width: 1200px;
-            margin: 40px auto;
-        }
-
-        /* ================= WELCOME ================= */
-
+        .logo { font-size: 26px; font-weight: bold; color: #2563eb; text-decoration: none; }
+        .nav-links { display: flex; align-items: center; gap: 25px; }
+        .nav-links a { text-decoration: none; color: #374151; font-size: 15px; font-weight: 500; }
+        .nav-links a:hover { color: #2563eb; }
+        .container { width: 86%; max-width: 1200px; margin: 40px auto; }
         .welcome {
             background: linear-gradient(135deg, #1d4ed8, #2563eb);
             color: white;
@@ -78,924 +32,211 @@
             border-radius: 16px;
             margin-bottom: 30px;
         }
-
-        .welcome h1 {
-            font-size: 34px;
-            margin-bottom: 10px;
-        }
-
-        .welcome p {
-            font-size: 16px;
-            line-height: 1.6;
-            opacity: 0.95;
-        }
-
-        /* ================= PROFILE ================= */
-
+        .welcome h1 { font-size: 34px; margin-bottom: 10px; }
+        .welcome p { font-size: 16px; line-height: 1.6; opacity: 0.95; }
         .profile-grid {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 25px;
-            margin-bottom: 35px;
+            display: grid; grid-template-columns: 1fr 2fr; gap: 25px; margin-bottom: 35px;
         }
-
-        .profile-card,
-        .overview-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+        .profile-card, .overview-card {
+            background: white; padding: 30px; border-radius: 15px; border: 1px solid #e5e7eb; box-shadow: 0 5px 18px rgba(0,0,0,0.05);
         }
-
-        .profile-card {
-            text-align: center;
-        }
-
+        .profile-card { text-align: center; }
         .profile-icon {
-            width: 75px;
-            height: 75px;
-            margin: 0 auto 15px;
-            border-radius: 50%;
-            background: #eff6ff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
+            width: 75px; height: 75px; margin: 0 auto 15px; border-radius: 50%; background: #eff6ff; display: flex; align-items: center; justify-content: center; font-size: 36px;
         }
-
-        .profile-card h2 {
-            margin-bottom: 8px;
-        }
-
-        .profile-card p {
-            color: #6b7280;
-            font-size: 14px;
-        }
-
-        .overview-card h2 {
-            margin-bottom: 25px;
-        }
-
-        .overview-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
-
-        .stat {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 28px;
-            font-weight: bold;
-            color: #2563eb;
-            margin-bottom: 6px;
-        }
-
-        .stat-label {
-            color: #6b7280;
-            font-size: 13px;
-        }
-
-        /* ================= SECTION ================= */
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .section-header {
-            margin-bottom: 20px;
-        }
-
-        .section-header h2 {
-            font-size: 28px;
-            margin-bottom: 7px;
-        }
-
-        .section-header p {
-            color: #6b7280;
-        }
-
-        /* ================= LEARNING CARDS ================= */
-
-        .learning-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 22px;
-        }
-
+        .profile-card h2 { margin-bottom: 8px; }
+        .profile-card p { color: #6b7280; font-size: 14px; }
+        .overview-card h2 { margin-bottom: 25px; }
+        .overview-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 15px; }
+        .stat { background: #f8fafc; padding: 20px; border-radius: 10px; text-align: center; }
+        .stat-number { font-size: 28px; font-weight: bold; color: #2563eb; margin-bottom: 6px; }
+        .stat-label { color: #6b7280; font-size: 13px; }
+        .section { margin-bottom: 40px; }
+        .section-header { margin-bottom: 20px; }
+        .section-header h2 { font-size: 28px; margin-bottom: 7px; }
+        .section-header p { color: #6b7280; }
+        .learning-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
         .learning-card {
-            background: white;
-            padding: 25px;
-            border-radius: 14px;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+            background: white; padding: 25px; border-radius: 14px; border: 1px solid #e5e7eb; box-shadow: 0 5px 18px rgba(0,0,0,0.05);
         }
-
-        .learning-top {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 18px;
-        }
-
+        .learning-top { display: flex; align-items: center; gap: 15px; margin-bottom: 18px; }
         .learning-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
-            background: #eff6ff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 25px;
+            width: 50px; height: 50px; border-radius: 10px; background: #eff6ff; display: flex; align-items: center; justify-content: center; font-size: 25px;
         }
-
-        .learning-top h3 {
-            margin-bottom: 4px;
-        }
-
-        .learning-top p {
-            color: #6b7280;
-            font-size: 13px;
-        }
-
-        .progress-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 7px;
-            font-size: 13px;
-        }
-
-        .progress-bar {
-            height: 9px;
-            background: #e5e7eb;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-bottom: 18px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: #2563eb;
-            border-radius: 10px;
-            transition: width 0.3s;
-        }
-
-        .dashboard-btn {
-            display: inline-block;
-            text-decoration: none;
-            background: #2563eb;
-            color: white;
-            padding: 9px 16px;
-            border-radius: 7px;
-            font-size: 13px;
-            font-weight: bold;
-        }
-
-        .dashboard-btn:hover {
-            background: #1d4ed8;
-        }
-
-        /* ================= QUICK ACTIONS ================= */
-
-        .quick-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
-
+        .learning-top h3 { margin-bottom: 4px; }
+        .learning-top p { color: #6b7280; font-size: 13px; }
+        .progress-info { display: flex; justify-content: space-between; margin-bottom: 7px; font-size: 13px; }
+        .progress-bar { height: 9px; background: #e5e7eb; border-radius: 10px; overflow: hidden; margin-bottom: 18px; }
+        .progress-fill { height: 100%; background: #2563eb; border-radius: 10px; transition: width 0.3s; }
+        .dashboard-btn { display: inline-block; text-decoration: none; background: #2563eb; color: white; padding: 9px 16px; border-radius: 7px; font-size: 13px; font-weight: bold; }
+        .dashboard-btn:hover { background: #1d4ed8; }
+        .quick-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
         .quick-card {
-            background: white;
-            padding: 22px;
-            border-radius: 12px;
-            border: 1px solid #e5e7eb;
-            text-align: center;
-            text-decoration: none;
-            color: #1f2937;
-            transition: 0.3s;
+            background: white; padding: 22px; border-radius: 12px; border: 1px solid #e5e7eb; text-align: center; text-decoration: none; color: #1f2937; transition: 0.3s;
         }
-
-        .quick-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-        }
-
-        .quick-icon {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-
-        .quick-card h3 {
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-
-        .quick-card p {
-            color: #6b7280;
-            font-size: 12px;
-        }
-
-        /* ================= ACHIEVEMENTS ================= */
-
-        .achievement-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
-
-        .achievement {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid #e5e7eb;
-            text-align: center;
-        }
-
-        .achievement-icon {
-            font-size: 38px;
-            margin-bottom: 12px;
-            filter: grayscale(1);
-            opacity: 0.45;
-        }
-
-        .achievement.unlocked .achievement-icon {
-            filter: none;
-            opacity: 1;
-        }
-
-        .achievement h3 {
-            font-size: 15px;
-            margin-bottom: 6px;
-        }
-
-        .achievement p {
-            color: #6b7280;
-            font-size: 12px;
-        }
-
-        /* ================= FOOTER ================= */
-
-        footer {
-            background: #111827;
-            color: white;
-            text-align: center;
-            padding: 30px 7%;
-            margin-top: 60px;
-        }
-
-        footer p {
-            color: #9ca3af;
-            font-size: 14px;
-        }
-
-        /* ================= RESPONSIVE ================= */
-
+        .quick-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+        .quick-icon { font-size: 30px; margin-bottom: 10px; }
+        .quick-card h3 { font-size: 16px; margin-bottom: 5px; }
+        .quick-card p { color: #6b7280; font-size: 12px; }
+        .achievement-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+        .achievement { background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb; text-align: center; }
+        .achievement-icon { font-size: 38px; margin-bottom: 12px; filter: grayscale(1); opacity: 0.45; }
+        .achievement.unlocked .achievement-icon { filter: none; opacity: 1; }
+        .achievement h3 { font-size: 15px; margin-bottom: 6px; }
+        .achievement p { color: #6b7280; font-size: 12px; }
+        footer { background: #111827; color: white; text-align: center; padding: 30px 7%; margin-top: 60px; }
+        footer p { color: #9ca3af; font-size: 14px; }
         @media (max-width: 900px) {
-
-            .profile-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .overview-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .learning-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .quick-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .achievement-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
+            .profile-grid { grid-template-columns: 1fr; }
+            .overview-grid { grid-template-columns: repeat(2, 1fr); }
+            .learning-grid { grid-template-columns: 1fr; }
+            .quick-grid { grid-template-columns: repeat(2, 1fr); }
+            .achievement-grid { grid-template-columns: repeat(2, 1fr); }
         }
-
         @media (max-width: 600px) {
-
-            .navbar {
-                padding: 0 5%;
-            }
-
-            .nav-links {
-                gap: 12px;
-            }
-
-            .nav-links a:not(:last-child) {
-                display: none;
-            }
-
-            .container {
-                width: 92%;
-            }
-
-            .welcome {
-                padding: 30px 25px;
-            }
-
-            .welcome h1 {
-                font-size: 28px;
-            }
-
-            .overview-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .quick-grid,
-            .achievement-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
+            .navbar { padding: 0 5%; }
+            .nav-links { gap: 12px; }
+            .nav-links a:not(:last-child) { display: none; }
+            .container { width: 92%; }
+            .welcome { padding: 30px 25px; }
+            .welcome h1 { font-size: 28px; }
+            .overview-grid { grid-template-columns: 1fr 1fr; }
+            .quick-grid, .achievement-grid { grid-template-columns: 1fr 1fr; }
         }
-
     </style>
-
 </head>
 
 <body>
-
-
-    <!-- ================= NAVBAR ================= -->
-
     <nav class="navbar">
-
-        <a href="index.html" class="logo">
-            EduLearn
-        </a>
-
+        <a href="index.html" class="logo">EduLearn</a>
         <div class="nav-links">
-
-            <a href="index.html">
-                Home
-            </a>
-
-            <a href="dashboard.html">
-                Dashboard
-            </a>
-
-            <a href="settings.html">
-                Settings
-            </a>
-
+            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="courses.html">Courses</a>
+            <a href="contact.html">Contact</a>
+            <a href="settings.html">Settings</a>
         </div>
-
     </nav>
 
-
-    <!-- ================= MAIN ================= -->
-
     <main class="container">
-
-
-        <!-- WELCOME -->
-
         <section class="welcome">
-
-            <h1>
-                Welcome back, Student! 👋
-            </h1>
-
-            <p>
-                Continue your learning journey with EduLearn.
-                Choose a subject, learn new concepts, practice
-                your skills and track your progress.
-            </p>
-
+            <h1>Welcome back, Student! 👋</h1>
+            <p>Continue your learning journey with EduLearn. Choose a subject, learn new concepts, practice your skills and track your progress.</p>
         </section>
-
-
-        <!-- PROFILE + OVERVIEW -->
 
         <section class="profile-grid">
-
-
-            <!-- PROFILE -->
-
             <div class="profile-card">
-
-                <div class="profile-icon">
-                    👨‍🎓
-                </div>
-
-                <h2>
-                    Student
-                </h2>
-
-                <p>
-                    EduLearn Learner
-                </p>
-
+                <div class="profile-icon">👨‍🎓</div>
+                <h2>Student</h2>
+                <p>EduLearn Learner</p>
             </div>
-
-
-            <!-- OVERVIEW -->
 
             <div class="overview-card">
-
-                <h2>
-                    Learning Overview
-                </h2>
-
+                <h2>Learning Overview</h2>
                 <div class="overview-grid">
-
-                    <div class="stat">
-
-                        <div class="stat-number" id="completedLessons">
-                            0
-                        </div>
-
-                        <div class="stat-label">
-                            Lessons Completed
-                        </div>
-
-                    </div>
-
-
-                    <div class="stat">
-
-                        <div class="stat-number" id="courseProgress">
-                            0%
-                        </div>
-
-                        <div class="stat-label">
-                            Overall Progress
-                        </div>
-
-                    </div>
-
-
-                    <div class="stat">
-
-                        <div class="stat-number" id="quizStatus">
-                            0
-                        </div>
-
-                        <div class="stat-label">
-                            Assessments
-                        </div>
-
-                    </div>
-
-
-                    <div class="stat">
-
-                        <div class="stat-number" id="achievementCount">
-                            0
-                        </div>
-
-                        <div class="stat-label">
-                            Achievements
-                        </div>
-
-                    </div>
-
+                    <div class="stat"><div class="stat-number" id="completedLessons">0</div><div class="stat-label">Lessons Completed</div></div>
+                    <div class="stat"><div class="stat-number" id="courseProgress">0%</div><div class="stat-label">Overall Progress</div></div>
+                    <div class="stat"><div class="stat-number" id="quizStatus">0</div><div class="stat-label">Assessments</div></div>
+                    <div class="stat"><div class="stat-number" id="achievementCount">0</div><div class="stat-label">Achievements</div></div>
                 </div>
-
             </div>
-
         </section>
 
-
-        <!-- ================= LEARNING AREAS ================= -->
-
         <section class="section">
-
             <div class="section-header">
-
-                <h2>
-                    My Learning
-                </h2>
-
-                <p>
-                    Explore your four main learning areas.
-                </p>
-
+                <h2>My Learning</h2>
+                <p>Explore your four main learning areas.</p>
             </div>
-
 
             <div class="learning-grid">
-
-
-                <!-- CODING -->
-
                 <div class="learning-card">
-
                     <div class="learning-top">
-
-                        <div class="learning-icon">
-                            💻
-                        </div>
-
+                        <div class="learning-icon">💻</div>
                         <div>
-
-                            <h3>
-                                Coding
-                            </h3>
-
-                            <p>
-                                Programming & Technology
-                            </p>
-
+                            <h3>Coding</h3>
+                            <p>Programming &amp; Technology</p>
                         </div>
-
                     </div>
-
-                    <div class="progress-info">
-
-                        <span>
-                            Progress
-                        </span>
-
-                        <span>
-                            0%
-                        </span>
-
-                    </div>
-
-                    <div class="progress-bar">
-
-                        <div
-                            class="progress-fill"
-                            style="width: 0%;">
-                        </div>
-
-                    </div>
-
-                    <a href="coding.html" class="dashboard-btn">
-                        Explore Coding
-                    </a>
-
+                    <div class="progress-info"><span>Progress</span><span>0%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                    <a href="coding.html" class="dashboard-btn">Explore Coding</a>
                 </div>
 
-
-                <!-- B.TECH -->
-
                 <div class="learning-card">
-
                     <div class="learning-top">
-
-                        <div class="learning-icon">
-                            ⚙️
-                        </div>
-
+                        <div class="learning-icon">⚙️</div>
                         <div>
-
-                            <h3>
-                                B.Tech
-                            </h3>
-
-                            <p>
-                                Engineering & Technology
-                            </p>
-
+                            <h3>B.Tech</h3>
+                            <p>Engineering &amp; Technology</p>
                         </div>
-
                     </div>
-
-                    <div class="progress-info">
-
-                        <span>
-                            Progress
-                        </span>
-
-                        <span id="mathProgressText">
-                            0%
-                        </span>
-
-                    </div>
-
-                    <div class="progress-bar">
-
-                        <div
-                            class="progress-fill"
-                            id="mathProgressBar"
-                            style="width: 0%;">
-                        </div>
-
-                    </div>
-
-                    <a href="btech.html" class="dashboard-btn">
-                        Explore B.Tech
-                    </a>
-
+                    <div class="progress-info"><span>Progress</span><span id="mathProgressText">0%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" id="mathProgressBar" style="width: 0%;"></div></div>
+                    <a href="btech.html" class="dashboard-btn">Explore B.Tech</a>
                 </div>
 
-
-                <!-- BBA -->
-
                 <div class="learning-card">
-
                     <div class="learning-top">
-
-                        <div class="learning-icon">
-                            📊
-                        </div>
-
+                        <div class="learning-icon">📊</div>
                         <div>
-
-                            <h3>
-                                BBA
-                            </h3>
-
-                            <p>
-                                Business & Management
-                            </p>
-
+                            <h3>BBA</h3>
+                            <p>Business &amp; Management</p>
                         </div>
-
                     </div>
-
-                    <div class="progress-info">
-
-                        <span>
-                            Progress
-                        </span>
-
-                        <span>
-                            0%
-                        </span>
-
-                    </div>
-
-                    <div class="progress-bar">
-
-                        <div
-                            class="progress-fill"
-                            style="width: 0%;">
-                        </div>
-
-                    </div>
-
-                    <a href="bba.html" class="dashboard-btn">
-                        Explore BBA
-                    </a>
-
+                    <div class="progress-info"><span>Progress</span><span>0%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                    <a href="bba.html" class="dashboard-btn">Explore BBA</a>
                 </div>
 
-
-                <!-- B.COM -->
-
                 <div class="learning-card">
-
                     <div class="learning-top">
-
-                        <div class="learning-icon">
-                            💼
-                        </div>
-
+                        <div class="learning-icon">💼</div>
                         <div>
-
-                            <h3>
-                                B.Com
-                            </h3>
-
-                            <p>
-                                Commerce & Finance
-                            </p>
-
+                            <h3>B.Com</h3>
+                            <p>Commerce &amp; Finance</p>
                         </div>
-
                     </div>
-
-                    <div class="progress-info">
-
-                        <span>
-                            Progress
-                        </span>
-
-                        <span>
-                            0%
-                        </span>
-
-                    </div>
-
-                    <div class="progress-bar">
-
-                        <div
-                            class="progress-fill"
-                            style="width: 0%;">
-                        </div>
-
-                    </div>
-
-                    <a href="bcom.html" class="dashboard-btn">
-                        Explore B.Com
-                    </a>
-
+                    <div class="progress-info"><span>Progress</span><span>0%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+                    <a href="bcom.html" class="dashboard-btn">Explore B.Com</a>
                 </div>
-
-
             </div>
-
         </section>
 
-
-        <!-- ================= QUICK ACTIONS ================= -->
-
         <section class="section">
-
             <div class="section-header">
-
-                <h2>
-                    Quick Access
-                </h2>
-
-                <p>
-                    Jump directly into your learning areas.
-                </p>
-
+                <h2>Quick Access</h2>
+                <p>Jump directly into your learning areas.</p>
             </div>
-
 
             <div class="quick-grid">
-
-
-                <a href="coding.html" class="quick-card">
-
-                    <div class="quick-icon">
-                        💻
-                    </div>
-
-                    <h3>
-                        Coding
-                    </h3>
-
-                    <p>
-                        Start programming
-                    </p>
-
-                </a>
-
-
-                <a href="btech.html" class="quick-card">
-
-                    <div class="quick-icon">
-                        ⚙️
-                    </div>
-
-                    <h3>
-                        B.Tech
-                    </h3>
-
-                    <p>
-                        Study engineering
-                    </p>
-
-                </a>
-
-
-                <a href="bba.html" class="quick-card">
-
-                    <div class="quick-icon">
-                        📊
-                    </div>
-
-                    <h3>
-                        BBA
-                    </h3>
-
-                    <p>
-                        Learn management
-                    </p>
-
-                </a>
-
-
-                <a href="bcom.html" class="quick-card">
-
-                    <div class="quick-icon">
-                        💼
-                    </div>
-
-                    <h3>
-                        B.Com
-                    </h3>
-
-                    <p>
-                        Learn commerce
-                    </p>
-
-                </a>
-
-
+                <a href="coding.html" class="quick-card"><div class="quick-icon">💻</div><h3>Coding</h3><p>Start programming</p></a>
+                <a href="btech.html" class="quick-card"><div class="quick-icon">⚙️</div><h3>B.Tech</h3><p>Study engineering</p></a>
+                <a href="bba.html" class="quick-card"><div class="quick-icon">📊</div><h3>BBA</h3><p>Learn management</p></a>
+                <a href="bcom.html" class="quick-card"><div class="quick-icon">💼</div><h3>B.Com</h3><p>Learn commerce</p></a>
             </div>
-
         </section>
-
-
-        <!-- ================= ACHIEVEMENTS ================= -->
 
         <section class="section">
-
             <div class="section-header">
-
-                <h2>
-                    Achievements
-                </h2>
-
-                <p>
-                    Complete learning activities to unlock achievements.
-                </p>
-
+                <h2>Achievements</h2>
+                <p>Complete learning activities to unlock achievements.</p>
             </div>
-
 
             <div class="achievement-grid">
-
-
-                <div class="achievement" id="achievementFirstLesson">
-
-                    <div class="achievement-icon">
-                        📖
-                    </div>
-
-                    <h3>
-                        First Lesson
-                    </h3>
-
-                    <p>
-                        Complete your first lesson
-                    </p>
-
-                </div>
-
-
-                <div class="achievement" id="achievementFiveLessons">
-
-                    <div class="achievement-icon">
-                        🔥
-                    </div>
-
-                    <h3>
-                        5 Lessons
-                    </h3>
-
-                    <p>
-                        Complete five lessons
-                    </p>
-
-                </div>
-
-
-                <div class="achievement" id="achievementFirstQuiz">
-
-                    <div class="achievement-icon">
-                        🧠
-                    </div>
-
-                    <h3>
-                        First Assessment
-                    </h3>
-
-                    <p>
-                        Complete your first assessment
-                    </p>
-
-                </div>
-
-
-                <div class="achievement" id="achievementCourse">
-
-                    <div class="achievement-icon">
-                        🏆
-                    </div>
-
-                    <h3>
-                        Course Complete
-                    </h3>
-
-                    <p>
-                        Complete an entire course
-                    </p>
-
-                </div>
-
-
+                <div class="achievement" id="achievementFirstLesson"><div class="achievement-icon">📖</div><h3>First Lesson</h3><p>Complete your first lesson</p></div>
+                <div class="achievement" id="achievementFiveLessons"><div class="achievement-icon">🔥</div><h3>5 Lessons</h3><p>Complete five lessons</p></div>
+                <div class="achievement" id="achievementFirstQuiz"><div class="achievement-icon">🧠</div><h3>First Assessment</h3><p>Complete your first assessment</p></div>
+                <div class="achievement" id="achievementCourse"><div class="achievement-icon">🏆</div><h3>Course Complete</h3><p>Complete an entire course</p></div>
             </div>
-
         </section>
-
-
     </main>
 
-
-    <!-- ================= FOOTER ================= -->
-
     <footer>
-
-        <p>
-            © 2026 EduLearn. Learn. Build. Grow.
-        </p>
-
+        <p>© <span data-current-year></span> EduLearn. Learn. Build. Grow.</p>
     </footer>
 
+    <script src="assets/js/main.js"></script>
 </body>
+
 </html>

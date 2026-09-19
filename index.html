@@ -5,8 +5,10 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EduLearn helps students explore coding, engineering, business, and commerce courses.">
 
     <title>EduLearn - Learn. Build. Grow.</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <style>
 
@@ -21,8 +23,6 @@
             background: #f4f7fb;
             color: #1f2937;
         }
-
-        /* NAVBAR */
 
         .navbar {
             background: white;
@@ -72,8 +72,6 @@
             background: #1d4ed8;
         }
 
-        /* HERO */
-
         .hero {
             min-height: 520px;
             display: flex;
@@ -83,9 +81,7 @@
             background: linear-gradient(135deg, #eff6ff, #ffffff);
         }
 
-        .hero-content {
-            max-width: 600px;
-        }
+        .hero-content { max-width: 600px; }
 
         .hero-content h1 {
             font-size: 52px;
@@ -94,9 +90,7 @@
             color: #111827;
         }
 
-        .hero-content h1 span {
-            color: #2563eb;
-        }
+        .hero-content h1 span { color: #2563eb; }
 
         .hero-content p {
             font-size: 19px;
@@ -105,10 +99,7 @@
             margin-bottom: 30px;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-        }
+        .hero-buttons { display: flex; gap: 15px; }
 
         .primary-btn,
         .secondary-btn {
@@ -123,9 +114,7 @@
             color: white;
         }
 
-        .primary-btn:hover {
-            background: #1d4ed8;
-        }
+        .primary-btn:hover { background: #1d4ed8; }
 
         .secondary-btn {
             background: white;
@@ -133,9 +122,7 @@
             border: 2px solid #2563eb;
         }
 
-        .secondary-btn:hover {
-            background: #eff6ff;
-        }
+        .secondary-btn:hover { background: #eff6ff; }
 
         .hero-card {
             width: 350px;
@@ -145,36 +132,11 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.10);
         }
 
-        .hero-card h3 {
-            font-size: 22px;
-            margin-bottom: 20px;
-        }
-
-        .progress-item {
-            margin-bottom: 18px;
-        }
-
-        .progress-title {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 7px;
-            font-size: 14px;
-        }
-
-        .progress-bar {
-            height: 8px;
-            background: #e5e7eb;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: #2563eb;
-            border-radius: 10px;
-        }
-
-        /* CATEGORIES */
+        .hero-card h3 { font-size: 22px; margin-bottom: 20px; }
+        .progress-item { margin-bottom: 18px; }
+        .progress-title { display: flex; justify-content: space-between; margin-bottom: 7px; font-size: 14px; }
+        .progress-bar { height: 8px; background: #e5e7eb; border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; background: #2563eb; border-radius: 10px; }
 
         .categories {
             padding: 70px 7%;
@@ -212,16 +174,8 @@
             box-shadow: 0 12px 25px rgba(0,0,0,0.12);
         }
 
-        .category-icon {
-            font-size: 45px;
-            margin-bottom: 18px;
-        }
-
-        .category-card h3 {
-            font-size: 21px;
-            margin-bottom: 12px;
-        }
-
+        .category-icon { font-size: 45px; margin-bottom: 18px; }
+        .category-card h3 { font-size: 21px; margin-bottom: 12px; }
         .category-card p {
             color: #6b7280;
             line-height: 1.6;
@@ -234,8 +188,6 @@
             color: #2563eb;
             font-weight: bold;
         }
-
-        /* FEATURES */
 
         .features {
             background: white;
@@ -256,21 +208,9 @@
             border-radius: 14px;
         }
 
-        .feature-card .icon {
-            font-size: 38px;
-            margin-bottom: 15px;
-        }
-
-        .feature-card h3 {
-            margin-bottom: 10px;
-        }
-
-        .feature-card p {
-            color: #6b7280;
-            line-height: 1.6;
-        }
-
-        /* CTA */
+        .feature-card .icon { font-size: 38px; margin-bottom: 15px; }
+        .feature-card h3 { margin-bottom: 10px; }
+        .feature-card p { color: #6b7280; line-height: 1.6; }
 
         .cta {
             padding: 70px 7%;
@@ -279,16 +219,8 @@
             color: white;
         }
 
-        .cta h2 {
-            font-size: 36px;
-            margin-bottom: 15px;
-        }
-
-        .cta p {
-            font-size: 17px;
-            margin-bottom: 25px;
-        }
-
+        .cta h2 { font-size: 36px; margin-bottom: 15px; }
+        .cta p { font-size: 17px; margin-bottom: 25px; }
         .cta-btn {
             display: inline-block;
             background: white;
@@ -299,8 +231,6 @@
             font-weight: bold;
         }
 
-        /* FOOTER */
-
         footer {
             background: #111827;
             color: white;
@@ -308,65 +238,23 @@
             text-align: center;
         }
 
-        footer p {
-            color: #9ca3af;
-            font-size: 14px;
-        }
-
-        /* RESPONSIVE */
+        footer p { color: #9ca3af; font-size: 14px; }
 
         @media (max-width: 900px) {
-
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                gap: 50px;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .category-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-
+            .hero { flex-direction: column; text-align: center; gap: 50px; }
+            .hero-buttons { justify-content: center; }
+            .category-grid { grid-template-columns: repeat(2, 1fr); }
+            .feature-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 600px) {
-
-            .navbar {
-                padding: 0 5%;
-            }
-
-            .nav-links {
-                gap: 10px;
-            }
-
-            .nav-links a:not(.login-btn) {
-                display: none;
-            }
-
-            .hero {
-                padding: 50px 5%;
-            }
-
-            .hero-content h1 {
-                font-size: 38px;
-            }
-
-            .hero-card {
-                width: 100%;
-            }
-
-            .category-grid {
-                grid-template-columns: 1fr;
-            }
-
+            .navbar { padding: 0 5%; }
+            .nav-links { gap: 10px; }
+            .nav-links a:not(.login-btn) { display: none; }
+            .hero { padding: 50px 5%; }
+            .hero-content h1 { font-size: 38px; }
+            .hero-card { width: 100%; }
+            .category-grid { grid-template-columns: 1fr; }
         }
 
     </style>
@@ -375,333 +263,123 @@
 
 <body>
 
-    <!-- NAVBAR -->
-
     <nav class="navbar">
-
-        <a href="index.html" class="logo">
-            EduLearn
-        </a>
-
+        <a href="index.html" class="logo">EduLearn</a>
         <div class="nav-links">
-
             <a href="index.html">Home</a>
-
             <a href="dashboard.html">Dashboard</a>
-
+            <a href="courses.html">Courses</a>
+            <a href="contact.html">Contact</a>
             <a href="settings.html">Settings</a>
-
-            <a href="login.html" class="login-btn">
-                Login
-            </a>
-
+            <a href="login.html" class="login-btn">Login</a>
         </div>
-
     </nav>
 
-
-    <!-- HERO SECTION -->
-
     <section class="hero">
-
         <div class="hero-content">
-
-            <h1>
-                Learn. <span>Build.</span> Grow.
-            </h1>
-
+            <h1>Learn. <span>Build.</span> Grow.</h1>
             <p>
-                A college-focused learning platform for students
-                studying Coding, B.Tech, BBA and B.Com.
-                Learn concepts, practice skills, take quizzes
-                and track your progress.
+                A college-focused learning platform for students studying Coding, B.Tech, BBA and B.Com.
+                Learn concepts, practice skills, take quizzes and track your progress.
             </p>
-
             <div class="hero-buttons">
-
-                <a href="dashboard.html" class="primary-btn">
-                    Start Learning
-                </a>
-
-                <a href="#categories" class="secondary-btn">
-                    Explore Courses
-                </a>
-
+                <a href="dashboard.html" class="primary-btn">Start Learning</a>
+                <a href="#categories" class="secondary-btn">Explore Courses</a>
             </div>
-
         </div>
-
 
         <div class="hero-card">
-
             <h3>Your Learning Journey</h3>
-
             <div class="progress-item">
-
-                <div class="progress-title">
-                    <span>💻 Coding</span>
-                    <span>0%</span>
-                </div>
-
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 0%;"></div>
-                </div>
-
+                <div class="progress-title"><span>💻 Coding</span><span>0%</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
             </div>
-
-
             <div class="progress-item">
-
-                <div class="progress-title">
-                    <span>⚙️ B.Tech</span>
-                    <span>0%</span>
-                </div>
-
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 0%;"></div>
-                </div>
-
+                <div class="progress-title"><span>⚙️ B.Tech</span><span>0%</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
             </div>
-
-
             <div class="progress-item">
-
-                <div class="progress-title">
-                    <span>📊 BBA</span>
-                    <span>0%</span>
-                </div>
-
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 0%;"></div>
-                </div>
-
+                <div class="progress-title"><span>📊 BBA</span><span>0%</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
             </div>
-
-
             <div class="progress-item">
-
-                <div class="progress-title">
-                    <span>💼 B.Com</span>
-                    <span>0%</span>
-                </div>
-
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: 0%;"></div>
-                </div>
-
+                <div class="progress-title"><span>💼 B.Com</span><span>0%</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
             </div>
-
         </div>
-
     </section>
-
-
-    <!-- CATEGORIES -->
 
     <section class="categories" id="categories">
-
-        <h2 class="section-title">
-            Explore Your Learning Path
-        </h2>
-
-        <p class="section-description">
-            Choose your field and start building your knowledge and skills.
-        </p>
-
+        <h2 class="section-title">Explore Your Learning Path</h2>
+        <p class="section-description">Choose your field and start building your knowledge and skills.</p>
 
         <div class="category-grid">
-
-
-            <!-- CODING -->
-
             <div class="category-card">
-
-                <div class="category-icon">
-                    💻
-                </div>
-
+                <div class="category-icon">💻</div>
                 <h3>Coding</h3>
-
-                <p>
-                    Learn programming and web development
-                    from the basics to advanced concepts.
-                </p>
-
-               <a href="coding.html" class="category-btn">
-                    Explore Coding →
-                </a>
-
+                <p>Learn programming and web development from the basics to advanced concepts.</p>
+                <a href="coding.html" class="category-btn">Explore Coding →</a>
             </div>
 
-
-            <!-- BTECH -->
-
             <div class="category-card">
-
-                <div class="category-icon">
-                    ⚙️
-                </div>
-
+                <div class="category-icon">⚙️</div>
                 <h3>B.Tech</h3>
-
-                <p>
-                    Study engineering subjects including
-                    Mathematics, Programming, DBMS and more.
-                </p>
-
-                <a href="btech.html" class="category-btn">
-                    Explore B.Tech →
-                </a>
-
+                <p>Study engineering subjects including Mathematics, Programming, DBMS and more.</p>
+                <a href="btech.html" class="category-btn">Explore B.Tech →</a>
             </div>
 
-
-            <!-- BBA -->
-
             <div class="category-card">
-
-                <div class="category-icon">
-                    📊
-                </div>
-
+                <div class="category-icon">📊</div>
                 <h3>BBA</h3>
-
-                <p>
-                    Learn management, marketing, finance,
-                    economics and business concepts.
-                </p>
-
-               <a href="bba.html" class="category-btn">
-                    Explore BBA →
-                </a>
-
+                <p>Learn management, marketing, finance, economics and business concepts.</p>
+                <a href="bba.html" class="category-btn">Explore BBA →</a>
             </div>
-
-
-            <!-- BCOM -->
 
             <div class="category-card">
-
-                <div class="category-icon">
-                    💼
-                </div>
-
+                <div class="category-icon">💼</div>
                 <h3>B.Com</h3>
-
-                <p>
-                    Learn accounting, economics, taxation,
-                    finance and business law.
-                </p>
-
-                <a href="bcom.html" class="category-btn">
-                    Explore B.Com →
-                </a>
-
+                <p>Learn accounting, economics, taxation, finance and business law.</p>
+                <a href="bcom.html" class="category-btn">Explore B.Com →</a>
             </div>
-
         </div>
-
     </section>
-
-
-    <!-- FEATURES -->
 
     <section class="features">
-
-        <h2 class="section-title">
-            Everything You Need to Learn
-        </h2>
-
-        <p class="section-description">
-            EduLearn helps you learn and track your progress in one place.
-        </p>
-
+        <h2 class="section-title">Everything You Need to Learn</h2>
+        <p class="section-description">EduLearn helps you learn and track your progress in one place.</p>
 
         <div class="feature-grid">
-
-
             <div class="feature-card">
-
-                <div class="icon">
-                    📚
-                </div>
-
+                <div class="icon">📚</div>
                 <h3>Structured Lessons</h3>
-
-                <p>
-                    Learn through organized college-level
-                    lessons designed for easy understanding.
-                </p>
-
+                <p>Learn through organized college-level lessons designed for easy understanding.</p>
             </div>
 
-
             <div class="feature-card">
-
-                <div class="icon">
-                    🧠
-                </div>
-
-                <h3>Practice & Quizzes</h3>
-
-                <p>
-                    Test your knowledge after learning
-                    with quizzes and assessments.
-                </p>
-
+                <div class="icon">🧠</div>
+                <h3>Practice &amp; Quizzes</h3>
+                <p>Test your knowledge after learning with quizzes and assessments.</p>
             </div>
 
-
             <div class="feature-card">
-
-                <div class="icon">
-                    🏆
-                </div>
-
+                <div class="icon">🏆</div>
                 <h3>Track Your Progress</h3>
-
-                <p>
-                    Monitor completed lessons, course
-                    progress and achievements.
-                </p>
-
+                <p>Monitor completed lessons, course progress and achievements.</p>
             </div>
-
         </div>
-
     </section>
-
-
-    <!-- CALL TO ACTION -->
 
     <section class="cta">
-
-        <h2>
-            Start Your Learning Journey
-        </h2>
-
-        <p>
-            Learn useful skills and build your future with EduLearn.
-        </p>
-
-        <a href="dashboard.html" class="cta-btn">
-            Go to Dashboard
-        </a>
-
+        <h2>Start Your Learning Journey</h2>
+        <p>Learn useful skills and build your future with EduLearn.</p>
+        <a href="dashboard.html" class="cta-btn">Go to Dashboard</a>
     </section>
 
-
-    <!-- FOOTER -->
-
     <footer>
-
-        <p>
-            © 2026 EduLearn. Learn. Build. Grow.
-        </p>
-
+        <p>© <span data-current-year></span> EduLearn. Learn. Build. Grow.</p>
     </footer>
 
-
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

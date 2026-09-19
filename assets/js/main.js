@@ -25,10 +25,16 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  const signupLink = document.querySelector('a[href="#"]');
-  if (signupLink && /create account/i.test(signupLink.textContent)) {
-    signupLink.href = 'signup.html';
-  }
+  const signupLinks = document.querySelectorAll('a[href="#"]');
+  signupLinks.forEach(function (link) {
+    const text = (link.textContent || '').trim().toLowerCase();
+    if (text.includes('create account') || text.includes('create account')) {
+      link.href = 'signup.html';
+    }
+    if (text.includes('forgot password')) {
+      link.href = 'forgot-password.html';
+    }
+  });
 
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {

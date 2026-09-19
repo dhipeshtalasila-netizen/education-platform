@@ -2,588 +2,91 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>EduLearn - Login</title>
-
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
-
-        body {
-            min-height: 100vh;
-            background: #f4f6f9;
-
-            display: flex;
-            flex-direction: column;
-        }
-
-
-        /* NAVBAR */
-
-        .navbar {
-            background: #1e3a8a;
-            color: white;
-
-            padding: 18px 40px;
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .home-link {
-            color: white;
-            text-decoration: none;
-            font-size: 15px;
-        }
-
-        .home-link:hover {
-            text-decoration: underline;
-        }
-
-
-        /* MAIN */
-
-        .main {
-            flex: 1;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            padding: 40px 20px;
-        }
-
-
-        /* LOGIN CARD */
-
-        .login-card {
-            width: 100%;
-            max-width: 430px;
-
-            background: white;
-
-            padding: 35px;
-
-            border-radius: 12px;
-
-            box-shadow:
-                0 5px 20px rgba(0,0,0,0.10);
-        }
-
-
-        .login-header {
-            text-align: center;
-
-            margin-bottom: 30px;
-        }
-
-
-        .login-icon {
-
-            width: 65px;
-            height: 65px;
-
-            margin: 0 auto 15px;
-
-            border-radius: 50%;
-
-            background: #e8eefc;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 30px;
-        }
-
-
-        .login-header h1 {
-
-            color: #1e3a8a;
-
-            margin-bottom: 8px;
-        }
-
-
-        .login-header p {
-
-            color: #777;
-
-            font-size: 14px;
-        }
-
-
-        /* FORM */
-
-        .form-group {
-
-            margin-bottom: 18px;
-        }
-
-
-        .form-group label {
-
-            display: block;
-
-            margin-bottom: 7px;
-
-            font-size: 14px;
-
-            font-weight: bold;
-        }
-
-
-        .form-group input {
-
-            width: 100%;
-
-            padding: 12px;
-
-            border: 1px solid #ccc;
-
-            border-radius: 6px;
-
-            font-size: 14px;
-
-            outline: none;
-        }
-
-
-        .form-group input:focus {
-
-            border-color: #1e3a8a;
-
-        }
-
-
-        /* PASSWORD ROW */
-
-        .password-row {
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            margin-bottom: 20px;
-        }
-
-
-        .remember {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 7px;
-
-            font-size: 13px;
-
-            color: #555;
-        }
-
-
-        .forgot {
-
-            color: #1e3a8a;
-
-            text-decoration: none;
-
-            font-size: 13px;
-        }
-
-
-        .forgot:hover {
-
-            text-decoration: underline;
-
-        }
-
-
-        /* LOGIN BUTTON */
-
-        .login-button {
-
-            width: 100%;
-
-            padding: 12px;
-
-            border: none;
-
-            border-radius: 6px;
-
-            background: #1e3a8a;
-
-            color: white;
-
-            font-size: 15px;
-
-            cursor: pointer;
-        }
-
-
-        .login-button:hover {
-
-            background: #162d6b;
-
-        }
-
-
-        /* DIVIDER */
-
-        .divider {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 12px;
-
-            margin: 25px 0;
-
-            color: #999;
-
-            font-size: 13px;
-        }
-
-
-        .divider::before,
-        .divider::after {
-
-            content: "";
-
-            flex: 1;
-
-            height: 1px;
-
-            background: #ddd;
-        }
-
-
-        /* SIGN UP */
-
-        .signup {
-
-            text-align: center;
-
-            color: #666;
-
-            font-size: 14px;
-        }
-
-
-        .signup a {
-
-            color: #1e3a8a;
-
-            font-weight: bold;
-
-            text-decoration: none;
-        }
-
-
-        .signup a:hover {
-
-            text-decoration: underline;
-
-        }
-
-
-        /* MESSAGE */
-
-        #loginMessage {
-
-            display: none;
-
-            margin-top: 15px;
-
-            padding: 12px;
-
-            background: #e8eefc;
-
-            color: #1e3a8a;
-
-            border-radius: 6px;
-
-            text-align: center;
-
-            font-size: 14px;
-        }
-
-
-        /* FOOTER */
-
-        .footer {
-
-            background: #1e3a8a;
-
-            color: white;
-
-            text-align: center;
-
-            padding: 20px;
-
-            font-size: 13px;
-        }
-
-
-        /* RESPONSIVE */
-
-        @media (max-width: 500px) {
-
-            .navbar {
-
-                padding: 15px 20px;
-
-            }
-
-            .login-card {
-
-                padding: 25px;
-
-            }
-
-        }
-
+        body { min-height: 100vh; background: #f4f6f9; display: flex; flex-direction: column; }
+        .navbar { background: #1e3a8a; color: white; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: bold; }
+        .home-link { color: white; text-decoration: none; font-size: 15px; }
+        .main { flex:1; display:flex; justify-content:center; align-items:center; padding:40px 20px; }
+        .login-card { width:100%; max-width:430px; background:white; padding:35px; border-radius:12px; box-shadow:0 5px 20px rgba(0,0,0,0.10); }
+        .login-header { text-align:center; margin-bottom:30px; }
+        .login-icon { width:65px; height:65px; margin:0 auto 15px; border-radius:50%; background:#e8eefc; display:flex; align-items:center; justify-content:center; font-size:30px; }
+        .login-header h1 { color:#1e3a8a; margin-bottom:8px; }
+        .login-header p { color:#777; font-size:14px; }
+        .form-group { margin-bottom:18px; }
+        .form-group label { display:block; margin-bottom:7px; font-size:14px; font-weight:bold; }
+        .form-group input { width:100%; padding:12px; border:1px solid #ccc; border-radius:6px; font-size:14px; outline:none; }
+        .form-group input:focus { border-color:#1e3a8a; }
+        .password-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+        .remember { display:flex; align-items:center; gap:7px; font-size:13px; color:#555; }
+        .forgot { color:#1e3a8a; text-decoration:none; font-size:13px; }
+        .forgot:hover { text-decoration:underline; }
+        .login-button { width:100%; padding:12px; border:none; border-radius:6px; background:#1e3a8a; color:white; font-size:15px; cursor:pointer; }
+        .login-button:hover { background:#162d6b; }
+        .divider { display:flex; align-items:center; gap:12px; margin:25px 0; color:#999; font-size:13px; }
+        .divider::before, .divider::after { content:""; flex:1; height:1px; background:#ddd; }
+        .signup { text-align:center; color:#666; font-size:14px; }
+        .signup a { color:#1e3a8a; font-weight:bold; text-decoration:none; }
+        .signup a:hover { text-decoration:underline; }
+        #loginMessage { display:none; margin-top:15px; padding:12px; background:#e8eefc; color:#1e3a8a; border-radius:6px; text-align:center; font-size:14px; }
+        .footer { background:#1e3a8a; color:white; text-align:center; padding:20px; font-size:13px; }
+        @media (max-width:500px) { .navbar { padding:15px 20px; } .login-card { padding:25px; } }
     </style>
-
 </head>
 
-
 <body>
-
-
-    <!-- NAVBAR -->
-
     <nav class="navbar">
-
-        <div class="logo">
-            EduLearn
-        </div>
-
-        <a
-            href="index.html"
-            class="home-link">
-
-            Home
-
-        </a>
-
+        <div class="logo">EduLearn</div>
+        <a href="index.html" class="home-link">Home</a>
     </nav>
 
-
-
-    <!-- MAIN -->
-
     <main class="main">
-
-
         <section class="login-card">
-
-
-            <!-- HEADER -->
-
             <div class="login-header">
-
-                <div class="login-icon">
-                    🎓
-                </div>
-
-                <h1>
-                    Welcome Back
-                </h1>
-
-                <p>
-                    Sign in to continue your learning journey.
-                </p>
-
+                <div class="login-icon">🎓</div>
+                <h1>Welcome Back</h1>
+                <p>Sign in to continue your learning journey.</p>
             </div>
-
-
-
-            <!-- FORM -->
 
             <form id="loginForm">
-
-
                 <div class="form-group">
-
-                    <label for="email">
-                        Email Address
-                    </label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="Enter your email"
-                        required>
-
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
                 </div>
 
-
-
                 <div class="form-group">
-
-                    <label for="password">
-                        Password
-                    </label>
-
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="Enter your password"
-                        required>
-
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
                 </div>
-
-
-
-                <!-- OPTIONS -->
 
                 <div class="password-row">
-
-                    <label class="remember">
-
-                        <input
-                            type="checkbox"
-                            id="remember">
-
-                        Remember me
-
-                    </label>
-
-
-                    <a
-                        href="#"
-                        class="forgot">
-
-                        Forgot Password?
-
-                    </a>
-
+                    <label class="remember"><input type="checkbox" id="remember"> Remember me</label>
+                    <a href="forgot-password.html" class="forgot">Forgot Password?</a>
                 </div>
 
-
-
-                <!-- BUTTON -->
-
-                <button
-                    type="submit"
-                    class="login-button">
-
-                    Sign In
-
-                </button>
-
-
+                <button type="submit" class="login-button">Sign In</button>
             </form>
 
+            <div id="loginMessage">Demo login successful. Redirecting...</div>
 
+            <div class="divider">OR</div>
 
-            <!-- MESSAGE -->
-
-            <div id="loginMessage">
-
-                Demo login successful. Redirecting...
-
-            </div>
-
-
-
-            <!-- DIVIDER -->
-
-            <div class="divider">
-
-                OR
-
-            </div>
-
-
-
-            <!-- SIGN UP -->
-
-            <div class="signup">
-
-                Don't have an account?
-
-                <a href="#">
-                    Create Account
-                </a>
-
-            </div>
-
-
+            <div class="signup">Don't have an account? <a href="signup.html">Create Account</a></div>
         </section>
-
-
     </main>
 
+    <footer class="footer">© <span data-current-year></span> EduLearn. All rights reserved.</footer>
 
-
-    <!-- FOOTER -->
-
-    <footer class="footer">
-
-        © 2026 EduLearn. All rights reserved.
-
-    </footer>
-
-
-
-    <!-- JAVASCRIPT -->
-
-    <script>
-
-        const loginForm =
-            document.getElementById(
-                "loginForm"
-            );
-
-
-        loginForm.addEventListener(
-            "submit",
-            function(event) {
-
-                event.preventDefault();
-
-
-                document.getElementById(
-                    "loginMessage"
-                ).style.display =
-                    "block";
-
-
-                setTimeout(
-                    function() {
-
-                        window.location.href =
-                            "dashboard.html";
-
-                    },
-                    1000
-                );
-
-            }
-        );
-
-    </script>
-
-
+    <script src="assets/js/main.js"></script>
 </body>
-
 </html>
